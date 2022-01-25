@@ -78,12 +78,10 @@ const D = document;
 
 
 function animateFSMenu (action) {
-  
   const menu = D.querySelector('.fs-menu')
   const header = D.querySelector('#header')
 
-
-  D.querySelector('html').classList.toggle('fs-opened')
+  header.classList.toggle('fs-opened')
   
   if (action === 'open') {
 

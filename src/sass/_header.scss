@@ -12,6 +12,9 @@ header.header {
 	&.not-fixed {
 		position: absolute;
 	}
+	&.fs-opened {
+		position: fixed;
+	}
 }
 .wrapper {
 	padding-top: 80px;

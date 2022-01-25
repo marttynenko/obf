@@ -92,8 +92,15 @@ footer.footer {
 }
 
 
-.fs-opened {
-  overflow: hidden;
+// .fs-opened {
+//   overflow: hidden;
+// }
+.fs-menu::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.fs-menu {
+  scrollbar-width: none;
 }
 .fs-menu {
   position: fixed;

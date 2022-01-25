@@ -664,6 +664,8 @@ header.header { padding-top: 18px; padding-bottom: 18px; position: fixed; z-inde
 
 header.header.not-fixed { position: absolute; }
 
+header.header.fs-opened { position: fixed; }
+
 .wrapper { padding-top: 80px; }
 
 .logo, a.logo { margin-right: 40px; color: #FFF; font-size: 28px; font-size: 1.75rem; }
@@ -788,7 +790,9 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
 @media (max-width: 1260px) { .col-layout-thin-footer { -webkit-box-flex: 0; -ms-flex: 0 0 26%; flex: 0 0 26%; max-width: 26%; }
   .col-layout-wide-footer { -webkit-box-flex: 0; -ms-flex: 0 0 74%; flex: 0 0 74%; max-width: 74%; } }
 
-.fs-opened { overflow: hidden; }
+.fs-menu::-webkit-scrollbar { width: 0; height: 0; }
+
+.fs-menu { scrollbar-width: none; }
 
 .fs-menu { position: fixed; left: 0; right: 0; top: 80px; height: calc(100vh - 80px); z-index: 199; padding-top: 65px; padding-bottom: 65px; overflow-y: auto; overflow-x: hidden; line-height: 1.12; opacity: 0; visibility: hidden; }
 
