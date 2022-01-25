@@ -50,15 +50,15 @@ const D = document;
   })
 
 
-  // D.addEventListener( 'click', (e) => {
-  //   const openedUL = D.querySelector('.main-menu-sub.opened')
-  //   if (!openedUL) return
-  //   const withinBoundaries = e.composedPath().includes(openedUL);
+  D.addEventListener( 'click', (e) => {
+    const openedUL = D.querySelector('.main-menu-sub.opened')
+    if (!openedUL) return
+    const withinBoundaries = e.composedPath().includes(openedUL);
     
-  //   if ( ! withinBoundaries ) {
-  //     openedUL.classList.remove('opened'); 
-  //   }
-  // })
+    if ( ! withinBoundaries && !e.target.classList.contains('childs-in') ) {
+      openedUL.classList.remove('opened'); 
+    }
+  })
 })();
 
 
