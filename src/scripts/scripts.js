@@ -9,8 +9,12 @@ const D = document;
   toggler.addEventListener('click', function(e) {
     e = event || window.event
     e.preventDefault()
-    this.classList.toggle('opened')
+    
+    const action = toggler.classList.contains('opened') ? 'close' : 'open'
     //...
+    animateFSMenu(action)
+
+    this.classList.toggle('opened')
   })
 })();
 
@@ -73,3 +77,47 @@ const D = document;
 })();
 
 
+function animateFSMenu (action) {
+  
+  const menu = D.querySelector('.fs-menu')
+  const header = D.querySelector('#header')
+
+
+  D.querySelector('html').classList.toggle('fs-opened')
+  
+  if (action === 'open') {
+
+    menu.classList.add('opened')
+    const tlStart = gsap.timeline({autoRemoveChildren: true})
+    tlStart
+      .fromTo('.fs-menu-bg',{scale: 0}, {scale: 1, duration: 0.35})
+      .fromTo('.fs-menu-productions',{y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.45})
+      .fromTo('.fs-menu-links',{y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.45, delay: -0.25})
+      .fromTo('.fs-menu-contacts-1',{y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.45, delay: -0.25})
+      .fromTo('.fs-menu-contacts-2',{y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.45, delay: -0.25})
+
+  } else {
+    const tlEnd = gsap.timeline({autoRemoveChildren: true})
+    tlEnd
+      .to('.fs-menu-contacts-2', {y: 50, opacity: 0, duration: 0.3})
+      .to('.fs-menu-contacts-1', {y: 50, opacity: 0, duration: 0.3, delay: -0.15})
+      .to('.fs-menu-links', {y: 50, opacity: 0, duration: 0.3, delay: -0.15})
+      .to('.fs-menu-productions', {y: 5, opacity: 0, duration: 0.3,delay: -0.15})
+      .to('.fs-menu-bg', {scale: 0, duration: 0.25, onComplete: ()=>{menu.classList.remove('opened')}})
+  }
+}
+
+//фикс для шапки
+(function () {
+  const target = D.querySelector('#header')
+  if (!target) return
+
+  window.onscroll = function(e) {
+    // print "false" if direction is down and "true" if up
+    this.oldScroll > this.scrollY 
+      ? target.classList.remove('not-fixed')
+      : target.classList.add('not-fixed')
+
+    this.oldScroll = this.scrollY;
+  }
+})();

@@ -3,7 +3,7 @@
 
   &-header,
   &-title {
-    margin-bottom: 60px;
+    margin-bottom: 90px;
   }
 
   &-header {
@@ -66,7 +66,7 @@
   &-title {
     @include fz(54);
     line-height: 1;
-    margin-bottom: 28px;
+    margin-bottom: 38px;
     // position: relative;
 
     a {
@@ -98,7 +98,7 @@
     }
   }
   &-txt {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
   &-date {
     color: $primary;
@@ -152,12 +152,12 @@
   &-more {
     vertical-align: middle;
     margin-left: 20px;
-    border-bottom: 1px dotted $primary;
+    border-bottom: 1px dashed rgba($primary, .8);
 
     &:hover {
       color: #FFF;
-      border-bottom-style: solid;
-      border-bottom-color: #FFF;
+      // border-bottom-style: solid;
+      border-bottom-color: transparent;
 
       .ui-tags-more-arrow {
         stroke: #FFF;
@@ -167,11 +167,12 @@
     &-arrow {
       display: inline-block !important;
       vertical-align: middle;
-      margin-left: 3px;
-      width: 10px;
+      margin-left: 5px;
+      width: 12px;
       height: 10px;
       fill: none;
       stroke: $primary;
+      stroke-width: 2;
     }
   }
 
@@ -221,5 +222,5 @@
   }
 }
 .page-header + .news-archieve {
-  margin-top: -35px;
+  margin-top: -60px;
 }

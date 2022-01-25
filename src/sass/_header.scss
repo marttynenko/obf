@@ -1,6 +1,20 @@
 header.header {
 	padding-top: 18px;
 	padding-bottom: 18px;
+	position: fixed;
+	z-index: 9;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: $bgc;
+	// transition: ;
+
+	&.not-fixed {
+		position: absolute;
+	}
+}
+.wrapper {
+	padding-top: 80px;
 }
 
 .logo,
@@ -190,7 +204,7 @@ a.logo {
 			right: 0;
 			top: 50%;
 			margin-top: -4px;
-			width: 8px;
+			width: 10px;
 			height: 8px;
 			background: url(../images/svg/childs-toggler.svg) center no-repeat;
 			background-size: contain;

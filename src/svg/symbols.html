@@ -176,6 +176,10 @@
 			<path opacity=".5" d="M1 1l4 3 4-3" stroke="#fff"></path>
 		</symbol>
 	
+		<symbol id="circle-btn-arrow" viewBox="0 0 32 32">
+			<path d="M1.91 15.81h27.825M19.2 5.334l10.666 10.667-10.667 10.666"></path>
+		</symbol>
+	
 		<symbol id="fb" viewBox="0 0 21 34">
 			<path d="M19.009 21.105l1.014-6.547h-6.341v-4.249c0-1.79.886-3.537 3.726-3.537h2.882V1.198S17.675.756 15.173.756C9.952.756 6.54 3.892 6.54 9.569v4.99H.734v6.547H6.54v15.828h7.143V21.106l5.327-.001z"></path>
 		</symbol>
@@ -211,7 +215,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(13 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(14 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -311,6 +315,23 @@
             <button onclick="invertBackground('icon-box-childs-toggler')">Invert Background</button>
             <div class="snippet-popover" id="snippet-childs-toggler">
                 <pre><code>&lt;svg class=&quot;icon childs-toggler&quot;&gt;&lt;use xlink:href=&quot;#childs-toggler&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="circle-btn-arrow">
+            <div class="icon-box" id="icon-box-circle-btn-arrow">
+                <svg class="icon circle-btn-arrow">
+                    <use xlink:href="#circle-btn-arrow" />
+                </svg>
+            </div>
+            <h2>circle-btn-arrow</h2>
+            <button onclick="showPopover('snippet-circle-btn-arrow')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-circle-btn-arrow')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-circle-btn-arrow">
+                <pre><code>&lt;svg class=&quot;icon circle-btn-arrow&quot;&gt;&lt;use xlink:href=&quot;#circle-btn-arrow&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
