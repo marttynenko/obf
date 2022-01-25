@@ -660,11 +660,11 @@ img.slick-loading { opacity: 0; -webkit-transform: scale(0.95); -ms-transform: s
 
 .iti__arrow { border: 0; margin-left: 12px; width: 14px; height: 14px; background: url(../images/svg/toggler.svg) center no-repeat; background-size: 10px; }
 
-header.header { padding-top: 18px; padding-bottom: 18px; position: fixed; z-index: 9; top: 0; left: 0; right: 0; background: #222E3F; }
+header.header { padding-top: 18px; padding-bottom: 18px; height: 80px; position: fixed; z-index: 9; top: 0; left: 0; right: 0; background: #222E3F; -webkit-transition: -webkit-transform .4s; transition: -webkit-transform .4s; -o-transition: transform .4s; transition: transform .4s; transition: transform .4s, -webkit-transform .4s; will-change: transform; }
 
-header.header.not-fixed { position: absolute; }
+header.header.not-fixed { -webkit-transform: translate3d(0px, -80px, 0px); transform: translate3d(0px, -80px, 0px); -webkit-transition: -webkit-transform .5s; transition: -webkit-transform .5s; -o-transition: transform .5s; transition: transform .5s; transition: transform .5s, -webkit-transform .5s; }
 
-header.header.fs-opened { position: fixed; }
+header.header.fs-opened { position: fixed; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px); }
 
 .wrapper { padding-top: 80px; }
 

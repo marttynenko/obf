@@ -50,6 +50,7 @@ const D = document;
   })
 
 
+  //скрываем меню по клику вне
   D.addEventListener( 'click', (e) => {
     const openedUL = D.querySelector('.main-menu-sub.opened')
     if (!openedUL) return
@@ -77,6 +78,7 @@ const D = document;
 })();
 
 
+//анимируем fullscreen menu
 function animateFSMenu (action) {
   const menu = D.querySelector('.fs-menu')
   const header = D.querySelector('#header')
@@ -104,6 +106,7 @@ function animateFSMenu (action) {
       .to('.fs-menu-bg', {scale: 0, duration: 0.25, onComplete: ()=>{menu.classList.remove('opened')}})
   }
 }
+
 
 //фикс для шапки
 (function () {

@@ -1,19 +1,25 @@
 header.header {
 	padding-top: 18px;
 	padding-bottom: 18px;
+	height: 80px;
 	position: fixed;
 	z-index: 9;
 	top: 0;
 	left: 0;
 	right: 0;
 	background: $bgc;
-	// transition: ;
+	// background: #000;
+	transition: transform .4s;
+	will-change: transform;
 
 	&.not-fixed {
-		position: absolute;
+		// position: absolute;
+		transform: translate3d(0px,-80px,0px);
+		transition: transform .5s;
 	}
 	&.fs-opened {
 		position: fixed;
+		transform: translate3d(0px,0px,0px);
 	}
 }
 .wrapper {
