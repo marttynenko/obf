@@ -1,0 +1,276 @@
+header.header {
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
+
+.logo,
+a.logo {
+	margin-right: 40px;
+	color: #FFF;
+	@include fz(28);
+
+	&-img {
+		max-width: 40px;
+		margin-right: 12px;
+		line-height: 0;
+	}
+
+	@media (max-width: 1259px) {
+		margin-right: 30px;
+
+		&-img {
+			max-width: 24px;
+			margin-right: 10px;
+		}
+	}
+}
+
+.menu-toggler {
+	position: relative;
+	padding-left: 60px;
+	height: 44px;
+	line-height: 44px;
+	color: #FFF;
+	cursor: pointer;
+	white-space: nowrap;
+ 
+	&-icon {
+		position: absolute;
+		left: 0px;
+		top: 50%;
+		width: 44px;
+		height: 44px;
+		margin-top: -22px;
+		border: 1px solid #FFF;
+		border-radius: 22px;
+		transition: transform .15s .0s;
+	}
+	&-line {
+		position: absolute;
+		left: 10px;
+		right: 10px;
+		height: 1px;
+		margin-top: -0.5px;
+		background: #FFF;
+		top: 50%;
+		transition: transform .3s;
+
+		&-1 {
+			transform: translate(0px,-7px);
+		}
+		&-3 {
+			transform: translate(0px, 7px);
+		}
+	}
+
+	&.opened {
+		.menu-toggler-icon {
+			transform: rotate(90deg);
+			transition-delay: .15s;
+			transition-duration: .3s;
+		}
+		.menu-toggler-line {
+			&-1 {
+				transform: translate(0px,0px) rotate(45deg);
+			}
+			&-2 {
+				opacity: 0;
+			}
+			&-3 {
+				transform: translate(0px,0px) rotate(-45deg);
+			}
+		}
+	}
+
+	&:not(.opened):hover {
+		.menu-toggler-line {
+			&-1 {
+				transform: translate(0px,-8px);
+			}
+			&-3 {
+				transform: translate(0px,8px);
+			}
+		}
+	}
+
+	@media (max-width: 1440px) {
+		@include fz(16);
+	}
+
+	@media (max-width: 1259px) {
+		font-size: 0;
+		padding-left: 44px;
+	}
+}
+
+
+.main-menu {
+	&-main {
+		& > li {
+			position: relative;
+			display: inline-block;
+			margin-right: 29px;
+		}
+	}
+
+	&-sub {
+		background: $bg_dark;
+		padding: 40px 40px 30px;
+
+		// @media (min-width: 992px) {
+		position: absolute;
+		z-index: 99;
+		top: 100%;
+		margin-top: 15px;
+		left: -35px;
+		width: max-content;
+		max-width: 310px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translate(0px, 10px);
+		transition: visibility .3s, opacity .3s, transform .3s;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 60px;
+			bottom: 100%;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 10px 10px 10px;
+			border-color: transparent transparent $bg_dark transparent;
+		}
+
+		li {
+			opacity: 0;
+			transform: translate3d(0px, 7px, 0px);
+			will-change: transform;
+			margin-bottom: 10px;
+			
+		}
+
+		&.opened {
+			opacity: 1;
+			visibility: visible;
+			transform: translate(0px, 0px);
+
+			li {
+				transition: transform .7s, opacity .7s;
+				opacity: 1;
+				transform: translate3d(0px, 0px, 0px);
+
+				@for $i from 2 through 10 {
+					&:nth-of-type(#{$i}) {
+						transition-delay: (.13s * ($i - 1));
+					}
+				}
+			}
+		}
+
+		// }
+	}
+
+	a {
+		color: #FFF;
+
+		&:hover {
+			color: $primary;
+		}
+	}
+
+	a.childs-in {
+		position: relative;
+		display: inline-block;
+		padding-right: 16px;
+
+		&:after {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 50%;
+			margin-top: -4px;
+			width: 8px;
+			height: 8px;
+			background: url(../images/svg/childs-toggler.svg) center no-repeat;
+			background-size: contain;
+			transition: transform .3s;
+		}
+
+		&.opened {
+			&:after {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	@media (max-width: 1440px) {
+		@include fz(16);
+
+		&-main {
+			& > li {
+				margin-right: 10px;
+			}
+		}
+	}
+
+	@media (max-width: 1259px) {
+		@include fz(14);
+	}
+}
+
+.circle-links {
+	font-size: 0;
+}
+.circle-link {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 16px;
+	width: 44px;
+	height: 44px;
+	line-height: 42px;
+	text-align: center;
+	border: 1px solid #FFF;
+	border-radius: 22px;
+	padding: 10px;
+	@include fz(16);
+	color: #FFF;
+	transition: border .3s, color .3s;
+
+	&-icon {
+		fill: none;
+		stroke: #FFF;
+	}
+	&-txt {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+	}
+
+	&:hover {
+		border-color: $primary;
+
+		svg {
+			stroke: $primary;
+		}
+	}
+
+	@media (max-width: 1259px) {
+		margin-left: 8px;
+	}
+}
+
+@media (max-width: 1259px) {
+	.col-layout-thin-header {
+		flex: 0 0 200px;
+		max-width: 200px;
+	}
+	.col-layout-wide-header {
+		flex: 0 0 calc(100% - 200px);
+		max-width: calc(100% - 200px);
+	}
+}

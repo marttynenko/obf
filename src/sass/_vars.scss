@@ -1,0 +1,172 @@
+// Colors & BG's ---
+$bgc: #222E3F;
+$bg: #f8f8f8;
+$bg_dark: #1D2735;
+$font: #FFF;
+$font_2: #888;
+$font_3: #a3a3a3;
+$light: #EFEFEF;
+$titles: $font;
+$gray: rgba(#000, .3);
+$gray_hover: rgba(#000, .5);
+
+$primary: #F08322;
+$primary_hover: lighten($primary, 10%);
+$primary_active: lighten($primary, 16%);
+$secondary: #268E80;
+$secondary_hover: darken($secondary, 8%);
+$secondary_active: darken($secondary, 14%);
+$tertiary: #97B446;
+$blue: #4590BA;
+
+
+
+$red: $tertiary;
+$red_hover: darken($red, 10%);
+$yellow: #ffcf28;
+$yellow_hover:  darken($yellow, 15%);
+$magenta: #BB6BD9;
+$green: #27AE60;
+
+$dark: #171717;
+
+$link: $primary;
+$link_hover: $primary_hover;
+$link_active: $primary_active;
+$link_border: $primary_hover;
+$link_border_hover: transparent;
+
+$border: #dbdbdb;
+$border_light: #F1F1F1;
+$devider: #d6d6d6;
+
+$valid: #25a670;
+
+$input_border: #D4D4D4;
+$input_hover: darken($input_border, 15%);
+$input_focus: $primary;
+$input_shadow: #f6f6f6;
+$jq_border: #a3a3a3;
+$jq_hover: darken($jq_border,15%);
+$jq_focus: $primary;
+
+
+// Layouts
+$inner: 1920px;
+$gutter: 50px;
+$col_gutter: 15px;
+$block_margin: 0 0 25px;
+
+
+// Grid
+$breakpoints: ("lg":$inner,"md":992,"sm":768,"xs":576,"us":400);
+
+
+// Typography ---
+$fontsize: 18;
+$weight: 400;
+$basefont: 'TT Hoves';
+$sans: 'Source Sans Pro';
+$lh: 1.42;
+$th: (23/14);
+$paragraph_margin: 0px 0px 22px;
+
+// headings
+$headings_font_family: $basefont;
+$headings_margin: 22px 0px 18px;
+$headings_font_weight: 400;
+$headings_color: $titles;
+$headings_text_transform: none;
+$h_extra: 200;
+$h1: 120;
+$h1_compact: 90;
+$h2: 52;
+$h3: 42;
+$h4: 42;
+$h5: 32;
+$h6: $fontsize;
+
+$block_heading_font_size: 24;
+$block_heading_font_weight: 700;
+
+// article typography
+$article_font_size: 16;
+$article_line_height: (22/$article_font_size);
+$article_paragraph_margin: $paragraph_margin;
+$article_img_margin: $paragraph_margin;
+$article_font_weight: $weight;
+
+
+// Buttons & Inputs ---
+$btn_font_size: 24;
+$btn_font_size_mini: 20;
+$btn_font_weight: 400;
+$btn_text_transform: none;
+$btn_height: 76px;
+$btn_height_big: 70px;
+$btn_height_mini: 72px;
+$btn_paddings: 0px 30px;
+$btn_border_width: 1px;
+$btn_border_color: #FFF;
+$btn_border_radius: 8px;
+$btn_bg: transparent;
+$btn_color: #FFF;
+
+$input_height: $btn_height;
+$input_paddings: 0px 25px;
+$input_border_radius: $btn_border_radius;
+$input_bg: transparent;
+
+$checkbox_size: 18px;
+$checkbox_border_radius: 2px;
+$radio_size: $checkbox_size;
+
+
+// Breadcrumbs ---
+$bread_font_size: 16;
+$bread_bg: none;
+$bread_color: $font;
+$bread_link_color: $font;
+$bread_paddings: 0px;
+$bread_margin: 0px 0px 35px;
+
+
+// Pgn
+// $pgn_color: $font;
+// $pgn_font_weight: 400;
+// $pgn_margin: 5px;
+// $pgn_padding: 0px 5px;
+// $pgn_height: 50px;
+// $pgn_bg: #FFF;
+// $pgn_border_radius: 0;
+// $pgn_border: 1px;
+// $pgn_border_active: 1px;
+// $pgn_bg_active: $secondary;
+
+
+// Other ---
+$sticker_bg: $secondary;
+$sticker_color: #FFF;
+$sticker_height: 26px;
+$sticker_height_mini: 20px;
+$sticker_paddings: 0px 12px;
+$sticker_font_size: 8;
+$sticker_font_weight: 700;
+$sticker_text_transform: uppercase;
+$sticker_border_radius: 0px;
+$sticker_font: $basefont;
+$sticker_font_style: normal;
+
+$beizer: cubic-bezier(.3,.53,.38,.73);
+
+$trn_d: .4s; //transition-delay
+
+
+@mixin fz($f_size) {
+	font-size: $f_size + px;
+	font-size: $f_size/16 + rem;
+}
+
+@mixin ls($lsp) {
+	letter-spacing: $lsp/1000 + em;
+}

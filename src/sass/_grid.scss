@@ -1,0 +1,126 @@
+@function reverse($list, $recursive: false) {
+  $result: ();
+
+  @for $i from length($list) * -1 through -1 {
+    @if type-of(nth($list, abs($i))) == list and $recursive {
+      $result: append($result, reverse(nth($list, abs($i)), $recursive));
+    } @else {
+      $result: append($result, nth($list, abs($i)));
+    }
+  }
+
+  @return $result;
+}
+.inner,
+.container {
+	max-width: $inner;
+	padding-left: $gutter;
+	padding-right: $gutter;
+	margin-left: auto;
+	margin-right: auto;
+
+	&-fluid {
+		max-width: 100%;
+		padding-left: $gutter;
+		padding-right: $gutter;
+	}
+}
+
+
+.inner:before,
+.inner:after,
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+.inner:after,
+.clearfix:after {
+	clear: both;
+}
+
+.row {
+  display: -webkit-box;
+	display: -webkit-flex;
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	display: -ms-flex;
+	display: -ms-inline-flexbox;
+	display: -ms-flexbox;	
+	display: flex;
+  -webkit-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: -$col_gutter;
+  margin-right: -$col_gutter;
+}
+[class*="col-"] {
+  width: 100%;
+  padding-left: $col_gutter;
+  padding-right: $col_gutter;
+}
+// .inner, .container {
+//   max-width: $inner+px;
+// }
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    -ms-flex: 0 0 (100% / 12 * $i);
+    flex: 0 0 (100% / 12 * $i);
+    max-width: (100% / 12 * $i);
+  }
+  .col-offset-#{$i} {
+    margin-left: (100% / 12 * $i);
+  }
+}
+
+$reverseBreakpoints: reverse($breakpoints);
+@each $name, $screen in $reverseBreakpoints {
+  @media (min-width: #{$screen}px) {
+    @for $i from 1 through 12 {
+      .col-#{$name}-#{$i} {
+        -ms-flex: 0 0 (100% / 12 * $i);
+        flex: 0 0 (100% / 12 * $i);
+        max-width: (100% / 12 * $i);
+      }
+      .col-#{$name}-offset-#{$i} {
+        margin-left: (100% / 12 * $i);
+      }
+    }
+    .col-#{$name}-20 {
+      -ms-flex: 0 0 20%;
+      flex: 0 0 20%;
+      max-width: 20%;
+    }
+    // @if ($name == "lg") {
+    //   .inner, .container {
+    //     max-width: ($screen + px);
+    //   }
+    // } @elseif ($name == "us") {
+    //   .inner, .container {
+    //     max-width: 100%;
+    //   }
+    // } @else {
+    //   .inner, .container {
+    //     max-width: ($screen + ($col_gutter * 2));
+    //   }
+    // }
+  }
+}
+
+.col-layout {
+  @media (min-width: 1260px) {
+    &-thin {
+      flex: 0 0 26%;
+      max-width: 26%;
+    }
+    &-wide {
+      flex: 0 0 74%;
+      max-width: 74%;
+    }
+  }
+}

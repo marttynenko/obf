@@ -1,0 +1,11 @@
+@media (max-width: 420px) {
+	h1, .h1 {
+		@include fz(30);
+	}
+	h2, .h2 {
+		@include fz(25);
+	}
+	h3, .h3 {
+		@include fz(22);
+	}
+}

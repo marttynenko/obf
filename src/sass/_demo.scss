@@ -1,0 +1,24 @@
+.mark {
+	display: inline-block;
+	padding: 0px 5px;
+	color: #000;
+	background: #ffdf40;
+	border-radius: 3px;
+	margin: 2px 0;
+	font-weight: 700;
+}
+
+.demo {
+	hr {
+		margin-top: 35px;
+		margin-bottom: 35px;
+	}
+}
+.mark-block {
+	padding: 10px;
+	margin-bottom: 20px;
+	color: #000;
+	background: $gray;
+	border: 1px solid #c5c5c5;
+	font-weight: 700;
+}
