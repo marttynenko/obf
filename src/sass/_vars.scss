@@ -170,3 +170,37 @@ $trn_d: .4s; //transition-delay
 @mixin ls($lsp) {
 	letter-spacing: $lsp/1000 + em;
 }
+
+@mixin createRow($n) {
+	//$n - размер отступа в колонках между основными колонками
+  
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -(100% / 24 * $n);
+}
+
+@mixin createCols($cols,$gutter) {
+	//$cols - кол-во колонок в ряду
+	//$gutter - размер отступа в колонках между основными колонками
+
+	$colSize: 100 / 24;
+	$defaultPadding: $colSize * $gutter;
+	$paddingScaled: ((100 + $defaultPadding) * $defaultPadding) / 100;
+
+	flex: 0 0 (100% / $cols);
+	max-width: 100% / $cols;
+  padding-right: #{($defaultPadding / $paddingScaled) * $defaultPadding+'%'};
+}
+
+@function colPadding($n) {
+	//$n - размер отступа в колонках между основными колонками
+	$colSize: 100 / 24;
+	$defaultPadding: $colSize * $n;
+	$paddingScaled: ((100 + $defaultPadding) * $defaultPadding) / 100; 
+  @return #{($defaultPadding / $paddingScaled) * $defaultPadding+'%'};
+}
+
+@function rowMargin($n) {
+	//$n - размер отступа в колонках между основными колонками
+  @return -(100% / 24 * $n);
+}

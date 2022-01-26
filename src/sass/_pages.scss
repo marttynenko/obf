@@ -11,6 +11,11 @@
       margin-bottom: 0;
     }
   }
+
+  &-title {
+    max-width: 1000px;
+    line-height: 0.95;
+  }
 }
 
 .page-header-news {
@@ -225,4 +230,182 @@
 }
 .page-header + .news-archieve {
   margin-top: -60px;
+}
+
+
+
+/* ---
+DOCS PAGE --- */
+.docs {
+  &-group {
+    margin-bottom: 70px;
+
+    &-title {
+      color: $primary;
+      margin-bottom: 48px;
+      margin-top: 0;
+      @include fz(54);
+      line-height: 1.1;
+    }
+    &-list {
+      // display: flex;
+      // flex-wrap: wrap;
+      // margin-right: rowMargin(2);
+      @include createRow(2)
+    }
+
+    &-col {
+      @include createCols(2, 2)
+      // flex: 0 0 50%;
+      // max-width: 50%;
+      // padding-right: colPadding(2);
+    }
+  }
+
+
+  &-card {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+    min-height: calc(100% - 30px);
+    border: 1px solid #FFF;
+    border-radius: 8px;
+    padding: 30px;
+    @include fz(22);
+
+    &-title {
+      margin-bottom: 24px;
+      @include fz(28);
+    }
+    &-type {
+      color: #FFF;
+      font-weight: 600;
+      transition: color .3s;
+    }
+    &-icon {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      width: 24px;
+      height: 24px;
+      stroke: $primary;
+      stroke-width: 2;
+      fill: none;
+      opacity: 0;
+      transform: scale(0.75);
+      transition: opacity .3s, transform .3s;
+
+    }
+    &:hover {
+      color: $primary;
+      border-color: $primary;
+
+      .docs-card-icon {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .docs-card-type {
+        color: $primary;
+      }
+    }
+  }
+
+  @media (max-width: 1260px) {
+    &-group {
+      &-title {
+        @include fz(42);
+      }
+    }
+
+    &-card {
+      @include fz(18);
+
+      &-title {
+        @include fz(24);
+      }
+    }
+  }
+}
+
+
+
+/* ---
+CERTS --- */
+.certs {
+  &-list {
+    @include createRow(3);
+  }
+  &-col {
+    @include createCols(3, 3);
+  }
+
+  @media (max-width: 1440px) {
+    &-list {
+      @include createRow(2);
+    }
+    &-col {
+      @include createCols(3, 2);
+    }
+  }
+
+  @media (max-width: 1260px) {
+    &-list {
+      margin-right: -30px;
+    }
+    &-col {
+      padding-right: 30px;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+}
+
+.cert-item {
+  margin-bottom: 95px;
+
+  &-img {
+    margin-bottom: 24px;
+    filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.15));
+    position: relative;
+
+    img {
+      display: block;
+    }
+    a {
+      display: inline-block;
+      position: relative;
+
+      &:hover {
+        .cert-item-zoom {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+  &-zoom {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    transform: scale(0.75);
+    transition: opacity .3s, transform .3s;
+    stroke: $primary;
+    stroke-width: 3;
+    fill: none
+  }
+
+  @media (max-width: 1260px) {
+    @include fz(14);
+    margin-bottom: 75px;
+
+    &-img {
+      max-width: 215px;
+    }
+    &-descr {
+      max-width: 360px;
+    }
+  }
 }

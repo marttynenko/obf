@@ -1,3 +1,32 @@
+const FARBA = {
+	//lazy load для сторонних либ
+	lazyLibraryLoad(scriptSrc,linkHref,callback) {
+    let script
+    const domScript = document.querySelector(`script[src="${scriptSrc}"]`)
+
+    if (!domScript) {
+      script = document.createElement('script');
+      script.src = scriptSrc;
+      document.querySelector('#wrapper').after(script);
+    }
+		
+	
+		if (linkHref !== '') {
+			let style = document.createElement('link');
+			style.href = linkHref;
+			style.rel = 'stylesheet';
+			document.querySelector('link').before(style);
+		}
+    
+    if (!domScript) {
+      script.onload = callback
+    } else {
+      domScript.onload = callback
+    }
+	}
+}
+
+
 const D = document;
 
 
@@ -108,7 +137,7 @@ function animateFSMenu (action) {
 }
 
 
-//фикс для шапки
+//фиксация шапки
 (function () {
   const target = D.querySelector('#header')
   if (!target) return
@@ -121,4 +150,26 @@ function animateFSMenu (action) {
 
     this.oldScroll = this.scrollY;
   }
+})();
+
+
+//галлерея
+(function () {
+  const target = D.querySelectorAll('.ux-gallery')
+  if (!target.length) return
+
+  FARBA.lazyLibraryLoad(
+    '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
+    '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css',
+    () => {
+
+      target.forEach(el => {
+        lightGallery(el,{
+          download: false,
+          selector: 'a.ux-gallery-link'
+        })
+      })
+      
+    }
+  )
 })();

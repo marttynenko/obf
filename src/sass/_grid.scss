@@ -57,6 +57,11 @@
   flex-wrap: wrap;
   margin-left: -$col_gutter;
   margin-right: -$col_gutter;
+
+  &-no-margin {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 [class*="col-"] {
   width: 100%;
@@ -96,31 +101,18 @@ $reverseBreakpoints: reverse($breakpoints);
       flex: 0 0 20%;
       max-width: 20%;
     }
-    // @if ($name == "lg") {
-    //   .inner, .container {
-    //     max-width: ($screen + px);
-    //   }
-    // } @elseif ($name == "us") {
-    //   .inner, .container {
-    //     max-width: 100%;
-    //   }
-    // } @else {
-    //   .inner, .container {
-    //     max-width: ($screen + ($col_gutter * 2));
-    //   }
-    // }
   }
 }
 
 .col-layout {
   @media (min-width: 1260px) {
     &-thin {
-      flex: 0 0 26%;
-      max-width: 26%;
+      flex: 0 0 25.5%;
+      max-width: 25.5%;
     }
     &-wide {
-      flex: 0 0 74%;
-      max-width: 74%;
+      flex: 0 0 74.5%;
+      max-width: 74.5%;
     }
   }
 }
