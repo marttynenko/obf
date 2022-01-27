@@ -166,7 +166,10 @@ function animateFSMenu (action) {
       target.forEach(el => {
         lightGallery(el,{
           download: false,
-          selector: 'a.ux-gallery-link'
+          selector: 'a.ux-gallery-link',
+          backdropDuration: 500,
+          speed: 500,
+          // mode: 'lg-soft-zoom'
         })
       })
       
