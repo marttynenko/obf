@@ -5,8 +5,8 @@
     flex: 0 0 50%;
     max-width: 50%;
     padding-right: 4.16%;
-   }
-   &-right-col {
+  }
+  &-right-col {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -16,18 +16,21 @@
     @media (max-width: 1440px) {
       padding-right: 0;
     }
-   }
-   &-header {
-     display: flex;
-     flex-wrap: wrap;
-     margin-bottom: 94px;
+  }
+  &-header {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    @media (max-width: 1260px) {
+      margin-bottom: 80px;
+    }
     &-img {
       img {
         display: block;
         line-height: 0;
       }
     }
-     &-info { 
+    &-info {
       &-name {
         max-width: 430px;
         color: $primary;
@@ -60,11 +63,10 @@
           max-width: 300px;
         }
       }
-     }
-   }
+    }
+  }
 
-
-   &-list {
+  &-list {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 60px;
@@ -74,26 +76,28 @@
     &-col {
       flex: 0 0 50%;
       max-width: 50%;
-      padding-right:16.64%;
+      padding-right: 16.64%;
     }
-
-   }
-   &-card {
-     margin-bottom: 40px;
-     &-img {
-       margin-bottom: 16px;
-       img {
-         display: block;
-         line-height: 0;
-       }
-     }
-
-     &-lastname, &-firstname {
+  }
+  &-card {
+    margin-bottom: 40px;
+    &-img {
+      margin-bottom: 24px;
+      @media (max-width: 1260px) {
+        margin-bottom: 16px;
+      }
+      img {
+        display: block;
+        line-height: 0;
+      }
+    }
+    &-lastname,
+    &-firstname {
       color: $primary;
-     @include fz(28);
-     @media (max-width: 1260px) {
-      @include fz(24);
-    }
+      @include fz(28);
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
     }
     &-firstname {
       margin-bottom: 6px;
@@ -105,6 +109,5 @@
         line-height: 1.7;
       }
     }
-
-   }
+  }
 }
