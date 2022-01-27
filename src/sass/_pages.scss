@@ -3,7 +3,7 @@
 
   &-header,
   &-title {
-    margin-bottom: 90px;
+    margin-bottom: 96px;
   }
 
   &-header {
@@ -251,7 +251,7 @@ DOCS PAGE --- */
       // display: flex;
       // flex-wrap: wrap;
       // margin-right: rowMargin(2);
-      @include createRow(2)
+      @include createRow(2);
     }
 
     &-col {
@@ -364,9 +364,10 @@ CERTS --- */
   margin-bottom: 95px;
 
   &-img {
-    margin-bottom: 24px;
+    margin-bottom: 21px;
     filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.15));
     position: relative;
+    line-height: 0;
 
     img {
       display: block;
