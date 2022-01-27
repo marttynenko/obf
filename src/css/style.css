@@ -530,12 +530,6 @@ span.invalid { padding-top: 3px; padding-left: 25px; }
 
 #lg-counter { font-size: 28px; font-size: 1.75rem; color: #FFF; position: absolute; left: 50px; top: 50px; padding: 0; }
 
-.lg-css3.lg-slide.lg-use-css3 .lg-item.lg-prev-slide { -webkit-transform: translate3d(-10%, 0, 0); transform: translate3d(-10%, 0, 0); }
-
-.lg-css3.lg-slide.lg-use-css3 .lg-item.lg-next-slide { -webkit-transform: translate3d(10%, 0, 0); transform: translate3d(10%, 0, 0); }
-
-.lg-css3.lg-slide.lg-use-css3 .lg-item.lg-current { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
-
 header.header { padding-top: 18px; padding-bottom: 18px; height: 80px; position: fixed; z-index: 9; top: 0; left: 0; right: 0; background: #222E3F; -webkit-transition: -webkit-transform .4s; transition: -webkit-transform .4s; -o-transition: transform .4s; transition: transform .4s; transition: transform .4s, -webkit-transform .4s; will-change: transform; }
 
 header.header.not-fixed { -webkit-transform: translate3d(0px, -80px, 0px); transform: translate3d(0px, -80px, 0px); -webkit-transition: -webkit-transform .5s; transition: -webkit-transform .5s; -o-transition: transform .5s; transition: transform .5s; transition: transform .5s, -webkit-transform .5s; }
