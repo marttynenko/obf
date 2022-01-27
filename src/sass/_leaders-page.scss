@@ -1,0 +1,8 @@
+.lead {
+   &-header {
+     @include createRow(1);
+   }
+   &-col {
+     @include createCols(2, 1);
+   }
+}
