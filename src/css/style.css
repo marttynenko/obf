@@ -4,7 +4,9 @@
 
 @media (max-width: 1440px) { .lead-right-col { padding-right: 0; } }
 
-.lead-header { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: 94px; }
+.lead-header { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: 100px; }
+
+@media (max-width: 1260px) { .lead-header { margin-bottom: 80px; } }
 
 .lead-header-img img { display: block; line-height: 0; }
 
@@ -30,7 +32,9 @@
 
 .lead-card { margin-bottom: 40px; }
 
-.lead-card-img { margin-bottom: 16px; }
+.lead-card-img { margin-bottom: 24px; }
+
+@media (max-width: 1260px) { .lead-card-img { margin-bottom: 16px; } }
 
 .lead-card-img img { display: block; line-height: 0; }
 
