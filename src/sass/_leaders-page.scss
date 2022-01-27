@@ -21,7 +21,12 @@
      display: flex;
      flex-wrap: wrap;
      margin-bottom: 94px;
-
+    &-img {
+      img {
+        display: block;
+        line-height: 0;
+      }
+    }
      &-info { 
       &-name {
         max-width: 430px;
@@ -77,6 +82,10 @@
      margin-bottom: 40px;
      &-img {
        margin-bottom: 16px;
+       img {
+         display: block;
+         line-height: 0;
+       }
      }
 
      &-lastname, &-firstname {

@@ -6,6 +6,8 @@
 
 .lead-header { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: 94px; }
 
+.lead-header-img img { display: block; line-height: 0; }
+
 .lead-header-info-name { max-width: 430px; color: #F08322; line-height: 1.03; font-size: 54px; font-size: 3.375rem; margin-bottom: 17px; }
 
 @media (max-width: 1440px) { .lead-header-info-name { margin-bottom: 27px; } }
@@ -29,6 +31,8 @@
 .lead-card { margin-bottom: 40px; }
 
 .lead-card-img { margin-bottom: 16px; }
+
+.lead-card-img img { display: block; line-height: 0; }
 
 .lead-card-lastname, .lead-card-firstname { color: #F08322; font-size: 28px; font-size: 1.75rem; }
 
