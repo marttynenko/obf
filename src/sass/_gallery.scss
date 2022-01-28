@@ -1,9 +1,9 @@
 .gallery {
   &-block {
     margin-bottom: 100px;
-    &:last-child {
-      margin-bottom: 0px;
-    }
+  }
+  &-pgn {
+    margin-bottom: 0;
   }
   &-pgn {
     @media (max-width: 1260px) {
