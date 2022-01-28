@@ -1,9 +1,3 @@
-.gallery-title { font-size: 54px; font-size: 3.375rem; line-height: 1.3; color: #DD722A; font-weight: 600; }
-
-.gallery-group { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -20px; margin-left: -20px; }
-
-.gallery-col { border: 1px solid white; -webkit-box-flex: 0; -ms-flex: 0 0 50%; flex: 0 0 50%; max-width: 50%; padding-right: 20px; padding-left: 20px; }
-
 html { font-family: "TT Hoves", sans-serif; line-height: 1.42; font-size: 16px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; height: 100%; }
 
 body { height: 100%; color: #FFF; font-family: "TT Hoves", sans-serif; font-weight: 400; font-size: 18px; font-size: 1.125rem; line-height: 1.42; background: #222E3F; }
@@ -862,6 +856,28 @@ CERTS --- */
 @media (max-width: 1260px) { .cert-item { font-size: 14px; font-size: 0.875rem; margin-bottom: 75px; }
   .cert-item-img { max-width: 215px; }
   .cert-item-descr { max-width: 360px; } }
+
+.gallery-block { margin-bottom: 100px; }
+
+.gallery-block:last-child { margin-bottom: 0px; }
+
+@media (max-width: 1260px) { .gallery-pgn { margin-bottom: 40px; } }
+
+.gallery-title { font-size: 54px; font-size: 3.375rem; line-height: 1.3; color: #dd722a; font-weight: 600; margin-bottom: 80px; max-width: 1100px; }
+
+@media (max-width: 1440px) { .gallery-title { font-size: 42px; font-size: 2.625rem; max-width: 755px; } }
+
+@media (max-width: 1260px) { .gallery-title { font-size: 42px; font-size: 2.625rem; max-width: 50%; } }
+
+.gallery-group { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -20px; margin-left: -20px; }
+
+.gallery-col { -webkit-box-flex: 0; -ms-flex: 0 0 50%; flex: 0 0 50%; max-width: 50%; padding-right: 20px; padding-left: 20px; }
+
+.gallery-img { margin-bottom: 40px; }
+
+.gallery-img img { display: block; line-height: 0; }
+
+.gallery-btn { text-align: right; }
 
 /* MFP
 ---------------------------*/
