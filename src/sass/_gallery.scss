@@ -40,9 +40,14 @@
   }
   &-img {
     margin-bottom: 40px;
+    overflow: hidden;
     img {
       display: block;
       line-height: 0;
+      transition: 1s;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
   &-btn {

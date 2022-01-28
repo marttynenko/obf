@@ -915,7 +915,7 @@ CERTS --- */
 
 .gallery-block { margin-bottom: 100px; }
 
-.gallery-block:last-child { margin-bottom: 0px; }
+.gallery-pgn { margin-bottom: 0; }
 
 @media (max-width: 1260px) { .gallery-pgn { margin-bottom: 40px; } }
 
@@ -929,9 +929,11 @@ CERTS --- */
 
 .gallery-col { -webkit-box-flex: 0; -ms-flex: 0 0 50%; flex: 0 0 50%; max-width: 50%; padding-right: 20px; padding-left: 20px; }
 
-.gallery-img { margin-bottom: 40px; }
+.gallery-img { margin-bottom: 40px; overflow: hidden; }
 
-.gallery-img img { display: block; line-height: 0; }
+.gallery-img img { display: block; line-height: 0; -webkit-transition: 1s; -o-transition: 1s; transition: 1s; }
+
+.gallery-img img:hover { -webkit-transform: scale(1.1); -ms-transform: scale(1.1); transform: scale(1.1); }
 
 .gallery-btn { text-align: right; }
 
