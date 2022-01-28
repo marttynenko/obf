@@ -913,6 +913,52 @@ CERTS --- */
   .cert-item-img { max-width: 215px; }
   .cert-item-descr { max-width: 360px; } }
 
+.post { background: #c9dfec; color: #000000; }
+
+.post-title { max-width: 100%; }
+
+.post-date { font-size: 28px; font-size: 1.75rem; margin-bottom: 40px; }
+
+.post-links { font-size: 22px; font-size: 1.375rem; }
+
+.post-links a:hover { color: red; }
+
+.post-links-col { margin-right: 47px; max-width: 180px; }
+
+.post-links-social { position: relative; display: inline-block; vertical-align: middle; margin-right: 17px; width: 44px; height: 44px; border: 1px solid #000000; border-radius: 22px; text-align: center; line-height: 42px; padding: 7px; overflow: hidden; }
+
+.post-content { padding-right: 25%; }
+
+.post-content-p, .post-content-h2, .post-content-h3, .post-content-h4, .post-content-h5 { color: #000000; }
+
+.post-content-bold { font-weight: 600; }
+
+.post-content-p { font-size: 22px; font-size: 1.375rem; margin-bottom: 32px; }
+
+.post-content-h2 { font-size: 80px; font-size: 5rem; margin-bottom: 56px; line-height: 1.1; }
+
+.post-content-h3 { font-size: 54px; font-size: 3.375rem; font-weight: 600; margin-bottom: 40px; }
+
+.post-content-h4 { font-size: 54px; font-size: 3.375rem; }
+
+.post-content-list li { margin-left: 24px; margin-bottom: 16px; list-style: disc; color: #F08322; font-size: 22px; font-size: 1.375rem; }
+
+.post-content-list li span { color: #000000; }
+
+.post-content-table { width: 100%; color: #222e3f; }
+
+.post-content-table thead { border-bottom: 1px solid #222e3f; }
+
+.post-content-table thead tr { border-top: none; }
+
+.post-content-table tr { border-bottom: 1px solid #222e3f4b; }
+
+.post-content-table tr:last-child { border-bottom: none; }
+
+.post-content-table tr td { width: 50%; padding: 10px 0px; }
+
+.post-content-link { border: 1px dashed #222e3f; color: #222e3f; font-size: 24px; font-size: 1.5rem; }
+
 /* MFP
 ---------------------------*/
 .mfp-bg { top: 0; left: 0; width: 100%; height: 100%; z-index: 1042; overflow: hidden; position: fixed; background: #0b0b0b; opacity: .8; }

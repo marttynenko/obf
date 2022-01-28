@@ -1,0 +1,105 @@
+.post {
+  background: #c9dfec;
+  color: #000000;
+
+  &-title {
+    max-width: 100%;
+  }
+  &-date {
+    @include fz(28);
+    margin-bottom: 40px;
+  }
+  &-links {
+    @include fz(22);
+    & a:hover {
+      color: red;
+    }
+    &-col {
+      margin-right: 47px;
+      max-width: 180px;
+    }
+    &-social {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 17px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid #000000;
+      border-radius: 22px;
+      text-align: center;
+      line-height: 42px;
+      padding: 7px;
+      overflow: hidden;
+    }
+  }
+
+  &-content {
+    padding-right: 25%;
+
+    &-p,
+    &-h2,
+    &-h3,
+    &-h4,
+    &-h5 {
+      color: #000000;
+    }
+    &-bold {
+      font-weight: 600;
+    }
+    &-p {
+      @include fz(22);
+      margin-bottom: 32px;
+    }
+    &-h2 {
+      @include fz(80);
+      margin-bottom: 56px;
+      line-height: 1.1;
+    }
+    &-h3 {
+      @include fz(54);
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+    &-h4 {
+      @include fz(54);
+    }
+
+    &-list {
+      li {
+        margin-left: 24px;
+        margin-bottom: 16px;
+        list-style: disc;
+        color: $primary;
+        @include fz(22) span {
+          color: #000000;
+        }
+      }
+    }
+    &-table {
+      width: 100%;
+      color: #222e3f;
+      thead {
+        border-bottom: 1px solid #222e3f;
+        tr {
+          border-top: none;
+        }
+      }
+      tr {
+        border-bottom: 1px solid #222e3f4b;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      tr td {
+        width: 50%;
+        padding: 10px 0px;
+      }
+    }
+    &-link {
+      border: 1px dashed #222e3f;
+      color: #222e3f;
+      @include fz(24);
+    }
+  }
+}
