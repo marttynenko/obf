@@ -153,7 +153,7 @@ function animateFSMenu (action) {
 })();
 
 
-//галлерея
+// галлерея
 (function () {
   const target = D.querySelectorAll('.ux-gallery')
   if (!target.length) return
@@ -164,12 +164,21 @@ function animateFSMenu (action) {
     () => {
 
       target.forEach(el => {
+        el.addEventListener('onAfterOpen', function(event) {
+          const q = D.querySelector('#lg-counter');
+          if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
+            D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
+          }
+        });
+
         lightGallery(el,{
           download: false,
-          selector: 'a.ux-gallery-link'
+          selector: 'a.ux-gallery-link',
+          backdropDuration: 500,
+          speed: 500
         })
       })
-      
+
     }
   )
 })();

@@ -1346,7 +1346,8 @@ span.invalid {
 	background: $bgc;
 	opacity: 0;
 	transform: scale(0.75);
-	transition: opacity .3s, transform .3s;
+	// transition: opacity .3s, transform .3s;
+	transition-property: opacity, transform;
 
 	&.in {
 		opacity: 1;
@@ -1379,7 +1380,7 @@ span.invalid {
 		height: 70px;
 		border-radius: 35px;
 		color: #FFF;
-		transition: border .3s, color .3s;
+		transition: border .3s, color .3s, transform .3s;
 
 		&:after,
 		&:before {
@@ -1398,6 +1399,14 @@ span.invalid {
 		right: 50px;
 	}
 }
+.lg-hide-items {
+	.lg-prev {
+		transform: translate3d(-30px,0,0);
+	}
+	.lg-next {
+		transform: translate3d(30px,0,0);
+	}
+}
 #lg-counter {
 	@include fz(28);
 	color: #FFF;
@@ -1406,3 +1415,12 @@ span.invalid {
 	top: 50px;
 	padding: 0;
 }
+// .lg-css3.lg-slide.lg-use-css3 .lg-item.lg-prev-slide {
+//   transform: translate3d(5%,0,0);
+// }
+// .lg-css3.lg-slide.lg-use-css3 .lg-item.lg-next-slide {
+//   transform: translate3d(-5%,0,0);
+// }
+// .lg-css3.lg-slide.lg-use-css3 .lg-item.lg-current {
+// 	transform: translate3d(0,0,0);
+// }

@@ -8,11 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "gulp": "^4.0.2"
-  },
   "devDependencies": {
     "del": "^6.0.0",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-image": "^6.2.1",
     "gulp-sass": "^5.0.0",
