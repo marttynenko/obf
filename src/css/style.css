@@ -913,7 +913,7 @@ CERTS --- */
   .cert-item-img { max-width: 215px; }
   .cert-item-descr { max-width: 360px; } }
 
-.gallery-block { margin-bottom: 100px; }
+.gallery-group { margin-bottom: 100px; }
 
 .gallery-pgn { margin-bottom: 0; }
 
@@ -923,9 +923,9 @@ CERTS --- */
 
 @media (max-width: 1440px) { .gallery-title { font-size: 42px; font-size: 2.625rem; max-width: 755px; } }
 
-@media (max-width: 1260px) { .gallery-title { font-size: 42px; font-size: 2.625rem; max-width: 50%; } }
+@media (max-width: 1260px) { .gallery-title { max-width: 50%; } }
 
-.gallery-group { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -20px; margin-left: -20px; }
+.gallery-list { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -20px; margin-left: -20px; }
 
 .gallery-col { -webkit-box-flex: 0; -ms-flex: 0 0 50%; flex: 0 0 50%; max-width: 50%; padding-right: 20px; padding-left: 20px; }
 

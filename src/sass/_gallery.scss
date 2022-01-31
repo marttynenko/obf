@@ -1,5 +1,5 @@
 .gallery {
-  &-block {
+  &-group {
     margin-bottom: 100px;
   }
   &-pgn {
@@ -22,11 +22,10 @@
       max-width: 755px;
     }
     @media (max-width: 1260px) {
-      @include fz(42);
       max-width: 50%;
     }
   }
-  &-group {
+  &-list {
     display: flex;
     flex-wrap: wrap;
     margin-right: -20px;
