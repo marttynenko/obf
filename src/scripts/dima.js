@@ -1,4 +1,5 @@
 // Слайдер
+// ! Добавить autoheight или чето-того!
 var swiper = new Swiper(".mySwiper", {
   pagination: {
     el: ".swiper-pagination",

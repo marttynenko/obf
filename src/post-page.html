@@ -72,16 +72,20 @@
                         </svg>
                      </button>
                   </div>
-
-                  <!--!! А что делать ?? ****************************************************-->
-                  <p class="post-content-p">Поблагодарив организаторов форума и премии за награду — ее вручение
-                     проходило в
-                     онлайн-формате, — генеральный директор ОБФ Дмитрий Дулькин отметил, что успехи этого года стали
-                     итогом
-                     многолетней работы по совершенствованию физико-механических показателей и потребительских свойств
-                     продукции. Новое качество позволило ОБФ впервые выйти на международный рынок. По словам Дмитрия
-                     Александровича, доля экспорта в общем объеме реализации и значение этого направления для компании
-                     будут только возрастать.</p>
+                  <p>
+                     <small>
+                        Поблагодарив организаторов форума и премии за награду — ее вручение
+                        проходило в
+                        онлайн-формате, — генеральный директор ОБФ Дмитрий Дулькин отметил, что успехи этого года стали
+                        итогом
+                        многолетней работы по совершенствованию физико-механических показателей и потребительских
+                        свойств
+                        продукции. Новое качество позволило ОБФ впервые выйти на международный рынок. По словам Дмитрия
+                        Александровича, доля экспорта в общем объеме реализации и значение этого направления для
+                        компании
+                        будут только возрастать.
+                     </small>
+                  </p>
                   <p>
                      Также организаторы премии оценили высокий уровень и разнообразие дизайнерских решений продукции
                      Полотняно-Заводской бумажной мануфактуры. Производитель популярных на рынке тетрадей и скетчбуков
@@ -97,7 +101,8 @@
                      Подпись к фотографии
                   </div>
                   <h5>Список</h5>
-                  <p class="post-content-bold">Заголовком списка может служить P1 жирный</p>
+                  <p><strong>Заголовком списка может служить P1 жирный</strong></p>
+                  <!-- ! убрать класс обращаться через родителя  -->
                   <ul class="post-content-list">
                      <li><span>Однострочный пункт списка</span></li>
                      <li><span>Двухстрочный пункт списка. В соответствии с технологией подготовки макулатурной массы в
@@ -110,7 +115,9 @@
                            размольно-подготовительный отдел</span></li>
                   </ul>
                   <h5>Табличка</h5>
+
                   <p class="post-content-bold">Заголовком списка может служить P1 жирный</p>
+                  <!--! Добавить общий стиль UI-table и задать ему теюе стили  -->
                   <table class="post-content-table">
                      <thead>
                         <tr>
@@ -142,9 +149,10 @@
                      Александровича, доля экспорта в общем объеме реализации и значение этого направления для компании
                      будут только возрастать.</p>
                   <img src="./images/examples/post-page2.png" alt="alt" loading="lazy">
+                  <br>
                   <!-- SLider -->
 
-
+                  <!-- ! ui-swiper и дял всех эллементов добавить class(img,paggination...) -->
                   <div class="slider-container">
                      <div class="slider-btns">
                         <div class="swiper-button-prev"></div>
@@ -153,44 +161,38 @@
                      <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
                            <div class="swiper-slide">
-                              <img src="./images/examples/post-page3.png" alt="">
+                              <div class="swiper-slide-container">
+                                 <img src="./images/examples/post-page3.png" alt="alt" loading="lazy">
+                                 <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="swiper-slide-container">
+                                 <img src="https://via.placeholder.com/992x730/0000FF/808080" alt="">
+                                 <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <div class="swiper-slide-container">
+                                 <img src="https://via.placeholder.com/992x730/ff0000/808080" alt="">
+                                 <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
+                              </div>
+                           </div>
+                           <div class="swiper-slide">
+                              <img src="https://via.placeholder.com/992x730/FFFF00/808080" alt="">
+                              <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
+                           </div>
+
+                           <div class="swiper-slide">
+                              <img src="https://via.placeholder.com/992x730/0000FF/808080" alt="">
                               <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
                            </div>
                            <div class="swiper-slide">
-                              <img src="https://via.placeholder.com/992x730/0000FF/808080 ?Text=Digital.com
-
-                              C/O https://placeholder.com/" alt="">
+                              <img src="https://via.placeholder.com/992x730/ff0000/808080" alt="">
                               <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
                            </div>
                            <div class="swiper-slide">
-                              <img src="https://via.placeholder.com/992x730/ff0000/808080 ?Text=Digital.com
-
-                              C/O https://placeholder.com/" alt="">
-                              <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
-                           </div>
-                           <div class="swiper-slide">
-                              <img src="https://via.placeholder.com/992x730/FFFF00/808080 ?Text=Digital.com
-
-                              C/O https://placeholder.com/" alt="">
-                              <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
-                           </div>
-
-                           <div class="swiper-slide">
-                              <img src="https://via.placeholder.com/992x730/0000FF/808080 ?Text=Digital.com
-
-                              C/O https://placeholder.com/" alt="">
-                              <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
-                           </div>
-                           <div class="swiper-slide">
-                              <img src="https://via.placeholder.com/992x730/ff0000/808080 ?Text=Digital.com
-
-                              C/O https://placeholder.com/" alt="">
-                              <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
-                           </div>
-                           <div class="swiper-slide">
-                              <img src="https://via.placeholder.com/992x730/FFFF00/808080 ?Text=Digital.com
-
-                              C/O https://placeholder.com/" alt="">
+                              <img src="https://via.placeholder.com/992x730/FFFF00/808080" alt="">
                               <div class="swiper-slide-subtitle">Производство подпись к фотографии</div>
                            </div>
                         </div>
@@ -200,22 +202,21 @@
                   </div>
 
                </div>
-               <div class="post-content-links">
-
-                  <a href="#" class="post-content-link ui-tags-link">Фильтр или раздел</a>
-                  <a href="#" class="post-content-link ui-tags-link">Экология</a>
-                  <a href="#" class="post-content-link ui-tags-link">Макулатура</a>
-                  <a href="#" class="post-content-link ui-tags-link">Макулатура</a>
-                  <a href="#" class="post-content-link ui-tags-link">Экология</a>
-                  <a href="#" class="post-content-link ui-tags-link">Макулатура</a>
-                  <a href="#" class="post-content-link ui-tags-link">Экология</a>
-                  <a href="#" class="post-content-link ui-tags-link">Макулатура</a>
-                  <a href="#" class="post-content-link ui-tags-link">БКФ</a>
-                  <a href="#" class="post-content-link ui-tags-link">Экология</a>
-                  <a href="#" class="post-content-link ui-tags-link">Экология</a>
-                  <a href="#" class="post-content-link ui-tags-link">Макулатура</a>
-                  <a href="#" class="post-content-link ui-tags-link">БКФ</a>
-                  <a href="#" class="post-content-link ui-tags-link">Экология</a>
+               <div class="post-content-links ui-tags ui-tags-inline">
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Фильтр или раздел</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Экология</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Макулатура</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Макулатура</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Экология</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Макулатура</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Экология</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Макулатура</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">БКФ</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Экология</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Экология</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Макулатура</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">БКФ</a>
+                  <a href="#" class="ui-tags-link ui-tags-link-dark">Экология</a>
                </div>
             </div>
          </div>
@@ -280,7 +281,9 @@
                         <a href="#"><img src="./images/examples/news-item.jpg" loading="lazy" alt="alt"></a>
                      </div>
                   </div>
+                  <!-- !Удаляем  class="news-item-body post-theme-path" меняем на class="toallnews"
 
+-->
                   <div class="news-item-body post-theme-path">
                      <div class="news-item-title">
                         <a href="#">Все новости направления
@@ -298,5 +301,6 @@
       </div>
 
    </div>
+   <!-- ! Подбить padding-right для всей правой части, до 993px-->
 
    <!--#include file="inc-footer.html"-->
