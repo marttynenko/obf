@@ -3,6 +3,7 @@ const FARBA = {
 	lazyLibraryLoad(scriptSrc,linkHref,callback) {
     let script
     const domScript = document.querySelector(`script[src="${scriptSrc}"]`)
+    const domLink = document.querySelector(`link[href="${linkHref}"]`)
 
     if (!domScript) {
       script = document.createElement('script');
@@ -11,7 +12,7 @@ const FARBA = {
     }
 		
 	
-		if (linkHref !== '') {
+		if (linkHref !== '' && !domLink) {
 			let style = document.createElement('link');
 			style.href = linkHref;
 			style.rel = 'stylesheet';
@@ -25,37 +26,37 @@ const FARBA = {
     }
 	},
 
+  //reinit gallery
   initGallery(selector) {
     const target = D.querySelectorAll(selector)
     if (!target.length) return
 
-    if (window.lgData) {
-      window.lgData[el.getAttribute('lg-uid')].destroy(true);
+    const initedLGs = D.querySelectorAll('.lg-inited')
+    if (window.lgData && initedLGs.length) {
+      initedLGs.forEach(item => {
+        window.lgData[item.getAttribute('lg-uid')].destroy(true)
+        item.classList.remove('lg-inited')
+      })
     }
+    
+    target.forEach(el => {
+      el.classList.add('lg-inited')
+      
+      el.addEventListener('onAfterOpen', function(event) {
+        const q = D.querySelector('#lg-counter');
+        if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
+          D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
+        }
+      });
 
-    this.lazyLibraryLoad(
-      '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
-      '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css',
-      () => {
+      lightGallery(el,{
+        download: false,
+        selector: 'a.ux-gallery-link',
+        backdropDuration: 500,
+        speed: 500
+      })
+    })
 
-        target.forEach(el => {
-          el.addEventListener('onAfterOpen', function(event) {
-            const q = D.querySelector('#lg-counter');
-            if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
-              D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
-            }
-          });
-
-          lightGallery(el,{
-            download: false,
-            selector: 'a.ux-gallery-link',
-            backdropDuration: 500,
-            speed: 500
-          })
-        })
-
-      }
-    )
   }
 }
 
@@ -187,34 +188,33 @@ function animateFSMenu (action) {
 
 
 // галлерея
-// (function () {
-//   const target = D.querySelectorAll('.ux-gallery')
-//   if (!target.length) return
+(function () {
+  const target = D.querySelectorAll('.ux-gallery')
+  if (!target.length) return
 
-//   FARBA.lazyLibraryLoad(
-//     '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
-//     '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css',
-//     () => {
+  FARBA.lazyLibraryLoad(
+    '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
+    '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css',
+    () => {
 
-//       target.forEach(el => {
-//         el.addEventListener('onAfterOpen', function(event) {
-//           const q = D.querySelector('#lg-counter');
-//           if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
-//             D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
-//           }
-//         });
+      target.forEach(el => {
+        el.classList.add('lg-inited')
 
-//         lightGallery(el,{
-//           download: false,
-//           selector: 'a.ux-gallery-link',
-//           backdropDuration: 500,
-//           speed: 500
-//         })
-//       })
+        el.addEventListener('onAfterOpen', function(event) {
+          const q = D.querySelector('#lg-counter');
+          if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
+            D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
+          }
+        });
 
-//     }
-//   )
-// })();
+        lightGallery(el,{
+          download: false,
+          selector: 'a.ux-gallery-link',
+          backdropDuration: 500,
+          speed: 500
+        })
+      })
 
-
-FARBA.initGallery('.ux-gallery');
+    }
+  )
+})();
