@@ -23,7 +23,40 @@ const FARBA = {
     } else {
       domScript.onload = callback
     }
-	}
+	},
+
+  initGallery(selector) {
+    const target = D.querySelectorAll(selector)
+    if (!target.length) return
+
+    if (window.lgData) {
+      window.lgData[el.getAttribute('lg-uid')].destroy(true);
+    }
+
+    this.lazyLibraryLoad(
+      '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css',
+      () => {
+
+        target.forEach(el => {
+          el.addEventListener('onAfterOpen', function(event) {
+            const q = D.querySelector('#lg-counter');
+            if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
+              D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
+            }
+          });
+
+          lightGallery(el,{
+            download: false,
+            selector: 'a.ux-gallery-link',
+            backdropDuration: 500,
+            speed: 500
+          })
+        })
+
+      }
+    )
+  }
 }
 
 
@@ -154,31 +187,34 @@ function animateFSMenu (action) {
 
 
 // галлерея
-(function () {
-  const target = D.querySelectorAll('.ux-gallery')
-  if (!target.length) return
+// (function () {
+//   const target = D.querySelectorAll('.ux-gallery')
+//   if (!target.length) return
 
-  FARBA.lazyLibraryLoad(
-    '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
-    '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css',
-    () => {
+//   FARBA.lazyLibraryLoad(
+//     '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js',
+//     '//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css',
+//     () => {
 
-      target.forEach(el => {
-        el.addEventListener('onAfterOpen', function(event) {
-          const q = D.querySelector('#lg-counter');
-          if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
-            D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
-          }
-        });
+//       target.forEach(el => {
+//         el.addEventListener('onAfterOpen', function(event) {
+//           const q = D.querySelector('#lg-counter');
+//           if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
+//             D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
+//           }
+//         });
 
-        lightGallery(el,{
-          download: false,
-          selector: 'a.ux-gallery-link',
-          backdropDuration: 500,
-          speed: 500
-        })
-      })
+//         lightGallery(el,{
+//           download: false,
+//           selector: 'a.ux-gallery-link',
+//           backdropDuration: 500,
+//           speed: 500
+//         })
+//       })
 
-    }
-  )
-})();
+//     }
+//   )
+// })();
+
+
+FARBA.initGallery('.ux-gallery');
