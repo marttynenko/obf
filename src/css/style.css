@@ -913,35 +913,47 @@ CERTS --- */
 
 @media (max-width: 1260px) { .lead-card-pos { font-size: 14px; font-size: 0.875rem; line-height: 1.7; } }
 
-.post { background: #c9dfec; color: #000000; padding-top: 80px; padding-bottom: 120px; }
+.post { background: #c9dfec; color: #000000; padding-top: 80px; padding-bottom: 120px; font-size: 22px; font-size: 1.375rem; }
+
+.post h2, .post h3, .post h4, .post h5, .post h6 { color: #000000; margin-bottom: 40px; }
+
+.post h2 { font-size: 80px; font-size: 5rem; margin-bottom: 56px; line-height: 1.1; }
+
+.post h3 { font-size: 54px; font-size: 3.375rem; font-weight: 600; }
+
+.post h4 { font-size: 54px; font-size: 3.375rem; line-height: 1; }
+
+.post h5 { font-size: 42px; font-size: 2.625rem; line-height: 1.1; }
+
+.post h2:first-child { margin-top: 0px; }
+
+.post-links-social { border: 1px solid #000000; width: 32px; height: 32px; }
+
+.post-links-social svg { fill: #000000; }
+
+.post-links-social:hover { border-color: red; }
+
+.post-links-social:hover svg { fill: red; }
+
+.post-block { margin-bottom: 40px; }
+
+.post-block-date { font-size: 28px; font-size: 1.75rem; margin-bottom: 40px; }
+
+.post-block-links { font-size: 22px; font-size: 1.375rem; }
+
+.post-block-links a:hover { color: red; }
+
+.post-block-links-col { display: block; }
+
+.post-block-links-social { border: 1px solid #000000; }
 
 .post-title { max-width: 100%; }
 
-.post-date { font-size: 28px; font-size: 1.75rem; margin-bottom: 40px; }
-
-.post-links { font-size: 22px; font-size: 1.375rem; }
-
-.post-links a:hover { color: red; }
-
-.post-links-col { margin-right: 47px; max-width: 180px; }
-
-.post-links-social { position: relative; display: inline-block; vertical-align: middle; margin-right: 17px; width: 44px; height: 44px; border: 1px solid #000000; border-radius: 22px; text-align: center; line-height: 42px; padding: 7px; overflow: hidden; }
-
 .post-content { padding-right: 25%; }
 
-.post-content-p, .post-content-h2, .post-content-h3, .post-content-h4, .post-content-h5 { color: #000000; }
+.post-content-video { margin-bottom: 32px; }
 
 .post-content-bold { font-weight: 600; }
-
-.post-content-p { font-size: 22px; font-size: 1.375rem; margin-bottom: 53px; }
-
-.post-content-h2 { font-size: 80px; font-size: 5rem; margin-bottom: 56px; line-height: 1.1; }
-
-.post-content-h3 { font-size: 54px; font-size: 3.375rem; font-weight: 600; margin-bottom: 36px; }
-
-.post-content-h4 { font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 44px; }
-
-.post-content-h5 { font-size: 42px; font-size: 2.625rem; line-height: 1.1; }
 
 .post-content-list li { margin-left: 24px; margin-bottom: 16px; list-style: disc; color: #F08322; font-size: 22px; font-size: 1.375rem; }
 
@@ -968,6 +980,46 @@ CERTS --- */
 .post-theme { margin-top: 80px; }
 
 .post-theme-title { font-size: 54px; font-size: 3.375rem; font-weight: 600; color: #F08322; line-height: 1.1; margin-bottom: 80px; }
+
+.post-theme .news-item-title svg.news-item-title-arrow { right: -88px; }
+
+.ui-video { position: relative; cursor: pointer; width: 100%; height: 0; padding-bottom: 56%; background-color: #000000; }
+
+.ui-video iframe { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border: none; }
+
+.ui-video-media { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+.ui-video:hover .ui-video__button-shape, .ui-video__button:focus .ui-video__button-shape { fill: #ff0000; fill-opacity: 1; }
+
+.ui-video__button { position: absolute; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); top: 50%; left: 50%; width: 68px; height: 48px; border: none; background: transparent; }
+
+.ui-video__button-shape { fill: #212121; fill-opacity: 0.8; }
+
+.ui-video__button-icon { fill: #ffffff; }
+
+.slider-container { position: relative; margin-bottom: 70px; }
+
+.swiper { width: 100%; height: 100%; }
+
+.swiper-pagination { display: inline-block; width: auto; position: absolute; bottom: 0; left: 95%; }
+
+.swiper-slide { text-align: center; font-size: 18px; background: transparent; /* Center slide text vertically */ display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; padding-bottom: 30px; }
+
+.swiper-slide-subtitle { position: absolute; bottom: 0; left: 0; }
+
+.swiper-slide img { display: block; width: 100%; max-height: 730px; -o-object-fit: cover; object-fit: cover; }
+
+.slider-btns { position: absolute; bottom: 30px; left: -180px; }
+
+@media (max-width: 1240px) { .slider-btns { right: -180px; left: auto; } }
+
+.swiper-button-next, .swiper-button-prev { display: inline-block; position: static; vertical-align: middle; margin-top: 0; margin: 0 6px; }
+
+.swiper-button-next::after, .swiper-button-prev::after { display: none; }
+
+.swiper-button-prev { width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-prev.svg); }
+
+.swiper-button-next { width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-next.svg); left: 85px; }
 
 .news-item-title svg.post-theme-arrow { opacity: 1; stroke: #ffffff; }
 
