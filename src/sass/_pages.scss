@@ -49,7 +49,7 @@
   display: flex;
   padding-bottom: 80px;
   margin-bottom: 80px;
-  border-bottom: 2px solid rgba(#FFF,.15);
+  border-bottom: 2px solid rgba(#fff, 0.15);
   @include fz(22);
 
   &-img {
@@ -75,7 +75,7 @@
     // position: relative;
 
     a {
-      color: #FFF;
+      color: #fff;
       position: relative;
 
       &:hover {
@@ -83,7 +83,7 @@
 
         .news-item-title-arrow {
           opacity: 1;
-          transform: translate3d(0,0,0);
+          transform: translate3d(0, 0, 0);
         }
       }
     }
@@ -98,8 +98,8 @@
       stroke: $primary;
       fill: none;
       opacity: 0;
-      transform: translate3d(-10px,0,0);
-      transition: transform .3s, opacity .3s;
+      transform: translate3d(-10px, 0, 0);
+      transition: transform 0.3s, opacity 0.3s;
     }
   }
   &-txt {
@@ -119,13 +119,11 @@
   }
 
   @media (max-width: 1259px) {
-
     &-title {
       @include fz(32);
     }
   }
 }
-
 
 .ui-tags {
   @include fz(24);
@@ -143,13 +141,17 @@
     padding: 0px 20px;
     height: 60px;
     line-height: 58px;
-    border: 1px dashed rgba(#fff,.15);
+    border: 1px dashed rgba(#fff, 0.15);
     // border: 1px solid transparent;
     border-radius: 30px;
-    color: #FFF;
+    color: #fff;
     // background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='white' stroke-width='2' stroke-dasharray='1%2c 10' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
-
-    &.active, &:hover {
+    &-dark {
+      color: #000000;
+      border-color: #000000;
+    }
+    &.active,
+    &:hover {
       color: $primary;
       border-color: $primary;
       border-style: solid;
@@ -159,15 +161,15 @@
   &-more {
     vertical-align: middle;
     margin-left: 20px;
-    border-bottom: 1px dashed rgba($primary, .8);
+    border-bottom: 1px dashed rgba($primary, 0.8);
 
     &:hover {
-      color: #FFF;
+      color: #fff;
       // border-bottom-style: solid;
       border-bottom-color: transparent;
 
       .ui-tags-more-arrow {
-        stroke: #FFF;
+        stroke: #fff;
       }
     }
 
@@ -232,8 +234,6 @@
   margin-top: -60px;
 }
 
-
-
 /* ---
 DOCS PAGE --- */
 .docs {
@@ -255,20 +255,19 @@ DOCS PAGE --- */
     }
 
     &-col {
-      @include createCols(2, 2)
-      // flex: 0 0 50%;
-      // max-width: 50%;
-      // padding-right: colPadding(2);
+      @include createCols(2, 2) // flex: 0 0 50%;
+        // max-width: 50%;
+        // padding-right: colPadding(2);
+;
     }
   }
-
 
   &-card {
     position: relative;
     display: block;
     margin-bottom: 30px;
     min-height: calc(100% - 30px);
-    border: 1px solid #FFF;
+    border: 1px solid #fff;
     border-radius: 8px;
     padding: 30px;
     @include fz(22);
@@ -278,9 +277,9 @@ DOCS PAGE --- */
       @include fz(28);
     }
     &-type {
-      color: #FFF;
+      color: #fff;
       font-weight: 600;
-      transition: color .3s;
+      transition: color 0.3s;
     }
     &-icon {
       position: absolute;
@@ -293,8 +292,7 @@ DOCS PAGE --- */
       fill: none;
       opacity: 0;
       transform: scale(0.75);
-      transition: opacity .3s, transform .3s;
-
+      transition: opacity 0.3s, transform 0.3s;
     }
     &:hover {
       color: $primary;
@@ -326,8 +324,6 @@ DOCS PAGE --- */
     }
   }
 }
-
-
 
 /* ---
 CERTS --- */
@@ -392,10 +388,10 @@ CERTS --- */
     width: 50px;
     height: 50px;
     transform: scale(0.75);
-    transition: opacity .3s, transform .3s;
+    transition: opacity 0.3s, transform 0.3s;
     stroke: $primary;
     stroke-width: 3;
-    fill: none
+    fill: none;
   }
 
   @media (max-width: 1260px) {

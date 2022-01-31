@@ -1,6 +1,6 @@
 // Слайдер
 // ! Добавить autoheight или чето-того!
-var swiper = new Swiper(".mySwiper", {
+var swiper = new Swiper(".ui-swiper", {
   pagination: {
     el: ".swiper-pagination",
     type: "fraction",

@@ -72,7 +72,7 @@
   }
 
   &-content {
-    padding-right: 25%;
+    padding-right: 26.3%;
 
     @media (max-width: 1260px) {
       padding-right: 0;
@@ -80,11 +80,8 @@
     &-video {
       margin-bottom: 32px;
     }
-    &-bold {
-      font-weight: 600;
-    }
 
-    &-list {
+    ul {
       li {
         margin-left: 24px;
         margin-bottom: 16px;
@@ -105,6 +102,7 @@
       }
       thead {
         border-bottom: 1px solid #222e3f;
+        opacity: 0.7;
         tr {
           border-top: none;
         }
@@ -145,8 +143,31 @@
     }
   }
 }
-.ui-tags-link-dark {
-  border-color: #000000;
+.ui-table-news {
+  width: 100%;
+  color: #222e3f;
+  margin-bottom: 32px;
+  &-year {
+    color: #000000;
+  }
+  thead {
+    border-bottom: 1px solid #222e3f;
+    tr {
+      border-top: none;
+    }
+  }
+  tbody {
+    @include fz(22);
+  }
+  tr {
+    border-bottom: 1px solid #222e3f4b;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  tr td {
+    padding: 10px 0px;
+  }
 }
 
 // Video
@@ -210,14 +231,23 @@
   position: relative;
   margin-bottom: 70px;
 }
-.swiper {
+.ui-swiper {
   width: 100%;
   &-pagination {
     display: inline-block;
     width: auto;
     position: absolute;
     bottom: 0;
-    left: 95%;
+    left: auto;
+    right: 0;
+  }
+  &-slide {
+    &-subtitle {
+      text-align: left;
+    }
+    &-img {
+      margin-bottom: 24px;
+    }
   }
 }
 
@@ -246,9 +276,6 @@
   }
   &-container {
     width: 100%;
-    img {
-      margin-bottom: 30px;
-    }
   }
 }
 
@@ -261,7 +288,7 @@
 
 .slider-btns {
   position: absolute;
-  bottom: 30px;
+  bottom: 49px;
   left: -180px;
   @media (max-width: 1240px) {
     bottom: 0;
@@ -292,12 +319,22 @@
   left: 85px;
 }
 
+.post-content-links a {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
 // end slider
-// ! Обращаемся через class="toallnews"
-.news-item-title svg.post-theme-arrow {
+
+.toallnews {
+  padding-right: 10%;
+  max-width: 79.177%;
+}
+// toallnews
+.toallnews svg.news-item-title-arrow {
   opacity: 1;
   stroke: #ffffff;
 }
-.news-item-title a:hover .post-theme-arrow {
+.toallnews .news-item-title a:hover svg.news-item-title-arrow {
   stroke: $primary;
 }
