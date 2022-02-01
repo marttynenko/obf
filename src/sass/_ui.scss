@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1, .ui-h1, .page-title {
 	@include fz($h1);
 	margin-top: 0;
-	line-height: 1.1;
+	line-height: 0.95;
 
 	@media (min-width: 1440px) {
 		@include fz(140);
@@ -226,44 +226,23 @@ table {
 }
 
 ul.ui-marked {
-	padding-left: 0px;
-	margin-bottom: 20px;
+	margin: $paragraph_margin;
+	list-style: none;
 
-	& > li {
-		margin-bottom: 8px;
-	  position: relative;
-	  padding-left: 20px;
-	 
+	li {
+		padding-left: 24px;
+		margin-bottom: 15px;
+		position: relative;
+		
 		&:before {
 			content: "";
 			position: absolute;
-			top: 0.35rem;
-			margin-top: rem;
-			left: 0px;
-			width: 0.5rem;
-			height: 0.5rem;
-			background: $font;
+			left: 0;
+			top: .5em;
+			width: 8px;
+			height: 8px;
 			border-radius: 50%;
-
-		}
-	}
-
-	&.dotted {
-		& >li {
-			padding-left: 18px;
-			margin-bottom: 10px;
-
-			&:before {
-				content: "";
-				position: absolute;
-				top: 5px;
-				left: 0px;
-				width: 5px;
-				height: 5px;
-				border-radius: 50%;
-				// @include border-radius(50%);
-				background: $red;
-			}
+			background: $primary;
 		}
 	}
 }
@@ -283,8 +262,6 @@ ol.ui-marked {
 	  	color: #FFF;
 	  	font-weight: 700;
 			margin-right: 7px;
-			
-	  	
 	  }
 	}
 }
@@ -315,26 +292,22 @@ article, .article, .seo {
 }
 .ui-table {
 	width: 100%;
-	border-collapse: collapse;
-	vertical-align: middle;
 	margin: $paragraph_margin;
-	line-height: 1.35;
-	@include fz(18);
+	@include fz(22);
+	table-layout: fixed;
 
-	thead th, thead td {
-		font-weight: 700;
-		padding: 20px 20px;
-		text-align: center;
-		line-height: 1.2;
+	th {
+		text-align: left;
+		color: #758695;
+		@include fz(18);
+		padding: 4px 0px;
+		font-weight: 400;
 	}
+
 	td {
-		padding: 20px 20px 20px 0;
-		border-bottom: 1px solid $border_light;
+		border-top: 1px solid #97AAB8;
+		padding: 10px 0px;
 	}
-	
-}
-table.wide {
-	width: 100%;
 }
 blockquote {
 	margin: 24px 0;
@@ -345,6 +318,10 @@ blockquote {
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
 	@include fz($fontsize + 2);
 	font-weight: 400;
+}
+figcaption {
+	font-size: 0.81em;
+	padding-top: 5px;
 }
 
 /* form, buttons */
