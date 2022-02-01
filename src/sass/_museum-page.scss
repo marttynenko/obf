@@ -1,0 +1,49 @@
+.ui-subtitle {
+  font-size: 54px;
+  font-size: 3.375rem;
+  font-weight: 600;
+  color: #f08322;
+  line-height: 1.1;
+  margin-bottom: 80px;
+  flex: 0 0 25.5%;
+  max-width: 25.5%;
+}
+
+.museum-history {
+  &-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  &-title {
+    @include fz(54);
+    line-height: 1.1;
+    margin-bottom: 135px;
+  }
+  &-text {
+    display: inline-block;
+    max-width: 460px;
+    @include fz(22);
+    font-weight: 1.45;
+  }
+  &-year {
+    @include fz(140);
+    font-weight: 400;
+    color: $primary;
+    &-visitors {
+      @include fz(28);
+      font-weight: 700;
+    }
+  }
+  &-img {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    width: 950px;
+    height: 650px;
+    background-image: url(../images/museum-circle.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
