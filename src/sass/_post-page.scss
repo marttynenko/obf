@@ -169,7 +169,33 @@
     padding: 10px 0px;
   }
 }
+// Social
+.ya-share2__container.ya-share2__container_color-scheme_whiteblack
+  .ya-share2__badge,
+.ya-share2__container.ya-share2__container_color-scheme_whiteblack
+  .ya-share2__mobile-popup-badge {
+  background-color: transparent !important;
+  border: 1px solid #222e3f;
+}
+.ya-share2__container_size_l .ya-share2__badge .ya-share2__icon {
+  width: 32px !important;
+  height: 32px !important;
+}
 
+/*INLINE*/
+.wbs_social_liks.wbs_column {
+}
+.wbs_social_liks.wbs_column a {
+  display: block;
+}
+.wbs_social_liks.wbs_column span {
+}
+
+/*THEME*/
+.theme_default .wbs_soc.vk {
+}
+.theme_default .wbs_soc.vk span {
+}
 // Video
 
 .ui-video {
