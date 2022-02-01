@@ -218,3 +218,8 @@ function animateFSMenu (action) {
     }
   )
 })();
+
+
+if (D.querySelector('.ux-share')) {
+  FARBA.lazyLibraryLoad('//yastatic.net/share2/share.js','',null)
+}
