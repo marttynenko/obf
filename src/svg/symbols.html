@@ -212,6 +212,14 @@
 			<path d="M11.995 4a8 8 0 1 0 7.735 10h-2.081a6 6 0 1 1-5.654-8 5.92 5.92 0 0 1 4.223 1.78L13 11h7V4l-2.351 2.35A7.965 7.965 0 0 0 11.995 4z" fill="#1D1D1D"></path>
 		</symbol>
 	
+		<symbol id="slider-arrow-next" viewBox="0 0 64 64">
+			<path d="M63 32C63 14.88 49.12 1 32 1 14.88 1 1 14.88 1 32c0 17.12 13.88 31 31 31 17.12 0 31-13.88 31-31z" stroke="#222E3F" stroke-width="2"></path><path d="M17.91 31.813h27.825M35.2 21.336l10.666 10.667-10.667 10.666" stroke="#222E3F" stroke-width="2" stroke-miterlimit="10"></path>
+		</symbol>
+	
+		<symbol id="slider-arrow-prev" viewBox="0 0 64 64">
+			<path d="M1 32C1 14.88 14.88 1 32 1c17.12 0 31 13.88 31 31 0 17.12-13.88 31-31 31C14.88 63 1 49.12 1 32z" stroke="#222E3F" stroke-width="2"></path><path d="M46.09 31.813H18.265M28.8 21.336L18.135 32.003l10.667 10.666" stroke="#222E3F" stroke-width="2" stroke-miterlimit="10"></path>
+		</symbol>
+	
 		<symbol id="vk" viewBox="0 0 29 17">
 			<path d="M28.072 15.965a1.151 1.151 0 0 1-.422.256c-.159.055-.33.076-.498.061H24.13c-.745 0-1.084-.321-2.141-1.426a26.916 26.916 0 0 0-1.366-1.372c-1.145-1.043-2.008-1.649-2.643-1.797a1.048 1.048 0 0 0-.836.132.944.944 0 0 0-.291.302.876.876 0 0 0-.124.39V14.07c0 .367.036 1.236-.484 1.735a2.251 2.251 0 0 1-.754.387 2.345 2.345 0 0 1-.854.087C5.985 16.282.699 3.61.699 1.644.7 1.4.7.89 1.673.89h3.022c.7 0 .995.243 1.29 1.063C7.18 5.25 8.884 7.896 9.95 8.959a.996.996 0 0 0 .512.29c.199.045.408.03.597-.04a.97.97 0 0 0 .46-.36.874.874 0 0 0 .153-.541 23.936 23.936 0 0 1 0-2.885c.04-1.331.084-2.197-.841-3.297-.176-.202-.44-.59-.287-.894a.72.72 0 0 1 .271-.25.78.78 0 0 1 .368-.092h4.749c.19-.016.38.03.537.132.304.292.278 1.33.256 2.159v.247c-.022.915-.053 2.147 0 3.759a.878.878 0 0 0 .166.49.97.97 0 0 0 .422.328 1.044 1.044 0 0 0 1.042-.15c1.603-1.32 3.497-4.744 4.096-6.182.09-.24.261-.446.487-.587a1.32 1.32 0 0 1 .764-.196h3.022c.6 0 .762.197.81.26a.749.749 0 0 1 .036.692.537.537 0 0 0-.022.074c-.374 1.413-3.145 5.382-4.044 6.495a3.077 3.077 0 0 0-.172.276.867.867 0 0 0 .044.91c.244.304.515.587.811.846 1.044 1.013 3.484 3.391 3.925 4.685a.879.879 0 0 1-.04.837z"></path>
 		</symbol>
@@ -223,7 +231,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(16 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(18 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -476,6 +484,40 @@
             <button onclick="invertBackground('icon-box-refresh')">Invert Background</button>
             <div class="snippet-popover" id="snippet-refresh">
                 <pre><code>&lt;svg class=&quot;icon refresh&quot;&gt;&lt;use xlink:href=&quot;#refresh&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="slider-arrow-next">
+            <div class="icon-box" id="icon-box-slider-arrow-next">
+                <svg class="icon slider-arrow-next">
+                    <use xlink:href="#slider-arrow-next" />
+                </svg>
+            </div>
+            <h2>slider-arrow-next</h2>
+            <button onclick="showPopover('snippet-slider-arrow-next')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-slider-arrow-next')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-slider-arrow-next">
+                <pre><code>&lt;svg class=&quot;icon slider-arrow-next&quot;&gt;&lt;use xlink:href=&quot;#slider-arrow-next&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="slider-arrow-prev">
+            <div class="icon-box" id="icon-box-slider-arrow-prev">
+                <svg class="icon slider-arrow-prev">
+                    <use xlink:href="#slider-arrow-prev" />
+                </svg>
+            </div>
+            <h2>slider-arrow-prev</h2>
+            <button onclick="showPopover('snippet-slider-arrow-prev')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-slider-arrow-prev')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-slider-arrow-prev">
+                <pre><code>&lt;svg class=&quot;icon slider-arrow-prev&quot;&gt;&lt;use xlink:href=&quot;#slider-arrow-prev&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
