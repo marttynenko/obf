@@ -913,6 +913,30 @@ CERTS --- */
   .cert-item-img { max-width: 215px; }
   .cert-item-descr { max-width: 360px; } }
 
+.gallery-group { margin-bottom: 100px; }
+
+.gallery-pgn { margin-bottom: 0; }
+
+@media (max-width: 1260px) { .gallery-pgn { margin-bottom: 40px; } }
+
+.gallery-title { font-size: 54px; font-size: 3.375rem; line-height: 1.3; color: #dd722a; font-weight: 600; margin-bottom: 80px; max-width: 1100px; }
+
+@media (max-width: 1440px) { .gallery-title { font-size: 42px; font-size: 2.625rem; max-width: 755px; } }
+
+@media (max-width: 1260px) { .gallery-title { max-width: 50%; } }
+
+.gallery-list { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -20px; margin-left: -20px; }
+
+.gallery-col { -webkit-box-flex: 0; -ms-flex: 0 0 50%; flex: 0 0 50%; max-width: 50%; padding-right: 20px; padding-left: 20px; }
+
+.gallery-img { margin-bottom: 40px; overflow: hidden; }
+
+.gallery-img img { display: block; line-height: 0; -webkit-transition: 1s; -o-transition: 1s; transition: 1s; }
+
+.gallery-img img:hover { -webkit-transform: scale(1.1); -ms-transform: scale(1.1); transform: scale(1.1); }
+
+.gallery-btn { text-align: right; }
+
 /* MFP
 ---------------------------*/
 .mfp-bg { top: 0; left: 0; width: 100%; height: 100%; z-index: 1042; overflow: hidden; position: fixed; background: #0b0b0b; opacity: .8; }
