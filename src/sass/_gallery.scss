@@ -94,4 +94,14 @@
     stroke-width: 3;
     fill: none
   }
+
+}
+
+.ui-btn-arrowed-hide {
+  svg {
+    transform: rotate(180deg);  
+  }
+  .ui-btn-arrow {
+    top: -10px;
+  }
 }
