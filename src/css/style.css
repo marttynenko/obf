@@ -901,9 +901,11 @@ CERTS --- */
 
 .cert-item-img { margin-bottom: 21px; -webkit-filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.15)); filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.15)); position: relative; line-height: 0; }
 
-.cert-item-img img { display: block; }
+.cert-item-img a { display: inline-block; position: relative; overflow: hidden; }
 
-.cert-item-img a { display: inline-block; position: relative; }
+.cert-item-img img { -webkit-transition: -webkit-transform .5s; transition: -webkit-transform .5s; -o-transition: transform .5s; transition: transform .5s; transition: transform .5s, -webkit-transform .5s; display: block; line-height: 0; }
+
+.cert-item-img a:hover img { -webkit-transform: scale(1.03); -ms-transform: scale(1.03); transform: scale(1.03); }
 
 .cert-item-img a:hover .cert-item-zoom { opacity: 1; -webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1); }
 
@@ -931,11 +933,19 @@ CERTS --- */
 
 .gallery-img { margin-bottom: 40px; overflow: hidden; }
 
-.gallery-img img { display: block; line-height: 0; -webkit-transition: 1s; -o-transition: 1s; transition: 1s; }
-
-.gallery-img img:hover { -webkit-transform: scale(1.1); -ms-transform: scale(1.1); transform: scale(1.1); }
+.gallery-img img { display: block; line-height: 0; }
 
 .gallery-btn { text-align: right; }
+
+.ui-gallery-link { display: block; position: relative; overflow: hidden; }
+
+.ui-gallery-link img { -webkit-transition: -webkit-transform .5s; transition: -webkit-transform .5s; -o-transition: transform .5s; transition: transform .5s; transition: transform .5s, -webkit-transform .5s; display: block; line-height: 0; }
+
+.ui-gallery-link:hover img { -webkit-transform: scale(1.03); -ms-transform: scale(1.03); transform: scale(1.03); }
+
+.ui-gallery-link:hover .ui-gallery-zoom { opacity: 1; -webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1); }
+
+.ui-gallery-zoom { position: absolute; right: 30px; bottom: 30px; opacity: 0; width: 50px; height: 50px; -webkit-transform: scale(0.75); -ms-transform: scale(0.75); transform: scale(0.75); -webkit-transition: opacity .3s, -webkit-transform .3s; transition: opacity .3s, -webkit-transform .3s; -o-transition: opacity .3s, transform .3s; transition: opacity .3s, transform .3s; transition: opacity .3s, transform .3s, -webkit-transform .3s; stroke: #F08322; stroke-width: 3; fill: none; }
 
 /* MFP
 ---------------------------*/

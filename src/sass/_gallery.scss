@@ -40,16 +40,58 @@
   &-img {
     margin-bottom: 40px;
     overflow: hidden;
+
     img {
       display: block;
       line-height: 0;
-      transition: 1s;
-      &:hover {
-        transform: scale(1.1);
-      }
+      // transition: 1s;
     }
+
+    // &:hover {
+    //   // img {
+    //   //   transform: scale(1.1);
+    //   // }
+    // }
   }
   &-btn {
     text-align: right;
+  }
+}
+
+.ui-gallery {
+  &-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      transition: transform .5s;
+      display: block;
+      line-height: 0;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.03);
+      }
+      
+      .ui-gallery-zoom {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+  &-zoom {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    transform: scale(0.75);
+    transition: opacity .3s, transform .3s;
+    stroke: $primary;
+    stroke-width: 3;
+    fill: none
   }
 }

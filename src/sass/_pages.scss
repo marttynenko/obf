@@ -369,18 +369,26 @@ CERTS --- */
     position: relative;
     line-height: 0;
 
-    img {
-      display: block;
-    }
     a {
       display: inline-block;
       position: relative;
+      overflow: hidden;
+    }
 
-      &:hover {
-        .cert-item-zoom {
-          opacity: 1;
-          transform: scale(1);
-        }
+    img {
+      transition: transform .5s;
+      display: block;
+      line-height: 0;
+    }
+
+    a:hover {
+      img {
+        transform: scale(1.03);
+      }
+      
+      .cert-item-zoom {
+        opacity: 1;
+        transform: scale(1);
       }
     }
   }
