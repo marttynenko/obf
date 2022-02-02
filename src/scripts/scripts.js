@@ -57,6 +57,35 @@ const FARBA = {
       })
     })
 
+  },
+
+  initVideo(selector) {
+    const target = D.querySelectorAll(selector);
+    if (!target.length) return
+
+    target.forEach((el,index) => {
+      el.addEventListener('click',function(e){
+        e = event || window.event
+        e.preventDefault();
+
+        const id = el.dataset.videoid || null;
+        const container = el.nextElementSibling;
+        if (!id) return
+
+        const markup = `<div class="ux-plyr ux-plyr-${index}" data-plyr-provider="youtube" data-plyr-embed-id="${id}"></div>`
+
+        el.parentElement.classList.add('initialized')
+        container.innerHTML = markup
+        
+        const player = new Plyr(`.ux-plyr-${index}`, {
+          autoplay: true,
+          ratio: '16:9',
+          youtube: {
+            autoplay: true,
+          }
+        });
+      })
+    })
   }
 }
 
@@ -222,4 +251,13 @@ function animateFSMenu (action) {
 
 if (D.querySelector('.ux-share')) {
   FARBA.lazyLibraryLoad('//yastatic.net/share2/share.js','',null)
+}
+
+
+if (D.querySelector('.ux-video')) {
+  FARBA.lazyLibraryLoad(
+    '//cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.min.js',
+    '//cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.min.css',
+    FARBA.initVideo('.ui-video-preview')
+  )
 }

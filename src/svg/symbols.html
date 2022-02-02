@@ -208,6 +208,10 @@
 			<path d="M.59 10.59L5.17 6 .59 1.41 2 0l6 6-6 6-1.41-1.41z" fill="#FF2689"></path>
 		</symbol>
 	
+		<symbol id="play" viewBox="0 0 103 104">
+			<path d="M37.362 27.89l42.326 24.106-42.326 24.106V27.89z"></path><path d="M100.785 52c0 27.51-22.089 49.78-49.298 49.78-27.21 0-49.299-22.27-49.299-49.78 0-27.511 22.09-49.781 49.299-49.781s49.298 22.27 49.298 49.78z"></path>
+		</symbol>
+	
 		<symbol id="refresh" viewBox="0 0 24 24">
 			<path d="M11.995 4a8 8 0 1 0 7.735 10h-2.081a6 6 0 1 1-5.654-8 5.92 5.92 0 0 1 4.223 1.78L13 11h7V4l-2.351 2.35A7.965 7.965 0 0 0 11.995 4z" fill="#1D1D1D"></path>
 		</symbol>
@@ -231,7 +235,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(18 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(19 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -467,6 +471,23 @@
             <button onclick="invertBackground('icon-box-next')">Invert Background</button>
             <div class="snippet-popover" id="snippet-next">
                 <pre><code>&lt;svg class=&quot;icon next&quot;&gt;&lt;use xlink:href=&quot;#next&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="play">
+            <div class="icon-box" id="icon-box-play">
+                <svg class="icon play">
+                    <use xlink:href="#play" />
+                </svg>
+            </div>
+            <h2>play</h2>
+            <button onclick="showPopover('snippet-play')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-play')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-play">
+                <pre><code>&lt;svg class=&quot;icon play&quot;&gt;&lt;use xlink:href=&quot;#play&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
