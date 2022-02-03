@@ -798,7 +798,7 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
 
 .news-item-title { font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 38px; }
 
-.news-item-title a { color: #fff; position: relative; }
+.news-item-title a { color: #fff; display: inline-block; position: relative; }
 
 .news-item-title a:hover { color: #F08322; }
 
@@ -993,7 +993,7 @@ CERTS --- */
 
 .node { font-size: 22px; font-size: 1.375rem; }
 
-.node h2, .node h3, .node h4, .node h5, .node h6 { color: #000000; margin-bottom: 40px; }
+.node h2, .node h3, .node h4, .node h5, .node h6 { color: #000000; }
 
 .node-title { margin-bottom: 100px; }
 
