@@ -831,7 +831,7 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
 
 .ui-tags-more:hover .ui-tags-more-arrow { stroke: #fff; }
 
-.ui-tags-more-arrow { display: inline-block !important; vertical-align: middle; margin-left: 5px; width: 12px; height: 10px; fill: none; stroke: #F08322; stroke-width: 2; }
+.ui-tags-more-arrow { position: relative; top: -1px; display: inline-block !important; vertical-align: middle; margin-left: 5px; width: 12px; height: 10px; fill: none; stroke: #F08322; stroke-width: 2; }
 
 @media (max-width: 1440px) { .ui-tags { font-size: 20px; font-size: 1.25rem; }
   .ui-tags-link { height: 56px; line-height: 54px; } }
