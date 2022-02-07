@@ -907,19 +907,21 @@ CERTS --- */
   .cert-item-img { max-width: 215px; }
   .cert-item-descr { max-width: 360px; } }
 
-.analytics-item { padding-bottom: 80px; margin-bottom: 80px; border-bottom: 2px solid #ffffff; }
+.analytics { margin-bottom: 80px; }
 
-.analytics-papagraph { margin-top: 100px; margin-bottom: 35px; font-size: 54px; font-size: 3.375rem; }
+.analytics-item { padding-bottom: 80px; border-bottom: 2px solid #ffffff; }
+
+.analytics-papagraph { display: block; margin-top: 110px; margin-bottom: 35px; font-size: 54px; font-size: 3.375rem; color: #ffffff; }
 
 @media (max-width: 1260px) { .analytics-papagraph { font-size: 42px; font-size: 2.625rem; } }
 
-@media (max-width: 1260px) { .analytics-papagraph { font-size: 32px; font-size: 2rem; } }
-
-.analytics-title { margin-bottom: 35px; font-size: 80px; font-size: 5rem; line-height: 1; color: #F08322; }
+.analytics-title { display: block; margin-bottom: 35px; font-size: 80px; font-size: 5rem; line-height: 1; color: #F08322; }
 
 .analytics-title-txt { display: inline; }
 
 @media (max-width: 1260px) { .analytics-title { font-size: 52px; font-size: 3.25rem; } }
+
+@media (max-width: 1024px) { .analytics-title { width: 85%; } }
 
 .analytics-arrow { display: inline-block; position: relative; width: 48px; height: 48px; border-radius: 24px; border: 2px solid #F08322; }
 
@@ -935,9 +937,17 @@ CERTS --- */
 
 .analytics-data { font-size: 22px; font-size: 1.375rem; color: #F08322; }
 
+@media (max-width: 1440px) { .analytics-img { margin-top: 100px; } }
+
+@media (max-width: 1260px) { .analytics-img { margin-top: 45px; } }
+
 .analytics-circle { margin-top: 120px; }
 
-.col-analytics-63 { -ms-flex: 0 0 64%; -webkit-box-flex: 0; flex: 0 0 64%; max-width: 64%; }
+.analytics-circle img { border-radius: 50%; }
+
+@media (max-width: 1024px) { .analytics-circle { margin-top: 90px; } }
+
+.col-analytics-65 { -ms-flex: 0 0 65%; -webkit-box-flex: 0; flex: 0 0 65%; max-width: 65%; }
 
 .col-analytics-70 { -ms-flex: 0 0 70%; -webkit-box-flex: 0; flex: 0 0 70%; max-width: 70%; }
 

@@ -1,22 +1,23 @@
 .analytics {
+  margin-bottom: 80px;
   &-item {
     padding-bottom: 80px;
-    margin-bottom: 80px;
+
     border-bottom: 2px solid #ffffff;
   }
   &-papagraph {
-    margin-top: 100px;
+    display: block;
+    margin-top: 110px;
     margin-bottom: 35px;
     @include fz(54);
+    color: #ffffff;
     @media (max-width: 1260px) {
       @include fz(42);
-    }
-    @media (max-width: 1260px) {
-      @include fz(32);
     }
   }
   &-title {
     // display: flex;
+    display: block;
     margin-bottom: 35px;
     @include fz(80);
     line-height: 1;
@@ -26,6 +27,9 @@
     }
     @media (max-width: 1260px) {
       @include fz(52);
+    }
+    @media (max-width: 1024px) {
+      width: 85%;
     }
   }
   &-arrow {
@@ -69,17 +73,30 @@
     color: $primary;
   }
   &-article {
+    // padding-top: 80px;
   }
   &-img {
+    @media (max-width: 1440px) {
+      margin-top: 100px;
+    }
+    @media (max-width: 1260px) {
+      margin-top: 45px;
+    }
   }
   &-circle {
     margin-top: 120px;
+    img {
+      border-radius: 50%;
+    }
+    @media (max-width: 1024px) {
+      margin-top: 90px;
+    }
   }
 }
-.col-analytics-63 {
-  -ms-flex: 0 0 64%;
-  flex: 0 0 64%;
-  max-width: 64%;
+.col-analytics-65 {
+  -ms-flex: 0 0 65%;
+  flex: 0 0 65%;
+  max-width: 65%;
 }
 .col-analytics-70 {
   -ms-flex: 0 0 70%;

@@ -168,6 +168,10 @@
 			<path d="M1.913 0L.621 1.332 6.12 7l5.5-5.668L10.328 0 6.121 4.327 1.913 0z" fill="#1D1D1D"></path>
 		</symbol>
 	
+		<symbol id="arrow-title" viewBox="0 0 21 20">
+			<path d="M1.193 9.883h17.391M12 3.332l6.667 6.667L12 16.665" stroke="#F08322" stroke-width="3" stroke-miterlimit="10"></path>
+		</symbol>
+	
 		<symbol id="blank" viewBox="0 0 24 24">
 			<path d="M1 1h14.174v14.174H1z"></path><path d="M8.826 8.824H23v14.174H8.826z"></path>
 		</symbol>
@@ -235,7 +239,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(19 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(20 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -301,6 +305,23 @@
             <button onclick="invertBackground('icon-box-arrow-down')">Invert Background</button>
             <div class="snippet-popover" id="snippet-arrow-down">
                 <pre><code>&lt;svg class=&quot;icon arrow-down&quot;&gt;&lt;use xlink:href=&quot;#arrow-down&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="arrow-title">
+            <div class="icon-box" id="icon-box-arrow-title">
+                <svg class="icon arrow-title">
+                    <use xlink:href="#arrow-title" />
+                </svg>
+            </div>
+            <h2>arrow-title</h2>
+            <button onclick="showPopover('snippet-arrow-title')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-arrow-title')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-arrow-title">
+                <pre><code>&lt;svg class=&quot;icon arrow-title&quot;&gt;&lt;use xlink:href=&quot;#arrow-title&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
