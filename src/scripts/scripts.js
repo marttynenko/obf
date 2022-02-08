@@ -78,10 +78,12 @@ const FARBA = {
         container.innerHTML = markup
         
         const player = new Plyr(`.ux-plyr-${index}`, {
-          autoplay: true,
+          // autoplay: true,
+          autopause: true,
           ratio: '16:9',
           youtube: {
-            autoplay: true,
+            // autoplay: true,
+            autopause: true,
           }
         });
       })
