@@ -31,12 +31,14 @@ const FARBA = {
     const target = D.querySelectorAll(selector)
     if (!target.length) return
 
+    const scrollTop = window.scrollY
     const initedLGs = D.querySelectorAll('.lg-inited')
     if (window.lgData && initedLGs.length) {
       initedLGs.forEach(item => {
         window.lgData[item.getAttribute('lg-uid')].destroy(true)
         item.classList.remove('lg-inited')
       })
+      window.scroll(0,scrollTop)
     }
     
     target.forEach(el => {
@@ -45,7 +47,7 @@ const FARBA = {
       el.addEventListener('onAfterOpen', function(event) {
         const q = D.querySelector('#lg-counter');
         if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
-          D.querySelector('#lg-counter').childNodes[1].nodeValue = ' из '
+          q.childNodes[1].nodeValue = ' из '
         }
       });
 
@@ -61,6 +63,7 @@ const FARBA = {
 
   initVideo(selector) {
     const target = D.querySelectorAll(selector);
+    const players = [];
     if (!target.length) return
 
     target.forEach((el,index) => {
@@ -76,14 +79,16 @@ const FARBA = {
 
         el.parentElement.classList.add('initialized')
         container.innerHTML = markup
+
+        players.forEach((el,index)=> el.pause());
         
         const player = new Plyr(`.ux-plyr-${index}`, {
-          autopause: true,
           ratio: '16:9',
-          youtube: {
-            autopause: true,
-          }
+          autoplay: true,
+          autopause: true
         });
+
+        players.push(player);
       })
     })
   }
@@ -148,8 +153,9 @@ const D = document;
     if (!openedUL) return
     const withinBoundaries = e.composedPath().includes(openedUL);
     
-    if ( ! withinBoundaries && !e.target.classList.contains('childs-in') ) {
-      openedUL.classList.remove('opened'); 
+    if ( !withinBoundaries && !e.target.classList.contains('childs-in') ) {
+      openedUL.classList.remove('opened');
+      D.querySelector('a.childs-in.opened').classList.remove('opened');
     }
   })
 })();
