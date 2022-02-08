@@ -343,7 +343,7 @@ span.invalid { padding-top: 3px; padding-left: 25px; }
 
 .ui-video-preview { position: absolute; left: 0; height: 0; width: 100%; height: 100%; z-index: 1; line-height: 0; cursor: pointer; }
 
-.ui-video-preview img { display: block; width: 100%; -webkit-transition: -webkit-transform .5s; transition: -webkit-transform .5s; -o-transition: transform .5s; transition: transform .5s; transition: transform .5s, -webkit-transform .5s; position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); will-change: transform; }
+.ui-video-preview img { display: block; width: 100%; height: 100%; -webkit-transition: -webkit-transform .5s; transition: -webkit-transform .5s; -o-transition: transform .5s; transition: transform .5s; transition: transform .5s, -webkit-transform .5s; position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); will-change: transform; }
 
 .ui-video-preview:after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #2F3E53; opacity: 0.3; }
 
@@ -1061,7 +1061,7 @@ CERTS --- */
 
 .to-all-news .news-item-title a:hover svg.news-item-title-arrow { stroke: #F08322; }
 
-.video-container { margin-bottom: 100px; }
+.video-item { margin-bottom: 100px; }
 
 .video-desc-text { font-size: 28px; font-size: 1.75rem; line-height: 1.35; margin-bottom: 32px; }
 
@@ -1075,17 +1075,21 @@ CERTS --- */
 
 .ui-subtitle { font-size: 54px; font-size: 3.375rem; font-weight: 600; color: #f08322; line-height: 1.1; margin-bottom: 80px; -webkit-box-flex: 0; -ms-flex: 0 0 25.5%; flex: 0 0 25.5%; max-width: 25.5%; }
 
+.col-mus-8 { -webkit-box-flex: 0; -ms-flex: 0 0 33.28%; flex: 0 0 33.28%; max-width: 33.28%; }
+
+.col-mus-16 { -webkit-box-flex: 0; -ms-flex: 0 0 66.56%; flex: 0 0 66.56%; max-width: 66.56%; }
+
 .museum-history-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
 .museum-history-title { font-size: 54px; font-size: 3.375rem; line-height: 1.1; margin-bottom: 135px; }
 
-.museum-history-text { display: inline-block; max-width: 460px; font-size: 22px; font-size: 1.375rem; font-weight: 1.45; }
+.museum-history-info { display: inline-block; position: relative; z-index: 2; font-size: 22px; font-size: 1.375rem; font-weight: 1.45; }
 
-.museum-history-year { font-size: 140px; font-size: 8.75rem; font-weight: 400; color: #F08322; }
+.museum-history-year { font-size: 140px; font-size: 8.75rem; font-weight: 400; color: #F08322; white-space: nowrap; line-height: 100px; }
 
-.museum-history-year-visitors { font-size: 28px; font-size: 1.75rem; font-weight: 700; }
+.museum-history-year-visitors { font-size: 28px; font-size: 1.75rem; font-weight: 700; line-height: 90px; }
 
-.museum-history-img { position: absolute; z-index: -1; right: 0; width: 950px; height: 650px; background-image: url(../images/museum-circle.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
+.museum-history-img { margin-right: -87px; }
 
 /* MFP
 ---------------------------*/

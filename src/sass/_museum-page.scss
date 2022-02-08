@@ -9,20 +9,33 @@
   max-width: 25.5%;
 }
 
+.col-mus-8 {
+  flex: 0 0 33.28%;
+  max-width: 33.28%;
+}
+.col-mus-16 {
+  flex: 0 0 66.56%;
+  max-width: 66.56%;
+}
+
+
 .museum-history {
   &-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    // margin-right: -15px;
+    // margin-left: -15px;
   }
   &-title {
     @include fz(54);
     line-height: 1.1;
     margin-bottom: 135px;
   }
-  &-text {
+  &-info {
     display: inline-block;
-    max-width: 460px;
+    position: relative;
+    z-index:2;
     @include fz(22);
     font-weight: 1.45;
   }
@@ -30,20 +43,24 @@
     @include fz(140);
     font-weight: 400;
     color: $primary;
+    white-space: nowrap;
+    line-height: 100px;
     &-visitors {
       @include fz(28);
       font-weight: 700;
+      line-height: 90px;
     }
   }
   &-img {
-    position: absolute;
-    z-index: -1;
-    right: 0;
-    width: 950px;
-    height: 650px;
-    background-image: url(../images/museum-circle.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    margin-right: -87px;
+    // position: absolute;
+    // z-index: -1;
+    // right: 0;
+    // width: 950px;
+    // height: 650px;
+    // background-image: url(../images/museum-circle.png);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
   }
 }
