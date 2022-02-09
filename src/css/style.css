@@ -150,9 +150,9 @@ article, .article, .seo { font-size: 16px; font-size: 1rem; line-height: 1.375; 
 
 article p, .article p, .seo p { margin: 0px 0px 32px; }
 
-.ui-table, .node-inner table { width: 100%; margin: 0px 0px 32px; font-size: 22px; font-size: 1.375rem; table-layout: fixed; }
+.ui-table, .node-inner table { width: 100%; margin: 0px 0px 32px; font-size: 22px; font-size: 1.375rem; }
 
-.ui-table th, .node-inner table th { text-align: left; color: #758695; font-size: 18px; font-size: 1.125rem; padding: 4px 0px; font-weight: 400; }
+.ui-table th, .node-inner table th { text-align: left; color: #758695; font-size: 18px; font-size: 1.125rem; padding: 4px 20px 4px 0px; font-weight: 400; }
 
 .ui-table td, .node-inner table td { border-top: 1px solid #97AAB8; padding: 10px 0px; }
 
@@ -841,7 +841,9 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
   .ui-tags-link { height: 48px; line-height: 46px; }
   .ui-tags-more { margin-left: 3px; } }
 
-.ui-tags-inline li { display: inline-block; margin-bottom: 15px; margin-right: 0px; margin-left: 15px; }
+.ui-tags-inline { margin-right: -15px; }
+
+.ui-tags-inline li { display: inline-block; margin-bottom: 15px; margin-right: 15px; margin-left: 0px; }
 
 .news-archieve { display: none; }
 
@@ -1060,6 +1062,8 @@ CERTS --- */
 .to-all-news svg.news-item-title-arrow { opacity: 1; stroke: #ffffff; right: -88px; }
 
 .to-all-news .news-item-title a:hover svg.news-item-title-arrow { stroke: #F08322; }
+
+.node-content-links { margin-top: 45px; }
 
 .video-item { margin-bottom: 100px; }
 
