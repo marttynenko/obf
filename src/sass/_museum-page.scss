@@ -24,8 +24,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    // margin-right: -15px;
-    // margin-left: -15px;
+    margin-bottom: 60px;
   }
   &-title {
     @include fz(54);
@@ -62,5 +61,102 @@
     // background-repeat: no-repeat;
     // background-size: cover;
     // background-position: center;
+  }
+
+}
+
+.museum-slider-btns {
+  .swiper-button-prev {
+    width: 64px;
+    height: 64px;
+    background-image: url(../images/svg/slider-arrow-left_orange.svg);
+  }
+  .swiper-button-next {
+    width: 64px;
+    height: 64px;
+    background-image: url(../images/svg/slider-arrow-right_orange.svg);
+  }
+}
+
+.museum-item {
+  background-color: black;
+}
+.museum-item {
+  display: flex;
+  padding-bottom: 80px;
+  margin-bottom: 80px;
+  border-bottom: 2px solid rgba(#fff, 0.15);
+  @include fz(22);
+
+  &-img {
+    flex: 20.833%;
+    max-width: 20.833%;
+    line-height: 0;
+    text-align: right;
+
+    a img,
+    img {
+      display: inline-block;
+      border-radius: 140px;
+    }
+  }
+  &-body {
+    padding-right: 10%;
+    max-width: 79.177%;
+  }
+  &-title {
+    @include fz(54);
+    line-height: 1;
+    margin-bottom: 38px;
+
+    a {
+      color: #fff;
+      display: inline-block;
+      position: relative;
+
+      &:hover {
+        color: $primary;
+
+        .news-item-title-arrow {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+    }
+
+    &-arrow {
+      position: absolute;
+      right: -68px;
+      width: 48px;
+      height: 48px;
+      top: 50%;
+      margin-top: -21px;
+      stroke: $primary;
+      fill: none;
+      opacity: 0;
+      transform: translate3d(-10px, 0, 0);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+  }
+  &-txt {
+    margin-bottom: 32px;
+  }
+  &-date {
+    color: $primary;
+    font-weight: 600;
+  }
+
+  @media (max-width: 1440px) {
+    @include fz(18);
+
+    &-title {
+      @include fz(42);
+    }
+  }
+
+  @media (max-width: 1259px) {
+    &-title {
+      @include fz(32);
+    }
   }
 }

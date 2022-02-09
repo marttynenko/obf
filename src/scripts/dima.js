@@ -1,4 +1,4 @@
-// Слайдер
+Слайдер
 var swiper = new Swiper(".ui-swiper", {
   autoHeight: true,
   pagination: {

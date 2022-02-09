@@ -1079,7 +1079,7 @@ CERTS --- */
 
 .col-mus-16 { -webkit-box-flex: 0; -ms-flex: 0 0 66.56%; flex: 0 0 66.56%; max-width: 66.56%; }
 
-.museum-history-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+.museum-history-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 60px; }
 
 .museum-history-title { font-size: 54px; font-size: 3.375rem; line-height: 1.1; margin-bottom: 135px; }
 
@@ -1090,6 +1090,39 @@ CERTS --- */
 .museum-history-year-visitors { font-size: 28px; font-size: 1.75rem; font-weight: 700; line-height: 90px; }
 
 .museum-history-img { margin-right: -87px; }
+
+.museum-slider-btns .swiper-button-prev { width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-left_orange.svg); }
+
+.museum-slider-btns .swiper-button-next { width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-right_orange.svg); }
+
+.museum-item { background-color: black; }
+
+.museum-item { display: -webkit-box; display: -ms-flexbox; display: flex; padding-bottom: 80px; margin-bottom: 80px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); font-size: 22px; font-size: 1.375rem; }
+
+.museum-item-img { -webkit-box-flex: 20.833%; -ms-flex: 20.833%; flex: 20.833%; max-width: 20.833%; line-height: 0; text-align: right; }
+
+.museum-item-img a img, .museum-item-img img { display: inline-block; border-radius: 140px; }
+
+.museum-item-body { padding-right: 10%; max-width: 79.177%; }
+
+.museum-item-title { font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 38px; }
+
+.museum-item-title a { color: #fff; display: inline-block; position: relative; }
+
+.museum-item-title a:hover { color: #F08322; }
+
+.museum-item-title a:hover .news-item-title-arrow { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+
+.museum-item-title-arrow { position: absolute; right: -68px; width: 48px; height: 48px; top: 50%; margin-top: -21px; stroke: #F08322; fill: none; opacity: 0; -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); -webkit-transition: opacity 0.3s, -webkit-transform 0.3s; transition: opacity 0.3s, -webkit-transform 0.3s; -o-transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s; }
+
+.museum-item-txt { margin-bottom: 32px; }
+
+.museum-item-date { color: #F08322; font-weight: 600; }
+
+@media (max-width: 1440px) { .museum-item { font-size: 18px; font-size: 1.125rem; }
+  .museum-item-title { font-size: 42px; font-size: 2.625rem; } }
+
+@media (max-width: 1259px) { .museum-item-title { font-size: 32px; font-size: 2rem; } }
 
 /* MFP
 ---------------------------*/

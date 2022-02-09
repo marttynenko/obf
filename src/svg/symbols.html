@@ -216,12 +216,20 @@
 			<path d="M11.995 4a8 8 0 1 0 7.735 10h-2.081a6 6 0 1 1-5.654-8 5.92 5.92 0 0 1 4.223 1.78L13 11h7V4l-2.351 2.35A7.965 7.965 0 0 0 11.995 4z" fill="#1D1D1D"></path>
 		</symbol>
 	
+		<symbol id="slider-arrow-left_orange" viewBox="0 0 64 64">
+			<path d="M1 32C1 14.88 14.88 1 32 1c17.12 0 31 13.88 31 31 0 17.12-13.88 31-31 31C14.88 63 1 49.12 1 32z" stroke="#F08322" stroke-width="2"></path><path d="M46.09 31.813H18.265M28.8 21.336L18.135 32.003l10.667 10.666" stroke="#F08322" stroke-width="2" stroke-miterlimit="10"></path>
+		</symbol>
+	
 		<symbol id="slider-arrow-next" viewBox="0 0 64 64">
 			<path d="M63 32C63 14.88 49.12 1 32 1 14.88 1 1 14.88 1 32c0 17.12 13.88 31 31 31 17.12 0 31-13.88 31-31z" stroke="#222E3F" stroke-width="2"></path><path d="M17.91 31.813h27.825M35.2 21.336l10.666 10.667-10.667 10.666" stroke="#222E3F" stroke-width="2" stroke-miterlimit="10"></path>
 		</symbol>
 	
 		<symbol id="slider-arrow-prev" viewBox="0 0 64 64">
 			<path d="M1 32C1 14.88 14.88 1 32 1c17.12 0 31 13.88 31 31 0 17.12-13.88 31-31 31C14.88 63 1 49.12 1 32z" stroke="#222E3F" stroke-width="2"></path><path d="M46.09 31.813H18.265M28.8 21.336L18.135 32.003l10.667 10.666" stroke="#222E3F" stroke-width="2" stroke-miterlimit="10"></path>
+		</symbol>
+	
+		<symbol id="slider-arrow-right_orange" viewBox="0 0 64 64">
+			<path d="M63 32C63 14.88 49.12 1 32 1 14.88 1 1 14.88 1 32c0 17.12 13.88 31 31 31 17.12 0 31-13.88 31-31z" stroke="#F08322" stroke-width="2"></path><path d="M17.91 31.813h27.825M35.2 21.336l10.666 10.667-10.667 10.666" stroke="#F08322" stroke-width="2" stroke-miterlimit="10"></path>
 		</symbol>
 	
 		<symbol id="vk" viewBox="0 0 29 17">
@@ -235,7 +243,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(19 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(21 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -510,6 +518,23 @@
         </li>
         
 
+        <li title="slider-arrow-left_orange">
+            <div class="icon-box" id="icon-box-slider-arrow-left_orange">
+                <svg class="icon slider-arrow-left_orange">
+                    <use xlink:href="#slider-arrow-left_orange" />
+                </svg>
+            </div>
+            <h2>slider-arrow-left_orange</h2>
+            <button onclick="showPopover('snippet-slider-arrow-left_orange')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-slider-arrow-left_orange')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-slider-arrow-left_orange">
+                <pre><code>&lt;svg class=&quot;icon slider-arrow-left_orange&quot;&gt;&lt;use xlink:href=&quot;#slider-arrow-left_orange&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
         <li title="slider-arrow-next">
             <div class="icon-box" id="icon-box-slider-arrow-next">
                 <svg class="icon slider-arrow-next">
@@ -539,6 +564,23 @@
             <button onclick="invertBackground('icon-box-slider-arrow-prev')">Invert Background</button>
             <div class="snippet-popover" id="snippet-slider-arrow-prev">
                 <pre><code>&lt;svg class=&quot;icon slider-arrow-prev&quot;&gt;&lt;use xlink:href=&quot;#slider-arrow-prev&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="slider-arrow-right_orange">
+            <div class="icon-box" id="icon-box-slider-arrow-right_orange">
+                <svg class="icon slider-arrow-right_orange">
+                    <use xlink:href="#slider-arrow-right_orange" />
+                </svg>
+            </div>
+            <h2>slider-arrow-right_orange</h2>
+            <button onclick="showPopover('snippet-slider-arrow-right_orange')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-slider-arrow-right_orange')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-slider-arrow-right_orange">
+                <pre><code>&lt;svg class=&quot;icon slider-arrow-right_orange&quot;&gt;&lt;use xlink:href=&quot;#slider-arrow-right_orange&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
