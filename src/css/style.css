@@ -1079,19 +1079,51 @@ CERTS --- */
 
 .ui-subtitle { font-size: 54px; font-size: 3.375rem; font-weight: 600; color: #f08322; line-height: 1.1; margin-bottom: 80px; -webkit-box-flex: 0; -ms-flex: 0 0 25.5%; flex: 0 0 25.5%; max-width: 25.5%; }
 
+@media (max-width: 1440px) { .ui-subtitle { -webkit-box-flex: 0; -ms-flex: 0 0 40%; flex: 0 0 40%; max-width: 40%; } }
+
+@media (max-width: 1260px) { .ui-subtitle { -webkit-box-flex: 0; -ms-flex: 0 0 100%; flex: 0 0 100%; max-width: 100%; } }
+
+.museum-header { padding-top: 100px; background-image: url(../images/bgs/bg-museum.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
+
+.museum-row { height: 960px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-bottom: 50px; }
+
+@media (max-width: 1440px) { .museum-row { height: 650px; } }
+
+.museum-preview-title { max-width: 920px; }
+
+.museum-preview-text { max-width: 675px; font-size: 28px; font-size: 1.75rem; margin-bottom: 44px; }
+
+@media (max-width: 1260px) { .slider-museum-subtitle { left: 20%; } }
+
+@media (max-width: 1240px) { .museum-slider-btns { bottom: -20px; left: 0; } }
+
+.col-layout-center { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
 .col-mus-8 { -webkit-box-flex: 0; -ms-flex: 0 0 33.28%; flex: 0 0 33.28%; max-width: 33.28%; }
 
 .col-mus-16 { -webkit-box-flex: 0; -ms-flex: 0 0 66.56%; flex: 0 0 66.56%; max-width: 66.56%; }
 
-.museum-history-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 60px; }
+.museum-history { padding-top: 80px; }
 
-.museum-history-title { font-size: 54px; font-size: 3.375rem; line-height: 1.1; margin-bottom: 135px; }
+.museum-history-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 80px; }
+
+.museum-history-title { font-size: 54px; font-size: 3.375rem; line-height: 1.1; margin-bottom: 80px; }
+
+@media (max-width: 1440px) { .museum-history-title { font-size: 42px; font-size: 2.625rem; } }
+
+.museum-history-text { max-width: 400px; }
+
+@media (max-width: 1440px) { .museum-history-text { font-size: 18px; font-size: 1.125rem; } }
 
 .museum-history-info { display: inline-block; position: relative; z-index: 2; font-size: 22px; font-size: 1.375rem; font-weight: 1.45; }
 
 .museum-history-year { font-size: 140px; font-size: 8.75rem; font-weight: 400; color: #F08322; white-space: nowrap; line-height: 100px; }
 
+@media (max-width: 1440px) { .museum-history-year { font-size: 120px; font-size: 7.5rem; } }
+
 .museum-history-year-visitors { font-size: 28px; font-size: 1.75rem; font-weight: 700; line-height: 90px; }
+
+@media (max-width: 1440px) { .museum-history-year-visitors { font-size: 24px; font-size: 1.5rem; } }
 
 .museum-history-img { margin-right: -87px; }
 
@@ -1099,34 +1131,107 @@ CERTS --- */
 
 .museum-slider-btns .swiper-button-next { width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-right_orange.svg); }
 
-.museum-item { background-color: black; }
+.museum-history { margin-bottom: 200px; }
 
-.museum-item { display: -webkit-box; display: -ms-flexbox; display: flex; padding-bottom: 80px; margin-bottom: 80px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); font-size: 22px; font-size: 1.375rem; }
+.node-slider-comm { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; font-size: 22px; font-size: 1.375rem; }
 
-.museum-item-img { -webkit-box-flex: 20.833%; -ms-flex: 20.833%; flex: 20.833%; max-width: 20.833%; line-height: 0; text-align: right; }
+.node-slider-comm-img { -webkit-box-flex: 24.833%; -ms-flex: 24.833%; flex: 24.833%; max-width: 24.833%; line-height: 0; text-align: right; }
 
-.museum-item-img a img, .museum-item-img img { display: inline-block; border-radius: 140px; }
+.node-slider-comm-img a img, .node-slider-comm-img img { display: inline-block; border-radius: 140px; }
 
-.museum-item-body { padding-right: 10%; max-width: 79.177%; }
+.node-slider-comm-body { padding-right: 15%; padding-left: 50px; max-width: 75.177%; }
 
-.museum-item-title { font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 38px; }
+@media (max-width: 1440px) { .node-slider-comm-body { padding-right: 0; } }
 
-.museum-item-title a { color: #fff; display: inline-block; position: relative; }
+.node-slider-comm-title { font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 38px; }
 
-.museum-item-title a:hover { color: #F08322; }
+.node-slider-comm-title a { color: #fff; display: inline-block; position: relative; }
 
-.museum-item-title a:hover .news-item-title-arrow { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+.node-slider-comm-title a:hover { color: #F08322; }
 
-.museum-item-title-arrow { position: absolute; right: -68px; width: 48px; height: 48px; top: 50%; margin-top: -21px; stroke: #F08322; fill: none; opacity: 0; -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); -webkit-transition: opacity 0.3s, -webkit-transform 0.3s; transition: opacity 0.3s, -webkit-transform 0.3s; -o-transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s; }
+.node-slider-comm-title a:hover .news-item-title-arrow { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 
-.museum-item-txt { margin-bottom: 32px; }
+.node-slider-comm-title-arrow { position: absolute; right: -68px; width: 48px; height: 48px; top: 50%; margin-top: -21px; stroke: #F08322; fill: none; opacity: 0; -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); -webkit-transition: opacity 0.3s, -webkit-transform 0.3s; transition: opacity 0.3s, -webkit-transform 0.3s; -o-transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s; }
 
-.museum-item-date { color: #F08322; font-weight: 600; }
+.node-slider-comm-txt { font-size: 28px; font-size: 1.75rem; margin-bottom: 16px; }
 
-@media (max-width: 1440px) { .museum-item { font-size: 18px; font-size: 1.125rem; }
-  .museum-item-title { font-size: 42px; font-size: 2.625rem; } }
+.node-slider-comm-name { font-size: 28px; font-size: 1.75rem; font-weight: 700; color: #F08322; margin-bottom: 8px; }
 
-@media (max-width: 1259px) { .museum-item-title { font-size: 32px; font-size: 2rem; } }
+.node-slider-comm-info { font-size: 18px; font-size: 1.125rem; color: #F08322; }
+
+.node-slider-comm-date { color: #F08322; font-weight: 600; }
+
+@media (max-width: 1440px) { .node-slider-comm { font-size: 18px; font-size: 1.125rem; }
+  .node-slider-comm-title { font-size: 42px; font-size: 2.625rem; } }
+
+@media (max-width: 1259px) { .node-slider-comm-title { font-size: 32px; font-size: 2rem; } }
+
+.museum-review { margin-bottom: 135px; }
+
+.mus-review { height: 100%; }
+
+.museum-news { margin-bottom: 120px; }
+
+.mus-review-item { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; font-size: 22px; font-size: 1.375rem; }
+
+.mus-review-item-img { -webkit-box-flex: 24.833%; -ms-flex: 24.833%; flex: 24.833%; max-width: 24.833%; line-height: 0; text-align: right; }
+
+.mus-review-item-img a img, .mus-review-item-img img { display: inline-block; border-radius: 140px; }
+
+.mus-review-item-body { padding-right: 15%; max-width: 75.177%; }
+
+@media (max-width: 1440px) { .mus-review-item-body { padding-right: 5%; } }
+
+.mus-review-item-title { font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 38px; }
+
+.mus-review-item-title a { color: #fff; display: inline-block; position: relative; }
+
+.mus-review-item-title a:hover { color: #F08322; }
+
+.mus-review-item-title a:hover .news-item-title-arrow { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+
+.mus-review-item-title-arrow { position: absolute; right: -68px; width: 48px; height: 48px; top: 50%; margin-top: -21px; stroke: #F08322; fill: none; opacity: 0; -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); -webkit-transition: opacity 0.3s, -webkit-transform 0.3s; transition: opacity 0.3s, -webkit-transform 0.3s; -o-transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s; }
+
+.mus-review-item-txt { font-size: 28px; font-size: 1.75rem; margin-bottom: 16px; }
+
+@media (max-width: 1440px) { .mus-review-item-txt { font-size: 24px; font-size: 1.5rem; } }
+
+.mus-review-item-name { font-size: 28px; font-size: 1.75rem; font-weight: 700; color: #F08322; margin-bottom: 8px; }
+
+@media (max-width: 1440px) { .mus-review-item-name { font-size: 24px; font-size: 1.5rem; } }
+
+.mus-review-item-info { font-size: 18px; font-size: 1.125rem; color: #F08322; }
+
+@media (max-width: 1440px) { .mus-review-item-info { font-size: 14px; font-size: 0.875rem; } }
+
+.mus-review-item-date { color: #F08322; font-weight: 600; }
+
+@media (max-width: 1440px) { .mus-review-item { font-size: 18px; font-size: 1.125rem; }
+  .mus-review-item-title { font-size: 42px; font-size: 2.625rem; } }
+
+@media (max-width: 1259px) { .mus-review-item-title { font-size: 32px; font-size: 2rem; } }
+
+.museum-circle-circle { height: 170px; width: 170px; border-radius: 170px; gap: 8px; }
+
+.museum-social-row { display: -webkit-box; display: -ms-flexbox; display: flex; margin-right: -15px; margin-left: -15px; margin-bottom: 80px; }
+
+.museum-social-item-img { display: inline-block; overflow: hidden; }
+
+.museum-social-item-img img { -webkit-transition: 0.5s ease; -o-transition: 0.5s ease; transition: 0.5s ease; }
+
+.museum-social-item-img img:hover { -webkit-transform: scale(1.03); -ms-transform: scale(1.03); transform: scale(1.03); }
+
+.museum-social-link { margin-bottom: 24px; }
+
+.museum-social-help { font-size: 28px; font-size: 1.75rem; max-width: 600px; }
+
+.museum-social-footer-link { margin-bottom: 80px; }
+
+.footer-links-social-inst { padding: 0; }
+
+.footer-link-et { display: inline-block; font-size: 28px; font-size: 1.75rem; color: #F08322; vertical-align: middle; }
+
+.footer-link-et:hover { color: #ffffff; }
 
 /* MFP
 ---------------------------*/
