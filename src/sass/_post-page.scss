@@ -104,11 +104,6 @@
   }
 }
 
-
-
-
-
-
 .node-slider {
   position: relative;
   margin-bottom: 70px;
@@ -117,7 +112,7 @@
     position: absolute;
     bottom: 50px;
     left: -180px;
-  
+
     @media (max-width: 1240px) {
       bottom: 0;
       left: 0;
@@ -158,7 +153,6 @@
   display: block;
 }
 
-
 .swiper-button-next,
 .swiper-button-prev {
   display: inline-block;
@@ -194,5 +188,14 @@
   right: -88px;
 }
 .to-all-news .news-item-title a:hover svg.news-item-title-arrow {
+  stroke: $primary;
+}
+// to-all-analytics
+.to-all-analytics svg.analytics-item-title-arrow {
+  opacity: 1;
+  stroke: #ffffff;
+  right: -88px;
+}
+.to-all-analytics .analytics-item-title a:hover svg.analytics-item-title-arrow {
   stroke: $primary;
 }
