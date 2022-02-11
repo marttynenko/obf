@@ -45,38 +45,31 @@
         margin-top: 90px;
       }
     }
+    // &-title {
+    //   margin-bottom: 35px;
+    //   line-height: 1;
+    //   @include fz(54);
+    //   color: #ffffff;
+    //   @media (max-width: 1260px) {
+    //     @include fz(42);
+    //   }
+    //   &-arrow {
+    //   }
+    // }
     &-title {
+      display: block;
       margin-bottom: 35px;
+      @include fz(80);
       line-height: 1;
-      @include fz(54);
-      color: #ffffff;
+      color: $primary;
+      &-txt {
+        display: inline;
+      }
       @media (max-width: 1260px) {
-        @include fz(42);
+        @include fz(52);
       }
-      &-arrow {
-      }
-    }
-    &-title {
-      &-first {
-        display: block;
-        margin-bottom: 35px;
-        @include fz(80);
-        line-height: 1;
-        color: $primary;
-        &-txt {
-          display: inline;
-        }
-        @media (max-width: 1260px) {
-          @include fz(52);
-        }
-        @media (max-width: 1024px) {
-          width: 85%;
-        }
-      }
-      a {
-        display: inline-block;
-        position: relative;
-        color: #ffffff;
+      @media (max-width: 1024px) {
+        width: 85%;
       }
     }
   }
@@ -137,27 +130,29 @@
 //   padding-top: 30px;
 // }
 
-.analytics-item-title-img {
-  position: absolute;
-  right: -68px;
-  width: 48px;
-  height: 48px;
-  top: 50%;
-  margin-top: -21px;
-  stroke: #f08322;
-  fill: none;
-  opacity: 0;
-  transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-}
-.analytics-item-title a:hover {
-  color: #f08322;
+// .analytics-item-title-img {
+//   position: absolute;
+//   right: -68px;
+//   width: 48px;
+//   height: 48px;
+//   top: 50%;
+//   margin-top: -21px;
+//   stroke: #f08322;
+//   fill: none;
+//   opacity: 0;
+//   transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+// }
+// .analytics-item-title a:hover {
+//   color: #f08322;
 
-  .analytics-item-title-img {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
+//   .analytics-item-title-img {
+//     opacity: 1;
+//     transform: translate3d(0, 0, 0);
+//   }
+// }
+.pt-30 {
+  padding-top: 30px;
 }
-
 .page {
   &-btn {
     display: inline-block;

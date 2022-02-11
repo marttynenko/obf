@@ -929,19 +929,13 @@ CERTS --- */
 
 @media (max-width: 1024px) { .analytics-item-circle { margin-top: 90px; } }
 
-.analytics-item-title { margin-bottom: 35px; line-height: 1; font-size: 54px; font-size: 3.375rem; color: #ffffff; }
+.analytics-item-title { display: block; margin-bottom: 35px; font-size: 80px; font-size: 5rem; line-height: 1; color: #F08322; }
 
-@media (max-width: 1260px) { .analytics-item-title { font-size: 42px; font-size: 2.625rem; } }
+.analytics-item-title-txt { display: inline; }
 
-.analytics-item-title-first { display: block; margin-bottom: 35px; font-size: 80px; font-size: 5rem; line-height: 1; color: #F08322; }
+@media (max-width: 1260px) { .analytics-item-title { font-size: 52px; font-size: 3.25rem; } }
 
-.analytics-item-title-first-txt { display: inline; }
-
-@media (max-width: 1260px) { .analytics-item-title-first { font-size: 52px; font-size: 3.25rem; } }
-
-@media (max-width: 1024px) { .analytics-item-title-first { width: 85%; } }
-
-.analytics-item-title a { display: inline-block; position: relative; color: #ffffff; }
+@media (max-width: 1024px) { .analytics-item-title { width: 85%; } }
 
 .analytics-more { margin-top: 50px; }
 
@@ -963,11 +957,7 @@ CERTS --- */
 
 .space-between { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
 
-.analytics-item-title-img { position: absolute; right: -68px; width: 48px; height: 48px; top: 50%; margin-top: -21px; stroke: #f08322; fill: none; opacity: 0; transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s; }
-
-.analytics-item-title a:hover { color: #f08322; }
-
-.analytics-item-title a:hover .analytics-item-title-img { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+.pt-30 { padding-top: 30px; }
 
 .page-btn { display: inline-block; margin-right: 15px; border: 1px dashed rgba(255, 255, 255, 0.5); border-radius: 50px; font-size: 28px; font-size: 1.75rem; padding: 16px 20px; }
 
@@ -1126,10 +1116,6 @@ CERTS --- */
 .to-all-news svg.news-item-title-arrow { opacity: 1; stroke: #ffffff; right: -88px; }
 
 .to-all-news .news-item-title a:hover svg.news-item-title-arrow { stroke: #F08322; }
-
-.to-all-analytics svg.analytics-item-title-arrow { opacity: 1; stroke: #ffffff; right: -88px; }
-
-.to-all-analytics .analytics-item-title a:hover svg.analytics-item-title-arrow { stroke: #F08322; }
 
 .video-container { margin-bottom: 100px; }
 
