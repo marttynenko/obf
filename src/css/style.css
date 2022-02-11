@@ -963,15 +963,15 @@ CERTS --- */
 
 .space-between { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
 
-.page-btn { display: inline-block; margin-right: 15px; border: 1px dashed rgba(255, 255, 255, 0.5); border-radius: 50px; font-size: 28px; font-size: 1.75rem; padding: 16px 20px; }
-
-.page-btn:hover { border: 1px solid #ffffff; }
-
 .analytics-item-title-img { position: absolute; right: -68px; width: 48px; height: 48px; top: 50%; margin-top: -21px; stroke: #f08322; fill: none; opacity: 0; transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s; }
 
 .analytics-item-title a:hover { color: #f08322; }
 
 .analytics-item-title a:hover .analytics-item-title-img { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+
+.page-btn { display: inline-block; margin-right: 15px; border: 1px dashed rgba(255, 255, 255, 0.5); border-radius: 50px; font-size: 28px; font-size: 1.75rem; padding: 16px 20px; }
+
+.page-btn:hover { border: 1px solid #ffffff; }
 
 .gallery-group { margin-bottom: 100px; }
 
