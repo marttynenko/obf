@@ -28,10 +28,8 @@
   });
 })();
 
-let on = document.querySelector(".museum").classList.contains("museum");
-
-if (on == true) {
-  document.querySelector(".page").style.paddingTop = 0;
-  document.querySelector(".wrapper").style.paddingTop = 0;
+if (document.querySelector(".museum")) {
+  let wrap = document.querySelector(".wrapper");
+  wrap.classList.add("wrapper-museum");
   document.querySelector(".header").style.background = "transparent";
 }

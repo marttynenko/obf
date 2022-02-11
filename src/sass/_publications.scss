@@ -1,0 +1,116 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.col-pub-8 {
+  flex: 0 0 33.28%;
+  max-width: 33.28%;
+}
+.col-pub-16 {
+  flex: 0 0 66.56%;
+  max-width: 66.56%;
+}
+
+.publication-preview {
+  padding-bottom: 80px;
+  border-bottom: 2px solid rgba(#fff, 0.15);
+  margin-bottom: 80px;
+  &-text {
+    &-names {
+      @include fz(28);
+      color: $primary;
+      margin-bottom: 32px;
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
+    }
+    &-article {
+      @include fz(54);
+      margin-bottom: 32px;
+      @media (max-width: 1260px) {
+        @include fz(42);
+      }
+    }
+    &-year {
+      display: flex;
+      justify-content: space-between;
+      @include fz(28);
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
+    }
+    &-type {
+      display: inline-block;
+      position: relative;
+      text-transform: uppercase;
+      color: $primary;
+    }
+    &-icon {
+      position: absolute;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      stroke: $primary;
+      stroke-width: 2;
+      fill: none;
+      transform: scale(0.75);
+      top: 7px;
+      right: -27px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+  }
+  &-img {
+    text-align: end;
+  }
+}
+
+.publication-item {
+  padding-right: 12.5%;
+  padding-bottom: 80px;
+  margin-bottom: 80px;
+  border-bottom: 2px solid rgba(#fff, 0.15);
+  &-text {
+    &-names {
+      @include fz(28);
+      color: $primary;
+      margin-bottom: 32px;
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
+    }
+    &-article {
+      @include fz(28);
+      margin-bottom: 32px;
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
+    }
+    &-year {
+      display: flex;
+      justify-content: space-between;
+      @include fz(28);
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
+    }
+    &-type {
+      display: inline-block;
+      position: relative;
+      text-transform: uppercase;
+      color: $primary;
+    }
+    &-icon {
+      position: absolute;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      stroke: $primary;
+      stroke-width: 2;
+      fill: none;
+      transform: scale(0.75);
+      top: 7px;
+      right: -27px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+  }
+}

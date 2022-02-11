@@ -16,6 +16,12 @@
     max-width: 100%;
   }
 }
+.page-museum {
+  padding-top: 0;
+}
+.wrapper-museum {
+  padding-top: 0;
+}
 .museum-header {
   padding-top: 100px;
   background-image: url(../images/bgs/bg-museum.png);
@@ -33,7 +39,7 @@
     height: 650px;
   }
 }
-.museum-preview {
+.museum-top-screen {
   &-title {
     max-width: 920px;
   }
@@ -359,9 +365,13 @@
   margin-bottom: 80px;
 }
 .museum-social-item-img {
+  width: 100%;
+  height: 100%;
   display: inline-block;
   overflow: hidden;
   img {
+    width: 100%;
+    height: 100%;
     transition: 0.5s ease;
     &:hover {
       transform: scale(1.03);
