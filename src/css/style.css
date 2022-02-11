@@ -1117,7 +1117,7 @@ CERTS --- */
 
 .museum-history-text { max-width: 400px; }
 
-@media (max-width: 1440px) { .museum-history-text { font-size: 18px; font-size: 1.125rem; } }
+@media (max-width: 1440px) { .museum-history-text { font-size: 18px; font-size: 1.125rem; margin-bottom: 32px; } }
 
 .museum-history-info { display: inline-block; position: relative; z-index: 2; font-size: 22px; font-size: 1.375rem; font-weight: 1.45; }
 
@@ -1129,7 +1129,13 @@ CERTS --- */
 
 @media (max-width: 1440px) { .museum-history-year-visitors { font-size: 24px; font-size: 1.5rem; } }
 
-.museum-history-img { margin-right: -87px; }
+.museum-history-img { height: 650px; margin-right: -100px; margin-left: 100px; background-image: url(../images/museum-circle.png); }
+
+.museum-circle-col { display: none; }
+
+@media (max-width: 1260px) { .museum-circle-col { display: inline-block; } }
+
+@media (max-width: 1260px) { .museum-circle-hide { display: none; } }
 
 .museum-slider-btns .swiper-button-prev { width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-left_orange.svg); }
 

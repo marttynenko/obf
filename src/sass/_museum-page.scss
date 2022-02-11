@@ -93,6 +93,7 @@
     max-width: 400px;
     @media (max-width: 1440px) {
       @include fz(18);
+      margin-bottom: 32px;
     }
   }
   &-info {
@@ -121,19 +122,24 @@
     }
   }
   &-img {
-    margin-right: -87px;
-    // position: absolute;
-    // z-index: -1;
-    // right: 0;
-    // width: 950px;
-    // height: 650px;
-    // background-image: url(../images/museum-circle.png);
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-position: center;
+    // margin-right: -87px;
+    height: 650px;
+    margin-right: -100px;
+    margin-left: 100px;
+    background-image: url(../images/museum-circle.png);
   }
 }
-
+.museum-circle-col {
+  display: none;
+  @media (max-width: 1260px) {
+    display: inline-block;
+  }
+}
+@media (max-width: 1260px) {
+  .museum-circle-hide {
+    display: none;
+  }
+}
 .museum-slider-btns {
   .swiper-button-prev {
     width: 64px;
