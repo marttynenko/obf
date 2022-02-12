@@ -28,6 +28,12 @@
   });
 })();
 
+if (document.querySelector(".ui-page")) {
+  let wrap = document.querySelector(".wrapper");
+  wrap.classList.add("ui-wrapper");
+  document.querySelector(".header").style.background = "transparent";
+}
+
 if (document.querySelector(".museum")) {
   let wrap = document.querySelector(".wrapper");
   wrap.classList.add("wrapper-museum");
