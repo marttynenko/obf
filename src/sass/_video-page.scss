@@ -1,28 +1,29 @@
 .video {
-  &-container {
+  &-item {
     margin-bottom: 100px;
-  }
-  &-desc {
-    &-text {
-      @include fz(28);
-      line-height: 1.35;
-      margin-bottom: 32px;
-
-      @media (max-width: 1440px) {
-        @include fz(24);
+    &-desc {
+      &-text {
+        @include fz(28);
+        line-height: 1.35;
+        margin-bottom: 32px;
+  
+        @media (max-width: 1440px) {
+          @include fz(24);
+        }
+        @media (max-width: 1260px) {
+          max-width: 600px;
+        }
       }
-      @media (max-width: 1260px) {
-        max-width: 600px;
+  
+      &-date {
+        color: $primary;
+        @include fz(22);
+        margin-bottom: 32px;
+        @media (max-width: 1440px) {
+          @include fz(18);
+        }
       }
     }
-
-    &-date {
-      color: $primary;
-      @include fz(22);
-      margin-bottom: 32px;
-      @media (max-width: 1440px) {
-        @include fz(18);
-      }
-    }
   }
+ 
 }

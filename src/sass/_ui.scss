@@ -304,13 +304,13 @@ article, .article, .seo {
 	width: 100%;
 	margin: $paragraph_margin;
 	@include fz(22);
-	table-layout: fixed;
+	// table-layout: fixed;
 
 	th {
 		text-align: left;
 		color: #758695;
 		@include fz(18);
-		padding: 4px 0px;
+		padding: 4px 20px 4px 0px;
 		font-weight: 400;
 	}
 
@@ -883,6 +883,7 @@ span.invalid {
 		img {
 			display: block;
 			width: 100%;
+			height: 100%;
 			transition: transform .5s;
 			position: absolute;
 			left: 50%;
