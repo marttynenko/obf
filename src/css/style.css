@@ -959,9 +959,31 @@ CERTS --- */
 
 .pt-30 { padding-top: 30px; }
 
-.page-btn { display: inline-block; margin-right: 15px; border: 1px dashed rgba(255, 255, 255, 0.5); border-radius: 50px; font-size: 28px; font-size: 1.75rem; padding: 16px 20px; }
+.page-buttons { margin-bottom: 80px; }
 
-.page-btn:hover { border: 1px solid #ffffff; }
+.page-btn { display: inline-block; margin-right: 15px; border: 1px dashed rgba(255, 255, 255, 0.5); border-radius: 50px; font-size: 28px; font-size: 1.75rem; padding: 16px 20px; color: #FFF; }
+
+.page-btn:hover { border: 1px solid #ffffff; color: #F08322; }
+
+.page-btn-img { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.page-btn-img img { margin-right: 8px; }
+
+.contacts { padding-right: 130px; }
+
+.contacts-title { margin-bottom: 40px; font-size: 28px; font-size: 1.75rem; color: #F08322; }
+
+.contacts ul li { margin-bottom: 15px; }
+
+.contacts ul li .hide-1260 { display: none; }
+
+.contacts ul li a { color: #FFF; }
+
+.contacts ul li a:hover { color: #F08322; }
+
+.col-contacts-25 { -webkit-box-flex: 0; -ms-flex: 0 0 25.5%; flex: 0 0 25.5%; max-width: 25.5%; }
+
+.col-contacts-75 { -webkit-box-flex: 0; -ms-flex: 0 0 74.5%; flex: 0 0 74.5%; max-width: 74.5%; }
 
 .gallery-group { margin-bottom: 100px; }
 
