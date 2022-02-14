@@ -281,7 +281,7 @@
     }
   }
 }
-.museum-review {
+.museum-reviews {
   margin-bottom: 135px;
 }
 .mus-review {
@@ -308,7 +308,6 @@
 
     @media (max-width: 1440px) {
       padding-right: 5%;
-      max-width: 430px;
     }
   }
   &-title {
@@ -384,6 +383,35 @@
   @media (max-width: 1259px) {
     &-title {
       @include fz(32);
+    }
+  }
+}
+
+.museum-review {
+  @include fz(28);
+
+  &-txt {
+    margin-bottom: 16px;
+  }
+  &-author {
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: 8px;
+  }
+  &-position {
+    @include fz(18);
+    color: $primary;
+
+    // @media (max-width: 1440px) {
+    //   @include fz(14);
+    // }
+  }
+
+  @media (max-width: 1440px) {
+    @include fz(24);
+
+    &-position {
+      @include fz(14);
     }
   }
 }
