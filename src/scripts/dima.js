@@ -30,14 +30,16 @@
 
 if (document.querySelector(".ui-page")) {
   let wrap = document.querySelector(".wrapper");
+  let uihead = document.querySelector(".header");
   wrap.classList.add("ui-wrapper");
-  document.querySelector(".header").style.background = "transparent";
+  uihead.classList.add("ui-header");
 }
 
 if (document.querySelector(".museum")) {
   let wrap = document.querySelector(".wrapper");
+  let uihead = document.querySelector(".header");
   wrap.classList.add("wrapper-museum");
-  document.querySelector(".header").style.background = "transparent";
+  uihead.classList.add("ui-header");
 }
 
 // if (window.pageYOffset > 0) {

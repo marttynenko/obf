@@ -1,7 +1,9 @@
 html {
   scroll-behavior: smooth;
 }
-
+header.header.ui-header {
+  background: transparent;
+}
 .col-pub-8 {
   flex: 0 0 33.28%;
   max-width: 33.28%;
@@ -72,7 +74,7 @@ html {
   }
 }
 
-.publications-list {
+.publication-item {
   display: block;
   padding-right: 12.5%;
   padding-bottom: 80px;
