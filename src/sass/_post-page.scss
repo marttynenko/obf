@@ -104,11 +104,6 @@
   }
 }
 
-
-
-
-
-
 .node-slider {
   position: relative;
   margin-bottom: 70px;
@@ -117,7 +112,7 @@
     position: absolute;
     bottom: 50px;
     left: -180px;
-  
+
     @media (max-width: 1240px) {
       bottom: 0;
       left: 0;
@@ -157,7 +152,6 @@
 .swiper-slide img {
   display: block;
 }
-
 
 .swiper-button-next,
 .swiper-button-prev {
