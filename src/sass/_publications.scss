@@ -12,12 +12,14 @@ html {
 }
 
 .publication-preview {
+  display: block;
   padding-bottom: 80px;
   border-bottom: 2px solid rgba(#fff, 0.15);
   margin-bottom: 80px;
   &-text {
     &-names {
       @include fz(28);
+      line-height: 1.35;
       color: $primary;
       margin-bottom: 32px;
       @media (max-width: 1260px) {
@@ -25,7 +27,9 @@ html {
       }
     }
     &-article {
+      color: #ffffff;
       @include fz(54);
+      line-height: 1.1;
       margin-bottom: 32px;
       @media (max-width: 1260px) {
         @include fz(42);
@@ -34,6 +38,7 @@ html {
     &-year {
       display: flex;
       justify-content: space-between;
+      color: #ffffff;
       @include fz(28);
       @media (max-width: 1260px) {
         @include fz(24);
@@ -61,10 +66,14 @@ html {
   }
   &-img {
     text-align: end;
+    img {
+      margin: 0 0 0 auto;
+    }
   }
 }
 
-.publication-item {
+.publications-list {
+  display: block;
   padding-right: 12.5%;
   padding-bottom: 80px;
   margin-bottom: 80px;
@@ -72,6 +81,7 @@ html {
   &-text {
     &-names {
       @include fz(28);
+      line-height: 1.35;
       color: $primary;
       margin-bottom: 32px;
       @media (max-width: 1260px) {
@@ -79,7 +89,9 @@ html {
       }
     }
     &-article {
+      color: #ffffff;
       @include fz(28);
+      font-weight: 1.35;
       margin-bottom: 32px;
       @media (max-width: 1260px) {
         @include fz(24);
@@ -88,6 +100,7 @@ html {
     &-year {
       display: flex;
       justify-content: space-between;
+      color: #ffffff;
       @include fz(28);
       @media (max-width: 1260px) {
         @include fz(24);

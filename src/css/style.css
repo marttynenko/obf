@@ -1263,17 +1263,17 @@ html { scroll-behavior: smooth; }
 
 .col-pub-16 { -webkit-box-flex: 0; -ms-flex: 0 0 66.56%; flex: 0 0 66.56%; max-width: 66.56%; }
 
-.publication-preview { padding-bottom: 80px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); margin-bottom: 80px; }
+.publication-preview { display: block; padding-bottom: 80px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); margin-bottom: 80px; }
 
-.publication-preview-text-names { font-size: 28px; font-size: 1.75rem; color: #F08322; margin-bottom: 32px; }
+.publication-preview-text-names { font-size: 28px; font-size: 1.75rem; line-height: 1.35; color: #F08322; margin-bottom: 32px; }
 
 @media (max-width: 1260px) { .publication-preview-text-names { font-size: 24px; font-size: 1.5rem; } }
 
-.publication-preview-text-article { font-size: 54px; font-size: 3.375rem; margin-bottom: 32px; }
+.publication-preview-text-article { color: #ffffff; font-size: 54px; font-size: 3.375rem; line-height: 1.1; margin-bottom: 32px; }
 
 @media (max-width: 1260px) { .publication-preview-text-article { font-size: 42px; font-size: 2.625rem; } }
 
-.publication-preview-text-year { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; font-size: 28px; font-size: 1.75rem; }
+.publication-preview-text-year { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; color: #ffffff; font-size: 28px; font-size: 1.75rem; }
 
 @media (max-width: 1260px) { .publication-preview-text-year { font-size: 24px; font-size: 1.5rem; } }
 
@@ -1283,23 +1283,25 @@ html { scroll-behavior: smooth; }
 
 .publication-preview-img { text-align: end; }
 
-.publication-item { padding-right: 12.5%; padding-bottom: 80px; margin-bottom: 80px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); }
+.publication-preview-img img { margin: 0 0 0 auto; }
 
-.publication-item-text-names { font-size: 28px; font-size: 1.75rem; color: #F08322; margin-bottom: 32px; }
+.publications-list { display: block; padding-right: 12.5%; padding-bottom: 80px; margin-bottom: 80px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); }
 
-@media (max-width: 1260px) { .publication-item-text-names { font-size: 24px; font-size: 1.5rem; } }
+.publications-list-text-names { font-size: 28px; font-size: 1.75rem; line-height: 1.35; color: #F08322; margin-bottom: 32px; }
 
-.publication-item-text-article { font-size: 28px; font-size: 1.75rem; margin-bottom: 32px; }
+@media (max-width: 1260px) { .publications-list-text-names { font-size: 24px; font-size: 1.5rem; } }
 
-@media (max-width: 1260px) { .publication-item-text-article { font-size: 24px; font-size: 1.5rem; } }
+.publications-list-text-article { color: #ffffff; font-size: 28px; font-size: 1.75rem; font-weight: 1.35; margin-bottom: 32px; }
 
-.publication-item-text-year { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; font-size: 28px; font-size: 1.75rem; }
+@media (max-width: 1260px) { .publications-list-text-article { font-size: 24px; font-size: 1.5rem; } }
 
-@media (max-width: 1260px) { .publication-item-text-year { font-size: 24px; font-size: 1.5rem; } }
+.publications-list-text-year { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; color: #ffffff; font-size: 28px; font-size: 1.75rem; }
 
-.publication-item-text-type { display: inline-block; position: relative; text-transform: uppercase; color: #F08322; }
+@media (max-width: 1260px) { .publications-list-text-year { font-size: 24px; font-size: 1.5rem; } }
 
-.publication-item-text-icon { position: absolute; display: inline-block; width: 24px; height: 24px; stroke: #F08322; stroke-width: 2; fill: none; -webkit-transform: scale(0.75); -ms-transform: scale(0.75); transform: scale(0.75); top: 7px; right: -27px; -webkit-transition: opacity 0.3s, -webkit-transform 0.3s; transition: opacity 0.3s, -webkit-transform 0.3s; -o-transition: opacity 0.3s, transform 0.3s; transition: opacity 0.3s, transform 0.3s; transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s; }
+.publications-list-text-type { display: inline-block; position: relative; text-transform: uppercase; color: #F08322; }
+
+.publications-list-text-icon { position: absolute; display: inline-block; width: 24px; height: 24px; stroke: #F08322; stroke-width: 2; fill: none; -webkit-transform: scale(0.75); -ms-transform: scale(0.75); transform: scale(0.75); top: 7px; right: -27px; -webkit-transition: opacity 0.3s, -webkit-transform 0.3s; transition: opacity 0.3s, -webkit-transform 0.3s; -o-transition: opacity 0.3s, transform 0.3s; transition: opacity 0.3s, transform 0.3s; transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s; }
 
 .ui-page { padding-top: 0; }
 

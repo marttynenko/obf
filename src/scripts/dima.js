@@ -39,3 +39,9 @@ if (document.querySelector(".museum")) {
   wrap.classList.add("wrapper-museum");
   document.querySelector(".header").style.background = "transparent";
 }
+
+// if (window.pageYOffset > 0) {
+//   let wrap = document.querySelector(".wrapper");
+//   wrap.classList.remove("ui-wrapper");
+//   document.querySelector(".header").style.background = "#222E3F";
+// }
