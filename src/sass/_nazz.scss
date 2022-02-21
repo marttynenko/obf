@@ -244,10 +244,10 @@
   border-bottom: none;
 }
 .contacts-tab-contant {
-  display: none;
+  // display: none;
 }
 .contacts-tab-contant-active {
-  display: block;
+  display: none;
 }
 .contacts-tab-inner {
   margin-bottom: 40px;
@@ -334,4 +334,8 @@
   /* Firefox 3.5+ */
   -webkit-filter: grayscale(100%);
   /* Chrome 19+ & Safari 6+ */
+}
+
+.contacts-tab-contant {
+  display: none;
 }
