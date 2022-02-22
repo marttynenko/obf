@@ -212,10 +212,14 @@ function animateFSMenu (action) {
   if (!target) return
 
   window.onscroll = function(e) {
-    // print "false" if direction is down and "true" if up
-    this.oldScroll > this.scrollY 
-      ? target.classList.remove('not-fixed')
-      : target.classList.add('not-fixed')
+    if (this.oldScroll > this.scrollY) {
+      target.classList.remove('not-fixed')
+    } else if (this.scrollY > 81) {
+      target.classList.add('not-fixed')
+    }
+    // this.oldScroll > this.scrollY 
+    //   ? target.classList.remove('not-fixed')
+    //   : target.classList.add('not-fixed')
 
     this.oldScroll = this.scrollY;
   }

@@ -12,6 +12,10 @@ header.header {
 	transition: transform .4s;
 	will-change: transform;
 
+	&-transparent {
+		background: transparent;
+	}
+
 	&.not-fixed {
 		// position: absolute;
 		transform: translate3d(0px,-80px,0px);

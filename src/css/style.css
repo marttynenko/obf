@@ -520,7 +520,13 @@ span.invalid { padding-top: 3px; padding-left: 25px; }
 
 #lg-counter { font-size: 28px; font-size: 1.75rem; color: #FFF; position: absolute; left: 50px; top: 50px; padding: 0; }
 
+.swiper-button-prev, .swiper-button-next { border-radius: 50%; width: 64px; height: 64px; -webkit-transition: background .3s; -o-transition: background .3s; transition: background .3s; }
+
+.swiper-button-prev:hover, .swiper-button-next:hover { background-color: rgba(29, 39, 53, 0.1); }
+
 header.header { padding-top: 18px; padding-bottom: 18px; height: 80px; position: fixed; z-index: 9; top: 0; left: 0; right: 0; background: #222E3F; -webkit-transition: -webkit-transform .4s; transition: -webkit-transform .4s; -o-transition: transform .4s; transition: transform .4s; transition: transform .4s, -webkit-transform .4s; will-change: transform; }
+
+header.header-transparent { background: transparent; }
 
 header.header.not-fixed { -webkit-transform: translate3d(0px, -80px, 0px); transform: translate3d(0px, -80px, 0px); -webkit-transition: -webkit-transform .5s; transition: -webkit-transform .5s; -o-transition: transform .5s; transition: transform .5s; transition: transform .5s, -webkit-transform .5s; }
 
@@ -1119,7 +1125,7 @@ CERTS --- */
 
 .ui-swiper { position: relative; padding-bottom: 50px; }
 
-.ui-swiper-pagination { display: inline-block; width: auto; position: absolute; bottom: 0; left: auto; right: 0; font-size: 18px; font-size: 1.125rem; font-weight: 600; }
+.ui-swiper-pagination { display: inline-block; width: auto; position: absolute; bottom: 0; left: auto; right: 0; font-size: 18px; font-size: 1.125rem; font-weight: 600; line-height: 1; }
 
 .ui-swiper-slide-subtitle { text-align: left; position: absolute; bottom: -50px; left: 0; padding-right: 85px; }
 
@@ -1165,23 +1171,21 @@ CERTS --- */
 
 .wrapper-museum { padding-top: 0; }
 
-.museum-header { padding-top: 100px; background-image: url(../images/bgs/bg-museum.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
+.museum-header { background-image: url(../images/bgs/bg-museum.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
 
-.museum-row { height: 960px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-bottom: 50px; }
-
-@media (max-width: 1440px) { .museum-row { height: 650px; } }
+.museum-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-top: 300px; padding-bottom: 49px; min-height: 100vh; max-height: 1500px; }
 
 .museum-hide { display: none; }
 
 @media (max-width: 1260px) { .museum-hide { display: inline-block; } }
 
-.museum-top-screen-title { max-width: 920px; }
+.museum-top-screen-title { max-width: 920px; line-height: 0.9; }
 
-.museum-top-screen-text { max-width: 675px; font-size: 28px; font-size: 1.75rem; margin-bottom: 44px; }
+.museum-top-screen-text { max-width: 675px; font-size: 28px; font-size: 1.75rem; margin-bottom: 33px; line-height: 1.38; }
 
-@media (max-width: 1260px) { .slider-museum-subtitle { left: 20%; } }
+@media (max-width: 1259px) { .slider-museum-subtitle { left: 200px; bottom: -55px; } }
 
-@media (max-width: 1260px) { .museum-slider-btns { bottom: -20px; left: 0; } }
+@media (max-width: 1259px) { .museum-slider-btns { bottom: -25px; left: 0; } }
 
 .col-layout-center { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
@@ -1201,7 +1205,7 @@ CERTS --- */
 
 .museum-history { padding-top: 80px; }
 
-.museum-history-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 80px; }
+.museum-history-row { -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 80px; }
 
 .museum-history-title { font-size: 54px; font-size: 3.375rem; line-height: 1.1; margin-bottom: 80px; }
 
@@ -1213,15 +1217,19 @@ CERTS --- */
 
 .museum-history-info { display: inline-block; position: relative; z-index: 2; font-size: 22px; font-size: 1.375rem; font-weight: 1.45; }
 
-.museum-history-year { font-size: 140px; font-size: 8.75rem; font-weight: 400; color: #F08322; white-space: nowrap; line-height: 100px; }
+.museum-history-year { font-size: 140px; font-size: 8.75rem; font-weight: 400; color: #F08322; white-space: nowrap; line-height: 100px; margin-bottom: 32px; }
 
 @media (max-width: 1440px) { .museum-history-year { font-size: 120px; font-size: 7.5rem; } }
 
-.museum-history-year-visitors { font-size: 28px; font-size: 1.75rem; font-weight: 700; line-height: 90px; }
+.museum-history-year-visitors { font-size: 28px; font-size: 1.75rem; font-weight: 700; line-height: 1.35; padding-top: 18px; }
 
 @media (max-width: 1440px) { .museum-history-year-visitors { font-size: 24px; font-size: 1.5rem; } }
 
-.museum-history-img { height: 650px; margin-right: -100px; margin-left: 100px; background-image: url(../images/museum-circle.png); }
+.museum-history-img { margin-right: -50px; width: 950px; }
+
+@media (max-width: 1700px) { .museum-history-img { -webkit-transform: translate(10%, 0); -ms-transform: translate(10%, 0); transform: translate(10%, 0); } }
+
+@media (max-width: 1259px) { .museum-history-img { width: 680px; -webkit-transform: translate(18%, 0); -ms-transform: translate(18%, 0); transform: translate(18%, 0); } }
 
 .museum-circle-col { display: none; }
 
@@ -1229,9 +1237,13 @@ CERTS --- */
 
 @media (max-width: 1260px) { .museum-circle-hide { display: none; } }
 
-.museum-slider-btns .swiper-button-prev { margin: 0; margin-right: 20px; width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-left_orange.svg); }
+.museum-circle-margin { margin-bottom: 80px; }
 
-.museum-slider-btns .swiper-button-next { margin: 0; margin-right: 20px; width: 64px; height: 64px; background-image: url(../images/svg/slider-arrow-right_orange.svg); }
+.museum-slider-btns .swiper-button-prev { margin: 0; margin-right: 20px; background-image: url(../images/svg/slider-arrow-left_orange.svg); }
+
+.museum-slider-btns .swiper-button-next { margin: 0; margin-right: 20px; background-image: url(../images/svg/slider-arrow-right_orange.svg); }
+
+.museum-slider-btns .swiper-button-prev:hover, .museum-slider-btns .swiper-button-next:hover { background-color: rgba(240, 131, 34, 0.1); }
 
 .museum-history { margin-bottom: 200px; }
 
@@ -1334,17 +1346,29 @@ CERTS --- */
 
 .museum-social-item-img img:hover { -webkit-transform: scale(1.03); -ms-transform: scale(1.03); transform: scale(1.03); }
 
-.museum-social-link { margin-bottom: 24px; }
+.museum-insta { margin-bottom: 24px; }
+
+.museum-insta-link { position: relative; display: inline-block; vertical-align: middle; padding-left: 62px; font-size: 28px; font-size: 1.75rem; color: #F08322; }
+
+.museum-insta-link-icon { position: absolute; left: 0; top: 50%; margin-top: -24px; width: 48px; height: 48px; border: 1px solid #F08322; border-radius: 24px; padding: 10px; -webkit-transition: border .3s; -o-transition: border .3s; transition: border .3s; }
+
+.museum-insta-link-icon svg { fill: #F08322; }
+
+.museum-insta-link:hover { color: #ffffff; }
+
+.museum-insta-link:hover .museum-insta-link-icon { border-color: #FFF; }
+
+.museum-insta-link:hover .museum-insta-link-icon svg { fill: #FFF; }
+
+.museum-social-link .footer-link-et { font-size: 28px; font-size: 1.75rem; vertical-align: middle; }
+
+.museum-social-link .footer-link-et:hover { color: #fff; }
 
 .museum-social-help { font-size: 28px; font-size: 1.75rem; max-width: 600px; }
 
 .museum-social-footer-link { margin-bottom: 80px; }
 
 .footer-links-social-inst { padding: 0; }
-
-.footer-link-et { display: inline-block; font-size: 28px; font-size: 1.75rem; color: #F08322; vertical-align: middle; }
-
-.footer-link-et:hover { color: #ffffff; }
 
 html { scroll-behavior: smooth; }
 

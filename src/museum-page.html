@@ -3,7 +3,7 @@
 <!--.container-->
 <div class="page page-museum">
    <div class="museum">
-      <header class="museum-header">
+      <div class="museum-header">
          <div class="container">
             <div class="museum-row">
                <div class="museum-top-screen">
@@ -29,7 +29,7 @@
                </a>
             </div>
          </div>
-      </header>
+      </div>
       <div class="container">
          <div class="museum-history" id="museum-history">
             <div class="ui-subtitle">История нашей отрасли</div>
@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                <div class="col-layout-thin col-layout-center">
-                  <a href="#" class="ui-btn-circle museum-circle museum-circle-hide">
+                  <a href="#" class="ui-btn-circle museum-circle museum-circle-hide museum-circle-margin">
                      <div class="ui-btn-circle-circle museum-circle-circle">
                         Виртуальный тур по музею
                         <div class="ui-btn-circle-arrow">
@@ -55,7 +55,7 @@
                   </a>
                </div>
                <div class="col-layout-wide">
-                  <div class="museum-history-row">
+                  <div class="museum-history-row row">
                      <div class="col-mus-8">
                         <div class="museum-history-info">
                            <div class="museum-history-year">
@@ -81,7 +81,7 @@
                      </div>
                      <div class="col-mus-16">
                         <div class="museum-history-img">
-                           <!-- <img src="./images/museum-circle.png" alt=""> -->
+                           <img src="./images/museum-circle.png" loading="lazy" alt="">
                         </div>
                      </div>
 
@@ -272,14 +272,16 @@
                <div class="col-layout-thin">
                </div>
                <div class="col-layout-wide">
-                  <div class="museum-social-link">
+                  <div class="museum-insta">
                      <a href="https://vk.com/ukobf" target="_blank"
-                        class="footer-links-social footer-links-social-vk footer-links-social-inst">
-                        <svg class="sprite">
-                           <use xlink:href="svg/svg/symbols.svg#inst" />
-                        </svg>
+                        class="museum-insta-link">
+                        <div class="museum-insta-link-icon">
+                           <svg class="sprite">
+                              <use xlink:href="svg/svg/symbols.svg#instagram" />
+                           </svg>
+                        </div>
+                        @buzeon_museum
                      </a>
-                     <a href="#" class="footer-link-et">@buzeon_museum</a>
                   </div>
                   <div class="museum-social-row">
                      <div class="col-4">
@@ -306,20 +308,18 @@
                   </div>
                   <div class="museum-social-link">
                      <div class="footer-links museum-social-footer-link">
-                        <div class="footer-links-socials footer-links-col">
-                           <a href="https://www.facebook.com/ukobf" target="_blank"
-                              class="footer-links-social footer-links-social-fb">
-                              <svg class="sprite">
-                                 <use xlink:href="svg/svg/symbols.svg#fb" />
-                              </svg>
-                           </a>
-                           <a href="https://vk.com/ukobf" target="_blank"
-                              class="footer-links-social footer-links-social-vk">
-                              <svg class="sprite">
-                                 <use xlink:href="svg/svg/symbols.svg#vk" />
-                              </svg>
-                           </a>
-                        </div>
+                        <a href="https://www.facebook.com/ukobf" target="_blank"
+                           class="footer-links-social footer-links-social-fb">
+                           <svg class="sprite">
+                              <use xlink:href="svg/svg/symbols.svg#fb" />
+                           </svg>
+                        </a>
+                        <a href="https://vk.com/ukobf" target="_blank"
+                           class="footer-links-social footer-links-social-vk">
+                           <svg class="sprite">
+                              <use xlink:href="svg/svg/symbols.svg#vk" />
+                           </svg>
+                        </a>
                         <a href="#" class="footer-link-et">@buzeon</a>
 
                      </div>

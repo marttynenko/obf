@@ -1547,3 +1547,17 @@ span.invalid {
 // .lg-css3.lg-slide.lg-use-css3 .lg-item.lg-current {
 // 	transform: translate3d(0,0,0);
 // }
+
+.swiper-button {
+	&-prev,
+	&-next {
+		border-radius: 50%;
+		width: 64px;
+		height: 64px;
+		transition: background .3s;
+
+		&:hover {
+			background-color: rgba($bg_dark,.1);
+		}
+	}
+}

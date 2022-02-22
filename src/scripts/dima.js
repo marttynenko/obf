@@ -18,7 +18,10 @@
       autoHeight: true,
       pagination: {
         el: ".swiper-pagination",
-        type: "fraction",
+        type: "custom",
+        renderCustom: function (swiper, current, total) {
+          return current + ' из ' + total; 
+        }
       },
       navigation: {
         nextEl: nextArrow,
@@ -35,12 +38,32 @@ if (document.querySelector(".ui-page")) {
   uihead.classList.add("ui-header");
 }
 
-if (document.querySelector(".museum")) {
-  let wrap = document.querySelector(".wrapper");
-  let uihead = document.querySelector(".header");
-  wrap.classList.add("wrapper-museum");
-  uihead.classList.add("ui-header");
+const Museum = {
+  headerHeight: 0,
+
+  updateHeight: () => {
+    this.headerHeight = document.querySelector('.museum-header').clientHeight
+  },
+
+  scroll: () => {
+    if (window.scrollY >= this.headerHeight) {
+      return document.querySelector("#header").classList.remove("header-transparent")
+    }
+    document.querySelector("#header").classList.add("header-transparent")
+  }
 }
+
+if (document.querySelector(".museum")) {
+  document.querySelector(".wrapper").classList.add("wrapper-museum")
+  document.querySelector("#header").classList.add("header-transparent")
+  
+  Museum.updateHeight()
+
+  window.addEventListener('resize',Museum.updateHeight,false)
+
+  window.addEventListener('scroll',Museum.scroll,false)
+}
+
 
 // if (window.pageYOffset > 0) {
 //   let wrap = document.querySelector(".wrapper");

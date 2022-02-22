@@ -132,6 +132,7 @@
     right: 0;
     @include fz(18);
     font-weight: 600;
+    line-height: 1;
   }
   &-slide {
     &-subtitle {
