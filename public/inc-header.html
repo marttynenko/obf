@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,8 +16,8 @@
     @font-face {
       font-family: 'TT Hoves';
       src: local('TT Hoves Regular'), local('TTHoves-Regular'),
-          url('./fonts/tthoves/TTHoves-Regular.woff2') format('woff2'),
-          url('./fonts/tthoves/TTHoves-Regular.woff') format('woff');
+        url('./fonts/tthoves/TTHoves-Regular.woff2') format('woff2'),
+        url('./fonts/tthoves/TTHoves-Regular.woff') format('woff');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -25,8 +26,8 @@
     @font-face {
       font-family: 'TT Hoves';
       src: local('TTHoves-Bold'),
-          url('./fonts/tthoves/TTHoves-Bold.woff2') format('woff2'),
-          url('./fonts/tthoves/TTHoves-Bold.woff') format('woff');
+        url('./fonts/tthoves/TTHoves-Bold.woff2') format('woff2'),
+        url('./fonts/tthoves/TTHoves-Bold.woff') format('woff');
       font-weight: 700;
       font-style: normal;
       font-display: swap;
@@ -35,17 +36,21 @@
     @font-face {
       font-family: 'TT Hoves';
       src: local('TTHoves-DemiBold'),
-          url('./fonts/tthoves/TTHoves-DemiBold.woff2') format('woff2'),
-          url('./fonts/tthoves/TTHoves-DemiBold.woff') format('woff');
+        url('./fonts/tthoves/TTHoves-DemiBold.woff2') format('woff2'),
+        url('./fonts/tthoves/TTHoves-DemiBold.woff') format('woff');
       font-weight: 600;
       font-style: normal;
       font-display: swap;
     }
   </style>
 
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
   <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
 
   <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+
+
 
   <!--[if lt IE 9]>
     <script>
@@ -58,94 +63,101 @@
     </script>
   <![endif]-->
 </head>
+
 <body>
   <div class="wrapper" id="wrapper">
 
-  <header class="header" id="header">
-    <div class="container">
-      <div class="row valign-center">
-        <div class="col-layout-thin col-layout-thin-header">
-          <div class="header-left flex valign-center">
+    <header class="header" id="header">
+      <div class="container">
+        <div class="row valign-center">
+          <div class="col-layout-thin col-layout-thin-header">
+            <div class="header-left flex valign-center">
 
-            <a href="/" class="logo flex valign-center">
-              <div class="logo-img"><img src="./images/logo.svg" alt="OBF"></div>
-              <div class="logo-txt">OBF</div>
-            </a>
+              <a href="/" class="logo flex valign-center">
+                <div class="logo-img"><img src="./images/logo.svg" alt="OBF"></div>
+                <div class="logo-txt">OBF</div>
+              </a>
 
-            <div class="menu-toggler ux-toggler-menu" onclick="">
-              <div class="menu-toggler-icon">
-                <div class="menu-toggler-line menu-toggler-line-1"></div>
-                <div class="menu-toggler-line menu-toggler-line-2"></div>
-                <div class="menu-toggler-line menu-toggler-line-3"></div>
+              <div class="menu-toggler ux-toggler-menu" onclick="">
+                <div class="menu-toggler-icon">
+                  <div class="menu-toggler-line menu-toggler-line-1"></div>
+                  <div class="menu-toggler-line menu-toggler-line-2"></div>
+                  <div class="menu-toggler-line menu-toggler-line-3"></div>
+                </div>
+                <div class="menu-toggler-txt">Меню</div>
               </div>
-              <div class="menu-toggler-txt">Меню</div>
-            </div>
 
-          </div>
-        </div><!--.col-->
-
-        <div class="col-layout-wide col-layout-wide-header">
-          <div class="header-right flex align-justify valign-center">
-            
-            <nav class="main-menu">
-              <ul class="main-menu-main">
-                <li>
-                  <a href="#">Компания</a>
-                  <ul class="main-menu-sub">
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Предприятия</a></li>
-                    <li><a href="#">Руководство</a></li>
-                    <li><a href="#">Лицензия и сертификаты</a></li>
-                    <li><a href="#">Раскрытие информации</a></li>
-                    <li><a href="#">Социальная политика</a></li>
-                    <li><a href="#">Логистика</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Продукция</a></li>
-                <li>
-                  <a href="#">Экспертиза</a>
-                  <ul class="main-menu-sub">
-                    <li><a href="#">Научная деятельность</a></li>
-                    <li><a href="#">Научные публикации</a></li>
-                    <li><a href="#">Аналитика</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">Проекты</a>
-                  <ul class="main-menu-sub">
-                    <li><a href="#">Социальные проекты</a></li>
-                    <li><a href="#">Повышение качества</a></li>
-                    <li><a href="#">Музей бумаги</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">Пресс-центр</a>
-                  <ul class="main-menu-sub">
-                    <li><a href="#">Новости</a></li>
-                    <li><a href="#">Видеоархив</a></li>
-                    <li><a href="#">Фотогалерея</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Контакты</a></li>
-              </ul>
-            </nav>
-
-            <div class="circle-links">
-              <a href="javascript:void(0)" class="circle-link circle-link-search">
-                <svg class="sprite circle-link-icon"><use xlink:href="svg/svg/symbols.svg#header-search"/></svg>
-              </a>
-              <a href="#" class="circle-link circle-link-user">
-                <svg class="sprite circle-link-icon"><use xlink:href="svg/svg/symbols.svg#header-user"/></svg>
-              </a>
-              <a href="javascript:void(0)" class="circle-link circle-link-langs">
-                <div class="circle-link-txt">En</div>
-              </a>
             </div>
           </div>
-        </div><!--.col-->
+          <!--.col-->
+
+          <div class="col-layout-wide col-layout-wide-header">
+            <div class="header-right flex align-justify valign-center">
+
+              <nav class="main-menu">
+                <ul class="main-menu-main">
+                  <li>
+                    <a href="#">Компания</a>
+                    <ul class="main-menu-sub">
+                      <li><a href="#">О компании</a></li>
+                      <li><a href="#">Предприятия</a></li>
+                      <li><a href="#">Руководство</a></li>
+                      <li><a href="#">Лицензия и сертификаты</a></li>
+                      <li><a href="#">Раскрытие информации</a></li>
+                      <li><a href="#">Социальная политика</a></li>
+                      <li><a href="#">Логистика</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Продукция</a></li>
+                  <li>
+                    <a href="#">Экспертиза</a>
+                    <ul class="main-menu-sub">
+                      <li><a href="#">Научная деятельность</a></li>
+                      <li><a href="#">Научные публикации</a></li>
+                      <li><a href="#">Аналитика</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Проекты</a>
+                    <ul class="main-menu-sub">
+                      <li><a href="#">Социальные проекты</a></li>
+                      <li><a href="#">Повышение качества</a></li>
+                      <li><a href="#">Музей бумаги</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Пресс-центр</a>
+                    <ul class="main-menu-sub">
+                      <li><a href="#">Новости</a></li>
+                      <li><a href="#">Видеоархив</a></li>
+                      <li><a href="#">Фотогалерея</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Контакты</a></li>
+                </ul>
+              </nav>
+
+              <div class="circle-links">
+                <a href="javascript:void(0)" class="circle-link circle-link-search">
+                  <svg class="sprite circle-link-icon">
+                    <use xlink:href="svg/svg/symbols.svg#header-search" />
+                  </svg>
+                </a>
+                <a href="#" class="circle-link circle-link-user">
+                  <svg class="sprite circle-link-icon">
+                    <use xlink:href="svg/svg/symbols.svg#header-user" />
+                  </svg>
+                </a>
+                <a href="javascript:void(0)" class="circle-link circle-link-langs">
+                  <div class="circle-link-txt">En</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--.col-->
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <div id="middle" class="middle">
-  <div class="container">
+    <div id="middle" class="middle">
+      <div class="container">
