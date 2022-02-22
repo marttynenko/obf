@@ -1360,9 +1360,7 @@ CERTS --- */
 
 .museum-insta-link:hover .museum-insta-link-icon svg { fill: #FFF; }
 
-.museum-social-link .footer-link-et { font-size: 28px; font-size: 1.75rem; vertical-align: middle; }
-
-.museum-social-link .footer-link-et:hover { color: #fff; }
+.museum-social-link .footer-link-et { font-size: 28px; font-size: 1.75rem; vertical-align: middle; color: #F08322; }
 
 .museum-social-help { font-size: 28px; font-size: 1.75rem; max-width: 600px; }
 

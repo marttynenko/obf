@@ -513,10 +513,7 @@
   .footer-link-et {
     @include fz(28);
     vertical-align: middle;
-
-    &:hover {
-      color: #fff;
-    }
+    color: $primary;
   }
 }
 .museum-social-help {
