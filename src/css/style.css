@@ -800,7 +800,7 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
 
 .news-item-img a img, .news-item-img img { display: inline-block; border-radius: 140px; }
 
-.news-item-body { padding-right: 10%; max-width: 79.177%; }
+.news-item-body { padding-right: 10%; -webkit-box-flex: 0; -ms-flex: 0 0 79.177%; flex: 0 0 79.177%; max-width: 79.177%; }
 
 .news-item-title { font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 38px; }
 
@@ -1195,9 +1195,15 @@ CERTS --- */
 
 .col-mus-8 { -webkit-box-flex: 0; -ms-flex: 0 0 33.28%; flex: 0 0 33.28%; max-width: 33.28%; }
 
+.col-mus-11 { -webkit-box-flex: 0; -ms-flex: 0 0 45.76%; flex: 0 0 45.76%; max-width: 45.76%; }
+
 .col-mus-16 { -webkit-box-flex: 0; -ms-flex: 0 0 66.56%; flex: 0 0 66.56%; max-width: 66.56%; }
 
-.museum-history-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+.col-mus-18 { -webkit-box-flex: 0; -ms-flex: 0 0 74.88%; flex: 0 0 74.88%; max-width: 74.88%; }
+
+@media (max-width: 1260px) { .col-musl-11 { -webkit-box-flex: 0; -ms-flex: 0 0 45.76%; flex: 0 0 45.76%; max-width: 45.76%; } }
+
+.museum-history { padding-top: 80px; }
 
 .museum-history-row { -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 80px; }
 
@@ -1363,10 +1369,6 @@ CERTS --- */
 .museum-social-footer-link { margin-bottom: 80px; }
 
 .footer-links-social-inst { padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-header.header.ui-header { background: transparent; }
 
 .col-pub-8 { -webkit-box-flex: 0; -ms-flex: 0 0 33.28%; flex: 0 0 33.28%; max-width: 33.28%; }
 

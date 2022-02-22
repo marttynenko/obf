@@ -72,33 +72,65 @@
   align-items: center;
 }
 
+.col-mus-6 {
+  flex: 0 0 24.96%;
+  max-width: 24.96%;
+}
+.col-mus-7 {
+  flex: 0 0 29.12%;
+  max-width: 29.12%;
+}
 .col-mus-8 {
   flex: 0 0 33.28%;
   max-width: 33.28%;
+}
+
+.col-mus-11 {
+  flex: 0 0 45.76%;
+  max-width: 45.76%;
 }
 .col-mus-16 {
   flex: 0 0 66.56%;
   max-width: 66.56%;
 }
+.col-mus-18 {
+  flex: 0 0 74.88%;
+  max-width: 74.88%;
+}
 
-
+@media (max-width: 1260px) {
+  .col-musl-11 {
+    flex: 0 0 45.76%;
+    max-width: 45.76%;
+  }
+}
 .museum-history {
+  padding-top: 80px;
   &-row {
     // display: flex;
     // flex-wrap: wrap;
     align-items: center;
-    // margin-right: -15px;
-    // margin-left: -15px;
+    margin-bottom: 80px;
   }
   &-title {
     @include fz(54);
     line-height: 1.1;
-    margin-bottom: 135px;
+    margin-bottom: 80px;
+    @media (max-width: 1440px) {
+      @include fz(42);
+    }
+  }
+  &-text {
+    max-width: 400px;
+    @media (max-width: 1440px) {
+      @include fz(18);
+      margin-bottom: 32px;
+    }
   }
   &-info {
     display: inline-block;
     position: relative;
-    z-index:2;
+    z-index: 2;
     @include fz(22);
     font-weight: 1.45;
   }

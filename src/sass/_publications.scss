@@ -1,0 +1,138 @@
+.col-pub-8 {
+  flex: 0 0 33.28%;
+  max-width: 33.28%;
+}
+.col-pub-16 {
+  flex: 0 0 66.56%;
+  max-width: 66.56%;
+}
+
+.publication-preview {
+  display: block;
+  padding-bottom: 80px;
+  border-bottom: 2px solid rgba(#fff, 0.15);
+  margin-bottom: 80px;
+  color: #FFF;
+
+  &-names {
+    @include fz(28);
+    line-height: 1.35;
+    color: $primary;
+    margin-bottom: 32px;
+    @media (max-width: 1260px) {
+      @include fz(24);
+    }
+  }
+  &-article {
+    @include fz(54);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    @media (max-width: 1260px) {
+      @include fz(42);
+    }
+  }
+  
+  &-year {
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    @include fz(28);
+    @media (max-width: 1260px) {
+      @include fz(24);
+    }
+  }
+  &-type {
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+    color: $primary;
+  }
+  &-icon {
+    position: absolute;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    stroke: $primary;
+    stroke-width: 2;
+    fill: none;
+    transform: scale(0.75);
+    top: 7px;
+    right: -27px;
+    transition: stroke 0.3s;
+  }
+  &-img {
+    text-align: end;
+
+    img {
+      margin: 0 0 0 auto;
+    }
+  }
+
+  &:hover {
+    color: $primary;
+
+    .publication-preview-icon {
+      stroke: #FFF;
+    }
+  }
+}
+
+.publication-item {
+  display: block;
+  padding-right: 12.5%;
+  padding-bottom: 80px;
+  margin-bottom: 80px;
+  border-bottom: 2px solid rgba(#fff, 0.15);
+  color: #FFF;
+  @include fz(28);
+  line-height: 1.35;
+
+  &-names {
+    color: $primary;
+    margin-bottom: 32px;
+    
+  }
+  &-article {
+    // color: #ffffff;
+    font-weight: 1.35;
+    margin-bottom: 32px;
+  }
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-year {
+    color: #ffffff;
+  }
+  &-type {
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+    color: $primary;
+  }
+  &-icon {
+    position: absolute;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    stroke: $primary;
+    stroke-width: 2;
+    fill: none;
+    transform: scale(0.75);
+    top: 7px;
+    right: -27px;
+    transition: stroke 0.3s;
+  }
+
+  &:hover {
+    color: $primary;
+
+    .publication-item-icon {
+      stroke: #FFF;
+    }
+  }
+
+  @media (max-width: 1260px) {
+    @include fz(24);
+  }
+}
