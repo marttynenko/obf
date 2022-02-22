@@ -191,8 +191,11 @@
   }
 }
 .contacts {
-  padding-right: 130px;
-
+  // padding-right: 130px;
+  width: 65%;
+  @media (max-width: 1260px) {
+    width: 100%;
+  }
   &-tab {
     display: none;
     &-title {
@@ -263,6 +266,9 @@
   @media (max-width: 1260px) {
     height: 316px;
   }
+  @media (max-width: 1024px) {
+    height: 400px;
+  }
   &-full {
     position: absolute;
     // background-color: black;
@@ -319,14 +325,20 @@
 }
 .page-active-yellow:focus {
   color: #97b446;
-  &:hover {
-    color: #97b446;
-  }
+}
+.page-active-yellow:hover {
+  color: #97b446;
 }
 .page-btn-green:focus {
   color: #268e80;
 }
+.page-btn-green:hover {
+  color: #268e80;
+}
 .page-btn-blue:focus {
+  color: #4590ba;
+}
+.page-btn-blue:hover {
   color: #4590ba;
 }
 [class*="ymaps-2"][class*="-ground-pane"] {
@@ -338,4 +350,13 @@
 
 .contacts-tab-contant {
   display: none;
+}
+.contacts-tab-contant-info {
+  margin-bottom: 15px;
+  a {
+    color: #ffffff;
+    &:hover {
+      color: #f39e52;
+    }
+  }
 }
