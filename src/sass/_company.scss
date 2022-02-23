@@ -1,0 +1,155 @@
+.ui-page {
+  padding-top: 0;
+}
+.ui-wrapper {
+  padding-top: 0;
+}
+.ui-header {
+  padding-top: 100px;
+  background-image: url(../images/bgs/company-header.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.ui-row {
+  height: 960px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 50px;
+  @media (max-width: 1440px) {
+    height: 650px;
+  }
+}
+.ui-top-screen {
+  &-title {
+    max-width: 920px;
+  }
+  &-text {
+    max-width: 675px;
+    @include fz(28);
+    margin-bottom: 44px;
+  }
+}
+
+.company-upper {
+  text-transform: uppercase;
+}
+// Company style
+.company {
+  &-top-screen {
+    &-title {
+      max-width: 1200px;
+      @include fz(110);
+    }
+  }
+  &-pos {
+    background: $primary;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    &-top {
+      max-width: 960px;
+      color: #222e3f;
+      @include fz(400);
+      line-height: 1;
+      margin-bottom: 200px;
+      @media (max-width: 1260px) {
+        @include fz(300);
+      }
+      &-subtitle {
+        @include fz(80);
+        font-weight: 700;
+        line-height: 1;
+        @media (max-width: 1260px) {
+          @include fz(52);
+        }
+      }
+    }
+    &-middle {
+      margin-bottom: 100px;
+      &-item {
+        max-width: 480px;
+        @include fz(22);
+        line-height: 1.45;
+        color: #ffffff;
+        @media (max-width: 1260px) {
+          @include fz(18);
+        }
+      }
+      &-top {
+        @include fz(110);
+        line-height: 1;
+        @media (max-width: 1260px) {
+          @include fz(90);
+        }
+      }
+    }
+    &-bottom {
+      &-item {
+        @include fz(54);
+        color: #ffffff;
+        @media (max-width: 1260px) {
+          @include fz(42);
+        }
+      }
+      &-subtitle {
+        @include fz(18);
+        @media (max-width: 1260px) {
+          @include fz(18);
+        }
+      }
+    }
+  }
+  &-purpose {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    &-item {
+      margin-bottom: 100px;
+      max-width: 920px;
+      &-title {
+        @include fz(256);
+        @media (max-width: 1260px) {
+          @include fz(200);
+        }
+      }
+      &-text {
+        @include fz(42);
+        color: $primary;
+        @media (max-width: 1260px) {
+          @include fz(32);
+        }
+      }
+    }
+  }
+  &-acs {
+    background: #2f3e53;
+    padding-top: 80px;
+    padding-bottom: 120px;
+
+    &-title {
+      @include fz(54);
+      color: $primary;
+      line-height: 1.1;
+      margin-bottom: 80px;
+      max-width: 470px;
+    }
+    &-lineup {
+      &-title {
+        @include fz(28);
+        font-weight: 700;
+        margin-bottom: 60px;
+        margin-left: -15px;
+      }
+      &-item {
+        max-width: 450px;
+        margin-bottom: 60px;
+      }
+      &-img {
+        margin-right: 12px;
+      }
+      &-text {
+        max-width: 340px;
+      }
+    }
+  }
+}

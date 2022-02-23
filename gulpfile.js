@@ -57,7 +57,7 @@ const compressImages = async () => {
 const copyAll = async () => {
     return src(
         [   
-            './src/scripts',
+            './src/scripts/**/*',
             './src/images/svg/**/*',
             './src/images/*.svg',
             './src/css/**/*',
