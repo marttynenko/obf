@@ -1,3 +1,5 @@
+// const { on } = require("gulp");
+
 //табы
 $(document).ready(function () {
   $(".page-btn").click(function (e) {
@@ -29,16 +31,42 @@ function init() {
     center: [55.63393951216643, 37.44033897875346],
     zoom: 9,
   };
-
+  $(".map-zoom-in").click(function () {
+    // myOptions.zoom = myOptions.zoom + 1;
+    map.setZoom(myOptions.zoom + 1, { duration: 300 });
+    myOptions.zoom += 1;
+  });
+  $(".map-zoom-up").click(function () {
+    // myOptions.zoom = myOptions.zoom + 1;
+    // if()
+    map.setZoom(myOptions.zoom - 1, { duration: 300 });
+    myOptions.zoom -= 1;
+  });
   let map = new ymaps.Map("map", myOptions);
+  function open() {
+    let fullscreenControl = new ymaps.control.FullscreenControl();
+    map.controls.add(fullscreenControl);
+    fullscreenControl.enterFullscreen();
+  }
+  var fullscreenControl = new ymaps.control.FullscreenControl();
+  map.controls.add(fullscreenControl);
+  let isFull = false;
+  $(".map-subtract").on("click", function () {
+    isFull = !isFull;
 
+    if (isFull == false) {
+      fullscreenControl.exitFullscreen();
+    } else {
+      fullscreenControl.enterFullscreen();
+    }
+  });
   var place;
   var pointer = [
-    [59.471691, 40.064734],
     [55.63393951216643, 37.44033897875346],
-    [53.1, 27.56667],
+    [54.739259, 35.996176],
+    [59.471691, 40.064734],
     [56.48046, 43.624445],
-    [35.624988, 31.415514],
+    [59.472607, 40.065338],
   ];
 
   for (i = 0; i < pointer.length; ++i) {

@@ -963,23 +963,21 @@ CERTS --- */
 
 .page-buttons { margin-bottom: 80px; }
 
-.page-btn { display: inline-block; margin-right: 15px; border: 1px dashed rgba(255, 255, 255, 0.5); border-radius: 50px; font-size: 28px; font-size: 1.75rem; padding: 16px 20px; color: #FFF; }
+.page-btn { display: inline-block; margin-right: 15px; margin-bottom: 15px; border: 1px dashed rgba(255, 255, 255, 0.5); border-radius: 50px; font-size: 28px; font-size: 1.75rem; padding: 16px 20px; color: #FFF; }
 
 .page-btn .page-btn-first { display: inline-block; }
 
 .page-btn .page-btn-second { display: none; }
 
+.page-btn svg { width: 24px; height: 24px; margin-right: 7px; }
+
 .page-btn-active { border: 1px solid #ffffff; color: #F08322; }
 
-.page-btn-active .page-btn-first { display: none; }
-
-.page-btn-active .page-btn-second { display: inline-block; }
-
-.page-btn-img { display: -webkit-box; display: -ms-flexbox; display: flex; }
+.page-btn-img { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
 .page-btn-img img { margin-right: 8px; }
 
-.contacts { width: 65%; }
+.contacts { max-width: 310px; }
 
 @media (max-width: 1260px) { .contacts { width: 100%; } }
 
@@ -1005,7 +1003,7 @@ CERTS --- */
 
 .contacts-tab-toggle-title { font-size: 14px; font-size: 0.875rem; font-weight: 700; }
 
-.contacts-tab-toggle { display: inline-block; margin-bottom: 15px; border-bottom: 1px dashed #F08322; }
+.contacts-tab-toggle { margin-bottom: 15px; border-bottom: 1px dashed #F08322; }
 
 .contacts-tab-toggle-active { border-bottom: none; }
 
@@ -1039,15 +1037,9 @@ CERTS --- */
 
 .ymaps-2-1-79-controls__control_toolbar { display: none !important; }
 
-.page-active-yellow:focus { color: #97b446; }
-
 .page-active-yellow:hover { color: #97b446; }
 
-.page-btn-green:focus { color: #268e80; }
-
 .page-btn-green:hover { color: #268e80; }
-
-.page-btn-blue:focus { color: #4590ba; }
 
 .page-btn-blue:hover { color: #4590ba; }
 
@@ -1060,6 +1052,38 @@ CERTS --- */
 .contacts-tab-contant-info a { color: #ffffff; }
 
 .contacts-tab-contant-info a:hover { color: #f39e52; }
+
+.map-zoom-in { position: absolute; right: 55px; top: 50%; -webkit-transform: translate(0, -50%); -ms-transform: translate(0, -50%); transform: translate(0, -50%); width: 40px; height: 40px; z-index: 9999999999999999999; cursor: pointer; }
+
+.map-zoom-up { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; position: absolute; right: 55px; top: 60%; -webkit-transform: translate(0, -50%); -ms-transform: translate(0, -50%); transform: translate(0, -50%); width: 40px; height: 40px; z-index: 9999999999999999999; border: 1px solid #F08322; cursor: pointer; }
+
+.map-zoom-img { position: relative; }
+
+.map-zoom-img img { position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+
+.col-contacts-relative { position: relative; }
+
+.map-subtract { position: absolute; right: 55px; top: 50px; z-index: 9999999999999; cursor: pointer; }
+
+.contacts-sprite { -webkit-filter: brightness(7); filter: brightness(7); }
+
+.page-btn:hover * .contacts-sprite { -webkit-filter: brightness(1); filter: brightness(1); -webkit-transition: 0.3s ease, border 0.3s; -o-transition: 0.3s ease, border 0.3s; transition: 0.3s ease, border 0.3s; }
+
+.page-btn-blue:focus { color: #4590ba; }
+
+.page-btn-green:focus { color: #268e80; }
+
+.page-active-yellow:focus { color: #97b446; }
+
+.page-btn-green:focus * .contacts-sprite { -webkit-filter: brightness(1); filter: brightness(1); }
+
+.page-active-yellow:focus * .contacts-sprite { -webkit-filter: brightness(1); filter: brightness(1); }
+
+.page-btn-blue:focus * .contacts-sprite { -webkit-filter: brightness(1); filter: brightness(1); }
+
+.page-btn-orange:focus * .contacts-sprite { -webkit-filter: brightness(1); filter: brightness(1); }
+
+.page-btn-logo:focus * .contacts-sprite { -webkit-filter: brightness(1); filter: brightness(1); }
 
 .gallery-group { margin-bottom: 100px; }
 
