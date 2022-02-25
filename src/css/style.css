@@ -534,6 +534,18 @@ header.header.fs-opened { position: fixed; -webkit-transform: translate3d(0px, 0
 
 header.header.fs-opened .main-menu { opacity: 0; visibility: hidden; }
 
+.hidden { overflow: hidden; }
+
+.preloader { position: fixed; top: 0; left: 0; background: #222E3F; width: 100vw; height: 100vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; z-index: 100; overflow: hidden; }
+
+.disppear { -webkit-animation: vanish 1s forwards; animation: vanish 1s forwards; }
+
+@-webkit-keyframes vanish { 100% { opacity: 0;
+    visibility: hidden; } }
+
+@keyframes vanish { 100% { opacity: 0;
+    visibility: hidden; } }
+
 .wrapper { padding-top: 80px; }
 
 .logo, a.logo { margin-right: 40px; color: #FFF; font-size: 28px; font-size: 1.75rem; }
