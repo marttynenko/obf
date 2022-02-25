@@ -66,6 +66,31 @@ if (document.querySelector(".museum")) {
   window.addEventListener('scroll',Museum.scroll,false)
 }
 
+const history = {
+  headerHeight: 0,
+
+  updateHeight: () => {
+    this.headerHeight = document.querySelector('.history-header').clientHeight
+  },
+
+  scroll: () => {
+    if (window.scrollY >= this.headerHeight) {
+      return document.querySelector("#header").classList.remove("header-transparent");
+    }
+    document.querySelector("#header").classList.add("header-transparent");
+  }
+}
+
+if (document.querySelector(".history")) {
+  document.querySelector(".wrapper").classList.add("wrapper-history");
+  document.querySelector("#header").classList.add("header-transparent");
+
+  history.updateHeight();
+
+  window.addEventListener('resize', history.updateHeight, false);
+
+  window.addEventListener('scroll', history.scroll, false);
+}
 
 // if (window.pageYOffset > 0) {
 //   let wrap = document.querySelector(".wrapper");
