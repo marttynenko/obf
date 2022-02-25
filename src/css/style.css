@@ -2142,7 +2142,7 @@ header.header-transparent { background: transparent; }
 
 #middle { padding-bottom: 0; }
 
-footer { display: none; }
+.footer-page-404 { display: none; }
 
 .page-page-404 { padding-top: 0; }
 
