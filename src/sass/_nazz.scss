@@ -28,14 +28,17 @@
     &-txt {
       margin-bottom: 35px;
       @include fz(22);
+
       @media (max-width: 1260px) {
         @include fz(18);
       }
     }
+
     &-data {
       @include fz(22);
       color: $primary;
     }
+
     &-circle {
       float: right;
       img {
@@ -177,15 +180,10 @@
       height: 24px;
       margin-right: 7px;
     }
-    &-active {
+    &-active,
+    &.selected {
       border: 1px solid #ffffff;
       color: $primary;
-      // .page-btn-first {
-      //   display: none;
-      // }
-      // .page-btn-second {
-      //   display: inline-block;
-      // }
     }
     &-img {
       display: flex;
@@ -196,6 +194,7 @@
     }
   }
 }
+
 .contacts {
   // padding-right: 130px;
   // width: 65%;
@@ -205,6 +204,9 @@
   }
   &-tab {
     display: none;
+    &.selected {
+      display: block;
+    }
     &-title {
       margin-bottom: 40px;
       @include fz(28);
@@ -254,11 +256,17 @@
   border-bottom: none;
 }
 .contacts-tab-contant {
-  // display: none;
-}
-.contacts-tab-contant-active {
   display: none;
+  padding-top: 15px;
+  overflow: hidden;
+  transition: all 0.9s;
 }
+
+.contacts-tab-contant-active {
+  display: block;
+  transition: all 0.9s;
+}
+
 .contacts-tab-inner {
   margin-bottom: 40px;
 }
@@ -349,9 +357,6 @@
   /* Chrome 19+ & Safari 6+ */
 }
 
-.contacts-tab-contant {
-  display: none;
-}
 .contacts-tab-contant-info {
   margin-bottom: 15px;
   a {
@@ -417,7 +422,7 @@
 }
 .page-btn:hover * .contacts-sprite {
   filter: brightness(1);
-  transition: 0.3s ease, border 0.3s;
+  transition: 0.1s ease, border 0.3s;
 }
 
 .page-btn-blue:focus {
@@ -449,3 +454,24 @@
   // color: #4590ba;
   filter: brightness(1);
 }
+
+// html .contacts-tab-toggle {
+//   width: 180px;
+//   height: 30px;
+//   // background: red;
+//   border: 1px solid black;
+// }
+
+// html .contacts-tab-contant {
+//   overflow: hidden;
+//   width: 180px;
+//   height: 0;
+//   background: blue;
+//   border: 1px solid black;
+//   transition: all 0.9s;
+// }
+
+// html .contacts-tab-contant-active {
+//   height: 80px;
+//   transition: all 0.9s;
+// }
