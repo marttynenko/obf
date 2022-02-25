@@ -1418,15 +1418,27 @@ CERTS --- */
 
 @media (max-width: 1260px) { .publication-item { font-size: 24px; font-size: 1.5rem; } }
 
+.ui-header { background-image: url(../images/bgs/company-header.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
+
+.ui-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-top: 300px; padding-bottom: 49px; min-height: 100vh; max-height: 1500px; }
+
+.museum-hide { display: none; }
+
+@media (max-width: 1260px) { .museum-hide { display: inline-block; } }
+
+.ui-top-screen-title { max-width: 920px; line-height: 0.9; }
+
+.ui-top-screen-text { max-width: 675px; font-size: 28px; font-size: 1.75rem; margin-bottom: 33px; line-height: 1.38; }
+
 .ui-page { padding-top: 0; }
 
 .ui-wrapper { padding-top: 0; }
 
-.ui-header { padding-top: 100px; background-image: url(../images/bgs/company-header.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
+.ui-top-header { background-image: url(../images/bgs/company-header.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
 
-.ui-row { height: 960px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-bottom: 50px; }
+.company-row { min-height: 100vh; max-height: 1500px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-top: 300px; padding-bottom: 49px; }
 
-@media (max-width: 1440px) { .ui-row { height: 650px; } }
+@media (max-width: 1440px) { .company-row { height: 650px; } }
 
 .ui-top-screen-title { max-width: 920px; }
 
@@ -1487,6 +1499,14 @@ CERTS --- */
 .company-acs-lineup-img { margin-right: 12px; }
 
 .company-acs-lineup-text { max-width: 340px; }
+
+.company-chart { margin-bottom: 200px; padding-top: 80px; }
+
+.company-fs { padding-top: 80px; padding-bottom: 120px; background: #2f3e53; }
+
+.company .fs-menu-row { -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; margin-right: 0; }
+
+.company .fs-menu-col { -webkit-box-flex: 0; -ms-flex: 0 0 11.95%; flex: 0 0 11.95%; max-width: 11.95%; }
 
 /* MFP
 ---------------------------*/
