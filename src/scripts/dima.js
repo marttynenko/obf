@@ -102,7 +102,7 @@ if (document.querySelector(".page-404")) {
 if (document.querySelector(".page-404")) {
   document.querySelector(".footer").classList.add("footer-page-404");
 }
-
+// График
 const ctx = document.getElementById("company_chart").getContext("2d");
 const myChart = new Chart(ctx, {
   type: "bar",

@@ -1,0 +1,47 @@
+.enterprises {
+  .ui-side-title {
+    color: $bgc;
+  }
+  .ui-tags-inline {
+    margin-right: 0;
+  }
+  &-info {
+    padding-top: 80px;
+  }
+  &-block {
+    margin-bottom: 120px;
+    padding-top: 80px;
+  }
+  &-num {
+    &-item {
+      @include fz(28);
+      margin-bottom: 80px;
+      @media (max-width: 1440px) {
+        @include fz(24);
+      }
+      &-top {
+        @include fz(110);
+        color: $secondary;
+        @media (max-width: 1440px) {
+          @include fz(90);
+        }
+      }
+    }
+  }
+  &-proud {
+    background: $secondary;
+    color: #fff;
+    padding-bottom: 120px;
+
+    &-item {
+      max-width: 550px;
+      margin-bottom: 80px;
+    }
+    &-img {
+      margin-bottom: 25px;
+    }
+    &-text {
+      @include fz(22);
+    }
+  }
+}

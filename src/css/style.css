@@ -1520,6 +1520,30 @@ CERTS --- */
 
 @media (max-width: 1440px) { .company .fs-menu-col:last-child .fs-menu-btn { display: none; } }
 
+.enterprises .ui-side-title { color: #222E3F; }
+
+.enterprises .ui-tags-inline { margin-right: 0; }
+
+.enterprises-info { padding-top: 80px; }
+
+.enterprises-block { margin-bottom: 120px; padding-top: 80px; }
+
+.enterprises-num-item { font-size: 28px; font-size: 1.75rem; margin-bottom: 80px; }
+
+@media (max-width: 1440px) { .enterprises-num-item { font-size: 24px; font-size: 1.5rem; } }
+
+.enterprises-num-item-top { font-size: 110px; font-size: 6.875rem; color: #268E80; }
+
+@media (max-width: 1440px) { .enterprises-num-item-top { font-size: 90px; font-size: 5.625rem; } }
+
+.enterprises-proud { background: #268E80; color: #fff; padding-bottom: 120px; }
+
+.enterprises-proud-item { max-width: 550px; margin-bottom: 80px; }
+
+.enterprises-proud-img { margin-bottom: 25px; }
+
+.enterprises-proud-text { font-size: 22px; font-size: 1.375rem; }
+
 /* MFP
 ---------------------------*/
 .mfp-bg { top: 0; left: 0; width: 100%; height: 100%; z-index: 1042; overflow: hidden; position: fixed; background: #0b0b0b; opacity: .8; }
