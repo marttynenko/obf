@@ -96,10 +96,13 @@ if (document.querySelector(".history")) {
 if (document.querySelector(".page-404")) {
   document.querySelector(".wrapper").classList.add("wrapper-page-404");
   document.querySelector("#header").classList.add("header-transparent");
+  document.querySelector(".footer").classList.add("footer-page-404");
 }
 
-if (document.querySelector(".page-404")) {
-  document.querySelector(".footer").classList.add("footer-page-404");
+if (document.querySelector(".stub-page")) {
+  document.querySelector(".wrapper").classList.add("wrapper-stub-page");
+  document.querySelector("#header").classList.add("header-stub-page");
+  document.querySelector(".footer").classList.add("footer-stub-pag");
 }
 
 // if (window.pageYOffset > 0) {

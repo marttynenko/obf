@@ -1,0 +1,165 @@
+.wrapper-stub-page {
+  padding-top: 0;
+}
+
+.header-stub-page {
+  .logo-img, a.logo-img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .logo-img, a.logo-img {
+    max-width: 100%;
+  }
+}
+
+.page-stub-page {
+  padding-top: 0;
+}
+
+.header-stub-page {
+  .col-layout-wide-header {
+    display: none;
+  }
+
+  .col-layout-thin-header {
+    .ux-toggler-menu {
+      display: none;
+    }
+  }
+}
+
+.stub-page-top-screen-title {
+  font-weight: 600;
+  @include fz(100);
+}
+
+.stub-page-top-screen-text {
+  font-weight: 500;
+  @include fz(35);
+}
+
+.stub-page-top-screen {
+  padding-bottom: 50px;
+}
+
+.stub-page-bottom-screen img{
+  max-width: none;
+}
+
+.stub-page-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 300px;
+  min-height: 100vh;
+  max-height: 1500px;
+}
+
+.footer-stub-pag{
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .stub-page-row {
+    flex-direction: row;
+    padding-top: 0;
+  }
+
+  .stub-page-bottom-screen img{
+    max-width: none;
+  }
+
+  .stub-page-top-screen-title {
+    font-weight: 600;
+    @include fz(60);
+  }
+
+  .stub-page-top-screen-text {
+    font-weight: 500;
+    @include fz(24);
+  }
+}
+
+@media (max-width: 728px) {
+  .stub-page-row {
+    flex-direction: column;
+    padding-top: 130px;
+  }
+
+  .stub-page-bottom-screen img{
+    max-width: 100%;
+  }
+
+  .stub-page-top-screen {
+    padding-bottom: 120px;
+  }
+
+  .stub-page-top-screen-title {
+    font-weight: 600;
+    @include fz(60);
+  }
+
+  .stub-page-top-screen-text {
+    font-weight: 500;
+    @include fz(24);
+  }
+}
+
+@media (max-width: 568px) {
+  .inner, .container {
+    padding: 0 30px;
+  }
+
+  .stub-page-top-screen {
+    padding-bottom: 30px;
+  }
+
+  .stub-page-row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .stub-page-row{
+    padding-top: 130px;
+  }
+
+  .stub-page-top-screen-title {
+    font-weight: 600;
+    @include fz(24);
+  }
+
+  .stub-page-top-screen-text {
+    font-weight: 500;
+    @include fz(16);
+  }
+}
+
+@media (max-width: 320px) {
+  .header-stub-page {
+    .logo-img, a.logo-img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .logo-img, a.logo-img {
+      max-width: 100%;
+    }
+  }
+
+  .stub-page-row{
+    flex-direction: column;
+    padding-top: 130px;
+  }
+
+  .stub-page-top-screen-title {
+    font-weight: 600;
+    @include fz(24);
+  }
+
+  .stub-page-top-screen-text {
+    font-weight: 500;
+    @include fz(16);
+  }
+}

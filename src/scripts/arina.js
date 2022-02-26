@@ -1,3 +1,4 @@
+// preloader for pages
 const preloader = document.querySelector('.preloader');
 const scrollbar = document.querySelector('.hidden');
 
