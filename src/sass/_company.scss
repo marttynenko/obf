@@ -146,14 +146,14 @@
       max-width: 920px;
       &-title {
         @include fz(256);
-        @media (max-width: 1260px) {
+        @media (max-width: 1440px) {
           @include fz(200);
         }
       }
       &-text {
         @include fz(42);
         color: $primary;
-        @media (max-width: 1260px) {
+        @media (max-width: 1440px) {
           @include fz(32);
         }
       }
@@ -204,9 +204,16 @@
     margin-right: 0;
   }
   .fs-menu-col {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 11.95%;
-    flex: 0 0 11.95%;
-    max-width: 11.95%;
+    // -webkit-box-flex: 0;
+    // -ms-flex: 0 0 11.95%;
+    // flex: 0 0 11.95%;
+    // max-width: 11.95%;
+    @media (max-width: 1440px) {
+      &:last-child {
+        .fs-menu-btn {
+          display: none;
+        }
+      }
+    }
   }
 }

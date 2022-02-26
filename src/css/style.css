@@ -1482,11 +1482,11 @@ CERTS --- */
 
 .company-purpose-item-title { font-size: 256px; font-size: 16rem; }
 
-@media (max-width: 1260px) { .company-purpose-item-title { font-size: 200px; font-size: 12.5rem; } }
+@media (max-width: 1440px) { .company-purpose-item-title { font-size: 200px; font-size: 12.5rem; } }
 
 .company-purpose-item-text { font-size: 42px; font-size: 2.625rem; color: #F08322; }
 
-@media (max-width: 1260px) { .company-purpose-item-text { font-size: 32px; font-size: 2rem; } }
+@media (max-width: 1440px) { .company-purpose-item-text { font-size: 32px; font-size: 2rem; } }
 
 .company-acs { background: #2f3e53; padding-top: 80px; padding-bottom: 120px; }
 
@@ -1506,7 +1506,7 @@ CERTS --- */
 
 .company .fs-menu-row { -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; margin-right: 0; }
 
-.company .fs-menu-col { -webkit-box-flex: 0; -ms-flex: 0 0 11.95%; flex: 0 0 11.95%; max-width: 11.95%; }
+@media (max-width: 1440px) { .company .fs-menu-col:last-child .fs-menu-btn { display: none; } }
 
 /* MFP
 ---------------------------*/
