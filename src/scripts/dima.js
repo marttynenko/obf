@@ -65,8 +65,43 @@ if (document.querySelector(".museum")) {
 
   window.addEventListener("scroll", Museum.scroll, false);
 }
+// 404
+const history = {
+  headerHeight: 0,
 
-// График  company.html
+  updateHeight: () => {
+    this.headerHeight = document.querySelector(".history-header").clientHeight;
+  },
+
+  scroll: () => {
+    if (window.scrollY >= this.headerHeight) {
+      return document
+        .querySelector("#header")
+        .classList.remove("header-transparent");
+    }
+    document.querySelector("#header").classList.add("header-transparent");
+  },
+};
+
+if (document.querySelector(".history")) {
+  document.querySelector(".wrapper").classList.add("wrapper-history");
+  document.querySelector("#header").classList.add("header-transparent");
+
+  history.updateHeight();
+
+  window.addEventListener("resize", history.updateHeight, false);
+
+  window.addEventListener("scroll", history.scroll, false);
+}
+
+if (document.querySelector(".page-404")) {
+  document.querySelector(".wrapper").classList.add("wrapper-page-404");
+  document.querySelector("#header").classList.add("header-transparent");
+}
+
+if (document.querySelector(".page-404")) {
+  document.querySelector(".footer").classList.add("footer-page-404");
+}
 
 const ctx = document.getElementById("company_chart").getContext("2d");
 const myChart = new Chart(ctx, {

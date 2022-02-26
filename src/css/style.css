@@ -534,6 +534,18 @@ header.header.fs-opened { position: fixed; -webkit-transform: translate3d(0px, 0
 
 header.header.fs-opened .main-menu { opacity: 0; visibility: hidden; }
 
+.hidden { overflow: hidden; }
+
+.preloader { position: fixed; top: 0; left: 0; background: #222E3F; width: 100vw; height: 100vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; z-index: 100; overflow: hidden; }
+
+.disppear { -webkit-animation: vanish 1s forwards; animation: vanish 1s forwards; }
+
+@-webkit-keyframes vanish { 100% { opacity: 0;
+    visibility: hidden; } }
+
+@keyframes vanish { 100% { opacity: 0;
+    visibility: hidden; } }
+
 .wrapper { padding-top: 80px; }
 
 .logo, a.logo { margin-right: 40px; color: #FFF; font-size: 28px; font-size: 1.75rem; }
@@ -2015,3 +2027,165 @@ button.mfp-close:hover:after { -webkit-transform: rotate(-135deg); -ms-transform
 @media (max-width: 420px) { h1, .h1 { font-size: 30px; font-size: 1.875rem; }
   h2, .h2 { font-size: 25px; font-size: 1.5625rem; }
   h3, .h3 { font-size: 22px; font-size: 1.375rem; } }
+
+header.header-transparent { background: transparent; }
+
+.history-header { background-image: url(../images/bgs/bg-history-header.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
+
+.history-circle-circle { height: 170px; width: 170px; border-radius: 170px; gap: 8px; background: #268E80; padding: 41px; }
+
+.ui-page { padding-top: 0; }
+
+.ui-wrapper { padding-top: 0; }
+
+.ui-row-history { min-height: 100vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding-bottom: 50px; }
+
+.first-block { padding-top: 100px; }
+
+.second-block { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.history-page-buttons .page-btn:hover { color: #268E80; }
+
+.history-page-buttons .page-btn:hover .circle-link-icon.history { fill: #268E80; }
+
+.history-page-buttons .page-btn.active { color: #268E80; }
+
+.history-page-buttons .page-btn.active .circle-link-icon.history { fill: #268E80; }
+
+.history-circle:after { border: 1px solid #268E80; }
+
+.ui-top-screen-title { max-width: 920px; }
+
+.ui-top-screen-text { max-width: 1035px; font-size: 42px; font-size: 2.625rem; margin-bottom: 44px; }
+
+.history-upper { text-transform: uppercase; }
+
+.history-top-screen-title { max-width: 1200px; font-size: 140px; font-size: 8.75rem; }
+
+.history-pos { background: #F08322; padding-top: 200px; padding-bottom: 200px; }
+
+.history-pos-top { max-width: 960px; color: #222e3f; font-size: 400px; font-size: 25rem; line-height: 1; margin-bottom: 200px; }
+
+@media (max-width: 1260px) { .history-pos-top { font-size: 300px; font-size: 18.75rem; } }
+
+.history-pos-top-subtitle { font-size: 80px; font-size: 5rem; font-weight: 700; line-height: 1; }
+
+@media (max-width: 1260px) { .history-pos-top-subtitle { font-size: 52px; font-size: 3.25rem; } }
+
+.history-pos-middle { margin-bottom: 100px; }
+
+.history-pos-middle-item { max-width: 480px; font-size: 22px; font-size: 1.375rem; line-height: 1.45; color: #ffffff; }
+
+@media (max-width: 1260px) { .history-pos-middle-item { font-size: 18px; font-size: 1.125rem; } }
+
+.history-pos-middle-top { font-size: 110px; font-size: 6.875rem; line-height: 1; }
+
+@media (max-width: 1260px) { .history-pos-middle-top { font-size: 90px; font-size: 5.625rem; } }
+
+.history-pos-bottom-item { font-size: 54px; font-size: 3.375rem; color: #ffffff; }
+
+@media (max-width: 1260px) { .history-pos-bottom-item { font-size: 42px; font-size: 2.625rem; } }
+
+.history-pos-bottom-subtitle { font-size: 18px; font-size: 1.125rem; }
+
+@media (max-width: 1260px) { .history-pos-bottom-subtitle { font-size: 18px; font-size: 1.125rem; } }
+
+.history-purpose { padding-top: 200px; padding-bottom: 200px; }
+
+.history-purpose-item { margin-bottom: 100px; max-width: 920px; }
+
+.history-purpose-item-title { font-size: 256px; font-size: 16rem; }
+
+@media (max-width: 1260px) { .history-purpose-item-title { font-size: 200px; font-size: 12.5rem; } }
+
+.history-purpose-item-text { font-size: 42px; font-size: 2.625rem; color: #F08322; }
+
+@media (max-width: 1260px) { .history-purpose-item-text { font-size: 32px; font-size: 2rem; } }
+
+.history-acs { background: #2f3e53; padding-top: 80px; padding-bottom: 120px; }
+
+.history-acs-title { font-size: 54px; font-size: 3.375rem; color: #F08322; line-height: 1.1; margin-bottom: 80px; max-width: 470px; }
+
+.history-acs-lineup-title { font-size: 28px; font-size: 1.75rem; font-weight: 700; margin-bottom: 60px; margin-left: -15px; }
+
+.history-acs-lineup-item { max-width: 450px; margin-bottom: 60px; }
+
+.history-acs-lineup-img { margin-right: 12px; }
+
+.history-acs-lineup-text { max-width: 340px; }
+
+.node-body.history { background: #CCE0DE; }
+
+.history-information { padding-bottom: 156px; }
+
+.ui-tags-list.history li a { color: #268E80; border-color: #268E80; font-size: 42px; font-size: 2.625rem; }
+
+.ui-tags-list.history li a:hover { color: #222E3F; border-color: #222E3F; }
+
+.ui-tags-list.history .acive { color: #222E3F; border: 1px solid #222E3F; }
+
+.history-side-title { font-size: 80px; font-size: 5rem; color: #268E80; word-break: break-word; line-height: 1; }
+
+.info { font-size: 22px; font-size: 1.375rem; }
+
+.information-image { padding-bottom: 40px; }
+
+.history-information-list { margin-top: 189px; }
+
+.circle-link-icon.history { width: 24px; height: 24px; margin-right: 8px; stroke: none; fill: white; }
+
+.page-btn-img { -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+@media (max-width: 1260px) { .history-top-screen-title { font-size: 120px; font-size: 7.5rem; }
+  .ui-top-screen-text { font-size: 32px; font-size: 2rem; max-width: 635px; }
+  .ui-tags-list.history li a { font-size: 32px; font-size: 2rem; }
+  .node-inner { padding-right: 14%; }
+  .history-side-title { font-size: 52px; font-size: 3.25rem; padding-bottom: 40px; }
+  .info { font-size: 18px; font-size: 1.125rem; }
+  .information-image span { font-size: 14px; font-size: 0.875rem; }
+  .history-information-list { margin-top: 140px; }
+  .page-btn-img { font-size: 24px; font-size: 1.5rem; }
+  .ui-btn-circle-circle { font-size: 18px; font-size: 1.125rem; }
+  .ui-tags-list.history .ui-tags-link { height: 60px; line-height: 54px; } }
+
+@media (max-width: 1024px) { .second-block { padding-top: 0; }
+  .page-buttons { margin-bottom: 20px; }
+  .page-btn { margin-top: 10px; }
+  .page-btn-img { font-size: 16px; font-size: 1rem; }
+  .history-top-screen-title { font-size: 100px; font-size: 6.25rem; }
+  .ui-tags-list.history li a { font-size: 28px; font-size: 1.75rem; }
+  .node-inner { padding-right: 0; }
+  .node-content-links { margin-top: 0; margin-bottom: 0; }
+  .history-information { padding-bottom: 200px; } }
+
+@media (max-width: 760px) { .first-block { padding-top: 165px; } }
+
+#middle { padding-bottom: 0; }
+
+.footer-page-404 { display: none; }
+
+.page-page-404 { padding-top: 0; }
+
+.wrapper-page-404 { padding-top: 0; }
+
+.page-404-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-top: 300px; padding-bottom: 49px; min-height: 100vh; max-height: 1500px; }
+
+.page-404-hide { display: none; }
+
+@media (max-width: 1260px) { .page-404-hide { display: inline-block; } }
+
+.page-404-top-screen-title { max-width: 920px; line-height: 0.9; }
+
+.page-404-top-screen-text { max-width: 675px; font-size: 28px; font-size: 1.75rem; margin-bottom: 33px; line-height: 1.38; }
+
+.page-404-header { background-image: url(../images/404.png); background-repeat: no-repeat; background-position: bottom; }
+
+.page-404-top-screen-title { font-size: 300px; font-size: 18.75rem; color: #F08322; }
+
+.page-404-top-screen-text { font-size: 54px; font-size: 3.375rem; }
+
+.page-404-circle-circle { height: 170px; width: 170px; border-radius: 170px; gap: 8px; }
+
+@media (max-width: 1260px) { .page-404-circle-circle { height: 130px; width: 130px; } }
+
+@media (max-width: 1024px) { .page-404-header { background-size: contain; } }
