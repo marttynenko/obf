@@ -546,6 +546,24 @@ header.header.fs-opened .main-menu { opacity: 0; visibility: hidden; }
 @keyframes vanish { 100% { opacity: 0;
     visibility: hidden; } }
 
+#cookiePopup { background-color: #F08322; position: fixed; font-size: 14px; width: 320px; height: 210px; max-width: 42.85em; line-height: 1.8em; padding: 2em 1.4em; -webkit-transition: all 0.5s ease-in; -o-transition: all 0.5s ease-in; transition: all 0.5s ease-in; z-index: 99; }
+
+#cookiePopup p { font-weight: 400; font-size: 18px; font-size: 1.125rem; margin-bottom: 23px; }
+
+#cookiePopup button { display: -webkit-box; display: -ms-flexbox; display: flex; background-color: transparent; border: 2px solid #fff; color: #fff; font-weight: 600; font-size: 18px; font-size: 1.125rem; padding: 12px 14px 12px 20px; position: relative; border-radius: 10px; }
+
+#cookiePopup #acceptCookie:hover { background-color: #fff; color: #F08322; }
+
+#cookiePopup #acceptCookie:hover .circle-link-icon.cookie { stroke: #F08322; }
+
+#cookiePopup #acceptCookie .sprite, #cookiePopup #acceptCookie .circle-link-icon.cookie { -webkit-transition: none; -o-transition: none; transition: none; }
+
+#cookiePopup #acceptCookie .circle-link-icon.cookie { margin-left: 45px; width: 24px; height: 24px; fill: none; stroke: #fff; }
+
+.hide { visibility: hidden; bottom: 0; right: 2em; }
+
+.show { visibility: visible; bottom: 2em; right: 2em; }
+
 .wrapper { padding-top: 80px; }
 
 .logo, a.logo { margin-right: 40px; color: #FFF; font-size: 28px; font-size: 1.75rem; }
