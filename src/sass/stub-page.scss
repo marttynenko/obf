@@ -134,9 +134,27 @@
     font-weight: 500;
     @include fz(16);
   }
+
+  .stub-page-bottom-screen {
+    position: relative;
+    right: -70px;
+  }
+
+  .stub-page-bottom-screen img {
+    height: auto;
+    width: 772px;
+  }
 }
 
 @media (max-width: 320px) {
+  .stub-page-bottom-screen {
+    position: static;
+  }
+
+  .stub-page-bottom-screen img {
+    max-width: 100%;
+  }
+
   .header-stub-page {
     .logo-img, a.logo-img {
       height: 40px;

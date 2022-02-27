@@ -34,11 +34,11 @@ header.header-transparent {
   padding-bottom: 50px;
 }
 
-.first-block {
+.ui-top-history {
   padding-top: 100px;
 }
 
-.second-block {
+.ui-bottom-history {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -325,7 +325,7 @@ header.header-transparent {
 }
 
 @media (max-width:1024px) {
-  .second-block {
+  .ui-bottom-history {
     padding-top: 0
   }
 
@@ -364,7 +364,7 @@ header.header-transparent {
 }
 
 @media (max-width: 760px) {
-  .first-block {
+  .ui-top-history {
     padding-top: 165px;
   }
 }
