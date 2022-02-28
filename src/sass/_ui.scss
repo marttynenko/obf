@@ -702,6 +702,18 @@ span.invalid {
 		}
 	}
 
+	&-secondary {
+		.ui-btn-circle {
+			&-circle {
+				background: $secondary;
+			}
+		}
+
+		&:after {
+			border-color: $secondary;
+		}
+	}
+
 	&-fixsize {
 		max-width: 170px;
 
@@ -749,6 +761,15 @@ span.invalid {
 					height: 130px;
 				}
 			}
+		}
+
+		&-fixsize {
+			max-width: 170px;
+
+			.ui-btn-circle-circle {
+				@include fz(18);
+			}
+
 		}
 	}
 

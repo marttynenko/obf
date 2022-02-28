@@ -13,9 +13,6 @@ for (var i = 0; i < btnTitle.length; i++) {
   }
 }
 function initYandexMap() {
-  // let cordsStr = "55.63393951216643, 37.44033897875346";
-  // let num1 = Number(cordsStr.split(",")[0]);
-  // let num2 = Number(cordsStr.split(",")[1]);
   let myOptions = {
     center: [55.63393951216643, 37.44033897875346],
     zoom: 12,
@@ -57,18 +54,15 @@ function initYandexMap() {
     }
   });
 
-  var place;
-  var pointer = [
-    [55.63393951216643, 37.44033897875346],
-    [54.739259, 35.996176],
-    [59.471691, 40.064734],
-    [56.48046, 43.624445],
-    [55.624988, 37.415514],
-  ];
+  const links = document.querySelectorAll(".ux-map-to");
 
-  for (i = 0; i < pointer.length; ++i) {
-    place = new ymaps.Placemark(
-      pointer[i],
+
+  for (i = 0; i < links.length; ++i) {
+    let lat = links[i].dataset.coordinates.split(',')[0]
+    let lng = links[i].dataset.coordinates.split(',')[1]
+
+    let place = new ymaps.Placemark(
+      [lat,lng],
       {},
       {
         iconLayout: "default#image",
@@ -79,8 +73,8 @@ function initYandexMap() {
     map.geoObjects.add(place);
   }
 
-  let arrayBtns = document.querySelectorAll(".ux-map-to");
-  arrayBtns.forEach((element) => {
+  
+  links.forEach((element) => {
     element.addEventListener("click", function () {
       cordsStr = element.dataset.coordinates;
       num1 = Number(cordsStr.split(",")[0]);
@@ -91,10 +85,10 @@ function initYandexMap() {
   });
 }
 
-FARBA.lazyLibraryLoad("//api-maps.yandex.ru/2.1/?lang=ru_RU", "", () => {
-  ymaps.ready(initYandexMap);
-});
-
-
+if (document.querySelector('.contacts-map')) {
+  FARBA.lazyLibraryLoad("//api-maps.yandex.ru/2.1/?lang=ru_RU", "", () => {
+    ymaps.ready(initYandexMap);
+  });
+}
 
 FARBA.tabs(".ux-tabs a");
