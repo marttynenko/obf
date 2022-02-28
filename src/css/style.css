@@ -1520,9 +1520,9 @@ CERTS --- */
 
 @media (max-width: 1440px) { .company .fs-menu-col:last-child .fs-menu-btn { display: none; } }
 
-.enterprises .ui-side-title { color: #222E3F; }
+.enterprises .ui-subtitle { color: #222E3F; }
 
-.enterprises .ui-tags-inline { margin-right: 0; }
+.enterprises-circle { margin-bottom: 40px; }
 
 .enterprises-info { padding-top: 80px; }
 
@@ -1538,11 +1538,63 @@ CERTS --- */
 
 .enterprises-proud { background: #268E80; color: #fff; padding-bottom: 120px; }
 
+.enterprises-proud .ui-subtitle { color: #fff; }
+
 .enterprises-proud-item { max-width: 550px; margin-bottom: 80px; }
 
 .enterprises-proud-img { margin-bottom: 25px; }
 
 .enterprises-proud-text { font-size: 22px; font-size: 1.375rem; }
+
+.enterprises-diplom .ui-subtitle { color: #222E3F; }
+
+.enterprises-contact { background: #222e3f; padding-top: 80px; padding-bottom: 120px; }
+
+.enterprises-contact-container { margin-bottom: 60px; }
+
+.enterprises-contact-adress { font-size: 28px; font-size: 1.75rem; padding-right: 10.86%; }
+
+.enterprises-contact-adress-title { color: #268E80; margin-bottom: 24px; font-weight: 700; }
+
+.enterprises-contact-adress-text { color: #fff; margin-bottom: 24px; }
+
+.enterprises-contact-adress-link { display: block; position: relative; max-width: 336px; padding: 24px 30px; color: #fff; font-size: 24px; font-size: 1.5rem; border: 1px solid #fff; border-radius: 8px; }
+
+.enterprises-contact-adress-link .docs-card-icon { opacity: 1; stroke: #fff; -webkit-transform: translate(0%, 50%); -ms-transform: translate(0%, 50%); transform: translate(0%, 50%); bottom: 50%; right: 30px; -webkit-transition: 0.3s ease; -o-transition: 0.3s ease; transition: 0.3s ease; }
+
+.enterprises-contact-adress-link:hover .docs-card-icon { stroke: #F08322; }
+
+.enterprises-contact .ui-subtitle { color: #268E80; }
+
+.enterprises-contact .node-slider-comm-body { padding-left: 0; max-width: 66.56%; }
+
+.enterprises-contact .node-slider-comm-img { max-width: 33.43%; }
+
+.enterprises-contact .museum-review-position { color: #fff; font-size: 28px; font-size: 1.75rem; margin-bottom: 24px; font-weight: 700; }
+
+.enterprises-contact .museum-review-author { color: #268E80; font-size: 54px; font-size: 3.375rem; margin-bottom: 24px; font-weight: 400; line-height: 1; }
+
+.enterprises-contact .museum-review-txt { font-size: 22px; font-size: 1.375rem; font-weight: 600; color: #fff; }
+
+.enterprises-news { background: #268E80; }
+
+.enterprises-news .ui-side-title { color: #fff; }
+
+.enterprises-news .news-item-date { color: #222E3F; }
+
+.circle-flex { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+
+.enterprises-swipper { position: relative; }
+
+.enterprises-swipper .swiper-slide { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; text-align: left; }
+
+.enterprises-swipper .enterprises-slider-text { padding: 0 24px; }
+
+.enterprises-swipper .ui-tags-inline { margin-right: 0; }
+
+.enterprises-swipper .ui-subtitle { color: #222E3F; }
+
+.node-body { padding-bottom: 0; }
 
 /* MFP
 ---------------------------*/

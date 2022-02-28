@@ -30,6 +30,16 @@
     });
   });
 })();
+// Enterprises.html Слайдер для дипломов
+const swiper = new Swiper(".enterprises-swipper", {
+  loop: true,
+  slidesPerView: 2,
+  autoHeight: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 
 if (document.querySelector(".ui-page")) {
   let wrap = document.querySelector(".wrapper");

@@ -1,9 +1,10 @@
 .enterprises {
-  .ui-side-title {
+  .ui-subtitle {
     color: $bgc;
   }
-  .ui-tags-inline {
-    margin-right: 0;
+
+  &-circle {
+    margin-bottom: 40px;
   }
   &-info {
     padding-top: 80px;
@@ -32,6 +33,9 @@
     background: $secondary;
     color: #fff;
     padding-bottom: 120px;
+    .ui-subtitle {
+      color: #fff;
+    }
 
     &-item {
       max-width: 550px;
@@ -44,4 +48,118 @@
       @include fz(22);
     }
   }
+  &-diplom {
+    .ui-subtitle {
+      color: $bgc;
+    }
+  }
+  &-contact {
+    background: #222e3f;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    &-container {
+      margin-bottom: 60px;
+    }
+
+    &-adress {
+      @include fz(28);
+      padding-right: 10.86%;
+      &-title {
+        color: $secondary;
+        margin-bottom: 24px;
+        font-weight: 700;
+      }
+      &-text {
+        color: #fff;
+        margin-bottom: 24px;
+      }
+      &-link {
+        display: block;
+        position: relative;
+        max-width: 336px;
+        padding: 24px 30px;
+        color: #fff;
+        @include fz(24);
+        border: 1px solid #fff;
+        border-radius: 8px;
+
+        .docs-card-icon {
+          opacity: 1;
+          stroke: #fff;
+          transform: translate(0%, 50%);
+          bottom: 50%;
+          right: 30px;
+          transition: 0.3s ease;
+        }
+        &:hover {
+          .docs-card-icon {
+            stroke: $primary;
+          }
+        }
+      }
+    }
+    .ui-subtitle {
+      color: $secondary;
+    }
+    .node-slider-comm-body {
+      padding-left: 0;
+      max-width: 66.56%;
+    }
+    .node-slider-comm-img {
+      max-width: 33.43%;
+    }
+    .museum-review-position {
+      color: #fff;
+      @include fz(28);
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+    .museum-review-author {
+      color: $secondary;
+      @include fz(54);
+      margin-bottom: 24px;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .museum-review-txt {
+      @include fz(22);
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+  &-news {
+    background: $secondary;
+    .ui-side-title {
+      color: #fff;
+    }
+    .news-item-date {
+      color: $bgc;
+    }
+  }
+}
+.circle-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.enterprises-swipper {
+  position: relative;
+  .swiper-slide {
+    display: flex;
+    align-items: flex-end;
+    text-align: left;
+  }
+  .enterprises-slider-text {
+    padding: 0 24px;
+  }
+
+  .ui-tags-inline {
+    margin-right: 0;
+  }
+  .ui-subtitle {
+    color: $bgc;
+  }
+}
+.node-body {
+  padding-bottom: 0;
 }
