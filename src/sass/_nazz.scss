@@ -265,12 +265,18 @@
   position: relative;
   height: 543px;
 
+  &-wrp {
+    position: relative;
+  }
+
   @media (max-width: 1259px) {
     height: 316px;
   }
   @media (max-width: 1024px) {
     height: 400px;
   }
+}
+.map {
   &-full {
     position: absolute;
     // background-color: black;
@@ -279,44 +285,6 @@
     width: 40px;
     height: 40px;
     z-index: 1;
-  }
-  &-zoom {
-    &-in {
-      position: absolute;
-      right: 35px;
-      top: 115px;
-      z-index: 1;
-      .map-zoom-img {
-        position: relative;
-        width: 40px;
-        height: 40px;
-        border: 1px solid $primary;
-        img {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        }
-      }
-    }
-    &-out {
-      position: absolute;
-      right: 35px;
-      top: 165px;
-      z-index: 1;
-      .map-zoom-img {
-        position: relative;
-        width: 40px;
-        height: 40px;
-        border: 1px solid $primary;
-        img {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        }
-      }
-    }
   }
 }
 .ymaps-2-1-79-zoom {
@@ -355,33 +323,31 @@
 }
 
 .map-zoom-in {
-  // display: block;
-  position: absolute;
-  // right: 15px;
-  right: 55px;
-  top: 50%;
-  transform: translate(0, -50%);
-  width: 40px;
-  height: 40px;
-  z-index: 9999999999999999999;
-  cursor: pointer;
-  // border: 1px solid $primary;
-}
-.map-zoom-up {
-  // display: block;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  // right: 15px;
+  position: absolute;
   right: 55px;
-  top: 60%;
-  transform: translate(0, -50%);
+  top: 50%;
   width: 40px;
   height: 40px;
-  z-index: 9999999999999999999;
+  z-index: 9;
   border: 1px solid $primary;
-  // background-color: black;
+  cursor: pointer;
+}
+.map-zoom-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 55px;
+  top: 50%;
+  margin-top: 50px;
+  width: 40px;
+  height: 40px;
+  z-index: 9;
+  border: 1px solid $primary;
   cursor: pointer;
 }
 .map-zoom-img {
@@ -400,7 +366,7 @@
   position: absolute;
   right: 55px;
   top: 50px;
-  z-index: 9999999999999;
+  z-index: 9;
   cursor: pointer;
 }
 

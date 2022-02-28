@@ -1483,7 +1483,13 @@ span.invalid {
 
 
 
+.ui-tabs-content {
+	display: none;
 
+	&.selected, &.active {
+		display: block;
+	}
+}
 .color-primary {
 	color: $primary;
 }
