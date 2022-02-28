@@ -212,14 +212,39 @@
     width: 100%;
   }
   &-tab {
+    p {
+      margin-bottom: 15px;
+    }
+
+    a {
+      color: #FFF;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+    h6, .h6 {
+      @include fz(14);
+      margin: 0;
+      font-weight: 700;
+    }
 
     &-title {
       margin-bottom: 40px;
       @include fz(28);
       color: $primary;
     }
+
     &-active {
       display: block;
+    }
+
+    a#{&}-toggle {
+      color: $primary;
+
+      &:hover {
+        color: $primary_hover;
+      }
     }
   }
   ul li {
@@ -368,5 +393,18 @@
   top: 50px;
   z-index: 9;
   cursor: pointer;
+
+  &.map-fullscreen {
+    top: 50px;
+    right: 50px;
+  }
+}
+.map-control {
+  z-index: 9;
+
+  &.map-fullscreen {
+    z-index: 99999;
+    position: fixed;
+  }
 }
 

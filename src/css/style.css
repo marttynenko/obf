@@ -1141,9 +1141,21 @@ PRODUCTIONS -------------- */
 
 @media (max-width: 1259px) { .contacts { width: 100%; } }
 
+.contacts-tab p { margin-bottom: 15px; }
+
+.contacts-tab a { color: #FFF; }
+
+.contacts-tab a:hover { color: #F08322; }
+
+.contacts-tab h6, .contacts-tab .h6 { font-size: 14px; font-size: 0.875rem; margin: 0; font-weight: 700; }
+
 .contacts-tab-title { margin-bottom: 40px; font-size: 28px; font-size: 1.75rem; color: #F08322; }
 
 .contacts-tab-active { display: block; }
+
+.contacts-tab a.contacts-tab-toggle { color: #F08322; }
+
+.contacts-tab a.contacts-tab-toggle:hover { color: #f39e52; }
 
 .contacts ul li { margin-bottom: 15px; }
 
@@ -1202,6 +1214,12 @@ PRODUCTIONS -------------- */
 .col-contacts-relative { position: relative; }
 
 .map-subtract { position: absolute; right: 55px; top: 50px; z-index: 9; cursor: pointer; }
+
+.map-subtract.map-fullscreen { top: 50px; right: 50px; }
+
+.map-control { z-index: 9; }
+
+.map-control.map-fullscreen { z-index: 99999; position: fixed; }
 
 .gallery-group { margin-bottom: 100px; }
 

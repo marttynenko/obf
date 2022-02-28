@@ -50,8 +50,10 @@ function initYandexMap() {
     isFull = !isFull;
     if (isFull == false) {
       fullscreenControl.exitFullscreen();
+      document.querySelectorAll(".map-control").forEach(el => el.classList.remove("map-fullscreen"))
     } else {
       fullscreenControl.enterFullscreen();
+      document.querySelectorAll(".map-control").forEach(el => el.classList.add("map-fullscreen"))
     }
   });
 
@@ -77,14 +79,14 @@ function initYandexMap() {
     map.geoObjects.add(place);
   }
 
-  let arrayBtns = document.querySelectorAll(".page-btn");
+  let arrayBtns = document.querySelectorAll(".ux-map-to");
   arrayBtns.forEach((element) => {
     element.addEventListener("click", function () {
       cordsStr = element.dataset.coordinates;
       num1 = Number(cordsStr.split(",")[0]);
       num2 = Number(cordsStr.split(",")[1]);
 
-      map.panTo([num1, num2], { flying: 4 });
+      map.panTo([num1, num2], { flying: true, duration: 1500 });
     });
   });
 }
