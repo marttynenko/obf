@@ -17,6 +17,8 @@
 
     const swiper = new Swiper(`.${ds}`, {
       autoHeight: true,
+      loop: true,
+      speed: 500,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -28,17 +30,33 @@
         nextEl: nextArrow,
         prevEl: prevArrow,
       },
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: ["-20%", 0, -1],
+        },
+        next: {
+          translate: ["100%", 0, 0],
+        },
+      }
     })
+
+    // slider.querySelectorAll('.ui-swiper-slide').forEach(item => {
+    //   item.addEventListener('click',() => {
+    //     swiper.slideToClosest()
+    //   })
+    // })
   })
   
 })();
 
-if (document.querySelector(".ui-page")) {
-  let wrap = document.querySelector(".wrapper");
-  let uihead = document.querySelector(".header");
-  wrap.classList.add("ui-wrapper");
-  uihead.classList.add("ui-header");
-}
+// if (document.querySelector(".ui-page")) {
+//   let wrap = document.querySelector(".wrapper");
+//   let uihead = document.querySelector(".header");
+//   wrap.classList.add("ui-wrapper");
+//   uihead.classList.add("ui-header");
+// }
 
 const Museum = {
   headerHeight: 0,
@@ -56,7 +74,7 @@ const Museum = {
 }
 
 if (document.querySelector(".museum")) {
-  document.querySelector(".wrapper").classList.add("wrapper-museum")
+  document.querySelector(".wrapper").classList.add("no-gutters-top")
   document.querySelector("#header").classList.add("header-transparent")
   
   Museum.updateHeight()
@@ -66,44 +84,18 @@ if (document.querySelector(".museum")) {
   window.addEventListener('scroll',Museum.scroll,false)
 }
 
-const history = {
-  headerHeight: 0,
 
-  updateHeight: () => {
-    this.headerHeight = document.querySelector('.history-header').clientHeight
-  },
+// if (document.querySelector(".page-404")) {
+//   document.querySelector(".wrapper").classList.add("wrapper-page-404");
+//   document.querySelector("#header").classList.add("header-transparent");
+//   document.querySelector(".footer").classList.add("footer-page-404");
+// }
 
-  scroll: () => {
-    if (window.scrollY >= this.headerHeight) {
-      return document.querySelector("#header").classList.remove("header-transparent");
-    }
-    document.querySelector("#header").classList.add("header-transparent");
-  }
-}
-
-if (document.querySelector(".history")) {
-  document.querySelector(".wrapper").classList.add("wrapper-history");
-  document.querySelector("#header").classList.add("header-transparent");
-
-  history.updateHeight();
-
-  window.addEventListener('resize', history.updateHeight, false);
-
-  window.addEventListener('scroll', history.scroll, false);
-}
-
-
-if (document.querySelector(".page-404")) {
-  document.querySelector(".wrapper").classList.add("wrapper-page-404");
-  document.querySelector("#header").classList.add("header-transparent");
-  document.querySelector(".footer").classList.add("footer-page-404");
-}
-
-if (document.querySelector(".stub-page")) {
-  document.querySelector(".wrapper").classList.add("wrapper-stub-page");
-  document.querySelector("#header").classList.add("header-stub-page");
-  document.querySelector(".footer").classList.add("footer-stub-page");
-}
+// if (document.querySelector(".stub-page")) {
+//   document.querySelector(".wrapper").classList.add("wrapper-stub-page");
+//   document.querySelector("#header").classList.add("header-stub-page");
+//   document.querySelector(".footer").classList.add("footer-stub-page");
+// }
 
 // if (window.pageYOffset > 0) {
 //   let wrap = document.querySelector(".wrapper");

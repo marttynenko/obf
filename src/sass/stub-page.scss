@@ -187,3 +187,70 @@
     max-width: 100%;
   }
 }
+
+
+.cookiePopup {
+  background-color: #F08322;
+  position: fixed;
+  font-size: 14px;
+  width: 320px;
+	height: 210px;
+  max-width: 42.85em;
+  line-height: 1.8em;
+  padding: 2em 1.4em;
+  transition: all 0.5s ease-in-out;
+	z-index: 99;
+
+	p {
+		font-weight: 400;
+		@include fz(18);
+		margin-bottom: 23px;
+	}
+
+	button {
+		display: flex;
+		background-color: transparent;
+		border: 2px solid #fff;
+		color: #fff;
+		font-weight: 600;
+		@include fz(18);
+		padding: 12px 14px 12px 20px;
+		position: relative;
+		border-radius: 10px;
+	}
+
+	#acceptCookie {
+		&:hover {
+			background-color: #fff;
+			color: #F08322;
+
+			.circle-link-icon.cookie {
+				stroke: #F08322;
+			}
+		}
+
+		.sprite, .circle-link-icon.cookie {
+			transition: none;
+		}
+
+		.circle-link-icon.cookie {
+			margin-left: 45px;
+			width: 24px;
+			height: 24px;
+			fill: none;
+			stroke: #fff;
+		}
+	}
+}
+
+// .hide {
+//   visibility: hidden;
+//   bottom: 0;
+//   right: 2em;
+// }
+
+// .show {
+//   visibility: visible;
+//   bottom: 2em;
+//   right: 2em;
+// }

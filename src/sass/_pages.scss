@@ -276,7 +276,7 @@ DOCS PAGE --- */
     min-height: calc(100% - 30px);
     border: 1px solid #fff;
     border-radius: 8px;
-    padding: 30px;
+    padding: 30px 30px 60px;
     @include fz(22);
 
     &-title {
@@ -287,6 +287,9 @@ DOCS PAGE --- */
       color: #fff;
       font-weight: 600;
       transition: color 0.3s;
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
     }
     &-icon {
       position: absolute;
@@ -311,6 +314,17 @@ DOCS PAGE --- */
       }
       .docs-card-type {
         color: $primary;
+      }
+    }
+
+    &-black {
+      color: $bgc;
+      border-color: $bgc;
+
+      .docs-card {
+        &-type {
+          color: $bgc;
+        }
       }
     }
   }
@@ -418,6 +432,340 @@ CERTS --- */
     }
     &-descr {
       max-width: 360px;
+    }
+  }
+}
+
+
+
+
+/* --- 
+PRODUCTIONS -------------- */
+.ui-bg {
+	&-primary {
+		background: $primary;
+	}
+  &-beige {
+    background: #FFE2BF;
+  }
+  &-lightgreen {
+    background: #CCE0DE;
+  }
+}
+
+.productions {
+  &-head {
+    position: relative;
+    z-index: 1;
+
+    &-body {
+      min-height: 100vh;
+      padding-top: Min(10vh, 200px);
+      padding-bottom: 50px;
+    }
+
+    &-content {
+      width: 100%;
+      padding-right: 10%;
+    }
+
+    &-btn {
+      flex: 0 0 170px;
+      max-width: 170px;
+    }
+
+    &-title {
+      color: $bgc;
+    }
+
+    &-descr {
+      @include fz(42);
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+
+    &-arrow {
+      width: 34px;
+      height: 13px;
+      cursor: pointer;
+
+      svg {
+        fill: none;
+        stroke: $bgc;
+        stroke-width: 2;
+      }
+    }
+
+    &-img {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%,0);
+      max-height: 80%;
+      max-height: calc(100% - 160px);
+      display: block;
+      z-index: -1;
+    }
+  }
+}
+
+.productions-screen {
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+
+  &-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 100px 0;
+  }
+
+  &-titles {
+    flex: 0 0 620px;
+    max-width: 620px;
+  }
+
+  &-details {
+    flex: 0 0 500px;
+    max-width: 500px;
+    @include fz(28);
+
+    &-top {
+      margin-bottom: 30px;
+    }
+  }
+
+  &-title {
+    @include fz(80);
+    line-height: 1;
+    margin-bottom: 30px;
+  }
+
+  &-block {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    &-title {
+      @include fz(80);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    &-label {
+      @include fz(22);
+      font-weight: 600;
+    }
+    &-subtitle {
+      @include fz(54);
+      line-height: 1;
+    }
+  }
+
+  &-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+  }
+
+  @media (max-width: 1439px) {
+    &-col {
+      padding: 50px 0;
+    }
+
+    &-title {
+      @include fz(52);
+    }
+
+    &-details {
+      @include fz(24);
+    }
+
+    &-block {
+      &-title {
+        @include fz(52);
+      }
+
+      &-label {
+        @include fz(18);
+      }
+    }
+  }
+}
+
+.productions-block {
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.productions-tabs {
+  margin-bottom: 45px;
+
+  &-link {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    height: 70px;
+    line-height: 68px;
+    border: 1px dashed rgba(#FFF,.5);
+    border-radius: 35px;
+    padding: 0px 20px;
+    color: #FFF;
+    @include fz(28);
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+
+    &.selected,
+    &:hover {
+      color: $primary;
+      border: 1px solid $primary;
+    }
+  }
+}
+
+.tk-type {
+  display: flex;
+  margin-bottom: 64px;
+  @include fz(22);
+  font-weight: 600;
+
+  &-icon {
+    flex: 0 0 ($content_col*3);
+    max-width: ($content_col*3);
+    margin-right: $content_col;
+    padding-top: .35em;
+  }
+  &-descr {
+    max-width: ($content_col*16);
+  }
+}
+
+.tk-list {
+  @include createRow(2);
+  margin-bottom: 80px;
+}
+.tk-col {
+  @include createCols(2,2)
+}
+.tk-subtype {
+  margin-bottom: 40px;
+
+  &-title {
+    margin-bottom: 16px;
+    @include fz(28);
+    color: $primary;
+  }
+}
+
+.tk-custom {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 100%;
+  width: ($content_col*10);
+
+  &-title {
+    position: relative;
+    padding-left: 42px;
+    @include fz(28);
+    line-height: 1.05;
+    margin-bottom: 8px;
+
+    &-icon {
+      position: absolute;
+      left: 0;
+      top: 0.15em;
+      width: 27px;
+      height: 22px;
+    }
+  }
+}
+
+.tk-management {
+  @include fz(28);
+
+  &-body {
+    padding-top: 9%;
+    max-width: 620px;
+  }
+  &-img {
+    margin-left: $content_col;
+    flex: 0 0 ($content_col * 8);
+    max-width: ($content_col * 8);
+
+    img {
+      display: block;
+      border-radius: 300px;
+    }
+  }
+
+  &-person {
+    margin-bottom: 120px;
+  }
+
+  &-name {
+    color: $primary;
+    @include fz(54);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  &-pos {
+    font-weight: 600;
+    @include fz(22);
+  }
+
+  &-contacts {
+    &-label {
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: $primary;
+    }
+
+    a {
+      color: #FFF;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  @media (max-width: 1439px) {
+    @include fz(24);
+
+    &-body {
+      padding-top: 15px;
+    }
+
+    &-name {
+      @include fz(42);
+      margin-bottom: 16px;
+    }
+
+    &-pos {
+      @include fz(18);
+    }
+
+    &-person {
+      margin-bottom: 50px;
+    }
+
+    &-img {
+      flex: 0 0 ($content_col * 7);
+      max-width: ($content_col * 7);
     }
   }
 }
