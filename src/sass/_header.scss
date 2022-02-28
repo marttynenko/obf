@@ -1,4 +1,4 @@
-header.header {
+.header {
 	padding-top: 18px;
 	padding-bottom: 18px;
 	height: 80px;
@@ -24,6 +24,7 @@ header.header {
 	&.fs-opened {
 		position: fixed;
 		transform: translate3d(0px,0px,0px);
+		background: $bgc;
 
 		.main-menu {
 			opacity: 0;

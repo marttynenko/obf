@@ -91,6 +91,26 @@ const FARBA = {
         players.push(player);
       })
     })
+  },
+
+
+  scroller(selector) {
+    const link = D.querySelectorAll(selector);
+    if (!link.length) return
+
+    link.forEach(el => {
+      // const targetStr = el.dataset.target;
+      const target = D.querySelector(el.dataset.target)
+      if (target) {
+        el.addEventListener('click',(e)=> {
+          e = e || window.event
+          e.preventDefault()
+          target.scrollIntoView({
+            behavior: "smooth"
+        });
+        })
+      }
+    })
   }
 }
 
@@ -271,3 +291,16 @@ if (D.querySelector('.ux-video')) {
     FARBA.initVideo('.ui-video-preview')
   )
 }
+
+
+if (D.querySelector('.productions')) {
+  const headerbg = D.querySelector('.productions').dataset.headerbg || null
+
+  D.querySelector('#wrapper').classList.add('no-gutters-top')
+  if (headerbg) {
+    D.querySelector('#header').classList.add(headerbg)
+  } 
+}
+
+
+FARBA.scroller('.ux-scroller');

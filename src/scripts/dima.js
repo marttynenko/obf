@@ -17,6 +17,8 @@
 
     const swiper = new Swiper(`.${ds}`, {
       autoHeight: true,
+      loop: true,
+      speed: 500,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -28,7 +30,23 @@
         nextEl: nextArrow,
         prevEl: prevArrow,
       },
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: ["-20%", 0, -1],
+        },
+        next: {
+          translate: ["100%", 0, 0],
+        },
+      }
     })
+
+    // slider.querySelectorAll('.ui-swiper-slide').forEach(item => {
+    //   item.addEventListener('click',() => {
+    //     swiper.slideToClosest()
+    //   })
+    // })
   })
   
 })();
@@ -56,7 +74,7 @@ const Museum = {
 }
 
 if (document.querySelector(".museum")) {
-  document.querySelector(".wrapper").classList.add("wrapper-museum")
+  document.querySelector(".wrapper").classList.add("no-gutters-top")
   document.querySelector("#header").classList.add("header-transparent")
   
   Museum.updateHeight()
