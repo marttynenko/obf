@@ -20,10 +20,14 @@
   max-height: 1500px;
 }
 
+.stub-page-top-screen {
+  padding-bottom: 50px;
+}
+
 @media (max-width: 1024px) {
-  #wrapper {
-    min-height: 0%;
-  }
+  // #wrapper {
+  //   min-height: 0%;
+  // }
 
   .header-stub-page {
     .col-layout-wide-header {

@@ -40,3 +40,8 @@ window.onload = () => {
     checkCookie();
   }, 2000);
 };
+
+// redirect to stub-page.html 
+// if (window.innerWidth < 1024 && window.location.pathname !== '/stub-page.html') {
+//   window.location.pathname = '/stub-page.html';
+// }

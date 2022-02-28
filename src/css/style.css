@@ -2196,8 +2196,9 @@ header.header-transparent { background: transparent; }
 
 .stub-page-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-top: 300px; min-height: 100vh; max-height: 1500px; }
 
-@media (max-width: 1024px) { #wrapper { min-height: 0%; }
-  .header-stub-page .col-layout-wide-header { display: none; }
+.stub-page-top-screen { padding-bottom: 50px; }
+
+@media (max-width: 1024px) { .header-stub-page .col-layout-wide-header { display: none; }
   .header-stub-page .col-layout-thin-header .ux-toggler-menu { display: none; }
   .header-stub-page .logo-img, .header-stub-page a.logo-img { height: 40px; width: 40px; }
   .header-stub-page .logo-img, .header-stub-page a.logo-img { max-width: 100%; }
