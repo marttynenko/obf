@@ -1,65 +1,97 @@
 <!--#include file="inc-header.html"-->
 <div class="page">
-  <h1 class="page-title">Контакты</h1>
-  <div class="page-buttons ux-tabs">
+  <h1 class="page-title">Аналитика</h1>
+  <div class="page-buttons">
     <a
       href="#tab-1"
-      class="page-btn page-btn-logo"
+      class="page-btn"
       data-coordinates="55.63393951216643, 37.44033897875346"
       id="page-btn-1"
     >
-      <svg class="sprite page-btn-sprite">
-        <use xlink:href="svg/svg/symbols.svg#logos" />
-      </svg>
-      ОБФ
+      <div class="page-btn-img">
+        <img src="./images/svg/logos_1.svg" class="page-btn-first" alt="alt" />
+        <img src="./images/svg/logos.svg" class="page-btn-second" alt="alt" />
+
+        ОБФ
+      </div>
     </a>
     <a
       href="#tab-2"
-      class="page-btn page-btn-yellow"
+      class="page-btn page-active-yellow"
       data-coordinates="59.471691, 40.064734"
     >
-      <svg class="sprite page-btn-sprite">
-        <use xlink:href="svg/svg/symbols.svg#btn-tab-tertiary" />
-      </svg>
-      СКБК
+      <div class="page-btn-img">
+        <img
+          src="./images/svg/btn-tab-group-white.svg"
+          class="page-btn-first"
+          alt="alt"
+        />
+        <img
+          src="./images/svg/btn-tab-tertiary.svg"
+          class="page-btn-second"
+          alt="alt"
+        />
+        СКБК
+      </div>
     </a>
     <a
       href="#tab-3"
       class="page-btn page-btn-green"
-      data-coordinates="54.739259, 35.996176"
+      data-coordinates="53.1, 27.56667"
     >
-      <svg class="sprite page-btn-sprite">
-        <use xlink:href="svg/svg/symbols.svg#btn-tab-green" />
-      </svg>
-      ПЗБМ
+      <div class="page-btn-img">
+        <img
+          src="./images/svg/btn-tab-group-white.svg"
+          class="page-btn-first"
+          alt="alt"
+        />
+        <img
+          src="./images/svg/btn-tab-green.svg"
+          class="page-btn-second"
+          alt="alt"
+        />
+        ПЗБМ
+      </div>
     </a>
     <a
       href="#tab-4"
       class="page-btn page-btn-blue"
-      data-coordinates="56.48046,43.624445 "
+      data-coordinates="56.48046,43.624445"
     >
-      <svg class="sprite page-btn-sprite">
-        <use xlink:href="svg/svg/symbols.svg#btn-tab-blue" />
-      </svg>
-      БКФ
+      <div class="page-btn-img">
+        <img
+          src="./images/svg/btn-tab-group-white.svg"
+          class="page-btn-first"
+          alt="alt"
+        />
+        <img
+          src="./images/svg/btn-tab-blue.svg"
+          class="page-btn-second"
+          alt="alt"
+        />
+        БКФ
+      </div>
     </a>
-    <a
-      href="#tab-5"
-      class="page-btn"
-      data-coordinates="55.624988,37.415514
-      "
-    >
-      <svg class="sprite page-btn-sprite">
-        <use xlink:href="svg/svg/symbols.svg#btn-tab-td-orange" />
-      </svg>
-      ТД Формат
+    <a href="#tab-5" class="page-btn" data-coordinates="35.624988,31.415514">
+      <div class="page-btn-img">
+        <img
+          src="./images/svg/btn-tab-td.svg"
+          class="page-btn-first"
+          alt="alt"
+        />
+        <img
+          src="./images/svg/btn-tab-td-orange.svg"
+          class="page-btn-second"
+          alt="alt"
+        />
+        ТД Формат
+      </div>
     </a>
   </div>
-
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-contacts-25">
       <div class="contacts">
-        <div class="contacts-tab ui-tabs-content" id="tab-1">
+        <div class="contacts-tab" id="tab-1">
           <div class="contacts-tab-title">
             УК «Объединенные бумажные фабрики»
           </div>
@@ -75,7 +107,7 @@
             домовладение 4, строение 1, блок Б, офис 501Б, 5 этаж
           </div>
         </div>
-        <div class="contacts-tab ui-tabs-content" id="tab-2">
+        <div class="contacts-tab" id="tab-2">
           <div class="contacts-tab-title">
             УК «Объединенные бумажные фабрики»
           </div>
@@ -91,7 +123,7 @@
             офис 1
           </div>
         </div>
-        <div class="contacts-tab ui-tabs-content" id="tab-3">
+        <div class="contacts-tab" id="tab-3">
           <div class="contacts-tab-title">
             УК «Объединенные бумажные фабрики»
           </div>
@@ -107,7 +139,7 @@
             Завод, улица Трудовая, дом 2
           </div>
         </div>
-        <div class="contacts-tab ui-tabs-content" id="tab-4">
+        <div class="contacts-tab" id="tab-4">
           <div class="contacts-tab-title">
             УК «Объединенные бумажные фабрики»
           </div>
@@ -123,10 +155,10 @@
             дом 93
           </div>
         </div>
-        <div class="contacts-tab ui-tabs-content" id="tab-5">
+        <div class="contacts-tab" id="tab-5">
           <div class="contacts-tab-title">Торговый дом «Формат»</div>
           <div class="contacts-tab-inner">
-            <a href="javascript:void(0)" class="contacts-tab-toggle"
+            <a href="#tab-6" class="contacts-tab-toggle"
               >Московское отделение
             </a>
             <div
@@ -134,7 +166,7 @@
               id="tab-6"
             >
               <div class="contacts-tab-contant-info">
-                <a href="tel:+74955140324">+7 (495) 514-03-24</a>
+                <a href="tel:74955140324">+7 (495) 514-03-24</a>
               </div>
               <div class="contacts-tab-contant-info">
                 108811, Москва, Киевское шоссе, 22-й километр, поселение
@@ -146,8 +178,7 @@
                   Направление «Тарный картон»
                 </div>
                 <div class="contacts-tab-toggle-link">
-                  <a href="tel:+74955140324"> +7 (495) 514-03-24 </a>
-                  #239
+                  <a href="tel:74955140324"> +7 (495) 514-03-24 #239</a>
                 </div>
                 <div class="contacts-tab-toggle-link">
                   <a href="mailto:bumaga@td-format.com">bumaga@td-format.com</a>
@@ -156,8 +187,7 @@
               <div class="contacts-tab-contant-info">
                 <div class="contacts-tab-toggle-title">Служба логистики</div>
                 <div class="contacts-tab-toggle-link">
-                  <a href="tel:+74955140324">+7 (495) 514-03-24 </a>
-                  #253
+                  <a href="tel:74955140324">+7 (495) 514-03-24 #253</a>
                 </div>
                 <div class="contacts-tab-toggle-link">
                   <a href="mailto:transport@td-format.com"
@@ -170,8 +200,7 @@
                   Направление «Закупка макулатуры»
                 </div>
                 <div class="contacts-tab-toggle-link">
-                  <a href="tel:+74955140324">+7 (495) 514-03-24 </a>
-                  #234
+                  <a href="tel:74955140324">+7 (495) 514-03-24 #234</a>
                 </div>
                 <div class="contacts-tab-toggle-link">
                   <a href="mailto:makulatura@td-format.com">
@@ -182,12 +211,15 @@
             </div>
           </div>
           <div class="contacts-tab-inner">
-            <a href="javascript:void(0)" class="contacts-tab-toggle"
+            <a href="#tab-7" class="contacts-tab-toggle"
               >Вологодское отделение
             </a>
-            <div class="contacts-tab-contant" id="tab-7">
+            <div
+              class="contacts-tab-contant contacts-tab-contant-active"
+              id="tab-7"
+            >
               <div class="contacts-tab-contant-info">
-                <a href="tel:+74955140324">+7 (495) 514-03-24</a>
+                <a href="tel:74955140324">+7 (495) 514-03-24</a>
               </div>
               <div class="contacts-tab-contant-info">
                 108811, Москва, Киевское шоссе, 22-й километр, поселение
@@ -199,8 +231,7 @@
                   Направление «Тарный картон»
                 </div>
                 <div class="contacts-tab-toggle-link">
-                  <a href="tel:+74955140324"> +7 (495) 514-03-24 </a>
-                  #239
+                  <a href="tel:74955140324"> +7 (495) 514-03-24 #239</a>
                 </div>
                 <div class="contacts-tab-toggle-link">
                   <a href="mailto:bumaga@td-format.com">bumaga@td-format.com</a>
@@ -209,8 +240,7 @@
               <div class="contacts-tab-contant-info">
                 <div class="contacts-tab-toggle-title">Служба логистики</div>
                 <div class="contacts-tab-toggle-link">
-                  <a href="tel:+74955140324">+7 (495) 514-03-24 </a>
-                  #253
+                  <a href="tel:74955140324">+7 (495) 514-03-24 #253</a>
                 </div>
                 <div class="contacts-tab-toggle-link">
                   <a href="mailto:transport@td-format.com"
@@ -223,8 +253,7 @@
                   Направление «Закупка макулатуры»
                 </div>
                 <div class="contacts-tab-toggle-link">
-                  <a href="tel:+74955140324">+7 (495) 514-03-24 </a>
-                  #234
+                  <a href="tel:74955140324">+7 (495) 514-03-24 #234</a>
                 </div>
                 <div class="contacts-tab-toggle-link">
                   <a href="mailto:makulatura@td-format.com">
@@ -237,23 +266,35 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9 col-contacts-relative">
-      <div class="map-set">
-        <div class="map-subtract">
-          <img src="./images/svg/Subtract.svg" alt="alt" />
-        </div>
-        <div class="map-zoom-in">
-          <div class="map-zoom-img">
-            <img src="./images/svg/contacts-map-minus.svg" alt="alt" />
+    <div class="col-contacts-75">
+      <!-- <div class="qwe">
+          <div class="map-zoom-out" id="map-zoom-out">
+            <div class="map-zoom-img">
+              <img src="./images/svg/contacts-map-plus.svg" alt="alt" />
+            </div>
           </div>
-        </div>
-        <div class="map-zoom-up">
-          <img src="./images/svg/contacts-map-plus.svg" alt="alt" />
-        </div>
-      </div>
-      <div id="contacts-map" class="contacts-map"></div>
+          <div class="map-zoom-in" id="map-zoom-in">
+            <div class="map-zoom-img">
+              <img src="./images/svg/contacts-map-minus.svg" alt="alt" />
+            </div>
+          </div>
+          <div class="map-full">
+            <img src="./images/svg/Subtract.svg" alt="alt" />
+          </div>
+        </div> -->
+      <div id="map" class="map"></div>
     </div>
   </div>
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"
+  type="text/javascript"
+></script>
+<script src="./scripts/nazz.js"></script>
 
 <!--#include file="inc-footer.html"-->
