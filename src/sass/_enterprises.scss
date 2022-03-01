@@ -1,8 +1,14 @@
 .enterprises {
   .ui-subtitle {
     color: $bgc;
+    @media (max-width: 1260px) {
+      @include fz(42);
+      margin-bottom: 60px;
+    }
   }
-
+  .node-inner {
+    padding-right: 0;
+  }
   &-circle {
     margin-bottom: 40px;
   }
@@ -38,7 +44,7 @@
     }
 
     &-item {
-      max-width: 550px;
+      max-width: 520px;
       margin-bottom: 80px;
     }
     &-img {
@@ -46,6 +52,32 @@
     }
     &-text {
       @include fz(22);
+      @media (max-width: 1260px) {
+        @include fz(18);
+      }
+    }
+  }
+  &-sort {
+    .ui-subtitle {
+      @media (max-width: 1260px) {
+        display: inline-block;
+        max-width: 274px;
+      }
+    }
+    &-adaptive {
+      margin-bottom: 60px;
+      &-link {
+        display: none;
+        @media (max-width: 1260px) {
+          display: flex;
+          align-items: center;
+        }
+      }
+      @media (max-width: 1260px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   }
   &-diplom {
@@ -97,6 +129,9 @@
           }
         }
       }
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
     }
     .ui-subtitle {
       color: $secondary;
@@ -104,6 +139,9 @@
     .node-slider-comm-body {
       padding-left: 0;
       max-width: 66.56%;
+      @media (max-width: 1440px) {
+        padding-right: 15%;
+      }
     }
     .node-slider-comm-img {
       max-width: 33.43%;
@@ -113,6 +151,9 @@
       @include fz(28);
       margin-bottom: 24px;
       font-weight: 700;
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
     }
     .museum-review-author {
       color: $secondary;
@@ -120,11 +161,17 @@
       margin-bottom: 24px;
       font-weight: 400;
       line-height: 1;
+      @media (max-width: 1260px) {
+        @include fz(42);
+      }
     }
     .museum-review-txt {
       @include fz(22);
       font-weight: 600;
       color: #fff;
+      @media (max-width: 1260px) {
+        @include fz(18);
+      }
     }
   }
   &-news {
@@ -140,6 +187,9 @@
 .circle-flex {
   display: flex;
   flex-direction: column;
+  @media (max-width: 1260px) {
+    display: none;
+  }
 }
 
 .enterprises-swipper {
@@ -162,4 +212,33 @@
 }
 .node-body {
   padding-bottom: 0;
+}
+
+.history-header-top {
+  padding-top: 100px;
+}
+.history-header-main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.enterprises-circle {
+  flex: 0 0 38.6%;
+  max-width: 38.6%;
+  @media (max-width: 1260px) {
+    margin-bottom: 0;
+    margin-left: 40px;
+    max-width: initial;
+  }
+  &:after {
+    border: 1px solid $secondary;
+  }
+}
+
+.slider-text {
+  @include fz(28);
+  margin-bottom: 40px;
+  @media (max-width: 1260px) {
+    @include fz(24);
+  }
 }
