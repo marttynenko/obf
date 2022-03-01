@@ -63,3 +63,9 @@ if (document.querySelector(".history")) {
 
   window.addEventListener('scroll', history.scroll, false);
 }
+
+if (document.querySelector(".page-404")) {
+  document.querySelector(".wrapper").classList.add("wrapper-page-404");
+  document.querySelector("#header").classList.add("header-transparent");
+  document.querySelector(".footer").classList.add("footer-page-404");
+}
