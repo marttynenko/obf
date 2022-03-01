@@ -1628,7 +1628,7 @@ CERTS --- */
 
 .history-header-main { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
 
-.enterprises-circle { -webkit-box-flex: 0; -ms-flex: 0 0 38.6%; flex: 0 0 38.6%; max-width: 38.6%; }
+.enterprises-circle { -webkit-box-flex: 0; -ms-flex: 0 0 39.8%; flex: 0 0 39.8%; max-width: 39.8%; }
 
 @media (max-width: 1260px) { .enterprises-circle { margin-bottom: 0; margin-left: 40px; max-width: initial; } }
 
