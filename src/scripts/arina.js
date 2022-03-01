@@ -1,5 +1,4 @@
 // preloader for pages
-
 window.addEventListener('load', loader);
 
 function loader() {
@@ -12,37 +11,32 @@ function loader() {
 }
 
 //popup cookie 
-// const popUp = document.getElementById("cookiePopup");
-// const btnAcceptCookie = document.getElementById("acceptCookie");
+const popupCookie = document.getElementById("popup-cookie");
+const btnAcceptCookie = document.getElementById("btn-accept");
 
-// btnAcceptCookie.addEventListener("click", () => {
-//   let d = new Date();
+btnAcceptCookie.addEventListener('click', () => {
+  const date = new Date();
+  
+  popupCookie.classList.add("hidden");
+  popupCookie.classList.remove("visible");
 
-//   d.setMinutes(2 + d.getMinutes());
-//   document.cookie = "myCookieName=thisIsMyCookie; expires = " + d + ";";
+  localStorage.setItem('cookie', date);
+})
 
-//   popUp.classList.add("hide");
-//   popUp.classList.remove("show");
-// });
+function checkCookie() {
+  const localStorageCookie = localStorage.getItem('cookie');
 
-// const checkCookie = () => {
-//   const input = document.cookie.split("=");
+  if (localStorageCookie == null) {
+    popupCookie.classList.remove("hidden");
+    popupCookie.classList.add("visible");
+  }
+}
 
-//   if (input[0] == "myCookieName") {
-//     popUp.classList.add("hide");
-//     popUp.classList.remove("show");
-//   } else {
-//     popUp.classList.add("show");
-//     popUp.classList.remove("hide");
-//   }
-// };
-
-// window.onload = () => {
-//   setTimeout(() => {
-//     checkCookie();
-//   }, 2000);
-// };
-
+window.onload = () => {
+  setTimeout(() => {
+    checkCookie();
+  }, 2000);
+};
 
 const history = {
   headerHeight: 0,
@@ -66,17 +60,6 @@ if (document.querySelector(".history")) {
   history.updateHeight();
 
   window.addEventListener('resize', history.updateHeight, false);
-
-window.onload = () => {
-  setTimeout(() => {
-    checkCookie();
-  }, 2000);
-};
-
-// redirect to stub-page.html 
-// if (window.innerWidth < 1024 && window.location.pathname !== '/stub-page.html') {
-//   window.location.pathname = '/stub-page.html';
-// }
 
   window.addEventListener('scroll', history.scroll, false);
 }
