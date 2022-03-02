@@ -225,7 +225,7 @@ a.logo {
 
 				@for $i from 2 through 10 {
 					&:nth-of-type(#{$i}) {
-						transition-delay: (.13s * ($i - 1));
+						transition-delay: (.09s * ($i - 1));
 					}
 				}
 			}

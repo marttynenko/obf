@@ -435,7 +435,7 @@ window.addEventListener('load',() => {
 
 
 (function(){
-  if (!D.querySelector('.productions-screens')) return
+  if (!D.querySelector('.productions-screensss')) return
 
   const productionsTL = gsap.timeline({
     scrollTrigger: {
@@ -538,7 +538,7 @@ window.addEventListener('load',() => {
       autoHeight: true,
       loop: true,
       slidesPerView: 2,
-      spaceBetween: 50,
+      spaceBetween: 30,
       speed: 500,
       navigation: {
         nextEl: nextArrow,

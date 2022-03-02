@@ -742,6 +742,18 @@ span.invalid {
 		}
 	}
 
+	&-blue {
+		.ui-btn-circle {
+			&-circle {
+				background: $blue;
+			}
+		}
+
+		&:after {
+			border-color: $blue;
+		}
+	}
+
 	&-fixsize {
 		max-width: 170px;
 

@@ -197,8 +197,9 @@
 .to-all-news svg.news-item-title-arrow {
   opacity: 1;
   stroke: #ffffff;
-  right: -88px;
+  // right: -88px;
   transition: stroke .3s;
+  margin-left: 12px;
 }
 .to-all-news a:hover svg.news-item-title-arrow {
   stroke: $primary;
