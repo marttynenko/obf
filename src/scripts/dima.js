@@ -38,16 +38,15 @@
         next: {
           translate: ["100%", 0, 0],
         },
-      }
-    })
+      },
+    });
 
     // slider.querySelectorAll('.ui-swiper-slide').forEach(item => {
     //   item.addEventListener('click',() => {
     //     swiper.slideToClosest()
     //   })
     // })
-  })
-  
+  });
 })();
 // Enterprises.html Слайдер для дипломов
 const swiper = new Swiper(".enterprises-swipper", {
@@ -59,13 +58,6 @@ const swiper = new Swiper(".enterprises-swipper", {
     prevEl: ".swiper-button-prev",
   },
 });
-
-// if (document.querySelector(".ui-page")) {
-//   let wrap = document.querySelector(".wrapper");
-//   let uihead = document.querySelector(".header");
-//   wrap.classList.add("ui-wrapper");
-//   uihead.classList.add("ui-header");
-// }
 
 const Museum = {
   headerHeight: 0,
@@ -85,15 +77,15 @@ const Museum = {
 };
 
 if (document.querySelector(".museum")) {
-  document.querySelector(".wrapper").classList.add("no-gutters-top")
-  document.querySelector("#header").classList.add("header-transparent")
-  
-  Museum.updateHeight()
+  document.querySelector(".wrapper").classList.add("no-gutters-top");
+  document.querySelector("#header").classList.add("header-transparent");
 
   Museum.updateHeight();
 
   window.addEventListener("resize", Museum.updateHeight, false);
 
+  window.addEventListener("scroll", Museum.scroll, false);
+}
 
 // if (document.querySelector(".page-404")) {
 //   document.querySelector(".wrapper").classList.add("wrapper-page-404");
