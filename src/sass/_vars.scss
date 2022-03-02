@@ -18,6 +18,7 @@ $secondary_hover: darken($secondary, 8%);
 $secondary_active: darken($secondary, 14%);
 $tertiary: #97B446;
 $blue: #4590BA;
+$brown: #CA7F49;
 
 
 
@@ -60,6 +61,9 @@ $block_margin: 0 0 25px;
 
 // Grid
 $breakpoints: ("xl":1440,"lg":1260,"md":1024,"sm":768,"xs":576,"us":400);
+
+$content_cols: 24;
+$content_col: 4.16%;
 
 
 // Typography ---

@@ -16,6 +16,8 @@
 
     const swiper = new Swiper(`.${ds}`, {
       autoHeight: true,
+      loop: true,
+      speed: 800,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -27,8 +29,25 @@
         nextEl: nextArrow,
         prevEl: prevArrow,
       },
-    });
-  });
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          // shadow: true,
+          translate: ["-20%", 0, -1],
+        },
+        next: {
+          translate: ["100%", 0, 0],
+        },
+      }
+    })
+
+    // slider.querySelectorAll('.ui-swiper-slide').forEach(item => {
+    //   item.addEventListener('click',() => {
+    //     swiper.slideToClosest()
+    //   })
+    // })
+  })
+  
 })();
 // Enterprises.html Слайдер для дипломов
 const swiper = new Swiper(".enterprises-swipper", {
@@ -41,12 +60,12 @@ const swiper = new Swiper(".enterprises-swipper", {
   },
 });
 
-if (document.querySelector(".ui-page")) {
-  let wrap = document.querySelector(".wrapper");
-  let uihead = document.querySelector(".header");
-  wrap.classList.add("ui-wrapper");
-  uihead.classList.add("ui-header");
-}
+// if (document.querySelector(".ui-page")) {
+//   let wrap = document.querySelector(".wrapper");
+//   let uihead = document.querySelector(".header");
+//   wrap.classList.add("ui-wrapper");
+//   uihead.classList.add("ui-header");
+// }
 
 const Museum = {
   headerHeight: 0,
@@ -66,103 +85,27 @@ const Museum = {
 };
 
 if (document.querySelector(".museum")) {
-  document.querySelector(".wrapper").classList.add("wrapper-museum");
-  document.querySelector("#header").classList.add("header-transparent");
+  document.querySelector(".wrapper").classList.add("no-gutters-top")
+  document.querySelector("#header").classList.add("header-transparent")
+  
+  Museum.updateHeight()
 
   Museum.updateHeight();
 
   window.addEventListener("resize", Museum.updateHeight, false);
 
-  window.addEventListener("scroll", Museum.scroll, false);
-}
-// 404
-const history = {
-  headerHeight: 0,
 
-  updateHeight: () => {
-    this.headerHeight = document.querySelector(".history-header").clientHeight;
-  },
+// if (document.querySelector(".page-404")) {
+//   document.querySelector(".wrapper").classList.add("wrapper-page-404");
+//   document.querySelector("#header").classList.add("header-transparent");
+//   document.querySelector(".footer").classList.add("footer-page-404");
+// }
 
-  scroll: () => {
-    if (window.scrollY >= this.headerHeight) {
-      return document
-        .querySelector("#header")
-        .classList.remove("header-transparent");
-    }
-    document.querySelector("#header").classList.add("header-transparent");
-  },
-};
-
-if (document.querySelector(".history")) {
-  document.querySelector(".wrapper").classList.add("wrapper-history");
-  document.querySelector("#header").classList.add("header-transparent");
-
-  history.updateHeight();
-
-  window.addEventListener("resize", history.updateHeight, false);
-
-  window.addEventListener("scroll", history.scroll, false);
-}
-
-if (document.querySelector(".page-404")) {
-  document.querySelector(".wrapper").classList.add("wrapper-page-404");
-  document.querySelector("#header").classList.add("header-transparent");
-}
-
-if (document.querySelector(".page-404")) {
-  document.querySelector(".footer").classList.add("footer-page-404");
-}
-// График
-const ctx = document.getElementById("company_chart").getContext("2d");
-const myChart = new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: ["#F08322"],
-        hoverBackgroundColor: ["black"],
-        borderColor: ["white"],
-        borderWidth: 1,
-        datalabels: {
-          color: "blue",
-        },
-      },
-    ],
-  },
-  // plugins: [ChartDataLabels],
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          // display: false,
-          drawBorder: false,
-          color: "transparent",
-        },
-        ticks: {
-          color: "transparent",
-        },
-      },
-      x: {
-        beginAtZero: true,
-        grid: {
-          // display: false,
-          drawBorder: false,
-          color: "transparent",
-        },
-        ticks: {
-          color: "#DD722A",
-        },
-      },
-    },
-    onHover: {},
-  },
-});
-
-// Плавный скролл
+// if (document.querySelector(".stub-page")) {
+//   document.querySelector(".wrapper").classList.add("wrapper-stub-page");
+//   document.querySelector("#header").classList.add("header-stub-page");
+//   document.querySelector(".footer").classList.add("footer-stub-page");
+// }
 
 const smoothLinks = document.querySelectorAll('a[href^="#"]');
 for (let smoothLink of smoothLinks) {
