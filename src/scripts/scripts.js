@@ -121,53 +121,66 @@ const FARBA = {
       var id = getHash(element.getAttribute("href"));
   
       contentDivs.push(document.getElementById(id));
-      element.addEventListener('click',showTab)
+
+      element.addEventListener('click', showTab.bind(null,id))
     });
   
-    
     tabLinks[0].classList.add("selected");
     contentDivs[0].classList.add("selected");
   
-  
-  
     //functions
-    function showTab(e) {
-      e = e || window.event;
-      e.preventDefault()
-      var currentID = getHash(this.getAttribute("href"));
+    function showTab(id,event) {
+      if (event) {
+        event = event || window.event;
+        event.preventDefault()
+      }
+      
     
       for (let i = 0; i < contentDivs.length; i++) {
         let divID = contentDivs[i].getAttribute("id")
-        if (divID == currentID) {
+        if (divID === id) {
           tabLinks[i].classList.add("selected");
           contentDivs[i].classList.add("selected");
+          
+          if (id !== location.hash.substring(1)) {
+            setHash(id)
+          }
         } else {
           tabLinks[i].classList.remove("selected");
           contentDivs[i].classList.remove("selected");
         }
       }
-  
-      // setLocation(currentID);
-      return false;
     }
+
     
     function getHash(url) {
       var hashPos = url.lastIndexOf("#");
       return url.substring(hashPos + 1);
     }
-    
-    function setLocation(tab) {
-      try {
-        history.pushState(null, null, tab);
-        return;
-      } catch (e) {
-        console.log(e)
-      }
-      location.hash = "#" + tab;
+
+    function setHash(id) {
+      window.onpopstate = function(event) {
+        if (event.state && event.state.tab) {
+          showTab(event.state.tab)
+        }
+      };
+
+      history.pushState({tab: id}, '', location.origin + location.pathname + '#' +id);
     }
+
+
+    function checkHash() {
+      if (location.hash == '') return
+      hash = location.hash.substring(1);
+
+      showTab(hash)
+    }
+
+    checkHash()
   }
 }
 
+gsap.registerPlugin(ScrollTrigger);
 
 const D = document;
 
@@ -367,14 +380,171 @@ if (D.querySelector(".ux-video")) {
 }
 
 
-if (D.querySelector('.productions')) {
-  const headerbg = D.querySelector('.productions').dataset.headerbg || null
+if (D.querySelector('.productions-animation')) {
+  const headerbg = D.querySelector('.productions-animation').dataset.headerbg || null
 
   D.querySelector('#wrapper').classList.add('no-gutters-top')
   if (headerbg) {
-    D.querySelector('#header').classList.add(headerbg)
+    D.querySelector('#header').classList.add(headerbg,'header-colored')
   } 
 }
 
 
 FARBA.scroller('.ux-scroller');
+
+
+
+//productions animate
+const prdHeadAnimate = () => {
+  const head = D.querySelector('.productions-head')
+  if (!head) return;
+
+  const clearHeader = () => {
+    D.querySelector('#header').removeAttribute('style')
+  }
+
+  const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
+
+  if (D.querySelector('.productions-head-tk')) {
+    tl
+      .to(head, {zIndex: 2, duration: 0})
+      .to('.productions-head-body', {opacity: 1, duration: 0})
+      .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
+      .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
+      .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.5")
+      .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
+      .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
+      .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
+  } else {
+    tl
+      .to(head, {zIndex: 2, duration: 0})
+      .to('.productions-head-body', {opacity: 1, duration: 0})
+      .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
+      .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
+      .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.5")
+      .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-1")
+      .fromTo('.productions-head-img',{opacity: 0, xPercent: 25}, {opacity: 1, xPercent: 0, duration: 3, ease: "expo.out"}, ">-1")
+      .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-2")
+  }
+  
+}
+
+window.addEventListener('load',() => {
+  prdHeadAnimate()
+});
+
+
+(function(){
+  if (!D.querySelector('.productions-screens')) return
+
+  const productionsTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.productions',
+      pin: true,
+      start: 'top top',
+      scrub: 3,
+      end: () => {
+        if (D.querySelectorAll('.productions-screen').length) {
+          return D.documentElement.clientHeight * D.querySelectorAll('.productions-screen').length
+        }
+        return D.documentElement.clientHeight
+      },
+      // markers: true,
+      // anticipatePin:1,	
+      // reventOverlaps: true,
+      // fastScrollEnd: true,
+      // snap: 1/5
+      // snap: () => {
+      //   if (D.querySelectorAll('.productions-screen').length) {
+      //     return 1 / D.querySelectorAll('.productions-screen').length
+      //   }
+      //   return 1
+      // }
+    }
+  })
+
+  
+  productionsTL
+    .addLabel('start')
+    .to('.productions-head',{opacity: 0, yPercent: -10, zIndex: 0, duration: 0.2, onReverseComplete: ()=> {
+      D.querySelector('.productions-head').style.zIndex = 2;
+    }})
+
+  
+  D.querySelectorAll('.productions-screen').forEach((el,index) => {
+    const img = el.querySelector('.productions-screen-img')
+    const title = el.querySelector('.productions-screen-title')
+    const details = el.querySelector('.productions-screen-details')
+    const btn = el.querySelector('.ui-btn-circle')
+  
+    productionsTL.addLabel('label_'+index)
+  
+    if (index > 0) {
+      const prev = D.querySelectorAll('.productions-screen')[index - 1]
+      productionsTL
+        .to(prev, {opacity: 0, y: -50, zIndex: 0, duration: 0.3})
+    }
+    
+  
+    productionsTL
+      // .addLabel('label_'+index)
+      .to(el,{opacity: 1, duration: 0, zIndex: 2})
+      .fromTo(title,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1})
+      .fromTo(img,{opacity: 0, scale: 1.3}, {opacity: 1, scale: 1, duration: 3},">-1")
+      .fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
+      .fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-1")
+      .to({}, {duration: 2})
+  })
+
+  // productionsTL.addLabel('end')
+})();
+
+// ScrollTrigger.create({
+//   trigger: ".productions-animation-after",
+//   start: "top bottom",
+//   // end: "+=200", // 200px past the start 
+//   pin: true
+//   // pinSpacing: false,
+// })
+
+// const t = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.productions-animation-after',
+//     start: "top bottom",
+//     pin: true
+//   }
+// })
+// // t.to({'.tk-stock'}, {y: -1000, duration: 3})
+// t.to('.productions-animation-after', {y: -400,duration: 3})
+
+
+(function () {
+  const toggler = document.querySelectorAll('.swiper-rewards-wrp')
+  if (!toggler.length) return
+
+  toggler.forEach((el,index) => {
+    const slider = el.querySelector('.swiper-rewards')
+    const prevArrow = el.querySelector('.swiper-button-prev')
+    const nextArrow = el.querySelector('.swiper-button-next')
+
+    const ds = `swiper-reward-${index}`
+    slider.classList.add(ds)
+
+    prevArrow.classList.add(`swiper-button-prev-${index}`)
+    nextArrow.classList.add(`swiper-button-next-${index}`)
+
+
+    const swiper = new Swiper(`.${ds}`, {
+      autoHeight: true,
+      loop: true,
+      slidesPerView: 2,
+      spaceBetween: 50,
+      speed: 500,
+      navigation: {
+        nextEl: nextArrow,
+        prevEl: prevArrow,
+      }
+    })
+  })
+  
+})();

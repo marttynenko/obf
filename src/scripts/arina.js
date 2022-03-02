@@ -45,7 +45,7 @@ function loader() {
 // };
 
 
-const history = {
+const History = {
   headerHeight: 0,
 
   updateHeight: () => {
@@ -64,9 +64,9 @@ if (document.querySelector(".history")) {
   document.querySelector(".wrapper").classList.add("no-gutters-top");
   document.querySelector("#header").classList.add("header-transparent");
 
-  history.updateHeight();
+  History.updateHeight();
 
-  window.addEventListener('resize', history.updateHeight, false);
+  window.addEventListener('resize', History.updateHeight, false);
 
-  window.addEventListener('scroll', history.scroll, false);
+  window.addEventListener('scroll', History.scroll, false);
 }

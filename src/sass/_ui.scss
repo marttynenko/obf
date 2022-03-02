@@ -86,6 +86,10 @@ h6, .h6, .ui-h5 {
 	max-width: 480px;
 	line-height: 1.1;
 	font-weight: 600;
+
+	@media (max-width: 1259px) {
+		@include fz(42);
+	}
 }
 
 a {
@@ -714,6 +718,30 @@ span.invalid {
 		}
 	}
 
+	&-tertiary {
+		.ui-btn-circle {
+			&-circle {
+				background: $tertiary;
+			}
+		}
+
+		&:after {
+			border-color: $tertiary;
+		}
+	}
+
+	&-brown {
+		.ui-btn-circle {
+			&-circle {
+				background: $brown;
+			}
+		}
+
+		&:after {
+			border-color: $brown;
+		}
+	}
+
 	&-fixsize {
 		max-width: 170px;
 
@@ -815,6 +843,9 @@ span.invalid {
 	}
 	&-blue {
 		color: $blue;
+	}
+	&-brown {
+		color: $brown;
 	}
 }
 

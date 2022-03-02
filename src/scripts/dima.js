@@ -18,7 +18,7 @@
     const swiper = new Swiper(`.${ds}`, {
       autoHeight: true,
       loop: true,
-      speed: 500,
+      speed: 800,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -33,7 +33,7 @@
       effect: "creative",
       creativeEffect: {
         prev: {
-          shadow: true,
+          // shadow: true,
           translate: ["-20%", 0, -1],
         },
         next: {

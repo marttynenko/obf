@@ -337,3 +337,25 @@ a.logo {
 		max-width: calc(100% - 200px);
 	}
 }
+
+.header-colored {
+	.main-menu {
+		a {
+			&:hover {
+				color: rgba(#FFF,.75);
+			}
+		}
+	}
+	.circle-link {
+		transition: border .3s, background-color .3s;
+		&:hover {
+			border-color: rgba(#FFF,.75);
+			color: #FFF;
+			background-color: rgba(#FFF,.05);
+
+			svg {
+				stroke: #FFF;
+			}
+		}
+	}
+}

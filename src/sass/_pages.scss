@@ -30,7 +30,7 @@
     padding-top: 3em;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     .page-header-btn {
       padding-top: 2em;
     }
@@ -51,6 +51,11 @@
   margin-bottom: 80px;
   border-bottom: 2px solid rgba(#fff, 0.15);
   @include fz(22);
+  color: #FFF;
+
+  a {
+    color: #FFF;
+  }
 
   &-img {
     flex: 20.833%;
@@ -62,6 +67,8 @@
     img {
       display: inline-block;
       border-radius: 140px;
+      transition: transform .3s;
+      will-change: transform;
     }
   }
   &-body {
@@ -73,21 +80,12 @@
     @include fz(54);
     line-height: 1;
     margin-bottom: 38px;
-    // position: relative;
+    transition: color .3s;
 
-    a {
-      color: #fff;
-      display: inline-block;
+    a,
+    span {
+      display: inline;
       position: relative;
-
-      &:hover {
-        color: $primary;
-
-        .news-item-title-arrow {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
-      }
     }
 
     &-arrow {
@@ -98,10 +96,12 @@
       top: 50%;
       margin-top: -21px;
       stroke: $primary;
+      stroke-width: 2;
       fill: none;
       opacity: 0;
       transform: translate3d(-10px, 0, 0);
       transition: transform 0.3s, opacity 0.3s;
+      will-change: transform, opacity;
     }
   }
   &-txt {
@@ -112,7 +112,31 @@
     font-weight: 600;
   }
 
-  @media (max-width: 1440px) {
+  &:hover {
+    color: #FFF;
+
+    a {
+      color: $primary;
+    }
+    .news-item {
+      &-title {
+        color: $primary;
+
+        &-arrow {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      &-img {
+        img {
+          transform: scale(1.03);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1439px) {
     @include fz(18);
 
     &-title {
@@ -123,6 +147,57 @@
   @media (max-width: 1259px) {
     &-title {
       @include fz(32);
+    }
+  }
+}
+
+.ui-bg-beige,
+.ui-bg-lightlime,
+.ui-bg-lightbrown {
+  .news-item {
+    color: $bgc;
+    border-color: rgba($bgc,.15);
+  }
+}
+.ui-bg-lightlime {
+  .news-item {
+    &-date {
+      color: $tertiary;
+    }
+
+    &-title {
+      &-arrow {
+        stroke: $tertiary;
+      }
+    }
+
+    &:hover {
+      .news-item {
+        &-title {
+          color: $tertiary;
+        }
+      }
+    }
+  }
+}
+.ui-bg-lightbrown {
+  .news-item {
+    &-date {
+      color: $brown;
+    }
+
+    &-title {
+      &-arrow {
+        stroke: $brown;
+      }
+    }
+
+    &:hover {
+      .news-item {
+        &-title {
+          color: $brown;
+        }
+      }
     }
   }
 }
@@ -190,7 +265,7 @@
     }
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     @include fz(20);
 
     &-link {
@@ -329,7 +404,7 @@ DOCS PAGE --- */
     }
   }
 
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     &-group {
       &-title {
         @include fz(42);
@@ -356,7 +431,7 @@ CERTS --- */
     @include createCols(3, 3);
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     &-list {
       @include createRow(2);
     }
@@ -365,7 +440,7 @@ CERTS --- */
     }
   }
 
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     &-list {
       margin-right: -30px;
     }
@@ -423,7 +498,7 @@ CERTS --- */
     fill: none;
   }
 
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     @include fz(14);
     margin-bottom: 75px;
 
@@ -445,23 +520,42 @@ PRODUCTIONS -------------- */
 	&-primary {
 		background: $primary;
 	}
+  &-secondary {
+    background: $secondary;
+  }
+  &-tertiary {
+    background: $tertiary;
+  }
   &-beige {
     background: #FFE2BF;
+    color: $bgc;
   }
   &-lightgreen {
     background: #CCE0DE;
+  }
+  &-lightlime {
+    background: #ECF0E0;
+    color: $bgc;
+  }
+  &-brown {
+    background: $brown;
+  }
+  &-lightbrown {
+    background: #FFEAC0;
+    color: $bgc;
   }
 }
 
 .productions {
   &-head {
-    position: relative;
-    z-index: 1;
+    // position: relative;
+    // z-index: 1;
 
     &-body {
       min-height: 100vh;
       padding-top: Min(10vh, 200px);
       padding-bottom: 50px;
+      opacity: 0;
     }
 
     &-content {
@@ -604,6 +698,11 @@ PRODUCTIONS -------------- */
 .productions-block {
   padding-top: 80px;
   padding-bottom: 120px;
+
+  &-mk {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .productions-tabs {
@@ -633,6 +732,14 @@ PRODUCTIONS -------------- */
       border: 1px solid $primary;
     }
   }
+
+  @media (max-width: 1439px) {
+    &-link {
+      height: 62px;
+      line-height: 60px;
+      @include fz(24);
+    }
+  }
 }
 
 .tk-type {
@@ -650,6 +757,10 @@ PRODUCTIONS -------------- */
   &-descr {
     max-width: ($content_col*16);
   }
+
+  @media (max-width: 1439px) {
+    @include fz(18);
+  }
 }
 
 .tk-list {
@@ -666,6 +777,14 @@ PRODUCTIONS -------------- */
     margin-bottom: 16px;
     @include fz(28);
     color: $primary;
+  }
+
+  @media (max-width: 1439px) {
+    @include fz(14);
+
+    &-title {
+      @include fz(24);
+    }
   }
 }
 
@@ -691,9 +810,18 @@ PRODUCTIONS -------------- */
       height: 22px;
     }
   }
+
+  @media (max-width: 1439px) {
+    width: 562px;
+    @include fz(14);
+
+    &-title {
+      @include fz(24);
+    }
+  }
 }
 
-.tk-management {
+.productions-management {
   @include fz(28);
 
   &-body {
@@ -767,5 +895,347 @@ PRODUCTIONS -------------- */
       flex: 0 0 ($content_col * 7);
       max-width: ($content_col * 7);
     }
+  }
+}
+
+.ui-bg-beige {
+  .to-all-news {
+    a {
+      color: $bgc;
+    }
+  }
+  .to-all-news svg.news-item-title-arrow {
+    stroke: $bgc;
+  }
+  .to-all-news a:hover svg.news-item-title-arrow {
+    stroke: $primary;
+  }
+}
+.ui-bg-lightlime {
+  .to-all-news {
+    a {
+      color: $bgc;
+
+      &:hover {
+        color: $tertiary;
+      }
+    }
+  }
+  .to-all-news svg.news-item-title-arrow {
+    stroke: $bgc;
+  }
+  .to-all-news a:hover svg.news-item-title-arrow {
+    stroke: $tertiary;
+  }
+}
+.ui-bg-lightbrown {
+  .to-all-news {
+    a {
+      color: $bgc;
+
+      &:hover {
+        color: $brown;
+      }
+    }
+  }
+  .to-all-news svg.news-item-title-arrow {
+    stroke: $bgc;
+  }
+  .to-all-news a:hover svg.news-item-title-arrow {
+    stroke: $brown;
+  }
+}
+
+.productions-tk-stock-row {
+  @media (max-width: 1259px) {
+    position: relative;
+
+    .col-layout-thin {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      text-align: right;
+    }
+  }
+}
+.productions-tk-news {
+  .news-list {
+    margin-bottom: 0;
+  }
+}
+.productions-tk-types {
+  padding-bottom: 45px;
+}
+.fs-types-col {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+//productions animate
+.productions {
+
+  &-animation {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &-head {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  &-screen {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+
+
+
+.productions-mk {
+  &-bg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    max-width: 75%;
+    z-index: -1;
+    filter: drop-shadow(-30px 25px 200px rgba(0, 0, 0, 0.15));
+  }
+  &-img {
+    opacity: 0;
+    visibility: hidden;
+    width: 40%;
+  }
+  &-descr {
+    @include fz(22);
+    font-weight: 600;
+    padding-bottom: 195px;
+    max-width: 100%;
+    width: ($content_col * 8);
+  }
+  &-for {
+    line-height: 1;
+    @include fz(54);
+    width: ($content_col * 18);
+  }
+
+  @media (max-width: 1700px) {
+    &-img {
+      width: 30%;
+    }
+  }
+  @media (max-width: 1439px) {
+    &-img {
+      width: 20%;
+    }
+    &-descr {
+      @include fz(18);
+      padding-bottom: 120px;
+    }
+    &-for {
+      @include fz(42);
+    }
+  }
+  @media (max-width: 1259px) {
+    padding-top: 35px;
+
+    &-img {
+      display: none;
+    }
+  }
+}
+
+.productions-sights {
+  &-title {
+    color: $primary;
+    margin-bottom: 32px;
+  }
+  &-txt {
+    @include fz(54);
+    line-height: 1;
+  }
+
+  @media (max-width: 1439px) {
+    &-txt {
+      @include fz(42);
+    }
+  }
+}
+
+.productions-slider {
+  @include fz(28);
+  .node-slider {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 1439px) {
+    @include fz(24);
+  }
+}
+
+.swiper-rewards {
+  &-img {
+    height: 310px;
+    line-height: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 0 0 33%;
+    max-width: 33.3%;
+    margin-right: 8%;
+
+    img {
+      max-height: 310px;
+    }
+  }
+
+  &-wrp {
+    position: relative;
+  }
+
+  &-btns {
+    position: absolute;
+    bottom: 0px;
+    left: -180px;
+  }
+
+  @media (max-width: 1259px) {
+    margin-bottom: 30px;
+
+    &-btns {
+      position: static;
+    }
+    
+  }
+}
+
+
+.ui-theme-tertiary {
+  .ui-theme-color {
+    color: $tertiary;
+  }
+  .productions-tabs {
+    &-link {
+      &:hover,
+      &.selected {
+        color: $tertiary;
+        border-color: $tertiary;
+      }
+    }
+  }
+
+  .tk-subtype {
+    &-title {
+      color: $tertiary;
+    }
+  }
+
+  .productions-management {
+    &-name,
+    &-contacts-label,
+    a:hover {
+      color: $tertiary;
+    }
+  }
+
+  .docs-card {
+    &-icon {
+      stroke: $tertiary;
+    }
+    &:hover {
+      color: $tertiary;
+      border-color: $tertiary;
+
+      .docs-card-type {
+        color: $tertiary;
+      }
+    }
+  }
+
+  .ui-btn {
+    &:hover {
+      color: $tertiary;
+      border-color: $tertiary;
+
+      .ui-btn-arrow {
+        stroke: $tertiary;
+      }
+    }
+  }
+
+  .productions-sights-title {
+    color: $tertiary;
+  }
+}
+
+.ui-theme-brown {
+  .ui-theme-color {
+    color: $brown;
+  }
+  .productions-tabs {
+    &-link {
+      &:hover,
+      &.selected {
+        color: $brown;
+        border-color: $brown;
+      }
+    }
+  }
+
+  .tk-subtype {
+    &-title {
+      color: $brown;
+    }
+  }
+
+  .productions-management {
+    &-name,
+    &-contacts-label,
+    a:hover {
+      color: $brown;
+    }
+  }
+
+  .docs-card {
+    &-icon {
+      stroke: $brown;
+    }
+    &:hover {
+      color: $brown;
+      border-color: $brown;
+
+      .docs-card-type {
+        color: $brown;
+      }
+    }
+  }
+
+  .ui-btn {
+    &:hover {
+      color: $brown;
+      border-color: $brown;
+
+      .ui-btn-arrow {
+        stroke: $brown;
+      }
+    }
+  }
+
+  .productions-sights-title {
+    color: $brown;
+  }
+}
+
+.ui-bg-lightlime,
+.ui-bg-lightbrown {
+  .ui-side-title {
+    color: $bgc;
   }
 }
