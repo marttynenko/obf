@@ -289,42 +289,44 @@
 }
 
 //404.html
-.wrapper-page-404 {
-  padding-top: 0;
-
-  #middle {
-    padding-bottom: 0;
-  }
-}
-
 .footer-page-404 {
   display: none;
 }
 
 .page-404 {
-  &-block {
-    padding-top: 0;
-  }
-
   &-header {
-    background-image: url(../images/404.png);
-    background-repeat: no-repeat;
-    background-position: bottom;
-  }
+    &-row {
+      display: flex;
+      margin: -170px 0;
+      padding-bottom: 50px;
+      min-height: 100vh;
+      max-height: 1500px;
+    }
 
-  &-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-top: 300px;
-    padding-bottom: 49px;
-    min-height: 100vh;
-    max-height: 1500px;
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    &-bottom {
+      img {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        z-index: -1;
+        display: block;
+        max-height: calc(100% - 160px);
+        transform: translate(-50%, 0);
+      }
+    }
   }
 
   &-title {
     @include fz(300);
-    color: #F08322;
+    color: $primary;
   }
 
   &-subtitle {
@@ -345,193 +347,165 @@
 }
 
 //stub-page.html
-.wrapper-stub-page {
-  padding-top: 0;
-}
-
-.page-stub-page {
-  padding-top: 0;
-}
-
 .stub-page {
   display: none;
 }
 
-.stub-page-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-top: 300px;
-  min-height: 100vh;
-  max-height: 1500px;
-}
-
-.stub-page-top-screen {
-  padding-bottom: 50px;
-}
-
 @media (max-width: 1024px) {
-  // #wrapper {
-  //   min-height: 0%;
-  // }
+  .stub-page {
+    display: block;
 
-  .header-stub-page {
-    .col-layout-wide-header {
-      display: none;
+    &-header {
+      padding-top: 18px;
+      padding-bottom: 18px;
+      height: 80px;
+      background: #222E3F;
     }
 
-    .col-layout-thin-header {
-      .ux-toggler-menu {
+    &-block {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100%;
+      background: #222E3F;
+    }
+
+    &-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      min-height: 100vh;
+      max-height: 1500px;
+    }
+
+    &-text {
+      padding-bottom: 122px;
+      width: 100%;
+    }
+
+    &-title {
+      margin-bottom: 57px;
+      width: 400px;
+      font-weight: 600;
+      @include fz(60);
+      line-height: 60px;
+    }
+
+    &-subtitle {
+      width: 280px;
+      font-weight: 500;
+      @include fz(24);
+    }
+
+    &-img {
+      img {
+        position: absolute;
+        right: -10%;
+        bottom: 0;
+        margin: 0px auto;
+        max-width: 100%;
+        width: 635px;
+        height: 425px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .stub-page {
+    &-row {
+      flex-direction: column;
+    }
+
+    &-text {
+      padding-bottom: 0;
+    }
+
+    &-title {
+      width: 630px;
+    }
+
+    &-img {
+      img {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        max-height: calc(100% - 370px);
+        height: 491px;
+      }
+    }
+  }
+}
+
+@media (max-width: 667px) {
+  .stub-page {
+    &-row {
+      padding-top: 0;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-text {
+      padding-bottom: 110px;
+      width: 100%;
+    }
+
+    &-title {
+      margin-bottom: 16px;
+      width: 277px;
+      @include fz(24);
+      line-height: 28px;
+
+      br {
         display: none;
       }
     }
 
-    .logo-img, a.logo-img {
-      height: 40px;
-      width: 40px;
+    &-subtitle {
+      width: 185px;
+      @include fz(16);
     }
 
-    .logo-img, a.logo-img {
-      max-width: 100%;
+    &-img {
+      img {
+        left: auto;
+        right: -15%;
+        bottom: 70px;
+        margin: 0px auto;
+        width: 318px;
+        max-height: 100%;
+        height: 213px;
+      }
     }
   }
+}
 
-  #middle {
-    display: none;
-  }
-
+@media (max-width: 500px) {  
   .stub-page {
-    display: block;
-  }
-
-  .stub-page-row {
-    flex-direction: row;
-    padding-top: 0;
-  }
-
-  .stub-page-top-screen {
-    width: 100%;
-  }
-
-  .stub-top-screen-title {
-    width: 542px;
-    font-weight: 600;
-    @include fz(60);
-  }
-
-  .stub-top-screen-text {
-    width: 280px;
-    font-weight: 500;
-    @include fz(24);
-  }
-
-  .stub-page-bottom-screen img{
-    max-width: none;
-  }
-
-  .footer-stub-page{
-    display: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .stub-page-row {
-    flex-direction: column;
-    padding-top: 80px;
-  }
-
-  .stub-page-top-screen {
-    padding-bottom: 0;
-  }
-
-  .stub-top-screen-title {
-    font-weight: 600;
-    @include fz(60);
-  }
-
-  .stub-top-screen-text {
-    font-weight: 500;
-    @include fz(24);
-  }
-
-  .stub-page-bottom-screen img{
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 568px) {
-  .inner, .container {
-    padding: 0 30px;
-  }
-
-  .stub-page-row {
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 0;
-  }
-
-  .stub-page-top-screen {
-    width: 100%;
-    padding-bottom: 30px;
-  }
-
-  .stub-top-screen-title {
-    width: 216px;
-    font-weight: 600;
-    @include fz(24);
-  }
-
-  .stub-top-screen-text {
-    width: 185px;
-    font-weight: 500;
-    @include fz(16);
-  }
-
-  .stub-page-bottom-screen {
-    position: relative;
-    right: -70px;
-  }
-
-  .stub-page-bottom-screen img {
-    height: auto;
-    width: 772px;
-  }
-}
-
-@media (max-width: 500px) {
-  .header-stub-page {
-    .logo-img, a.logo-img {
-      height: 40px;
-      width: 40px;
+    &-row {
+      flex-direction: column;
     }
 
-    .logo-img, a.logo-img {
-      max-width: 100%;
+    &-title {
+      width: 266px;
+
+      br:nth-child(1) {
+        display: block;
+      }
     }
-  }
 
-  .stub-page-row{
-    flex-direction: column;
-    padding-top: 130px;
-  }
-
-  .stub-top-screen-title {
-    font-weight: 600;
-    @include fz(24);
-  }
-
-  .stub-top-screen-text {
-    font-weight: 500;
-    @include fz(16);
-  }
-
-  .stub-page-bottom-screen {
-    position: static;
-  }
-
-  .stub-page-bottom-screen img {
-    max-width: 100%;
+    &-img {
+      img {
+        left: 0;  
+        right: 0;
+        width: auto;
+        max-height: calc(100% - 280px);
+      }
+    }
   }
 }
 

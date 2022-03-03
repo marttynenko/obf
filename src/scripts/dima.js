@@ -84,19 +84,6 @@ if (document.querySelector(".museum")) {
   window.addEventListener('scroll',Museum.scroll,false)
 }
 
-
-// if (document.querySelector(".page-404")) {
-//   document.querySelector(".wrapper").classList.add("wrapper-page-404");
-//   document.querySelector("#header").classList.add("header-transparent");
-//   document.querySelector(".footer").classList.add("footer-page-404");
-// }
-
-// if (document.querySelector(".stub-page")) {
-//   document.querySelector(".wrapper").classList.add("wrapper-stub-page");
-//   document.querySelector("#header").classList.add("header-stub-page");
-//   document.querySelector(".footer").classList.add("footer-stub-page");
-// }
-
 // if (window.pageYOffset > 0) {
 //   let wrap = document.querySelector(".wrapper");
 //   wrap.classList.remove("ui-wrapper");
