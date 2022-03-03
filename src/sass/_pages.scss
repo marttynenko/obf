@@ -155,78 +155,6 @@
   }
 }
 
-.ui-bg-beige,
-.ui-bg-lightlime,
-.ui-bg-lightbrown,
-.ui-bg-lightblue {
-  .news-item {
-    color: $bgc;
-    border-color: rgba($bgc,.15);
-  }
-}
-.ui-bg-lightlime {
-  .news-item {
-    &-date {
-      color: $tertiary;
-    }
-
-    &-title {
-      &-arrow {
-        stroke: $tertiary;
-      }
-    }
-
-    &:hover {
-      .news-item {
-        &-title {
-          color: $tertiary;
-        }
-      }
-    }
-  }
-}
-.ui-bg-lightbrown {
-  .news-item {
-    &-date {
-      color: $brown;
-    }
-
-    &-title {
-      &-arrow {
-        stroke: $brown;
-      }
-    }
-
-    &:hover {
-      .news-item {
-        &-title {
-          color: $brown;
-        }
-      }
-    }
-  }
-}
-.ui-bg-lightblue {
-  .news-item {
-    &-date {
-      color: $blue;
-    }
-
-    &-title {
-      &-arrow {
-        stroke: $blue;
-      }
-    }
-
-    &:hover {
-      .news-item {
-        &-title {
-          color: $blue;
-        }
-      }
-    }
-  }
-}
 
 .ui-tags {
   @include fz(24);
@@ -558,6 +486,7 @@ PRODUCTIONS -------------- */
   }
   &-lightgreen {
     background: #CCE0DE;
+    color: $bgc;
   }
   &-lightlime {
     background: #ECF0E0;
@@ -576,6 +505,133 @@ PRODUCTIONS -------------- */
   &-lightblue {
     background: #c9dfec;
     color: $bgc;
+  }
+}
+
+.ui-bg-lightlime,
+.ui-bg-lightbrown,
+.ui-bg-lightblue,
+.ui-bg-lightgreen {
+  .ui-side-title {
+    color: $bgc;
+  }
+}
+
+.ui-bg-beige {
+  .to-all-news {
+    a {
+      color: $bgc;
+    }
+  }
+  .to-all-news svg.news-item-title-arrow {
+    stroke: $bgc;
+  }
+  .to-all-news a:hover svg.news-item-title-arrow {
+    stroke: $primary;
+  }
+}
+// .ui-bg-lightlime {
+//   .to-all-news {
+//     a {
+//       color: $bgc;
+
+//       &:hover {
+//         color: $tertiary;
+//       }
+//     }
+//   }
+//   .to-all-news svg.news-item-title-arrow {
+//     stroke: $bgc;
+//   }
+//   .to-all-news a:hover svg.news-item-title-arrow {
+//     stroke: $tertiary;
+//   }
+// }
+// .ui-bg-lightbrown {
+//   .to-all-news {
+//     a {
+//       color: $bgc;
+
+//       &:hover {
+//         color: $brown;
+//       }
+//     }
+//   }
+//   .to-all-news svg.news-item-title-arrow {
+//     stroke: $bgc;
+//   }
+//   .to-all-news a:hover svg.news-item-title-arrow {
+//     stroke: $brown;
+//   }
+// }
+// .ui-bg-lightblue {
+//   .to-all-news {
+//     a {
+//       color: $bgc;
+
+//       &:hover {
+//         color: $blue;
+//       }
+//     }
+//   }
+//   .to-all-news svg.news-item-title-arrow {
+//     stroke: $bgc;
+//   }
+//   .to-all-news a:hover svg.news-item-title-arrow {
+//     stroke: $blue;
+//   }
+// }
+.ui-bg-beige,
+// .ui-bg-lightlime,
+// .ui-bg-lightbrown,
+// .ui-bg-lightblue,
+// .ui-bg-lightgreen,
+[class*="ui-theme-"] {
+  .news-item {
+    color: $bgc;
+    border-color: rgba($bgc,.15);
+  }
+}
+
+//theming news-item
+@each $name, $value in ("lightlime": $tertiary, "lightbrown": $brown, "lightblue": $blue, "lightgreen": $secondary) {
+  .ui-bg-#{$name} {
+    .news-item {
+      &-date {
+        color: $value;
+      }
+  
+      &-title {
+        &-arrow {
+          stroke: $value;
+        }
+      }
+  
+      &:hover {
+        .news-item {
+          &-title {
+            color: $value;
+          }
+        }
+      }
+    }
+
+    //link to all news
+    .to-all-news {
+      a {
+        color: $bgc;
+  
+        &:hover {
+          color: $value;
+        }
+      }
+    }
+    .to-all-news svg.news-item-title-arrow {
+      stroke: $bgc;
+    }
+    .to-all-news a:hover svg.news-item-title-arrow {
+      stroke: $value;
+    }
   }
 }
 
@@ -625,9 +681,10 @@ PRODUCTIONS -------------- */
 
     &-img {
       position: absolute;
-      left: 50%;
       bottom: 0;
-      transform: translate(-50%,0);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
       max-height: 80%;
       max-height: calc(100% - 160px);
       display: block;
@@ -931,70 +988,6 @@ PRODUCTIONS -------------- */
   }
 }
 
-.ui-bg-beige {
-  .to-all-news {
-    a {
-      color: $bgc;
-    }
-  }
-  .to-all-news svg.news-item-title-arrow {
-    stroke: $bgc;
-  }
-  .to-all-news a:hover svg.news-item-title-arrow {
-    stroke: $primary;
-  }
-}
-.ui-bg-lightlime {
-  .to-all-news {
-    a {
-      color: $bgc;
-
-      &:hover {
-        color: $tertiary;
-      }
-    }
-  }
-  .to-all-news svg.news-item-title-arrow {
-    stroke: $bgc;
-  }
-  .to-all-news a:hover svg.news-item-title-arrow {
-    stroke: $tertiary;
-  }
-}
-.ui-bg-lightbrown {
-  .to-all-news {
-    a {
-      color: $bgc;
-
-      &:hover {
-        color: $brown;
-      }
-    }
-  }
-  .to-all-news svg.news-item-title-arrow {
-    stroke: $bgc;
-  }
-  .to-all-news a:hover svg.news-item-title-arrow {
-    stroke: $brown;
-  }
-}
-.ui-bg-lightblue {
-  .to-all-news {
-    a {
-      color: $bgc;
-
-      &:hover {
-        color: $blue;
-      }
-    }
-  }
-  .to-all-news svg.news-item-title-arrow {
-    stroke: $bgc;
-  }
-  .to-all-news a:hover svg.news-item-title-arrow {
-    stroke: $blue;
-  }
-}
 
 .productions-tk-stock-row {
   @media (max-width: 1259px) {
@@ -1024,11 +1017,11 @@ PRODUCTIONS -------------- */
 //productions animate
 .productions {
 
-  &-animation {
-    // position: relative;
-    // height: 100vh;
-    // overflow: hidden;
-  }
+  // &-animation {
+  //   position: relative;
+  //   height: 100vh;
+  //   overflow: hidden;
+  // }
 
   &-head {
     position: relative;
@@ -1183,183 +1176,265 @@ PRODUCTIONS -------------- */
 }
 
 
-.ui-theme-tertiary {
-  .ui-theme-color {
-    color: $tertiary;
-  }
-  .productions-tabs {
-    &-link {
-      &:hover,
-      &.selected {
-        color: $tertiary;
-        border-color: $tertiary;
+// .ui-theme-tertiary {
+//   .ui-theme-color {
+//     color: $tertiary;
+//   }
+//   .productions-tabs {
+//     &-link {
+//       &:hover,
+//       &.selected {
+//         color: $tertiary;
+//         border-color: $tertiary;
+//       }
+//     }
+//   }
+
+//   .tk-subtype {
+//     &-title {
+//       color: $tertiary;
+//     }
+//   }
+
+//   .productions-management {
+//     &-name,
+//     &-contacts-label,
+//     a:hover {
+//       color: $tertiary;
+//     }
+//   }
+
+//   .docs-card {
+//     &-icon {
+//       stroke: $tertiary;
+//     }
+//     &:hover {
+//       color: $tertiary;
+//       border-color: $tertiary;
+
+//       .docs-card-type {
+//         color: $tertiary;
+//       }
+//     }
+//   }
+
+//   .ui-btn {
+//     &:hover {
+//       color: $tertiary;
+//       border-color: $tertiary;
+
+//       .ui-btn-arrow {
+//         stroke: $tertiary;
+//       }
+//     }
+//   }
+
+//   .productions-sights-title {
+//     color: $tertiary;
+//   }
+// }
+
+// .ui-theme-brown {
+//   .ui-theme-color {
+//     color: $brown;
+//   }
+//   .productions-tabs {
+//     &-link {
+//       &:hover,
+//       &.selected {
+//         color: $brown;
+//         border-color: $brown;
+//       }
+//     }
+//   }
+
+//   .tk-subtype {
+//     &-title {
+//       color: $brown;
+//     }
+//   }
+
+//   .productions-management {
+//     &-name,
+//     &-contacts-label,
+//     a:hover {
+//       color: $brown;
+//     }
+//   }
+
+//   .docs-card {
+//     &-icon {
+//       stroke: $brown;
+//     }
+//     &:hover {
+//       color: $brown;
+//       border-color: $brown;
+
+//       .docs-card-type {
+//         color: $brown;
+//       }
+//     }
+//   }
+
+//   .ui-btn {
+//     &:hover {
+//       color: $brown;
+//       border-color: $brown;
+
+//       .ui-btn-arrow {
+//         stroke: $brown;
+//       }
+//     }
+//   }
+
+//   .productions-sights-title {
+//     color: $brown;
+//   }
+// }
+// .ui-theme-blue {
+//   .ui-theme-color {
+//     color: $blue;
+//   }
+//   .productions-tabs {
+//     &-link {
+//       &:hover,
+//       &.selected {
+//         color: $blue;
+//         border-color: $blue;
+//       }
+//     }
+//   }
+
+//   .tk-subtype {
+//     &-title {
+//       color: $blue;
+//     }
+//   }
+
+//   .productions-management {
+//     &-name,
+//     &-contacts-label,
+//     a:hover {
+//       color: $blue;
+//     }
+//   }
+
+//   .docs-card {
+//     &-icon {
+//       stroke: $blue;
+//     }
+//     &:hover {
+//       color: $blue;
+//       border-color: $blue;
+
+//       .docs-card-type {
+//         color: $blue;
+//       }
+//     }
+//   }
+
+//   .ui-btn {
+//     &:hover {
+//       color: $blue;
+//       border-color: $blue;
+
+//       .ui-btn-arrow {
+//         stroke: $blue;
+//       }
+//     }
+//   }
+
+//   .productions-sights-title {
+//     color: $blue;
+//   }
+// }
+
+@each $name, $value in ("blue": $blue, "brown": $brown, "secondary": $secondary, "tertiary": $tertiary) {
+  .ui-theme-#{$name} {
+    .ui-theme-color {
+      color: $value;
+    }
+    .productions-tabs {
+      &-link {
+        &:hover,
+        &.selected {
+          color: $value;
+          border-color: $value;
+        }
       }
     }
-  }
-
-  .tk-subtype {
-    &-title {
-      color: $tertiary;
-    }
-  }
-
-  .productions-management {
-    &-name,
-    &-contacts-label,
-    a:hover {
-      color: $tertiary;
-    }
-  }
-
-  .docs-card {
-    &-icon {
-      stroke: $tertiary;
-    }
-    &:hover {
-      color: $tertiary;
-      border-color: $tertiary;
-
-      .docs-card-type {
-        color: $tertiary;
+  
+    .tk-subtype {
+      &-title {
+        color: $value;
       }
     }
-  }
-
-  .ui-btn {
-    &:hover {
-      color: $tertiary;
-      border-color: $tertiary;
-
-      .ui-btn-arrow {
-        stroke: $tertiary;
+  
+    .productions-management {
+      &-name,
+      &-contacts-label,
+      a:hover {
+        color: $value;
       }
     }
-  }
-
-  .productions-sights-title {
-    color: $tertiary;
+  
+    .docs-card {
+      &-icon {
+        stroke: $value;
+      }
+      &:hover {
+        color: $value;
+        border-color: $value;
+  
+        .docs-card-type {
+          color: $value;
+        }
+      }
+    }
+  
+    .ui-btn {
+      &:hover {
+        color: $value;
+        border-color: $value;
+  
+        .ui-btn-arrow {
+          stroke: $value;
+        }
+      }
+    }
+  
+    .productions-sights-title {
+      color: $value;
+    }
   }
 }
 
-.ui-theme-brown {
-  .ui-theme-color {
-    color: $brown;
-  }
-  .productions-tabs {
-    &-link {
-      &:hover,
-      &.selected {
-        color: $brown;
-        border-color: $brown;
-      }
+.bbi-parallax {
+  position: relative;
+  margin-bottom: -80px;
+
+  &-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    &-1 {
+      z-index: 3;
     }
-  }
-
-  .tk-subtype {
-    &-title {
-      color: $brown;
+    &-2 {
+      z-index: 2;
     }
-  }
 
-  .productions-management {
-    &-name,
-    &-contacts-label,
-    a:hover {
-      color: $brown;
+    &-4 {
+      position: static;
     }
-  }
-
-  .docs-card {
-    &-icon {
-      stroke: $brown;
-    }
-    &:hover {
-      color: $brown;
-      border-color: $brown;
-
-      .docs-card-type {
-        color: $brown;
-      }
-    }
-  }
-
-  .ui-btn {
-    &:hover {
-      color: $brown;
-      border-color: $brown;
-
-      .ui-btn-arrow {
-        stroke: $brown;
-      }
-    }
-  }
-
-  .productions-sights-title {
-    color: $brown;
-  }
-}
-.ui-theme-blue {
-  .ui-theme-color {
-    color: $blue;
-  }
-  .productions-tabs {
-    &-link {
-      &:hover,
-      &.selected {
-        color: $blue;
-        border-color: $blue;
-      }
-    }
-  }
-
-  .tk-subtype {
-    &-title {
-      color: $blue;
-    }
-  }
-
-  .productions-management {
-    &-name,
-    &-contacts-label,
-    a:hover {
-      color: $blue;
-    }
-  }
-
-  .docs-card {
-    &-icon {
-      stroke: $blue;
-    }
-    &:hover {
-      color: $blue;
-      border-color: $blue;
-
-      .docs-card-type {
-        color: $blue;
-      }
-    }
-  }
-
-  .ui-btn {
-    &:hover {
-      color: $blue;
-      border-color: $blue;
-
-      .ui-btn-arrow {
-        stroke: $blue;
-      }
-    }
-  }
-
-  .productions-sights-title {
-    color: $blue;
   }
 }
 
-.ui-bg-lightlime,
-.ui-bg-lightbrown,
-.ui-bg-lightblue {
-  .ui-side-title {
-    color: $bgc;
+.museum-circle {
+  max-width: 170px;
+
+  @media (max-width: 1259px) {
+    max-width: 130px;
   }
 }

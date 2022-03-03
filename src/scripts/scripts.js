@@ -519,6 +519,28 @@ window.addEventListener('load',() => {
 
 
 (function () {
+  const trigger = D.querySelectorAll('.bbi-parallax')
+  if (!trigger) return
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger,
+      start: 'top 80%',
+      end: 'bottom 80%',
+      scrub: 0.5
+    }
+  })
+  
+  gsap.utils.toArray('.bbi-parallax-img').forEach((el,index,arr) => {
+    tl.to(el,{yPercent: () => {
+      return -((arr.length - index) * 5)
+    }, duration: 1},">-1")
+  })
+  
+})();
+
+
+(function () {
   const toggler = document.querySelectorAll('.swiper-rewards-wrp')
   if (!toggler.length) return
 
