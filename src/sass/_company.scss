@@ -1,22 +1,60 @@
-.ui-page {
-  padding-top: 0;
-}
-.ui-wrapper {
-  padding-top: 0;
-}
+// UI header
 .ui-header {
-  padding-top: 100px;
   background-image: url(../images/bgs/company-header.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 .ui-row {
-  height: 960px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 50px;
+  padding-top: 300px;
+  padding-bottom: 49px;
+  min-height: 100vh;
+  max-height: 1500px;
+}
+.museum-hide {
+  display: none;
+  @media (max-width: 1260px) {
+    display: inline-block;
+  }
+}
+.ui-top-screen {
+  &-title {
+    max-width: 920px;
+    line-height: 0.9;
+  }
+  &-text {
+    max-width: 675px;
+    @include fz(28);
+    margin-bottom: 33px;
+    line-height: 1.38;
+  }
+}
+//  Ui page
+
+.ui-page {
+  padding-top: 0;
+}
+.ui-wrapper {
+  padding-top: 0;
+}
+.ui-top-header {
+  background-image: url(../images/bgs/company-header.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.company-row {
+  min-height: 100vh;
+  max-height: 1500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 300px;
+  padding-bottom: 49px;
+
   @media (max-width: 1440px) {
     height: 650px;
   }
@@ -55,6 +93,9 @@
       margin-bottom: 200px;
       @media (max-width: 1260px) {
         @include fz(300);
+      }
+      &-num {
+        margin-left: -0.07em;
       }
       &-subtitle {
         @include fz(80);
@@ -105,17 +146,19 @@
     padding-bottom: 200px;
     &-item {
       margin-bottom: 100px;
-      max-width: 920px;
+     
       &-title {
         @include fz(256);
-        @media (max-width: 1260px) {
+        margin-left: -0.07em;
+        @media (max-width: 1440px) {
           @include fz(200);
         }
       }
       &-text {
         @include fz(42);
         color: $primary;
-        @media (max-width: 1260px) {
+        max-width: 920px;
+        @media (max-width: 1440px) {
           @include fz(32);
         }
       }
@@ -138,7 +181,6 @@
         @include fz(28);
         font-weight: 700;
         margin-bottom: 60px;
-        margin-left: -15px;
       }
       &-item {
         max-width: 450px;
@@ -149,6 +191,28 @@
       }
       &-text {
         max-width: 340px;
+      }
+    }
+  }
+  &-chart {
+    margin-bottom: 200px;
+    padding-top: 80px;
+  }
+  &-fs {
+    padding-top: 80px;
+    padding-bottom: 120px;
+    background: #2f3e53;
+  }
+  .fs-menu-row {
+    justify-content: space-between;
+    margin-right: 0;
+  }
+  .fs-menu-col {
+    @media (max-width: 1440px) {
+      &:last-child {
+        .fs-menu-btn {
+          display: none;
+        }
       }
     }
   }
