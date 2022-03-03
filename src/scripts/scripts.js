@@ -532,6 +532,11 @@ window.addEventListener('load',() => {
   })
   
   gsap.utils.toArray('.bbi-parallax-img').forEach((el,index,arr) => {
+    // if (index !== arr.length - 1) {
+    //   tl.to(el,{yPercent: () => {
+    //     return -((arr.length - 1 - index) * 5)
+    //   }, duration: 1},">-1")
+    // }
     tl.to(el,{yPercent: () => {
       return -((arr.length - index) * 5)
     }, duration: 1},">-1")
