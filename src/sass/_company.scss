@@ -94,6 +94,9 @@
       @media (max-width: 1260px) {
         @include fz(300);
       }
+      &-num {
+        margin-left: -0.07em;
+      }
       &-subtitle {
         @include fz(80);
         font-weight: 700;
@@ -143,9 +146,10 @@
     padding-bottom: 200px;
     &-item {
       margin-bottom: 100px;
-      max-width: 920px;
+     
       &-title {
         @include fz(256);
+        margin-left: -0.07em;
         @media (max-width: 1440px) {
           @include fz(200);
         }
@@ -153,6 +157,7 @@
       &-text {
         @include fz(42);
         color: $primary;
+        max-width: 920px;
         @media (max-width: 1440px) {
           @include fz(32);
         }
@@ -176,7 +181,6 @@
         @include fz(28);
         font-weight: 700;
         margin-bottom: 60px;
-        margin-left: -15px;
       }
       &-item {
         max-width: 450px;

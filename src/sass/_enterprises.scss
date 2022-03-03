@@ -49,6 +49,10 @@
     }
     &-img {
       margin-bottom: 25px;
+      height: 88px;
+      img {
+        max-height: 88px;
+      }
     }
     &-text {
       @include fz(22);
@@ -124,8 +128,10 @@
           transition: 0.3s ease;
         }
         &:hover {
+          border: 1px solid $secondary;
+          color: $secondary;
           .docs-card-icon {
-            stroke: $primary;
+            stroke: $secondary;
           }
         }
       }
@@ -183,6 +189,23 @@
       color: $bgc;
     }
   }
+  .museum-slider-btns .swiper-button-next {
+    background-image: url(../images/svg/slider-arrow-next.svg);
+  }
+  .museum-slider-btns .swiper-button-prev {
+    background-image: url(../images/svg/slider-arrow-prev.svg);
+  }
+  .enterprises-circle-circle {
+    width: 170px;
+    height: 170px;
+   background: $secondary;
+  }
+  .ui-tags-list {
+    a {
+      color: $secondary;
+      border-color: $secondary;
+    }
+  }
 }
 .circle-flex {
   display: flex;
@@ -223,8 +246,8 @@
   justify-content: space-between;
 }
 .enterprises-circle {
-  flex: 0 0 39.8%;
-  max-width: 39.8%;
+  flex: 0 0 38.7%;
+  max-width: 38.7%;
   @media (max-width: 1260px) {
     margin-bottom: 0;
     margin-left: 40px;
@@ -241,4 +264,125 @@
   @media (max-width: 1260px) {
     @include fz(24);
   }
+}
+// enterprises-bkf.html 
+
+.enterprises-bkf {
+  .node-body {
+    background: #E5E5E5;
+  }
+  .enterprises-num-item-top {
+    color: #97B446;
+  }
+  .enterprises-proud {
+    background:#97B446;
+  }
+  .enterprises-contact .ui-subtitle {
+    color: #97B446;
+  }
+  .enterprises-contact-adress-title {
+    color: #97B446;
+  }
+  .enterprises-contact .museum-review-author {
+    color: #97B446;
+  }
+  .enterprises-news {
+    background: #97B446;
+  }
+  .enterprises-contact-adress-link:hover {
+    border: 1px solid #97B446;
+    color: #97B446;
+
+  }
+  .enterprises-contact-adress-link:hover .docs-card-icon {
+    stroke: #97B446;
+  }
+  .enterprises-circle-circle {
+    background:#97B446;
+  }
+  .enterprises-circle:after {
+    border: 1px solid #97B446;
+  }
+}
+// enterprises-scbc.html
+.enterprises-scbc {
+  .node-body {
+    background: #FFEAC0;
+  }
+  .ui-tags-list a {
+    color: #B16531;
+    border-color: #B16531;
+  }
+  .enterprises-num-item-top {
+    color: #B16531;
+  }
+  .enterprises-proud {
+    background:#B16531;
+  }
+  .enterprises-contact .ui-subtitle {
+    color: #B16531;
+  }
+  .enterprises-contact-adress-title {
+    color: #B16531;
+  }
+  .enterprises-contact .museum-review-author {
+    color: #B16531;
+  }
+  .enterprises-news {
+    background: #B16531;
+  }
+  .enterprises-contact-adress-link:hover {
+    border: 1px solid #B16531;
+    color: #B16531;
+
+  }
+  .enterprises-contact-adress-link:hover .docs-card-icon {
+    stroke: #B16531;
+  }
+  .enterprises-circle-circle {
+    background:#B16531;
+  }
+  .enterprises-circle:after {
+    border: 1px solid #B16531;
+  }
+}
+// enterprises-td.html 
+.enterprises-td {
+  .node-body {
+    background: #FFE2BF;
+  }
+  .enterprises-num-item-top {
+    color: #F68833;
+  }
+  .enterprises-proud {
+    background:#F68833;
+  }
+  .enterprises-contact .ui-subtitle {
+    color: #F68833;
+  }
+  .enterprises-contact-adress-title {
+    color: #F68833;
+  }
+  .enterprises-contact .museum-review-author {
+    color: #F68833;
+  }
+  .enterprises-news {
+    background: #F68833;
+  }
+  .enterprises-contact-adress-link:hover {
+    border: 1px solid #F68833;
+    color: #F68833;
+
+  }
+  .enterprises-contact-adress-link:hover .docs-card-icon {
+    stroke: #F68833;
+  }
+  .enterprises-circle-circle {
+    background:#F68833;
+  }
+  .enterprises-circle:after {
+    border: 1px solid #F68833;
+  }
+
+  
 }
