@@ -577,7 +577,7 @@ span.invalid { padding-top: 3px; padding-left: 25px; }
 
 .header.fs-opened .main-menu { opacity: 0; visibility: hidden; }
 
-.preloader { position: fixed; top: 0; left: 0; z-index: 100; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 100vw; height: 100vh; background: #222E3F; -webkit-transform: translateY(0%); -ms-transform: translateY(0%); transform: translateY(0%); }
+.preloader { position: fixed; top: 0; left: 0; z-index: 20; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 100vw; height: 100vh; background: #222E3F; -webkit-transform: translateY(0%); -ms-transform: translateY(0%); transform: translateY(0%); }
 
 .preloader.disppear { -webkit-transform: translateY(-100%); -ms-transform: translateY(-100%); transform: translateY(-100%); -webkit-transition: 1.2s; -o-transition: 1.2s; transition: 1.2s; }
 
@@ -1857,7 +1857,7 @@ PRODUCTIONS -------------- */
 
 @media (max-width: 1024px) { .stub-page { display: block; }
   .stub-page-header { padding-top: 18px; padding-bottom: 18px; height: 80px; background: #222E3F; }
-  .stub-page-block { position: fixed; top: 0; left: 0; z-index: 100; width: 100%; background: #222E3F; }
+  .stub-page-block { position: fixed; top: 0; left: 0; z-index: 10; width: 100%; background: #222E3F; }
   .stub-page-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; min-height: 100vh; max-height: 1500px; }
   .stub-page-text { padding-bottom: 122px; width: 100%; }
   .stub-page-title { margin-bottom: 57px; width: 400px; font-weight: 600; font-size: 60px; font-size: 3.75rem; line-height: 60px; }
@@ -1881,7 +1881,7 @@ PRODUCTIONS -------------- */
   .stub-page-title br:nth-child(1) { display: block; }
   .stub-page-img img { left: 0; right: 0; width: auto; max-height: calc(100% - 280px); } }
 
-.popup-cookie { position: fixed; bottom: 0; right: 2em; z-index: 99; padding: 2em 1.4em; max-width: 42.85em; width: 320px; height: 210px; font-size: 14px; line-height: 1.8em; background-color: #F08322; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; }
+.popup-cookie { position: fixed; bottom: 0; right: 2em; z-index: 100; padding: 2em 1.4em; max-width: 42.85em; width: 320px; height: 210px; font-size: 14px; line-height: 1.8em; background-color: #F08322; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; }
 
 .popup-cookie p { margin-bottom: 23px; font-size: 18px; font-size: 1.125rem; font-weight: 400; }
 
