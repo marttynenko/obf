@@ -2,18 +2,21 @@ const { src, dest, watch, series } = require('gulp')
 // const sass = require('gulp-sass')
 const sass = require('gulp-sass')(require('node-sass'))
 const svgSprite = require('gulp-svg-sprites')
-const image = require('gulp-image')
+const image = import('gulp-image')
 const del = require('del')
 const autoprefixer = require('gulp-autoprefixer')
+const sourcemaps = require('gulp-sourcemaps')
 
 
 
 function styles(cb) {
     return src('src/sass/style.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass({ outputStyle: 'compact' }).on('error', sass.logError))
         .pipe(autoprefixer(
             ['last 4 versions']
         ))
+        .pipe(sourcemaps.write('sourcemaps'))
         .pipe(dest('src/css'))
     cb();
 }

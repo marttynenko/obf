@@ -17,7 +17,7 @@
     const swiper = new Swiper(`.${ds}`, {
       autoHeight: true,
       loop: true,
-      speed: 800,
+      speed: 1000,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -31,12 +31,14 @@
       },
       effect: "creative",
       creativeEffect: {
+        perspective: true,
         prev: {
-          // shadow: true,
-          translate: ["-20%", 0, -1],
+          translate: ["-25%", 0, -1],
+          // rotate: [0,0,3]
         },
         next: {
           translate: ["100%", 0, 0],
+          // rotate: [0,0,0]
         },
       },
     });
@@ -58,34 +60,6 @@ const swiper = new Swiper(".enterprises-swipper", {
     prevEl: ".swiper-button-prev",
   },
 });
-
-const Museum = {
-  headerHeight: 0,
-
-  updateHeight: () => {
-    this.headerHeight = document.querySelector(".museum-header").clientHeight;
-  },
-
-  scroll: () => {
-    if (window.scrollY >= this.headerHeight) {
-      return document
-        .querySelector("#header")
-        .classList.remove("header-transparent");
-    }
-    document.querySelector("#header").classList.add("header-transparent");
-  },
-};
-
-if (document.querySelector(".museum")) {
-  document.querySelector(".wrapper").classList.add("no-gutters-top");
-  document.querySelector("#header").classList.add("header-transparent");
-
-  Museum.updateHeight();
-
-  window.addEventListener("resize", Museum.updateHeight, false);
-
-  window.addEventListener("scroll", Museum.scroll, false);
-}
 
 // if (document.querySelector(".page-404")) {
 //   document.querySelector(".wrapper").classList.add("wrapper-page-404");

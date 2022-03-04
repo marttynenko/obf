@@ -184,6 +184,50 @@ gsap.registerPlugin(ScrollTrigger);
 
 const D = document;
 
+
+const Headers = {
+  headerHeight: 0,
+  targets: ['.museum','.first-screen'],
+
+  checkTargets () {
+    let res = false;
+    for (let i = 0; i < this.targets.length; i++) {
+      if (D.querySelector(this.targets[i])) {
+        res = true;
+        continue;
+      }
+    }
+    return res
+  },
+
+  updateHeight: () => {
+    this.headerHeight = D.documentElement.clientHeight;
+  },
+
+  scroll: () => {
+    if (window.scrollY >= this.headerHeight) {
+      return D
+        .querySelector("#header")
+        .classList.remove("header-transparent");
+    }
+    D.querySelector("#header").classList.add("header-transparent");
+  },
+
+  init () {
+    D.querySelector(".wrapper").classList.add("no-gutters-top");
+    D.querySelector("#header").classList.add("header-transparent");
+
+    Headers.updateHeight();
+    window.addEventListener("resize", this.updateHeight, false);
+    window.addEventListener("scroll", this.scroll, false);
+  }
+};
+
+if (Headers.checkTargets()) {
+  Headers.init()
+}
+
+
 //full screen menu toggler
 (function () {
   const toggler = D.querySelector(".ux-toggler-menu");
@@ -411,7 +455,7 @@ const prdHeadAnimate = () => {
       .to('.productions-head-body', {opacity: 1, duration: 0})
       .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
       .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
-      .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.5")
+      .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.35")
       .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
       .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
       .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
@@ -516,6 +560,33 @@ window.addEventListener('load',() => {
 // })
 // // t.to({'.tk-stock'}, {y: -1000, duration: 3})
 // t.to('.productions-animation-after', {y: -400,duration: 3})
+
+
+(function () {
+  const trigger = D.querySelectorAll('.bbi-parallax')
+  if (!trigger) return
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger,
+      start: 'top 80%',
+      end: 'bottom 80%',
+      scrub: 0.5
+    }
+  })
+  
+  gsap.utils.toArray('.bbi-parallax-img').forEach((el,index,arr) => {
+    // if (index !== arr.length - 1) {
+    //   tl.to(el,{yPercent: () => {
+    //     return -((arr.length - 1 - index) * 5)
+    //   }, duration: 1},">-1")
+    // }
+    tl.to(el,{yPercent: () => {
+      return -((arr.length - index) * 5)
+    }, duration: 1},">-1")
+  })
+  
+})();
 
 
 (function () {

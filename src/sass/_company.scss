@@ -1,3 +1,84 @@
+.first-screen {
+  position: relative;
+  z-index: 1;
+  background: $bgc;
+  overflow: hidden;
+
+  &-flex {
+    display: flex;
+    align-items: flex-end;
+    padding-top: 100px;
+    padding-bottom: 49px;
+    min-height: 100vh;
+    max-height: 1500px;
+  }
+
+  &-left {
+    flex: 0 0 calc(100% - 185px);
+    max-width: calc(100% - 185px);
+  }
+
+  &-right {
+    flex: 0 0 185px;
+    max-width: 185px;
+    padding-left: 15px;
+  }
+
+  &-title {
+    margin-bottom: 40px;
+    max-width: 1100px;
+
+    &-mini {
+      @include fz(110);
+
+      @media (max-width: 1439px) {
+        @include fz(90);
+      }
+      @media (max-width: 1259px) {
+        @include fz(80);
+      }
+    }
+  }
+
+  &-txt {
+    @include fz(28);
+    margin-bottom: 25px;
+    line-height: 1.1;
+    max-width: 850px;
+
+    @media (max-width: 1439px) {
+      @include fz(24);
+    }
+    @media (max-width: 1259px) {
+      @include fz(16);
+    }
+  }
+
+  &-arrow {
+    width: 34px;
+    height: 13px;
+    cursor: pointer;
+
+    svg {
+      fill: none;
+      stroke: #FFF;
+      stroke-width: 2;
+    }
+  }
+
+  &-bg {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
 // UI header
 .ui-header {
   background-image: url(../images/bgs/company-header.png);
@@ -6,17 +87,11 @@
   background-position: center;
 }
 .ui-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-top: 300px;
-  padding-bottom: 49px;
-  min-height: 100vh;
-  max-height: 1500px;
+  
 }
 .museum-hide {
   display: none;
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     display: inline-block;
   }
 }
@@ -55,7 +130,7 @@
   padding-top: 300px;
   padding-bottom: 49px;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     height: 650px;
   }
 }
@@ -91,7 +166,7 @@
       @include fz(400);
       line-height: 1;
       margin-bottom: 200px;
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         @include fz(300);
       }
       &-num {
@@ -101,7 +176,7 @@
         @include fz(80);
         font-weight: 700;
         line-height: 1;
-        @media (max-width: 1260px) {
+        @media (max-width: 1259px) {
           @include fz(52);
         }
       }
@@ -113,14 +188,14 @@
         @include fz(22);
         line-height: 1.45;
         color: #ffffff;
-        @media (max-width: 1260px) {
+        @media (max-width: 1259px) {
           @include fz(18);
         }
       }
       &-top {
         @include fz(110);
         line-height: 1;
-        @media (max-width: 1260px) {
+        @media (max-width: 1259px) {
           @include fz(90);
         }
       }
@@ -129,28 +204,29 @@
       &-item {
         @include fz(54);
         color: #ffffff;
-        @media (max-width: 1260px) {
+        @media (max-width: 1259px) {
           @include fz(42);
         }
       }
       &-subtitle {
         @include fz(18);
-        @media (max-width: 1260px) {
+        @media (max-width: 1259px) {
           @include fz(18);
         }
       }
     }
   }
   &-purpose {
-    padding-top: 200px;
-    padding-bottom: 200px;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    
     &-item {
       margin-bottom: 100px;
      
       &-title {
         @include fz(256);
         margin-left: -0.07em;
-        @media (max-width: 1440px) {
+        @media (max-width: 1439px) {
           @include fz(200);
         }
       }
@@ -158,7 +234,7 @@
         @include fz(42);
         color: $primary;
         max-width: 920px;
-        @media (max-width: 1440px) {
+        @media (max-width: 1439px) {
           @include fz(32);
         }
       }
@@ -169,13 +245,6 @@
     padding-top: 80px;
     padding-bottom: 120px;
 
-    &-title {
-      @include fz(54);
-      color: $primary;
-      line-height: 1.1;
-      margin-bottom: 80px;
-      max-width: 470px;
-    }
     &-lineup {
       &-title {
         @include fz(28);
@@ -185,12 +254,19 @@
       &-item {
         max-width: 450px;
         margin-bottom: 60px;
+        color: #FFF;
+      }
+      a#{&}-item:hover {
+        color: $primary;
       }
       &-img {
         margin-right: 12px;
+        flex: 0 0 100px;
+        max-width: 100px;
+        line-height: 0;
       }
       &-text {
-        max-width: 340px;
+        max-width: 300px;
       }
     }
   }
@@ -208,7 +284,7 @@
     margin-right: 0;
   }
   .fs-menu-col {
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       &:last-child {
         .fs-menu-btn {
           display: none;

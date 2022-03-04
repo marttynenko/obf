@@ -334,8 +334,12 @@ blockquote {
 	font-weight: 400;
 }
 figcaption {
-	font-size: 0.81em;
+	font-size: 18px;
 	padding-top: 5px;
+
+	@media (max-width: 1439px) {
+		@include fz(14);
+	}
 }
 
 /* form, buttons */
@@ -1101,6 +1105,11 @@ span.invalid {
 			visibility: visible;
 			opacity: 1;
 		}
+	}
+
+	& + figcaption {
+		padding-top: 0;
+		margin-top: -8px;
 	}
 }
 
