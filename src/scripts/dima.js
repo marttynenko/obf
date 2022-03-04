@@ -61,34 +61,6 @@ const swiper = new Swiper(".enterprises-swipper", {
   },
 });
 
-const Museum = {
-  headerHeight: 0,
-
-  updateHeight: () => {
-    this.headerHeight = document.querySelector(".museum-header").clientHeight;
-  },
-
-  scroll: () => {
-    if (window.scrollY >= this.headerHeight) {
-      return document
-        .querySelector("#header")
-        .classList.remove("header-transparent");
-    }
-    document.querySelector("#header").classList.add("header-transparent");
-  },
-};
-
-if (document.querySelector(".museum")) {
-  document.querySelector(".wrapper").classList.add("no-gutters-top");
-  document.querySelector("#header").classList.add("header-transparent");
-
-  Museum.updateHeight();
-
-  window.addEventListener("resize", Museum.updateHeight, false);
-
-  window.addEventListener("scroll", Museum.scroll, false);
-}
-
 // if (document.querySelector(".page-404")) {
 //   document.querySelector(".wrapper").classList.add("wrapper-page-404");
 //   document.querySelector("#header").classList.add("header-transparent");

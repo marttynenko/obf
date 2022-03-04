@@ -1949,9 +1949,35 @@ PRODUCTIONS -------------- */
 
 @media (max-width: 1260px) { .publication-item { font-size: 24px; font-size: 1.5rem; } }
 
-.ui-header { background-image: url(../images/bgs/company-header.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
+.first-screen { position: relative; z-index: 1; background: #222E3F; overflow: hidden; }
 
-.ui-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-top: 300px; padding-bottom: 49px; min-height: 100vh; max-height: 1500px; }
+.first-screen-flex { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-top: 100px; padding-bottom: 49px; min-height: 100vh; max-height: 1500px; }
+
+.first-screen-left { -webkit-box-flex: 0; -ms-flex: 0 0 calc(100% - 185px); flex: 0 0 calc(100% - 185px); max-width: calc(100% - 185px); }
+
+.first-screen-right { -webkit-box-flex: 0; -ms-flex: 0 0 185px; flex: 0 0 185px; max-width: 185px; padding-left: 15px; }
+
+.first-screen-title { margin-bottom: 40px; max-width: 1100px; }
+
+.first-screen-title-mini { font-size: 110px; font-size: 6.875rem; }
+
+@media (max-width: 1439px) { .first-screen-title-mini { font-size: 90px; font-size: 5.625rem; } }
+
+@media (max-width: 1259px) { .first-screen-title-mini { font-size: 80px; font-size: 5rem; } }
+
+.first-screen-txt { font-size: 28px; font-size: 1.75rem; margin-bottom: 25px; line-height: 1.1; max-width: 850px; }
+
+@media (max-width: 1439px) { .first-screen-txt { font-size: 24px; font-size: 1.5rem; } }
+
+@media (max-width: 1259px) { .first-screen-txt { font-size: 16px; font-size: 1rem; } }
+
+.first-screen-arrow { width: 34px; height: 13px; cursor: pointer; }
+
+.first-screen-arrow svg { fill: none; stroke: #FFF; stroke-width: 2; }
+
+.first-screen-bg { position: absolute; z-index: -1; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; -o-object-fit: cover; object-fit: cover; -o-object-position: center; object-position: center; }
+
+.ui-header { background-image: url(../images/bgs/company-header.png); background-repeat: no-repeat; background-size: cover; background-position: center; }
 
 .museum-hide { display: none; }
 
@@ -2009,7 +2035,7 @@ PRODUCTIONS -------------- */
 
 @media (max-width: 1260px) { .company-pos-bottom-subtitle { font-size: 18px; font-size: 1.125rem; } }
 
-.company-purpose { padding-top: 200px; padding-bottom: 200px; }
+.company-purpose { padding-top: 150px; padding-bottom: 100px; }
 
 .company-purpose-item { margin-bottom: 100px; }
 
@@ -2023,15 +2049,15 @@ PRODUCTIONS -------------- */
 
 .company-acs { background: #2f3e53; padding-top: 80px; padding-bottom: 120px; }
 
-.company-acs-title { font-size: 54px; font-size: 3.375rem; color: #F08322; line-height: 1.1; margin-bottom: 80px; max-width: 470px; }
-
 .company-acs-lineup-title { font-size: 28px; font-size: 1.75rem; font-weight: 700; margin-bottom: 60px; }
 
-.company-acs-lineup-item { max-width: 450px; margin-bottom: 60px; }
+.company-acs-lineup-item { max-width: 450px; margin-bottom: 60px; color: #FFF; }
 
-.company-acs-lineup-img { margin-right: 12px; }
+.company-acs-lineup a.company-acs-lineup-item:hover { color: #F08322; }
 
-.company-acs-lineup-text { max-width: 340px; }
+.company-acs-lineup-img { margin-right: 12px; -webkit-box-flex: 0; -ms-flex: 0 0 100px; flex: 0 0 100px; max-width: 100px; line-height: 0; }
+
+.company-acs-lineup-text { max-width: 300px; }
 
 .company-chart { margin-bottom: 200px; padding-top: 80px; }
 
@@ -2855,3 +2881,5 @@ button.mfp-close:hover:after { -webkit-transform: rotate(-135deg); -ms-transform
 @media (max-width: 420px) { h1, .h1 { font-size: 30px; font-size: 1.875rem; }
   h2, .h2 { font-size: 25px; font-size: 1.5625rem; }
   h3, .h3 { font-size: 22px; font-size: 1.375rem; } }
+
+/*# sourceMappingURL=sourcemaps/style.css.map */
