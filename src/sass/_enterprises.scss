@@ -1,7 +1,8 @@
 .enterprises {
+
   .ui-subtitle {
     color: $bgc;
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       @include fz(42);
       margin-bottom: 60px;
     }
@@ -26,13 +27,16 @@
     &-item {
       @include fz(28);
       margin-bottom: 80px;
-      @media (max-width: 1440px) {
+      padding-right: 8.32%;
+      @media (max-width: 1439px) {
         @include fz(24);
       }
       &-top {
         @include fz(110);
         color: $secondary;
-        @media (max-width: 1440px) {
+   
+        line-height: 1;
+        @media (max-width: 1439px) {
           @include fz(90);
         }
       }
@@ -59,14 +63,14 @@
     }
     &-text {
       @include fz(22);
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         @include fz(18);
       }
     }
   }
   &-sort {
     .ui-subtitle {
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         display: inline-block;
         max-width: 274px;
       }
@@ -75,12 +79,12 @@
       margin-bottom: 60px;
       &-link {
         display: none;
-        @media (max-width: 1260px) {
+        @media (max-width: 1259px) {
           display: flex;
           align-items: center;
         }
       }
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -138,7 +142,7 @@
           }
         }
       }
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         @include fz(24);
       }
     }
@@ -148,7 +152,7 @@
     .node-slider-comm-body {
       padding-left: 0;
       max-width: 66.56%;
-      @media (max-width: 1440px) {
+      @media (max-width: 1439px) {
         padding-right: 15%;
       }
     }
@@ -160,7 +164,7 @@
       @include fz(28);
       margin-bottom: 24px;
       font-weight: 700;
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         @include fz(24);
       }
     }
@@ -170,7 +174,7 @@
       margin-bottom: 24px;
       font-weight: 400;
       line-height: 1;
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         @include fz(42);
       }
     }
@@ -178,7 +182,7 @@
       @include fz(22);
       font-weight: 600;
       color: #fff;
-      @media (max-width: 1260px) {
+      @media (max-width: 1259px) {
         @include fz(18);
       }
     }
@@ -213,7 +217,7 @@
 .circle-flex {
   display: flex;
   flex-direction: column;
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     display: none;
   }
 }
@@ -251,7 +255,7 @@
 .enterprises-circle {
   flex: 0 0 38.7%;
   max-width: 38.7%;
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     margin-bottom: 0;
     margin-left: 40px;
     max-width: initial;
@@ -264,7 +268,7 @@
 .slider-text {
   @include fz(28);
   margin-bottom: 40px;
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     @include fz(24);
   }
 }
@@ -427,7 +431,7 @@
       margin-bottom: 54px;
       @include fz(42);
       color: $bgc;
-      @media (max-width:1260px) {
+      @media (max-width:1259px) {
         @include fz(32);
       }
     }
@@ -470,7 +474,7 @@
         }
       
         
-        @media (max-width:1260px) {
+        @media (max-width:1259px) {
           height: 100px;
           width: 100px;
         }
@@ -482,7 +486,7 @@
         margin-left: 14px;
         line-height: 1.15;
         transition: .5s ease;
-        @media (max-width:1260px) {
+        @media (max-width:1259px) {
           @include fz(22);
         }
       }

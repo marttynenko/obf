@@ -1991,7 +1991,7 @@ PRODUCTIONS -------------- */
 
 .enterprises .ui-subtitle { color: #222E3F; }
 
-@media (max-width: 1260px) { .enterprises .ui-subtitle { font-size: 42px; font-size: 2.625rem; margin-bottom: 60px; } }
+@media (max-width: 1259px) { .enterprises .ui-subtitle { font-size: 42px; font-size: 2.625rem; margin-bottom: 60px; } }
 
 .enterprises .node-inner { padding-right: 0; }
 
@@ -2003,13 +2003,13 @@ PRODUCTIONS -------------- */
 
 .enterprises-block { margin-bottom: 120px; padding-top: 80px; }
 
-.enterprises-num-item { font-size: 28px; font-size: 1.75rem; margin-bottom: 80px; }
+.enterprises-num-item { font-size: 28px; font-size: 1.75rem; margin-bottom: 80px; padding-right: 8.32%; }
 
-@media (max-width: 1440px) { .enterprises-num-item { font-size: 24px; font-size: 1.5rem; } }
+@media (max-width: 1439px) { .enterprises-num-item { font-size: 24px; font-size: 1.5rem; } }
 
-.enterprises-num-item-top { font-size: 110px; font-size: 6.875rem; color: #268E80; }
+.enterprises-num-item-top { font-size: 110px; font-size: 6.875rem; color: #268E80; line-height: 1; }
 
-@media (max-width: 1440px) { .enterprises-num-item-top { font-size: 90px; font-size: 5.625rem; } }
+@media (max-width: 1439px) { .enterprises-num-item-top { font-size: 90px; font-size: 5.625rem; } }
 
 .enterprises-proud { background: #268E80; color: #fff; padding-bottom: 120px; }
 
@@ -2023,17 +2023,17 @@ PRODUCTIONS -------------- */
 
 .enterprises-proud-text { font-size: 22px; font-size: 1.375rem; }
 
-@media (max-width: 1260px) { .enterprises-proud-text { font-size: 18px; font-size: 1.125rem; } }
+@media (max-width: 1259px) { .enterprises-proud-text { font-size: 18px; font-size: 1.125rem; } }
 
-@media (max-width: 1260px) { .enterprises-sort .ui-subtitle { display: inline-block; max-width: 274px; } }
+@media (max-width: 1259px) { .enterprises-sort .ui-subtitle { display: inline-block; max-width: 274px; } }
 
 .enterprises-sort-adaptive { margin-bottom: 60px; }
 
 .enterprises-sort-adaptive-link { display: none; }
 
-@media (max-width: 1260px) { .enterprises-sort-adaptive-link { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } }
+@media (max-width: 1259px) { .enterprises-sort-adaptive-link { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } }
 
-@media (max-width: 1260px) { .enterprises-sort-adaptive { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } }
+@media (max-width: 1259px) { .enterprises-sort-adaptive { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } }
 
 .enterprises-diplom .ui-subtitle { color: #222E3F; }
 
@@ -2055,27 +2055,27 @@ PRODUCTIONS -------------- */
 
 .enterprises-contact-adress-link:hover .docs-card-icon { stroke: #268E80; }
 
-@media (max-width: 1260px) { .enterprises-contact-adress { font-size: 24px; font-size: 1.5rem; } }
+@media (max-width: 1259px) { .enterprises-contact-adress { font-size: 24px; font-size: 1.5rem; } }
 
 .enterprises-contact .ui-subtitle { color: #268E80; }
 
 .enterprises-contact .node-slider-comm-body { padding-left: 0; max-width: 66.56%; }
 
-@media (max-width: 1440px) { .enterprises-contact .node-slider-comm-body { padding-right: 15%; } }
+@media (max-width: 1439px) { .enterprises-contact .node-slider-comm-body { padding-right: 15%; } }
 
 .enterprises-contact .node-slider-comm-img { max-width: 33.43%; }
 
 .enterprises-contact .museum-review-position { color: #fff; font-size: 28px; font-size: 1.75rem; margin-bottom: 24px; font-weight: 700; }
 
-@media (max-width: 1260px) { .enterprises-contact .museum-review-position { font-size: 24px; font-size: 1.5rem; } }
+@media (max-width: 1259px) { .enterprises-contact .museum-review-position { font-size: 24px; font-size: 1.5rem; } }
 
 .enterprises-contact .museum-review-author { color: #268E80; font-size: 54px; font-size: 3.375rem; margin-bottom: 24px; font-weight: 400; line-height: 1; }
 
-@media (max-width: 1260px) { .enterprises-contact .museum-review-author { font-size: 42px; font-size: 2.625rem; } }
+@media (max-width: 1259px) { .enterprises-contact .museum-review-author { font-size: 42px; font-size: 2.625rem; } }
 
 .enterprises-contact .museum-review-txt { font-size: 22px; font-size: 1.375rem; font-weight: 600; color: #fff; }
 
-@media (max-width: 1260px) { .enterprises-contact .museum-review-txt { font-size: 18px; font-size: 1.125rem; } }
+@media (max-width: 1259px) { .enterprises-contact .museum-review-txt { font-size: 18px; font-size: 1.125rem; } }
 
 .enterprises-news { background: #268E80; }
 
@@ -2093,7 +2093,7 @@ PRODUCTIONS -------------- */
 
 .circle-flex { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
 
-@media (max-width: 1260px) { .circle-flex { display: none; } }
+@media (max-width: 1259px) { .circle-flex { display: none; } }
 
 .enterprises-swipper { position: relative; }
 
@@ -2113,13 +2113,13 @@ PRODUCTIONS -------------- */
 
 .enterprises-circle { -webkit-box-flex: 0; -ms-flex: 0 0 38.7%; flex: 0 0 38.7%; max-width: 38.7%; }
 
-@media (max-width: 1260px) { .enterprises-circle { margin-bottom: 0; margin-left: 40px; max-width: initial; } }
+@media (max-width: 1259px) { .enterprises-circle { margin-bottom: 0; margin-left: 40px; max-width: initial; } }
 
 .enterprises-circle:after { border: 1px solid #268E80; }
 
 .slider-text { font-size: 28px; font-size: 1.75rem; margin-bottom: 40px; }
 
-@media (max-width: 1260px) { .slider-text { font-size: 24px; font-size: 1.5rem; } }
+@media (max-width: 1259px) { .slider-text { font-size: 24px; font-size: 1.5rem; } }
 
 .enterprises-bkf .node-body { background: #E5E5E5; }
 
@@ -2213,7 +2213,7 @@ PRODUCTIONS -------------- */
 
 .enterprises-td .enterprises-activity-title { margin-bottom: 54px; font-size: 42px; font-size: 2.625rem; color: #222E3F; }
 
-@media (max-width: 1260px) { .enterprises-td .enterprises-activity-title { font-size: 32px; font-size: 2rem; } }
+@media (max-width: 1259px) { .enterprises-td .enterprises-activity-title { font-size: 32px; font-size: 2rem; } }
 
 .enterprises-td .enterprises-activity-items { display: -webkit-box; display: -ms-flexbox; display: flex; max-width: 320px; margin-bottom: 60px; cursor: pointer; }
 
@@ -2225,11 +2225,11 @@ PRODUCTIONS -------------- */
 
 .enterprises-td .enterprises-activity-items-img img { position: relative; bottom: -2px; }
 
-@media (max-width: 1260px) { .enterprises-td .enterprises-activity-items-img { height: 100px; width: 100px; } }
+@media (max-width: 1259px) { .enterprises-td .enterprises-activity-items-img { height: 100px; width: 100px; } }
 
 .enterprises-td .enterprises-activity-items-text { font-size: 26px; font-size: 1.625rem; color: #DD722A; max-width: 155px; margin-left: 14px; line-height: 1.15; -webkit-transition: .5s ease; -o-transition: .5s ease; transition: .5s ease; }
 
-@media (max-width: 1260px) { .enterprises-td .enterprises-activity-items-text { font-size: 22px; font-size: 1.375rem; } }
+@media (max-width: 1259px) { .enterprises-td .enterprises-activity-items-text { font-size: 22px; font-size: 1.375rem; } }
 
 .enterprises-td .enterprises-activity-items:hover .enterprises-activity-items-text { color: #fff; }
 
