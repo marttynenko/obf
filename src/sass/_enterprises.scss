@@ -1,5 +1,9 @@
-.enterprises {
 
+.enterprises {
+  .history-header {
+    position: relative;
+    background-image: none;
+  }
   .ui-subtitle {
     color: $bgc;
     @media (max-width: 1259px) {
@@ -278,6 +282,9 @@
   .node-body {
     background: #E5E5E5;
   }
+  .history-tabs-link {
+    color:#97B446;
+  }
   .enterprises-num-item-top {
     color: #97B446;
   }
@@ -386,6 +393,8 @@
   .node-body {
     background: #FFE2BF;
   }
+
+  
   .enterprises-num-item-top {
     color: #F68833;
   }

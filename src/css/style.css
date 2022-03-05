@@ -2067,6 +2067,8 @@ PRODUCTIONS -------------- */
 
 @media (max-width: 1439px) { .company .fs-menu-col:last-child .fs-menu-btn { display: none; } }
 
+.enterprises .history-header { position: relative; background-image: none; }
+
 .enterprises .ui-subtitle { color: #222E3F; }
 
 @media (max-width: 1259px) { .enterprises .ui-subtitle { font-size: 42px; font-size: 2.625rem; margin-bottom: 60px; } }
@@ -2200,6 +2202,8 @@ PRODUCTIONS -------------- */
 @media (max-width: 1259px) { .slider-text { font-size: 24px; font-size: 1.5rem; } }
 
 .enterprises-bkf .node-body { background: #E5E5E5; }
+
+.enterprises-bkf .history-tabs-link { color: #97B446; }
 
 .enterprises-bkf .enterprises-num-item-top { color: #97B446; }
 
