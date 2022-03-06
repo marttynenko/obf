@@ -619,3 +619,18 @@ window.addEventListener('load',() => {
   })
   
 })();
+
+
+//charts
+document.querySelectorAll('.ux-chart').forEach((el,index) => {
+  const str = el.dataset.data || null
+  if (!str) return;
+  const data = str.split(',')
+  let max, min;
+
+  data.forEach(item => {
+    // const bar = document.createElement('div')
+    const pairs = item.split(':')
+  })
+
+})
