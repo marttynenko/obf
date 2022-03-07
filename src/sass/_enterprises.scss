@@ -99,6 +99,7 @@
     background: #222e3f;
     padding-top: 80px;
     padding-bottom: 120px;
+
     &-container {
       margin-bottom: 60px;
     }
@@ -106,6 +107,14 @@
     &-adress {
       @include fz(28);
       padding-right: 10.86%;
+
+      a {
+        color: #FFF;
+
+        &:hover {
+          color: $secondary;
+        }
+      }
       &-title {
         color: $secondary;
         margin-bottom: 24px;
@@ -278,7 +287,8 @@
     color: $tertiary;
   }
   .enterprises-proud-img {
-    filter: hue-rotate(246deg);
+    filter: hue-rotate(246deg) brightness(1.5);
+    opacity: 0.85;
   }
   .enterprises-proud {
     background:$tertiary;
@@ -289,6 +299,7 @@
   .enterprises-contact-adress-title {
     color: $tertiary;
   }
+  
   .enterprises-contact .museum-review-author {
     color: $tertiary;
   }
@@ -307,7 +318,15 @@
   .enterprises-content-title {
     color: $tertiary;
   }
+
+  .enterprises-contact-adress {
+    a {
   
+      &:hover {
+        color: $tertiary;
+      }
+    }
+  }
 }
 
 .enterprises-scbc {
@@ -322,7 +341,8 @@
     }
   }
   .enterprises-proud-img {
-    filter: hue-rotate(246deg);
+    filter: hue-rotate(246deg) brightness(1.5);
+    opacity: 0 0.85;
   }
   .enterprises-content-title {
     color: $darkbrown;
@@ -353,14 +373,15 @@
   .enterprises-contact-adress-link:hover .docs-card-icon {
     stroke: $darkbrown;
   }
-  .page-btn-yellow:hover, .page-btn-yellow.selected {
-    color: $darkbrown;
-  }
-  .page-btn-yellow:hover .page-btn-sprite, .page-btn-yellow.selected .page-btn-sprite {
-    fill: $darkbrown;
-  }
-  .ui-btn-circle-secondary .ui-btn-circle-circle {
-    background: $darkbrown;
+  
+
+  .enterprises-contact-adress {
+    a {
+  
+      &:hover {
+        color: $darkbrown;
+      }
+    }
   }
 }
 // enterprises-td.html 
@@ -368,7 +389,8 @@
   background: #FFE2BF;
   
   .enterprises-proud-img {
-    filter: hue-rotate(246deg);
+    filter: hue-rotate(246deg) brightness(1.5);
+    opacity: 0.85;
   }
   .enterprises-num-item-top {
     color: #F68833;
@@ -397,18 +419,27 @@
     stroke: #F68833;
   }
 
+  .enterprises-contact-adress {
+    a {
+  
+      &:hover {
+        color: #F68833;
+      }
+    }
+  }
+
   .enterprises-activity {
     display: flex;
     flex-direction: row;
-    &-block {
-     
-    padding-right: 9.8%;
 
+    &-block {
+      padding-right: 9.8%;
     }
     &-title {
       margin-bottom: 54px;
       @include fz(42);
       color: $bgc;
+
       @media (max-width:1259px) {
         @include fz(32);
       }
@@ -421,8 +452,8 @@
      
       &-item {
         position: relative;
-     
-        padding: 10px;
+        // padding: 10px;
+        
         &:after {
           content: "";
           position: absolute;
@@ -434,11 +465,7 @@
           border-radius: 50%;
           z-index: 1;
           opacity: 0;
-          -webkit-transition: opacity .5s, -webkit-transform .5s;
-          transition: opacity .5s, -webkit-transform .5s;
-          -o-transition: transform .5s, opacity .5s;
           transition: transform .5s, opacity .5s;
-          transition: transform .5s, opacity .5s, -webkit-transform .5s;
         }
       }
       &-img {
@@ -468,12 +495,10 @@
           @include fz(22);
         }
       }
-      // &:hover .enterprises-activity-items-text {
-      //   color: #fff;
-        
-      // }
+
       &:hover .enterprises-activity-items-item::after {
         opacity: 1;
+        transform: scale(1.12);
       }
     }
     .activity-primary {

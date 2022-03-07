@@ -432,6 +432,16 @@ function animateFSMenu(action) {
   const target = D.querySelectorAll(".ux-gallery");
   if (!target.length) return;
 
+  const getSelectors = (parent,link) => {
+    // const res = []
+    parent.querySelectorAll(link).forEach(item => {
+      if (!item.closest('.swiper-slide-duplicate')) {
+        item.classList.add('ux-not-duplicate')
+      }
+    })
+    // return res
+  }
+
   FARBA.lazyLibraryLoad(
     "//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js",
     "//cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css",
@@ -446,9 +456,15 @@ function animateFSMenu(action) {
           }
         });
 
+        let selector = 'a.ux-gallery-link'
+        if (el.classList.contains('swiper-rewards-wrp')) {
+          getSelectors(el,'a.ux-gallery-link')
+          selector = 'a.ux-gallery-link.ux-not-duplicate'
+        }
+
         lightGallery(el, {
           download: false,
-          selector: "a.ux-gallery-link",
+          selector: selector,
           backdropDuration: 500,
           speed: 500,
         });

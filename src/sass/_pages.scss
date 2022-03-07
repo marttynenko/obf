@@ -639,6 +639,7 @@ PRODUCTIONS -------------- */
   &-head {
     // position: relative;
     // z-index: 1;
+    overflow: hidden;
 
     &-body {
       min-height: 100vh;
@@ -710,6 +711,13 @@ PRODUCTIONS -------------- */
   &-titles {
     flex: 0 0 620px;
     max-width: 620px;
+
+    h2 {
+      @include fz(80);
+      line-height: 1;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
   }
 
   &-details {
@@ -720,6 +728,32 @@ PRODUCTIONS -------------- */
     &-top {
       margin-bottom: 30px;
     }
+    h4, h5 {
+      @include fz(80);
+      line-height: 1;
+      margin-top: 0px;
+      margin-bottom: 12px;
+    }
+    h5 {
+      color: $bgc
+    }
+    h6 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      @include fz(54);
+      line-height: 1;
+      font-weight: 400;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    strong, b {
+      @include fz(22);
+      font-weight: 600;
+      display: inline-block;
+    }
+    
   }
 
   &-title {
@@ -732,7 +766,6 @@ PRODUCTIONS -------------- */
     &:not(:last-child) {
       margin-bottom: 30px;
     }
-
     &-title {
       @include fz(80);
       line-height: 1;
@@ -765,12 +798,30 @@ PRODUCTIONS -------------- */
       padding: 50px 0;
     }
 
-    &-title {
+    &-title,
+    &-titles h2 {
       @include fz(52);
     }
 
     &-details {
       @include fz(24);
+       
+      h4, h5 {
+        @include fz(52);
+        line-height: 1;
+        margin-top: 12px;
+        margin-bottom: 12px;
+      }
+      h5 {
+        color: $bgc
+      }
+      strong, b {
+        @include fz(18);
+      }
+      h6 {
+        @include fz(42);
+        line-height: 1;
+      }
     }
 
     &-block {
