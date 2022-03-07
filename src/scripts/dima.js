@@ -73,18 +73,18 @@ const swiper = new Swiper(".enterprises-swipper", {
 //   document.querySelector(".footer").classList.add("footer-stub-page");
 // }
 
-const smoothLinks = document.querySelectorAll('a[href^="#"]');
-for (let smoothLink of smoothLinks) {
-  smoothLink.addEventListener("click", function (e) {
-    e.preventDefault();
-    const id = smoothLink.getAttribute("href");
+// const smoothLinks = document.querySelectorAll('a[href^="#"]');
+// for (let smoothLink of smoothLinks) {
+//   smoothLink.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     const id = smoothLink.getAttribute("href");
 
-    document.querySelector(id).scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  });
-}
+//     document.querySelector(id).scrollIntoView({
+//       behavior: "smooth",
+//       block: "start",
+//     });
+//   });
+// }
 
 // [
 //   {}

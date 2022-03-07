@@ -746,6 +746,18 @@ span.invalid {
 		}
 	}
 
+	&-darkbrown {
+		.ui-btn-circle {
+			&-circle {
+				background: $darkbrown;
+			}
+		}
+
+		&:after {
+			border-color: $darkbrown;
+		}
+	}
+
 	&-blue {
 		.ui-btn-circle {
 			&-circle {
@@ -1555,12 +1567,21 @@ span.invalid {
 // }
 
 
-
-.ui-tabs-content {
-	display: none;
-
-	&.selected, &.active {
-		display: block;
+.ui-tabs {
+	&-link {
+		&.selected, &.active {
+			color: #000;
+			border-color: #000;
+			border-style: solid;
+		}
+	}
+	&-content {
+		display: none;
+	
+		&.selected, &.active {
+			display: block;
+		}
+		
 	}
 }
 .color-primary {

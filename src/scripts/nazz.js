@@ -90,5 +90,3 @@ if (document.querySelector('.contacts-map')) {
     ymaps.ready(initYandexMap);
   });
 }
-
-FARBA.tabs(".ux-tabs a");

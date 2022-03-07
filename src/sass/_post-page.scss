@@ -1,5 +1,5 @@
 .node {
-  @include fz(22);
+  // @include fz(22);
 
   h2,
   h3,
@@ -61,9 +61,11 @@
 
   &-inner {
     padding-right: 26.3%;
+    @include fz(22);
 
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       padding-right: 0;
+      @include fz(18);
     }
 
     & > :first-child {

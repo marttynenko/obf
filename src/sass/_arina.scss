@@ -1,8 +1,6 @@
 .history-header {
-  background-image: url(../images/bgs/bg-history-header.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  overflow: hidden;
 
   &-row {
     min-height: 100vh;
@@ -46,6 +44,31 @@
       @include fz(32);
     }
   }
+
+  &-bg {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-arrow {
+    display: inline-block;
+    width: 34px;
+    height: 13px;
+    cursor: pointer;
+
+    svg {
+      fill: none;
+      stroke: #FFF;
+      stroke-width: 2;
+    }
+  }
 }
 
 
@@ -76,7 +99,6 @@
   }
 }
 .history-tabs {
-  margin-bottom: 120px;
   font-size: 0;
 
   li {
@@ -116,7 +138,6 @@
     }
   }
   @media (max-width: 1259px) {
-    margin-bottom: 100px;
 
     &-link {
       @include fz(28);
@@ -126,155 +147,136 @@
   }
 }
 
-.history {
-  &-top-screen {
-    &-title {
-      max-width: 1200px;
-      @include fz(140);
-    }
-  }
+// .history {
+//   &-top-screen {
+//     &-title {
+//       max-width: 1200px;
+//       @include fz(140);
+//     }
+//   }
   
-  &-pos {
-    background: $primary;
-    padding-top: 200px;
-    padding-bottom: 200px;
+//   &-pos {
+//     background: $primary;
+//     padding-top: 200px;
+//     padding-bottom: 200px;
     
-    &-top {
-      max-width: 960px;
-      color: #222e3f;
-      @include fz(400);
-      line-height: 1;
-      margin-bottom: 200px;
-      @media (max-width: 1260px) {
-        @include fz(300);
-      }
-      &-subtitle {
-        @include fz(80);
-        font-weight: 700;
-        line-height: 1;
-        @media (max-width: 1260px) {
-          @include fz(52);
-        }
-      }
-    }
+//     &-top {
+//       max-width: 960px;
+//       color: #222e3f;
+//       @include fz(400);
+//       line-height: 1;
+//       margin-bottom: 200px;
+//       @media (max-width: 1260px) {
+//         @include fz(300);
+//       }
+//       &-subtitle {
+//         @include fz(80);
+//         font-weight: 700;
+//         line-height: 1;
+//         @media (max-width: 1260px) {
+//           @include fz(52);
+//         }
+//       }
+//     }
 
-    &-middle {
-      margin-bottom: 100px;
-      &-item {
-        max-width: 480px;
-        @include fz(22);
-        line-height: 1.45;
-        color: #ffffff;
-        @media (max-width: 1260px) {
-          @include fz(18);
-        }
-      }
+//     &-middle {
+//       margin-bottom: 100px;
+//       &-item {
+//         max-width: 480px;
+//         @include fz(22);
+//         line-height: 1.45;
+//         color: #ffffff;
+//         @media (max-width: 1260px) {
+//           @include fz(18);
+//         }
+//       }
 
-      &-top {
-        @include fz(110);
-        line-height: 1;
-        @media (max-width: 1260px) {
-          @include fz(90);
-        }
-      }
-    }
+//       &-top {
+//         @include fz(110);
+//         line-height: 1;
+//         @media (max-width: 1260px) {
+//           @include fz(90);
+//         }
+//       }
+//     }
 
-    &-bottom {
-      &-item {
-        @include fz(54);
-        color: #ffffff;
-        @media (max-width: 1260px) {
-          @include fz(42);
-        }
-      }
+//     &-bottom {
+//       &-item {
+//         @include fz(54);
+//         color: #ffffff;
+//         @media (max-width: 1260px) {
+//           @include fz(42);
+//         }
+//       }
 
-      &-subtitle {
-        @include fz(18);
-        @media (max-width: 1260px) {
-          @include fz(18);
-        }
-      }
-    }
-  }
+//       &-subtitle {
+//         @include fz(18);
+//         @media (max-width: 1260px) {
+//           @include fz(18);
+//         }
+//       }
+//     }
+//   }
 
-  &-purpose {
-    padding-top: 200px;
-    padding-bottom: 200px;
-    &-item {
-      margin-bottom: 100px;
-      max-width: 920px;
-      &-title {
-        @include fz(256);
-        @media (max-width: 1260px) {
-          @include fz(200);
-        }
-      }
+//   &-purpose {
+//     padding-top: 200px;
+//     padding-bottom: 200px;
+//     &-item {
+//       margin-bottom: 100px;
+//       max-width: 920px;
+//       &-title {
+//         @include fz(256);
+//         @media (max-width: 1260px) {
+//           @include fz(200);
+//         }
+//       }
 
-      &-text {
-        @include fz(42);
-        color: $primary;
-        @media (max-width: 1260px) {
-          @include fz(32);
-        }
-      }
-    }
-  }
-  &-acs {
-    background: #2f3e53;
-    padding-top: 80px;
-    padding-bottom: 120px;
+//       &-text {
+//         @include fz(42);
+//         color: $primary;
+//         @media (max-width: 1260px) {
+//           @include fz(32);
+//         }
+//       }
+//     }
+//   }
+//   &-acs {
+//     background: #2f3e53;
+//     padding-top: 80px;
+//     padding-bottom: 120px;
 
-    &-title {
-      @include fz(54);
-      color: $primary;
-      line-height: 1.1;
-      margin-bottom: 80px;
-      max-width: 470px;
-    }
+//     &-title {
+//       @include fz(54);
+//       color: $primary;
+//       line-height: 1.1;
+//       margin-bottom: 80px;
+//       max-width: 470px;
+//     }
 
-    &-lineup {
-      &-title {
-        @include fz(28);
-        font-weight: 700;
-        margin-bottom: 60px;
-        margin-left: -15px;
-      }
+//     &-lineup {
+//       &-title {
+//         @include fz(28);
+//         font-weight: 700;
+//         margin-bottom: 60px;
+//         margin-left: -15px;
+//       }
 
-      &-item {
-        max-width: 450px;
-        margin-bottom: 60px;
-      }
+//       &-item {
+//         max-width: 450px;
+//         margin-bottom: 60px;
+//       }
 
-      &-img {
-        margin-right: 12px;
-      }
+//       &-img {
+//         margin-right: 12px;
+//       }
 
-      &-text {
-        max-width: 340px;
-      }
-    }
-  }
-}
+//       &-text {
+//         max-width: 340px;
+//       }
+//     }
+//   }
+// }
 
-.history-information {
-  padding-bottom: 156px;
-}
-
-
-.history-side-title {
-  @include fz(80);
-  color: #268E80;
-  word-break: break-word;
-  line-height: 1;
-
-  @media (max-width: 1439px) {
-    @include fz(54);
-  }
-}
-
-.information-image {
-  padding-bottom: 40px;
-}
 
 
 .page-btn-img {

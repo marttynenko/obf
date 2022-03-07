@@ -122,18 +122,20 @@ const FARBA = {
   
       contentDivs.push(document.getElementById(id));
 
-      element.addEventListener('click', showTab.bind(null,id))
+      element.addEventListener('click', showTab.bind(null,id,element))
     });
   
     tabLinks[0].classList.add("selected");
     contentDivs[0].classList.add("selected");
   
     //functions
-    function showTab(id,event) {
+    function showTab(id,element,event) {
       if (event) {
         event = event || window.event;
         event.preventDefault()
       }
+
+      fetchTabData(element,id)
       
     
       for (let i = 0; i < contentDivs.length; i++) {
@@ -149,6 +151,50 @@ const FARBA = {
           tabLinks[i].classList.remove("selected");
           contentDivs[i].classList.remove("selected");
         }
+      }
+
+      
+    }
+
+    async function fetchTabData(el,id) {
+      try {
+        if (!el) {
+          tabLinks.forEach(item => {
+            if (item.getAttribute('href') === '#'+id) {el = item}
+          })
+        }
+  
+        const url = el.dataset.url || false
+        const isload = el.dataset.isload || false
+        const target = el.getAttribute('href')
+        
+        if (!url || isload === 'true') {return}
+        await fetch(url)
+          .then(function (response) {
+            if (response.status >= 200 && response.status < 400) {
+              return response.text();
+            }
+          })
+          .then(function (html) {
+            if (html) {
+              document.querySelector(target).innerHTML = html;
+            }
+            el.dataset.isload = true
+
+
+            if (D.querySelector(".ux-video")) {
+              FARBA.lazyLibraryLoad(
+                "//cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.min.js",
+                "//cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.min.css",
+                FARBA.initVideo(".ui-video-preview")
+              );
+            }
+          })
+          .catch(function (err) {
+            console.warn(err);
+          });
+      } catch (e) {
+        console.log(e)
       }
     }
 
@@ -187,7 +233,7 @@ const D = document;
 
 const Headers = {
   headerHeight: 0,
-  targets: ['.museum','.first-screen'],
+  targets: ['.museum','.first-screen','.history-header'],
 
   checkTargets () {
     let res = false;
@@ -576,14 +622,11 @@ window.addEventListener('load',() => {
   })
   
   gsap.utils.toArray('.bbi-parallax-img').forEach((el,index,arr) => {
-    // if (index !== arr.length - 1) {
-    //   tl.to(el,{yPercent: () => {
-    //     return -((arr.length - 1 - index) * 5)
-    //   }, duration: 1},">-1")
-    // }
-    tl.to(el,{yPercent: () => {
-      return -((arr.length - index) * 5)
-    }, duration: 1},">-1")
+    // tl.to(el,{yPercent: () => {
+    //   return -((arr.length - index) * 5)
+    // }, duration: 1},">-1")
+    const y = -((arr.length - index) * 5);
+    tl.to(el,{yPercent: y, ease: "none"},0)
   })
   
 })();
@@ -634,3 +677,6 @@ document.querySelectorAll('.ux-chart').forEach((el,index) => {
   })
 
 })
+
+
+FARBA.tabs(".ux-tabs a");

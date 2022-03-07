@@ -1,95 +1,104 @@
 <!--#include file="inc-header.html"-->
-</div>
-<!--.container-->
-<div class="page ui-page">
-   <div class="enterprises enterprises-bkf">
-      <div class="history-header">
-         <div class="container">
-            <div class="flex history-header-row">
-               <div class="history-header-top">
-                  <div class="page-buttons history-page-buttons">
-                     <a href="#" class="page-btn page-btn-yellow">
-                        <svg class="sprite page-btn-sprite">
-                           <use xlink:href="svg/svg/symbols.svg#btn-tab-tertiary" />
-                        </svg>
-                        СКБК
-                     </a>
-                     <a href="#" class="page-btn page-btn-green ">
-                        <svg class="sprite page-btn-sprite">
-                           <use xlink:href="svg/svg/symbols.svg#btn-tab-green" />
-                        </svg>
-                        ПЗБМ
-                     </a>
-                     <a href="#" class="page-btn page-btn-blue selected">
-                        <svg class="sprite page-btn-sprite">
-                           <use xlink:href="svg/svg/symbols.svg#btn-tab-blue" />
-                        </svg>
-                        БКФ
-                     </a>
-                     <a href="#" class="page-btn">
-                        <svg class="sprite page-btn-sprite">
-                           <use xlink:href="svg/svg/symbols.svg#btn-tab-td-orange" />
-                        </svg>
-                        ТД Формат
-                     </a>
-                  </div>
-               </div>
+</div><!--.container-->
 
-               <div class="history-header-bottom">
-                  <div class="history-header-titles">
-                     <h1 class="history-header-title">БКФ</h1>
-                     <div class="history-header-text">
-                        ООО «Балахнинская картонная фабрика» — крупный производитель тарного и многослойного картона
-                     </div>
-                     <a href="#history-info" class="ux-scroller top-screen-img ui-top-screen-img"
-                        data-target=".history-body">
-                        <img src="./images/svg/arrow-down(museum).svg" alt="alt">
-                     </a>
-                  </div>
-                  <div class="history-header-btn">
-                     <a href="#" class="ui-btn-circle ui-btn-circle-secondary ui-btn-circle-fixsize">
-                        <div class="ui-btn-circle-circle">
-                           <div class="ui-btn-circle-txt">Перейти на сайт фабрики</div>
-                           <div class="ui-btn-circle-arrow">
-                              <img src="./images/svg/30x30-arrow.svg" alt="alt">
-                           </div>
-                        </div>
-                     </a>
-                  </div>
-
-               </div>
+<div class="history-header">
+   <div class="container">
+      <div class="flex history-header-row">
+         <div class="history-header-top">
+            <div class="page-buttons history-page-buttons">
+               <a href="#" class="page-btn page-btn-brown">
+                  <svg class="sprite page-btn-sprite">
+                     <use xlink:href="svg/svg/symbols.svg#btn-tab-tertiary" />
+                  </svg>
+                  СКБК
+               </a>
+               <a href="#" class="page-btn page-btn-secondary">
+                  <svg class="sprite page-btn-sprite">
+                     <use xlink:href="svg/svg/symbols.svg#btn-tab-green" />
+                  </svg>
+                  ПЗБМ
+               </a>
+               <a href="#" class="page-btn page-btn-tertiary selected">
+                  <svg class="sprite page-btn-sprite">
+                     <use xlink:href="svg/svg/symbols.svg#btn-tab-blue" />
+                  </svg>
+                  БКФ
+               </a>
+               <a href="#" class="page-btn">
+                  <svg class="sprite page-btn-sprite">
+                     <use xlink:href="svg/svg/symbols.svg#btn-tab-td-orange" />
+                  </svg>
+                  ТД Формат
+               </a>
             </div>
          </div>
-         <div class="first-screen-bg-wrp"><img src="./images/bgs/company-header.png"
-               alt="Компания Объединенные бумажные фабрики" class="first-screen-bg"></div>
 
-      </div>
-      <div class="node-body history" id="history-info">
-         <div class="container">
-            <div class=" ui-tags ui-tags-inline">
-               <ul class="history-tabs">
-                  <li><a href="#" class="history-tabs-link active">О фабрике</a></li>
-                  <li><a href="#" class="history-tabs-link">История ПЗБМ</a></li>
-                  <li><a href="#" class="history-tabs-link">Технологический процесс</a></li>
-               </ul>
+         <div class="history-header-bottom">
+            <div class="history-header-titles">
+               <h1 class="history-header-title">БКФ</h1>
+               <div class="history-header-text">
+                  ООО «Балахнинская картонная фабрика» — крупный производитель тарного и многослойного картона
+               </div>
+               <a href="#history-info" class="ux-scroller history-header-arrow" data-target=".enterprises">
+                  <svg class="sprite">
+                     <use xlink:href="svg/svg/symbols.svg#arrow-down-no-fill"></use>
+                  </svg>
+               </a>
+            </div>
+            <div class="history-header-btn">
+               <a href="#" class="ui-btn-circle ui-btn-circle-tertiary ui-btn-circle-fixsize">
+                  <div class="ui-btn-circle-circle">
+                     <div class="ui-btn-circle-txt">Перейти на сайт фабрики</div>
+                     <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                     </svg>
+                  </div>
+               </a>
             </div>
 
-            <div class="enterprises-block">
+         </div>
+      </div>
+   </div>
+   
+   <div class="history-header-bg-wrp">
+      <img src="./images/bgs/company-header.png" alt="Компания Объединенные бумажные фабрики" class="history-header-bg">
+   </div>
+</div>
+
+<div class="enterprises enterprises-bkf">
+
+   <div class="enterprises-tabs">
+      <div class="container">
+         <ul class="history-tabs ux-tabs">
+            <li><a href="#tab-about" class="history-tabs-link ui-tabs-link">О фабрике</a></li>
+            <li><a href="#tab-history" class="history-tabs-link ui-tabs-link" data-url="./ajax/pzbm-history.html" data-isload="false">История БКФ</a></li>
+            <li><a href="#tab-techno" class="history-tabs-link ui-tabs-link" data-url="./ajax/pzbm-techno.html" data-isload="false">Технологический процесс</a></li>
+         </ul>
+      </div>
+   </div><!--.tabs-->
+   
+   <div class="enterprises-content">
+      <div id="tab-about" class="ui-tabs-content">
+         <div class="enterprises-block">
+            <div class="container">
                <div class="ui-subtitle">Предприятие</div>
                <div class="row">
                   <div class="col-layout-thin"></div>
                   <div class="col-layout-wide">
-                     <div class="node-inner">
-                        <figure>
-                           <img src="./images/examples/entr-bkf.png" alt="alt" loading="lazy">
-                           <figcaption>Подпись к фотографии</figcaption>
-                        </figure>
-                     </div>
+                     
+                     <figure>
+                        <img src="./images/examples/entr-bkf.png" alt="alt" loading="lazy">
+                        <figcaption>Подпись к фотографии</figcaption>
+                     </figure>
+                     
                   </div>
                </div>
             </div>
-            <div class="enterprises-block">
-               <div class="ui-subtitle">ПЗБМ в цифрах</div>
+         </div><!--.block-->
+      
+         <div class="enterprises-block">
+            <div class="container">
+               <div class="ui-subtitle">БКФ в цифрах</div>
                <div class="row">
                   <div class="col-layout-thin"></div>
                   <div class="col-layout-wide">
@@ -132,8 +141,8 @@
                   </div>
                </div>
             </div>
+         </div><!--.block-->
 
-         </div>
          <div class="enterprises-proud enterprises-block">
             <div class="container">
                <div class="ui-subtitle">Гордость фабрики</div>
@@ -185,56 +194,56 @@
                   </div>
                </div>
             </div>
-         </div>
-         <div class="container">
-            <div class="enterprises-sort enterprises-block">
+         </div><!--.block-->
+
+         <div class="enterprises-sort enterprises-block">
+            <div class="container">
                <div class="enterprises-sort-adaptive">
                   <div class="ui-subtitle">Ассортимент
                      фабрики
                   </div>
                   <div class="enterprises-sort-adaptive-link">
-                     <a href="#" class="ui-btn-circle enterprises-circle">
-                        <div class="ui-btn-circle-circle enterprises-circle-circle">
-                           Тарный
-                           картон
-                           <div class="ui-btn-circle-arrow">
-                              <img src="./images/svg/30x30-arrow.svg" alt="alt" loading="lazy">
-                           </div>
+                     <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-tertiary enterprises-circle">
+                        <div class="ui-btn-circle-circle">
+                           <div class="ui-btn-cirlce-txt">Тарный картон</div>
+                           <svg class="sprite ui-btn-circle-arrow">
+                              <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                           </svg>
                         </div>
                      </a>
-                     <a href="#" class="ui-btn-circle enterprises-circle">
-                        <div class="ui-btn-circle-circle enterprises-circle-circle">
-                           Бумажно- беловые изделия
-                           <div class="ui-btn-circle-arrow">
-                              <img src="./images/svg/30x30-arrow.svg" alt="alt" loading="lazy">
-                           </div>
+                     <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-tertiary enterprises-circle">
+                        <div class="ui-btn-circle-circle">
+                           <div class="ui-btn-cirlce-txt">Бумажно- беловые изделия</div>
+                           <svg class="sprite ui-btn-circle-arrow">
+                              <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                           </svg>
                         </div>
                      </a>
                   </div>
                </div>
-
+      
                <div class="row">
                   <div class="col-layout-thin">
                      <div class="circle-flex">
-                        <a href="#" class="ui-btn-circle enterprises-circle">
-                           <div class="ui-btn-circle-circle enterprises-circle-circle">
-                              Тарный
-                              картон
-                              <div class="ui-btn-circle-arrow">
-                                 <img src="./images/svg/30x30-arrow.svg" alt="alt" loading="lazy">
-                              </div>
+                        <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-tertiary enterprises-circle">
+                           <div class="ui-btn-circle-circle">
+                              <div class="ui-btn-cirlce-txt">Тарный картон</div>
+                              <svg class="sprite ui-btn-circle-arrow">
+                                 <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                              </svg>
+                              
                            </div>
                         </a>
-                        <a href="#" class="ui-btn-circle enterprises-circle">
-                           <div class="ui-btn-circle-circle enterprises-circle-circle">
-                              Бумажно- беловые изделия
-                              <div class="ui-btn-circle-arrow">
-                                 <img src="./images/svg/30x30-arrow.svg" alt="alt" loading="lazy">
-                              </div>
+                        <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-tertiary enterprises-circle">
+                           <div class="ui-btn-circle-circle">
+                              <div class="ui-btn-cirlce-txt">Бумажно- беловые изделия</div>
+                              <svg class="sprite ui-btn-circle-arrow">
+                                 <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                              </svg>
                            </div>
                         </a>
                      </div>
-
+      
                   </div>
                   <div class="col-layout-wide">
                      <div class="slider-text">
@@ -266,12 +275,15 @@
                            </div>
                            <div class="swiper-pagination ui-swiper-pagination"></div>
                         </div>
-
+      
                      </div>
                   </div>
                </div>
             </div>
-            <div class="enterprises-diplom enterprises-block">
+         </div>
+      
+         <div class="enterprises-diplom enterprises-block">
+            <div class="container">
                <div class="ui-subtitle">Качество,
                   подкрепленное
                   репутацией</div>
@@ -279,7 +291,7 @@
                   <div class="col-layout-thin">
                   </div>
                   <div class="col-layout-wide">
-
+      
                      <div class="swiper-rewards-wrp">
                         <div class="swiper-rewards swiper">
                            <div class="swiper-wrapper">
@@ -291,7 +303,7 @@
                                        от ПЗБМ вошли в абсолютную сотню лучших товаров второй год подряд.</div>
                                  </div>
                               </div>
-
+      
                               <div class="swiper-slide">
                                  <div class="swiper-rewards-item flex valign-end">
                                     <div class="swiper-rewards-img"><img src="./images/examples/reward-2.png" alt="alt">
@@ -300,7 +312,7 @@
                                     </div>
                                  </div>
                               </div>
-
+      
                               <div class="swiper-slide">
                                  <div class="swiper-rewards-item flex valign-end">
                                     <div class="swiper-rewards-img"><img src="//via.placeholder.com/204x200" alt="alt">
@@ -309,27 +321,29 @@
                                        от ПЗБМ вошли в абсолютную сотню лучших товаров второй год подряд.</div>
                                  </div>
                               </div>
-
+      
                            </div>
                         </div>
-
+      
                         <div class="swiper-rewards-btns">
                            <div class="swiper-button-prev"></div>
                            <div class="swiper-button-next"></div>
                         </div>
                      </div>
-
-
+      
+      
                   </div>
                </div>
             </div>
          </div>
+         
+      
          <div class="enterprises-contact">
             <div class="container">
-               <div class="ui-subtitle">Контакты БФК</div>
+               <div class="ui-subtitle">Контакты ПЗБМ</div>
                <div class="row">
                   <div class="col-layout-thin">
-
+      
                   </div>
                   <div class="col-layout-wide">
                      <div class="enterprises-contact-container">
@@ -360,13 +374,13 @@
                                     +7 (800) 234-16-46, +7 (800) 234-16-46
                                     <div>e-mail: ukobf@ukobf.com​</div>
                                  </div>
-
+      
                               </div>
                            </div>
                         </div>
                      </div>
                      <div class="node-slider-comm museum-review">
-
+      
                         <div class="node-slider-comm-body">
                            <div class="museum-review-position">Руководитель предприятия</div>
                            <div class="museum-review-author">Иванов
@@ -374,99 +388,126 @@
                            <div class="museum-review-txt">Генеральный директор ООО «Полотняно-
                               заводская бумажная мануфактура»</div>
                         </div>
-
+      
                         <div class="node-slider-comm-img">
                            <a href="#"><img src="./images/examples/entrp-man.png" loading="lazy" alt="alt"></a>
                         </div>
-
+      
                      </div>
                   </div>
                </div>
             </div>
          </div>
+         
          <div class="enterprises-news">
             <div class="container">
                <div class="node-related">
-                  <div class="ui-side-title">Новости фабрики</div>
+                  <div class="ui-side-title">Новости<br> фабрики</div>
                   <div class="row">
                      <div class="col-layout-thin">
                      </div>
                      <div class="col-layout-wide">
                         <div class="news-list">
-                           <div class="news-item">
-                              <div class="news-item-body">
-                                 <div class="news-item-title">
-                                    <a href="#">Пластиковая посуда уйдет в прошлое
-                                       <svg class="sprite news-item-title-arrow">
-                                          <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                                       </svg>
-                                    </a>
-                                 </div>
-                                 <div class="news-item-txt">Ъ FM рассказывает, как власти намерены сократить объем
-                                    захоронения
-                                    отходов. Новый сервис позволит перевести все взаимодействие с клиентами в цифровой
-                                    вид
-                                 </div>
-                                 <div class="news-item-date">27 октября</div>
-                              </div>
-                              <div class="news-item-img">
-                                 <a href="#"><img src="./images/examples/news-item.jpg" loading="lazy" alt="alt"></a>
-                              </div>
-                           </div>
-
-                           <div class="news-item">
-                              <div class="news-item-body">
-                                 <div class="news-item-title">
-                                    <a href="#">На БКФ улучшили производительность труда
-                                       <svg class="sprite news-item-title-arrow">
-                                          <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                                       </svg>
-                                    </a>
-                                 </div>
-                                 <div class="news-item-txt">Устранены проблемы после экспертной диагностики.</div>
-                                 <div class="news-item-date">27 октября</div>
-                              </div>
-                              <div class="news-item-img">
-
-                              </div>
-                           </div>
-                           <div class="news-item">
-                              <div class="news-item-body">
-                                 <div class="news-item-title">
-                                    <a href="#">Новые ТУ переплетного картона
-                                       <svg class="sprite news-item-title-arrow">
-                                          <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                                       </svg>
-                                    </a>
-                                 </div>
-                                 <div class="news-item-txt">Ъ FM рассказывает, как власти намерены сократить объем
-                                    захоронения
-                                    отходов. Новый сервис позволит.</div>
-                                 <div class="news-item-date">27 октября</div>
-                              </div>
-                              <div class="news-item-img">
-                                 <a href="#"><img src="./images/examples/news-item.jpg" loading="lazy" alt="alt"></a>
-                              </div>
-                           </div>
+                           <a href="#" class="news-item">
+                             <div class="news-item-body">
+                               <div class="news-item-title">
+                                 <span
+                                   >На БКФ улучшили производительность труда
+                                   <svg class="sprite news-item-title-arrow">
+                                     <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
+                                   </svg>
+                                 </span>
+                               </div>
+                               <div class="news-item-txt">
+                                 Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                                 отходов. Новый сервис позволит.
+                               </div>
+                               <div class="news-item-date">14 сентября</div>
+                             </div>
+                             <div class="news-item-img">
+                               <img
+                                 src="./images/examples/news-item.jpg"
+                                 loading="lazy"
+                                 alt="alt"
+                               />
+                             </div>
+                           </a>
+               
+                           <a href="#" class="news-item">
+                             <div class="news-item-body">
+                               <div class="news-item-title">
+                                 <span
+                                   >На БКФ улучшили производительность труда
+                                   <svg class="sprite news-item-title-arrow">
+                                     <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
+                                   </svg>
+                                 </span>
+                               </div>
+                               <div class="news-item-txt">
+                                 Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                                 отходов. Новый сервис позволит.
+                               </div>
+                               <div class="news-item-date">14 сентября</div>
+                             </div>
+                             <div class="news-item-img">
+                               <img
+                                 src="./images/examples/news-item.jpg"
+                                 loading="lazy"
+                                 alt="alt"
+                               />
+                             </div>
+                           </a>
+               
+                           <a href="#" class="news-item">
+                             <div class="news-item-body">
+                               <div class="news-item-title">
+                                 <span
+                                   >Новые ТУ переплетного картона
+                                   <svg class="sprite news-item-title-arrow">
+                                     <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
+                                   </svg>
+                                 </span>
+                               </div>
+                               <div class="news-item-txt">
+                                 Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                                 отходов. Новый сервис позволит.
+                               </div>
+                               <div class="news-item-date">14 сентября</div>
+                             </div>
+                             <div class="news-item-img">
+                               <img
+                                 src="./images/examples/news-item.jpg"
+                                 loading="lazy"
+                                 alt="alt"
+                               />
+                             </div>
+                           </a>
+               
                            <div class="to-all-news">
-                              <div class="news-item-title">
-                                 <a href="#">Все новости музея
-                                    <svg class="sprite news-item-title-arrow ">
-                                       <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                                    </svg>
-                                 </a>
-                              </div>
+                             <div class="news-item-title">
+                               <a href="#">Все новости направления
+                                   <svg class="sprite news-item-title-arrow ">
+                                     <use xlink:href="svg/svg/symbols.svg#arrow-circle-next"></use>
+                                   </svg>
+                               </a>
+                             </div>
                            </div>
-                        </div>
+                   
+                         </div><!--.news-list-->
                      </div>
                   </div>
-
+      
                </div>
             </div>
          </div>
+      </div><!--tab-->
 
-      </div>
+      <div id="tab-history" class="ui-tabs-content"></div><!--tab-->
 
-   </div>
+      <div id="tab-techno" class="ui-tabs-content"></div><!--tab-->
+   </div><!--.enterprises-content-->
+
 </div>
+
+<div class="container">
 <!--#include file="inc-footer.html"-->
