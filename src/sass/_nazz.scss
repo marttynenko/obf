@@ -157,6 +157,66 @@
   padding-top: 30px;
 }
 .page {
+  position: relative;
+  &-title {
+    position: relative;
+    z-index: 2;
+  }
+  &-experience {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 100px;
+    &-txt {
+      display: inline-block;
+      @include fz(28);
+      max-width: 450px;
+      font-weight: 700;
+      color: $primary;
+
+      @media (max-width: 1259px) {
+        @include fz(24);
+      }
+    }
+    &-arrow {
+      @include fz(120);
+      font-weight: 100;
+    }
+    &-years {
+      @include fz(120);
+      line-height: 1;
+
+      @media (max-width: 1259px) {
+        @include fz(120);
+      }
+    }
+  }
+
+  &-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+
+    @media (max-width: 1439px) {
+      max-width: 710px;
+      margin-top: 240px;
+    }
+    @media (max-width: 1259px) {
+      max-width: 650px;
+      margin-top: 240px;
+    }
+  }
+  &-txt {
+    margin-bottom: 200px;
+    color: $font;
+
+    @include fz(54);
+
+    @media (max-width: 1259px) {
+      @include fz(42);
+    }
+  }
   &-buttons {
     margin-bottom: 80px;
   }
@@ -454,24 +514,262 @@
   // color: #4590ba;
   filter: brightness(1);
 }
+.scientific-partners-article-txt {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+}
+.scientific {
+  &-title {
+    @include fz(54);
+    width: 47%;
+    color: $primary;
+    margin-bottom: 80px;
 
-// html .contacts-tab-toggle {
-//   width: 180px;
-//   height: 30px;
-//   // background: red;
-//   border: 1px solid black;
-// }
+    @media (max-width: 1259px) {
+      @include fz(42);
+    }
+  }
 
-// html .contacts-tab-contant {
-//   overflow: hidden;
-//   width: 180px;
-//   height: 0;
-//   background: blue;
-//   border: 1px solid black;
-//   transition: all 0.9s;
-// }
+  &-info {
+    &-description {
+      margin-left: auto;
+      margin-right: 16.64%;
+      max-width: 730px;
+      margin-bottom: 200px;
 
-// html .contacts-tab-contant-active {
-//   height: 80px;
-//   transition: all 0.9s;
-// }
+      @media (max-width: 1259px) {
+        margin-right: 0;
+        max-width: 616px;
+      }
+    }
+    &-title {
+      color: $primary;
+
+      @include fz(54);
+      line-height: 1;
+      margin-bottom: 30px;
+
+      @media (max-width: 1259px) {
+        @include fz(42);
+      }
+    }
+    &-picture {
+      margin-bottom: 60px;
+    }
+    &-txt {
+      @include fz(22);
+
+      @media (max-width: 1259px) {
+        @include fz(18);
+      }
+    }
+  }
+  &-article {
+    padding-top: 80px;
+    padding-bottom: 120px;
+    margin-bottom: 80px;
+    background-color: $primary;
+    &-info {
+      // display: flex;
+      // justify-content: space-between;
+    }
+    &-citation {
+      @include fz(28);
+      max-width: 787px;
+      color: #000000;
+
+      @media (max-width: 1260px) {
+        @include fz(24);
+      }
+    }
+    &-degree {
+      @include fz(18);
+      color: #000000;
+
+      @media (max-width: 1259px) {
+        @include fz(14);
+      }
+    }
+
+    &-name {
+      display: inline-block;
+      padding-top: 24px;
+      font-weight: 700;
+
+      @media (max-width: 1259px) {
+        @include fz(24);
+      }
+    }
+    &-block {
+      display: flex;
+      align-items: flex-end;
+      height: calc(100% - 20px);
+      // margin-bottom: 20px;
+    }
+    &-body {
+      padding-right: 115px;
+      margin-bottom: 80px;
+
+      @media (max-width: 1259px) {
+        padding-right: 0;
+      }
+    }
+    &-txt {
+      color: #000000;
+      padding-right: 225px;
+      margin-bottom: 80px;
+
+      @media (max-width: 1259px) {
+        @include fz(24);
+      }
+    }
+    &-number {
+      @include fz(140);
+      line-height: 0.8;
+      margin-right: 20px;
+
+      @media (max-width: 1259px) {
+        @include fz(120);
+      }
+    }
+    &-description {
+      @include fz(18);
+      max-width: 254px;
+
+      @media (max-width: 1259px) {
+        @include fz(14);
+      }
+    }
+  }
+  &-partners {
+    margin-bottom: 80px;
+    &-article {
+      display: flex;
+    }
+    &-description {
+      display: inline-block;
+      width: 50%;
+      margin-right: 50px;
+      @include fz(22);
+
+      @media (max-width: 1259px) {
+        @include fz(18);
+      }
+      &-txt {
+        margin-bottom: 25px;
+      }
+    }
+    &-item {
+    }
+    &-title {
+      width: 73%;
+      margin-bottom: 80px;
+
+      @include fz(54);
+
+      @media (max-width: 1259px) {
+        @include fz(42);
+      }
+    }
+    &-img {
+      // max-width: 168px;
+
+      img {
+        display: block;
+        max-width: 168px;
+        @media (max-width: 1439px) {
+          max-width: 124px;
+        }
+
+        @media (max-width: 1259px) {
+          max-width: 107px;
+        }
+      }
+    }
+    &-txt {
+      display: block;
+      max-width: 225px;
+      margin-left: auto;
+      margin-right: 0;
+      margin-top: -10px;
+
+      @include fz(18);
+      color: $font;
+
+      @media (max-width: 1439px) {
+        max-width: 160px;
+      }
+
+      @media (max-width: 1259px) {
+        max-width: 140px;
+        @include fz(14);
+      }
+    }
+  }
+  &-cardboard {
+    margin-bottom: 80px;
+    &-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 120px;
+    }
+    &-txt {
+      max-width: 843px;
+      color: $font;
+      margin-bottom: 80px;
+      @include fz(28);
+
+      @media (max-width: 1259px) {
+        @include fz(24);
+      }
+    }
+    &-img {
+      margin-right: -50px;
+    }
+  }
+  &-circle {
+    @media (max-width: 1259px) {
+      margin-bottom: 60px;
+    }
+  }
+  &-hide {
+    display: none;
+
+    @media (max-width: 1259px) {
+      display: block;
+    }
+  }
+  &-show {
+    display: block;
+
+    @media (max-width: 1259px) {
+      display: none;
+    }
+  }
+  &-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+.font {
+  color: $font;
+}
+.display-block {
+  display: block;
+}
+.mb-80 {
+  margin-bottom: 80px;
+}
+.mb-200 {
+  margin-bottom: 200px;
+}
+.scientific-info-indent {
+  width: 50%;
+  margin-bottom: 60px;
+}
