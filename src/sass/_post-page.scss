@@ -1,5 +1,5 @@
 .node {
-  @include fz(22);
+  // @include fz(22);
 
   h2,
   h3,
@@ -61,9 +61,11 @@
 
   &-inner {
     padding-right: 26.3%;
+    @include fz(22);
 
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       padding-right: 0;
+      @include fz(18);
     }
 
     & > :first-child {
@@ -127,7 +129,7 @@
     display: inline-block;
     width: auto;
     position: absolute;
-    bottom: 0;
+    bottom: 4px;
     left: auto;
     right: 0;
     @include fz(18);
@@ -146,8 +148,11 @@
 }
 
 .swiper-slide {
-  text-align: center;
+  // text-align: center;
   font-size: 18px;
+}
+.swiper-creative .swiper-slide-active {
+  overflow: visible;
 }
 
 .swiper-slide img {
@@ -181,14 +186,24 @@
 .to-all-news {
   padding-right: 10%;
   max-width: 79.177%;
+
+  a {
+    color: #FFF;
+
+    &:hover {
+      color: $primary;
+    }
+  }
 }
 // to-all-news
 .to-all-news svg.news-item-title-arrow {
   opacity: 1;
   stroke: #ffffff;
-  right: -88px;
+  // right: -88px;
+  transition: stroke .3s;
+  margin-left: 12px;
 }
-.to-all-news .news-item-title a:hover svg.news-item-title-arrow {
+.to-all-news a:hover svg.news-item-title-arrow {
   stroke: $primary;
 }
 .node-content-links {

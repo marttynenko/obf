@@ -80,7 +80,7 @@ footer.footer {
 }
 
 
-@media (max-width: 1260px) {
+@media (max-width: 1259px) {
   .col-layout-thin-footer {
     flex: 0 0 26%;
     max-width: 26%;
@@ -230,7 +230,7 @@ footer.footer {
     height: 35px;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     @include fz(14);
 
     &-ul {
@@ -331,7 +331,7 @@ footer.footer {
   position: relative;
   line-height: 1.1;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     max-width: 120px;
   }
 

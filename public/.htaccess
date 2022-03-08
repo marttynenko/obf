@@ -1,2 +1,0 @@
-AddHandler server-parsed .html
-AddDefaultCharset utf-8
