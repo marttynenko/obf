@@ -435,4 +435,39 @@ footer.footer {
       border-color: $blue;
     }
   }
+
+  &-darkyellow {
+    color: $darkyellow;
+
+    #{$this}-circle {
+      background: $darkyellow;
+    }
+
+    #{$this}-circle-wrap:after {
+      border-color: $darkyellow;
+    }
+  }
+}
+
+.main-menu-btn {
+	display: flex;
+	align-items: center;
+  
+	.production-btn {
+		&-circle-wrap {
+			flex: 0 0 90px;
+			max-width: 90px;
+			margin-right: 24px;
+			margin-bottom: 0;
+		}
+
+    @media (max-width: 1259px) {
+      @include fz(14);
+      
+      &-circle-wrap {
+        flex: 0 0 74px;
+        max-width: 74px;
+      }
+    }
+	}
 }

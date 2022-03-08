@@ -490,7 +490,6 @@
       max-width: 155px;
       margin-left: 14px;
       line-height: 1.15;
-      transition: .5s ease;
       @media (max-width:1259px) {
         @include fz(22);
       }
@@ -536,6 +535,15 @@
 }
 
 .enterprises-activity-items-item {
+  border-radius: 100px;
+  flex: 0 0 140px;
+  max-width: 140px;
+
+  @media (max-width: 1259px) {
+    flex: 0 0 100px;
+    max-width: 100px;
+  }
+
   &.ui-bg-primary,
   &.ui-bg-orange {
     &::after {

@@ -296,7 +296,7 @@ if (Headers.checkTargets()) {
   const li = D.querySelectorAll(".main-menu-main > li");
 
   li.forEach((el) => {
-    if (el.querySelector("ul")) {
+    if (el.querySelector("ul") || el.querySelector('.main-menu-sub-pr')) {
       el.querySelector("a").classList.add("childs-in");
     }
   });
