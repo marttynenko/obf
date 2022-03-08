@@ -204,7 +204,46 @@
       <div class="row">
          <div class="col-layout-thin"></div>
          <div class="col-layout-wide">
-            <div class="ui-chart ux-chart" data-data="2019:39,2020:47,2021:21,2022:51"></div>
+            <div class="ui-chart-block">
+               <div class="ui-chart-header">
+                  <div class="ui-chart-title">Динамика выручки</div>
+                  <div class="ui-chart-units">без НДС, млн руб.</div>
+               </div>
+               <div class="ui-chart-wrp">
+                  <div class="ui-chart ux-chart" data-data="2007:15,2008:16,2009:17,2010:20,2011:21,2012:11,2013:25,2014:62,2015:27,2016:28,2017:30,2018:33,2019:39,2020:47,2021:21,2022:51"></div>
+               </div>
+            </div>
+
+            <div class="ui-chart-block">
+               <div class="ui-chart-header">
+                  <div class="ui-chart-title">Объем производства</div>
+                  <div class="ui-chart-units">тыс. тонн</div>
+               </div>
+               <div class="ux-tabs ui-chart-tabs">
+                  <a href="#tab-1" class="ui-chart-tab ui-chart-tab-orange">Тарный картон</a>
+                  <a href="#tab-2" class="ui-chart-tab ui-chart-tab-green">Бумажно-беловые изделия</a>
+                  <a href="#tab-3" class="ui-chart-tab ui-chart-tab-lime">Многослойный картон</a>
+                  <a href="#tab-4" class="ui-chart-tab ui-chart-tab-brown">ДВП</a>
+                  <a href="#tab-5" class="ui-chart-tab ui-chart-tab-blue">Гофропродукция</a>
+               </div>
+               <div id="tab-1" class="ui-tabs-content">
+                  <div class="ui-chart-wrp"><div class="ui-chart ux-chart" data-data="2009:17,2010:20,2011:21,2012:11,2013:25,2014:62,2015:27,2016:29,2017:33,2018:33,2019:32,2020:47,2021:50,2022:55" data-color="orange"></div></div>
+               </div>
+               <div id="tab-2" class="ui-tabs-content">
+                  <div class="ui-chart-wrp"><div class="ui-chart ux-chart" data-data="2009:25,2010:20,2011:21,2012:11,2013:21,2014:20,2015:27,2016:28,2017:30,2018:33,2019:39,2020:20,2021:19,2022:15" data-color="green"></div></div>
+               </div>
+               <div id="tab-3" class="ui-tabs-content">
+                  <div class="ui-chart-wrp"><div class="ui-chart ux-chart" data-data="2005:9,2006:12,2007:15,2008:10,2009:25,2010:20,2011:21,2012:11,2013:21,2014:20,2015:27,2016:28,2017:30,2018:33,2019:39,2020:20,2021:19,2022:15" data-color="lime"></div></div>
+               </div>
+               <div id="tab-4" class="ui-tabs-content">
+                  <div class="ui-chart-wrp"><div class="ui-chart ux-chart" data-data="2009:25,2010:20,2011:21,2012:11,2013:21,2014:20,2015:39,2016:48,2017:50,2018:59,2019:66,2020:65,2021:73,2022:76" data-color="brown"></div></div>
+               </div>
+               <div id="tab-5" class="ui-tabs-content">
+                  <div class="ui-chart-wrp"><div class="ui-chart ux-chart" data-data="2009:7,2010:8,2011:9,2012:11,2013:10,2014:11,2015:13,2016:15,2017:17,2018:20,2019:23,2020:26,2021:29,2022:32" data-color="blue"></div></div>
+               </div>
+               
+            </div>
+            
          </div>
       </div>
    </div>

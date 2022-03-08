@@ -427,114 +427,159 @@
       }
     }
   }
+}
+.enterprises-activity {
+  display: flex;
+  flex-direction: row;
 
-  .enterprises-activity {
+  &-block {
+    padding-right: 9.8%;
+  }
+  &-title {
+    margin-bottom: 54px;
+    @include fz(42);
+    color: $bgc;
+
+    @media (max-width:1259px) {
+      @include fz(32);
+    }
+  }
+  &-items {
     display: flex;
-    flex-direction: row;
-
-    &-block {
-      padding-right: 9.8%;
-    }
-    &-title {
-      margin-bottom: 54px;
-      @include fz(42);
-      color: $bgc;
-
-      @media (max-width:1259px) {
-        @include fz(32);
-      }
-    }
-    &-items {
-      display: flex;
-      max-width: 320px;
-      margin-bottom: 60px;
-      cursor: pointer;
-     
-      &-item {
-        position: relative;
-        // padding: 10px;
-        
-        &:after {
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          border: 1px solid #F08322;
-          border-radius: 50%;
-          z-index: 1;
-          opacity: 0;
-          transition: transform .5s, opacity .5s;
-        }
-      }
-      &-img {
-        height: 140px;
-        width: 140px;
-        border-radius: 50%;
-        overflow: hidden;
-        img {
-          position: relative;
-          bottom: -2px;
-        }
+    max-width: 320px;
+    margin-bottom: 60px;
+    cursor: pointer;
+   
+    &-item {
+      position: relative;
+      // padding: 10px;
       
-        
-        @media (max-width:1259px) {
-          height: 100px;
-          width: 100px;
-        }
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #F08322;
+        border-radius: 50%;
+        z-index: 1;
+        opacity: 0;
+        transition: transform .5s, opacity .5s;
       }
-      &-text {
-        @include fz(26);
-        color: #DD722A;
-        max-width: 155px;
-        margin-left: 14px;
-        line-height: 1.15;
-        transition: .5s ease;
-        @media (max-width:1259px) {
-          @include fz(22);
-        }
+    }
+    &-img {
+      height: 140px;
+      width: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        position: relative;
+        bottom: -2px;
       }
+    
+      
+      @media (max-width:1259px) {
+        height: 100px;
+        width: 100px;
+      }
+    }
+    &-text {
+      @include fz(26);
+      color: #DD722A;
+      max-width: 155px;
+      margin-left: 14px;
+      line-height: 1.15;
+      transition: .5s ease;
+      @media (max-width:1259px) {
+        @include fz(22);
+      }
+    }
 
-      &:hover .enterprises-activity-items-item::after {
-        opacity: 1;
-        transform: scale(1.12);
-      }
+    &:hover .enterprises-activity-items-item::after {
+      opacity: 1;
+      transform: scale(1.12);
     }
-    .activity-primary {
-      &-text {
-        color: $primary;
-      }
-      &::after {
-        border-color: $primary;
-      }
+  }
+  .activity-primary {
+    &-text {
+      color: $primary;
     }
-    .activity-tertiary {
-      &-text {
-        color: $tertiary;
-      }
-      &::after {
-        border-color: $tertiary;
-      }
+    &::after {
+      border-color: $primary;
     }
-    .activity-brown {
-      &-text {
-        color: $brown;
-      }
-      &::after {
-        border-color: $brown;
-      }
+  }
+  .activity-tertiary {
+    &-text {
+      color: $tertiary;
     }
-    .activity-blue {
-      &-text {
-        color: $blue;
-      }
-      &::after {
-        border-color: $blue;
-      }
+    &::after {
+      border-color: $tertiary;
+    }
+  }
+  .activity-brown {
+    &-text {
+      color: $brown;
+    }
+    &::after {
+      border-color: $brown;
+    }
+  }
+  .activity-blue {
+    &-text {
+      color: $blue;
+    }
+    &::after {
+      border-color: $blue;
+    }
+  }
+}
+
+.enterprises-activity-items-item {
+  &.ui-bg-primary,
+  &.ui-bg-orange {
+    &::after {
+      border-color: $primary;
     }
   }
 
+  &.ui-bg-secondary,
+  &.ui-bg-green {
+    &::after {
+      border-color: $secondary;
+    }
+  }
+
+  &.ui-bg-tertiary,
+  &.ui-bg-lime {
+    &::after {
+      border-color: $tertiary;
+    }
+  }
+
+  &.ui-bg-blue {
+    &::after {
+      border-color: $blue;
+    }
+  }
+
+  &.ui-bg-brown {
+    &::after {
+      border-color: $brown;
+    }
+  }
+
+  &.ui-bg-darkyellow {
+    &::after {
+      border-color: $darkyellow;
+    }
+  }
+
+  &.ui-bg-lightorange {
+    &::after {
+      border-color: $lightorange;
+    }
+  }
 }
 
 

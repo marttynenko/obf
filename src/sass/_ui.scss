@@ -174,7 +174,6 @@ table {
 		background: lighten($bg_dark, 15%);
 		width: 8px;
 		height: 8px;
-		transition: all .8s;
 	}
 	::-webkit-scrollbar-thumb:hover {
 		background: lighten($bg_dark, 8%);
@@ -852,28 +851,85 @@ span.invalid {
 
 .ui-color {
 	&-black {
-		color: #000;
+		color: #000 !important;
 	}
 	&-darkblue {
-		color: $bgc;
+		color: $bgc !important;
 	}
 	&-white {
-		color: #FFF;
+		color: #FFF !important;
 	}
-	&-primary {
-		color: $primary;
+	&-primary,
+	&-orange {
+		color: $primary !important;
 	}
-	&-secondary {
-		color: $secondary;
+	&-secondary,
+	&-green {
+		color: $secondary !important;
 	}
-	&-tertiary {
-		color: $tertiary;
+	&-tertiary,
+	&-lime {
+		color: $tertiary !important;
 	}
 	&-blue {
-		color: $blue;
+		color: $blue !important;
 	}
 	&-brown {
-		color: $brown;
+		color: $brown !important;
+	}
+	&-darkbrown {
+		color: $darkbrown !important;
+	}
+	&-lightorange {
+		color: $lightorange !important;
+	}
+	&-darkyellow {
+		color: $darkyellow !important;
+	}
+}
+a.ui-color {
+	&-primary,
+	&-orange {
+		&:hover {
+			color: lighten($primary,10%) !important;
+		}
+	}
+	&-secondary,
+	&-green {
+		&:hover {
+			color: lighten($secondary,10%) !important;
+		}
+	}
+	&-tertiary,
+	&-lime {
+		&:hover {
+			color: lighten($tertiary,10%) !important;
+		}
+	}
+	&-blue {
+		&:hover {
+			color: lighten($blue,10%) !important;
+		}
+	}
+	&-brown {
+		&:hover {
+			color: lighten($brown,10%) !important;
+		}
+	}
+	&-darkbrown {
+		&:hover {
+			color: lighten($darkbrown,10%) !important;
+		}
+	}
+	&-lightorange {
+		&:hover {
+			color: lighten($lightorange,10%) !important;
+		}
+	}
+	&-darkyellow {
+		&:hover {
+			color: lighten($darkyellow,10%) !important;
+		}
 	}
 }
 
@@ -1747,3 +1803,154 @@ span.invalid {
 	}
 }
 
+
+.ui-chart {
+	color: #FFF;
+	display: flex;
+	padding-top: 20px;
+	padding-bottom: 40px;
+
+	&-wrp {
+		overflow-y: hidden;
+		overflow-x: auto;
+	}
+
+	&-block {
+		margin-bottom: 80px;
+	}
+	
+	&-header {
+		margin-bottom: 20px;
+	}
+
+	&-title {
+		@include fz(54);
+		line-height: 1;
+		margin-bottom: 8px;
+	}
+
+	&-units {
+		@include fz(24);
+		line-height: 1;
+	}
+
+	&-bar {
+		height: 450px;
+		flex: 0 0 calc(6.25% - 24px);
+		max-width: calc(6.25% - 24px);
+		min-width: 58px;
+		margin-right: 24px;
+		position: relative;
+		text-align: center;
+		transition: opacity .1s;
+
+		&:last-child {
+			margin-right: 0;
+		}
+		&.darken {
+			opacity: 0.25;
+		}
+		&.active {
+			.ui-chart-bar-value {
+				transform: scale(1.5);
+			}
+		}
+
+
+		&-progress {
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			min-height: 10px;
+			border-top: 1px solid #FFF;
+		}
+		&-value {
+			position: absolute;
+			bottom: 100%;
+			margin-bottom: 4px;
+			left: 0;
+			right: 0;
+			color: #FFF;
+			@include fz(12);
+			font-weight: 700;
+			transition: transform .1s;
+		}
+		&-label {
+			position: absolute;
+			top: 100%;
+			margin-top: 8px;
+			left: 0;
+			right: 0;
+		}
+	}
+
+	&-tabs {
+		font-size: 0;
+		margin-bottom: 20px;
+	}
+	&-tab {
+		display: inline-block;
+		vertical-align: middle;
+		height: 60px;
+		line-height: 58px;
+		border: 1px dashed rgba(#fff,.5);
+		border-radius: 30px;
+		padding: 0px 20px;
+		transition: color .3s, border .3s;
+		color: #FFF;
+		@include fz(24);
+		margin-right: 16px;
+		margin-bottom: 15px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+
+		&:hover,
+		&.selected {
+			border-style: solid;
+			border-color: #FFF;
+			color: #FFF;
+		}
+		
+		&-orange {
+			&:hover,
+			&.selected {
+				border-color: $primary;
+				color: $primary;
+			}
+		}
+
+		&-green {
+			&:hover,
+			&.selected {
+				border-color: $secondary;
+				color: $secondary;
+			}
+		}
+
+		&-lime {
+			&:hover,
+			&.selected {
+				border-color: $tertiary;
+				color: $tertiary;
+			}
+		}
+
+		&-brown {
+			&:hover,
+			&.selected {
+				border-color: $brown;
+				color: $brown;
+			}
+		}
+
+		&-blue {
+			&:hover,
+			&.selected {
+				border-color: $blue;
+				color: $blue;
+			}
+		}
+	}
+}

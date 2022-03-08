@@ -471,13 +471,16 @@ CERTS --- */
 /* --- 
 PRODUCTIONS -------------- */
 .ui-bg {
-	&-primary {
+	&-primary,
+  &-orange {
 		background: $primary;
 	}
-  &-secondary {
+  &-secondary,
+  &-green {
     background: $secondary;
   }
-  &-tertiary {
+  &-tertiary,
+  &-lime {
     background: $tertiary;
   }
   &-beige {
@@ -495,6 +498,9 @@ PRODUCTIONS -------------- */
   &-brown {
     background: $brown;
   }
+  &-darkbrown {
+		background: $brown;
+	}
   &-lightbrown {
     background: #FFEAC0;
     color: $bgc;
@@ -502,10 +508,26 @@ PRODUCTIONS -------------- */
   &-blue {
     background: $blue;
   }
+  &-darkblue {
+		background: $bgc;
+	}
   &-lightblue {
     background: #c9dfec;
     color: $bgc;
   }
+  &-black {
+		background: #000;
+	}
+	&-white {
+		background: #FFF;
+    color: $bgc;
+	}
+	&-lightorange {
+		background: $lightorange;
+	}
+	&-darkyellow {
+		background: $darkyellow;
+	}
 }
 
 .ui-bg-lightlime,

@@ -43,7 +43,7 @@
   &-txt {
     @include fz(28);
     margin-bottom: 25px;
-    line-height: 1.1;
+    line-height: 1.35;
     max-width: 850px;
 
     @media (max-width: 1439px) {
@@ -271,7 +271,7 @@
     }
   }
   &-chart {
-    margin-bottom: 200px;
+    padding-bottom: 40px;
     padding-top: 80px;
   }
   &-fs {
