@@ -1,0 +1,141 @@
+<div class="main-screen">
+  <div class="main-slides" id="main-slides">
+    <transition 
+      v-on:enter="slideEnter"
+      v-on:leave="slideLeave"
+      v-bind:css="false"
+    >
+      <div class="main-slide" v-if="index === 0">
+        <div class="container">      
+          <div class="main-slide-content">
+            <div class="main-slide-title">ОБФ —</div>
+            <div class="main-slide-descr">400 тонн тарного<br> картона в месяц</div>
+            <a href="#" class="main-slide-link">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
+          </div>
+          <div class="main-slide-img-wrp">
+            <img src="./images/bgs/main-slide-1.png" alt="400 тонн тарного картона" class="main-slide-img">
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <transition 
+      v-on:enter="slideEnter"
+      v-on:leave="slideLeave"
+      v-bind:css="false"
+    >
+      <div class="main-slide" v-if="index === 1">
+        <div class="container">      
+          <div class="main-slide-content">
+            <div class="main-slide-title ui-color-secondary">ОБФ —</div>
+            <div class="main-slide-descr">220 млн бумажно-беловых<br> изделий в месяц</div>
+            <a href="#" class="main-slide-link ui-color-secondary">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
+          </div>
+          <div class="main-slide-img-wrp">
+            <img src="./images/bgs/main-slide-2.png" alt="220 млн бумажно-беловых изделий" class="main-slide-img">
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <transition 
+      v-on:enter="slideEnter"
+      v-on:leave="slideLeave"
+      v-bind:css="false"
+    >
+      <div class="main-slide" v-if="index === 2">
+        <div class="container">      
+          <div class="main-slide-content">
+            <div class="main-slide-title ui-color-brown">ОБФ —</div>
+            <div class="main-slide-descr">500 тыс. м2 древесно-<br>волокнистой плиты в месяц</div>
+            <a href="#" class="main-slide-link ui-color-brown">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
+          </div>
+          <div class="main-slide-img-wrp">
+            <img src="./images/bgs/main-slide-2.png" alt="500 тыс. м2 древесно-волокнистой плиты" class="main-slide-img">
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <transition 
+      v-on:enter="slideEnter"
+      v-on:leave="slideLeave"
+      v-bind:css="false"
+    >
+      <div class="main-slide" v-if="index === 3">
+        <div class="container">      
+          <div class="main-slide-content">
+            <div class="main-slide-title ui-color-tertiary">ОБФ —</div>
+            <div class="main-slide-descr">400 тонн высококачественного<br> многослойного картона в месяц</div>
+            <a href="#" class="main-slide-link ui-color-tertiary">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
+          </div>
+          <div class="main-slide-img-wrp">
+            <img src="./images/bgs/main-slide-3.png" alt="400 тонн высококачественного многослойного картона в месяц" class="main-slide-img">
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <transition 
+      v-on:enter="slideEnter"
+      v-on:leave="slideLeave"
+      v-bind:css="false"
+    >
+      <div class="main-slide" v-if="index === 4">
+        <div class="container">      
+          <div class="main-slide-content">
+            <div class="main-slide-title ui-color-blue">ОБФ —</div>
+            <div class="main-slide-descr">400 тонн гофропродукции<br> в месяц</div>
+            <a href="#" class="main-slide-link ui-color-blue">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
+          </div>
+          <div class="main-slide-img-wrp">
+            <img src="./images/bgs/main-slide-5.png" alt="400 тонн гофропродукции в месяц" class="main-slide-img">
+          </div>
+        </div>
+      </div>
+    </transition>
+    
+
+    <div class="main-slides-nav">
+      <div class="container">
+        <ul>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(0)" :class="{active: index === 0}">Тарный картон</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(1)" :class="{active: index === 1}">Бумажно-беловые изделия</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(2)" :class="{active: index === 2}">ДВП</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(3)" :class="{active: index === 3}">Многослойный картон</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(4)" :class="{active: index === 4}">Гофропродукция</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-slides-bar">
+      <div class="main-slides-bar-progress"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-screen-flex flex valign-center align-end">
+      <div class="main-screen-float">
+        <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi main-screen-to-popup">
+          <div class="ui-btn-circle-circle">
+            <div class="ui-btn-circle-txt">Новое на сайте</div>
+            <svg class="sprite ui-btn-circle-arrow">
+              <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+            </svg>
+          </div>
+        </a>
+    
+        <div class="main-screen-news">
+          <a href="#" class="main-screen-news-link">
+            <div class="main-screen-news-img">
+              <img src="./images/examples/main-screen-news.png" alt="Актуальная новость">
+              <div class="main-screen-news-label">Актуальная новость</div>
+              <div class="main-screen-news-title">Новый листок линий производства на ПЗБМ</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>  
+
+  </div>
+</div>

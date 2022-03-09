@@ -252,7 +252,7 @@ a.logo {
 			position: absolute;
 			right: 0;
 			top: 50%;
-			margin-top: -4px;
+			margin-top: -3px;
 			width: 10px;
 			height: 8px;
 			background: url(../images/svg/childs-toggler.svg) center no-repeat;
@@ -389,11 +389,17 @@ a.logo {
 		transition: opacity .7s, transform .7s;
     opacity: 1;
     transform: translate3d(0px, 0px, 0px);
+		transition-delay: .2s;
 
-		@for $i from 1 through 6 {
-			&:nth-of-type(#{$i}) {
-				transition-delay: (.1s * ($i));
-			}
+		// @for $i from 1 through 6 {
+		// 	&:nth-of-type(#{$i}) {
+		// 		transition-delay: (.1s * ($i));
+		// 	}
+		// }
+		&:nth-of-type(4),
+		&:nth-of-type(5),
+		&:nth-of-type(6) {
+			transition-delay: .3s;
 		}
   }
 }

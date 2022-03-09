@@ -86,9 +86,6 @@
   background-size: cover;
   background-position: center;
 }
-.ui-row {
-  
-}
 .museum-hide {
   display: none;
   @media (max-width: 1259px) {
@@ -276,20 +273,27 @@
   }
   &-fs {
     padding-top: 80px;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
     background: #2f3e53;
   }
+}
+
+.company-fs {
   .fs-menu-row {
+    flex-wrap: wrap;
+    margin-right: -30px;
     justify-content: space-between;
-    margin-right: 0;
   }
   .fs-menu-col {
-    @media (max-width: 1439px) {
-      &:last-child {
-        .fs-menu-btn {
-          display: none;
-        }
-      }
+    flex: 0 0 190px;
+    max-width: 20%;
+    padding-right: 30px;
+  }
+
+  @media (max-width: 1439px) {
+    .fs-menu-col {
+      flex: 0 0 150px;
     }
   }
 }
+

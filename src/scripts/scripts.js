@@ -233,7 +233,7 @@ const D = document;
 
 const Headers = {
   headerHeight: 0,
-  targets: ['.museum','.first-screen','.history-header'],
+  targets: ['.museum','.first-screen','.history-header','.main-screen'],
 
   checkTargets () {
     let res = false;
@@ -740,3 +740,27 @@ document.querySelectorAll('.ux-chart').forEach((el) => {
 
 
 FARBA.tabs(".ux-tabs a");
+
+
+const mainSlides = () => {
+  return new Vue({
+    el: '#main-slides',
+    data: {
+      index: 0
+    },
+    methods: {
+      changeSlide(index) {
+        this.index = index
+      },
+
+      slideEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0},{opacity: 1, duration: 1})
+      },
+      slideLeave(el,done) {
+        gsap.to(el,{opacity: 0, duration: 1})
+      }
+    }
+  })
+}
+
+mainSlides()
