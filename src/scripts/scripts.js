@@ -743,6 +743,7 @@ FARBA.tabs(".ux-tabs a");
 
 
 const mainSlides = () => {
+  if (!D.querySelector('.main-slides')) return;
   return new Vue({
     el: '#main-slides',
     data: {

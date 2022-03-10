@@ -947,7 +947,7 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
   .main-screen-news-label { font-size: 24px; font-size: 1.5rem; line-height: 1.25; }
   .main-screen-news-title { font-size: 14px; font-size: 0.875rem; } }
 
-.main-slides-nav { position: absolute; bottom: 18px; font-size: 0; z-index: 2; }
+.main-slides-nav { position: absolute; bottom: 18px; left: 0; right: 0; font-size: 0; z-index: 2; }
 
 .main-slides-nav ul { margin-left: -20px; margin-right: -20px; }
 
@@ -999,6 +999,28 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
 @media (max-width: 1259px) { .main-slide-title { font-size: 144px; font-size: 9rem; }
   .main-slide-descr { font-size: 52px; font-size: 3.25rem; }
   .main-slide-link { font-size: 32px; font-size: 2rem; } }
+
+.main-block { padding-top: 100px; padding-bottom: 100px; }
+
+.main-block-title { max-width: 1340px; }
+
+.main-entrs-cols { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.main-entrs-imgs { position: relative; -webkit-box-flex: 0; -ms-flex: 0 0 44.3%; flex: 0 0 44.3%; max-width: 44.3%; margin-right: 5.2%; }
+
+.main-entrs-imgs .ui-btn-circle { position: absolute; left: 0; bottom: 0; }
+
+.main-entrs-img:not(.main-entrs-img-rounded) { margin-left: -50px; max-width: calc(100% + 50px); }
+
+.main-entrs-content { max-width: 640px; padding-top: 100px; }
+
+.main-entrs-descr { font-size: 22px; font-size: 1.375rem; margin-bottom: 32px; }
+
+.main-entrs-vntg { margin-bottom: 32px; font-size: 28px; font-size: 1.75rem; }
+
+.main-entrs-vntg-title { color: #F08322; font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 8px; }
+
+.main-entrs-vntg small { font-size: 0.65em; display: inline-block; }
 
 .page { padding-top: 100px; }
 
@@ -1534,6 +1556,29 @@ PRODUCTIONS -------------- */
 .museum-circle { max-width: 170px; }
 
 @media (max-width: 1259px) { .museum-circle { max-width: 130px; } }
+
+.main-partner-row { margin-bottom: -64px; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+.main-partner-col { -webkit-box-flex: 0; -ms-flex: 0 0 50%; flex: 0 0 50%; max-width: 50%; padding-right: 4.167%; }
+
+.main-partner-col:nth-of-type(2) { margin-top: -250px; }
+
+.main-partner-descr { font-size: 22px; font-size: 1.375rem; max-width: 380px; margin-bottom: 20px; }
+
+.main-partner-item { font-size: 22px; font-size: 1.375rem; margin-bottom: 64px; }
+
+.main-partner-item-img { margin-bottom: 32px; }
+
+.main-partner-item-title { color: #F08322; font-size: 54px; font-size: 3.375rem; line-height: 1.05; margin-bottom: 16px; max-width: 79%; }
+
+.main-partner-item-txt { max-width: 80%; }
+
+@media (max-width: 1439px) { .main-partner-descr { font-size: 18px; font-size: 1.125rem; }
+  .main-partner-col:nth-of-type(2) { margin-top: -180px; }
+  .main-partner-item { font-size: 18px; font-size: 1.125rem; }
+  .main-partner-item-title { font-size: 42px; font-size: 2.625rem; } }
+
+.node-related .main-block-title { margin-bottom: 80px; max-width: 730px; }
 
 .analytics { margin-bottom: 80px; }
 
