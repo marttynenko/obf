@@ -1845,7 +1845,7 @@ PRODUCTIONS -------------- */
 
 .page-404-header-bottom img { position: absolute; left: 50%; bottom: 0; z-index: -1; display: block; max-height: calc(100% - 160px); -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); }
 
-.page-404-title { font-size: 300px; font-size: 18.75rem; color: #F08322; }
+.page-404-title { margin-bottom: 0; font-size: 300px; font-size: 18.75rem; color: #F08322; }
 
 .page-404-subtitle { font-size: 54px; font-size: 3.375rem; }
 
@@ -1853,9 +1853,12 @@ PRODUCTIONS -------------- */
 
 .page-404-btn .ui-btn-circle-secondary:after { border-color: #F08322; }
 
+.page-404-btn .ui-btn-circle-txt { width: 98px; }
+
 .stub-page { display: none; }
 
 @media (max-width: 1024px) { .stub-page { display: block; }
+  .stub-page .logo-img { max-width: 40px; }
   .stub-page-header { padding-top: 18px; padding-bottom: 18px; height: 80px; background: #222E3F; }
   .stub-page-block { position: fixed; top: 0; left: 0; z-index: 10; width: 100%; background: #222E3F; }
   .stub-page-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; min-height: 100vh; max-height: 1500px; }
@@ -1873,7 +1876,7 @@ PRODUCTIONS -------------- */
   .stub-page-text { padding-bottom: 110px; width: 100%; }
   .stub-page-title { margin-bottom: 16px; width: 277px; font-size: 24px; font-size: 1.5rem; line-height: 28px; }
   .stub-page-title br { display: none; }
-  .stub-page-subtitle { width: 185px; font-size: 16px; font-size: 1rem; }
+  .stub-page-subtitle { width: 185px; font-size: 16px; font-size: 1rem; line-height: 20px; }
   .stub-page-img img { left: auto; right: -15%; bottom: 70px; margin: 0px auto; width: 318px; max-height: 100%; height: 213px; } }
 
 @media (max-width: 500px) { .stub-page-row { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
@@ -1883,7 +1886,7 @@ PRODUCTIONS -------------- */
 
 .popup-cookie { position: fixed; bottom: 0; right: 2em; z-index: 100; padding: 2em 1.4em; max-width: 42.85em; width: 320px; height: 210px; font-size: 14px; line-height: 1.8em; background-color: #F08322; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; }
 
-.popup-cookie p { margin-bottom: 23px; font-size: 18px; font-size: 1.125rem; font-weight: 400; }
+.popup-cookie p { margin-bottom: 23px; font-size: 18px; font-size: 1.125rem; font-weight: 400; line-height: 28px; }
 
 .popup-cookie .btn-accept { position: relative; display: -webkit-box; display: -ms-flexbox; display: flex; padding: 12px 14px 12px 20px; font-size: 18px; font-size: 1.125rem; font-weight: 600; color: #fff; background-color: transparent; border: 2px solid #fff; border-radius: 10px; }
 

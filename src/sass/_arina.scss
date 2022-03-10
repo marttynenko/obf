@@ -325,6 +325,7 @@
   }
 
   &-title {
+    margin-bottom: 0;
     @include fz(300);
     color: $primary;
   }
@@ -342,6 +343,10 @@
       &-secondary:after {
         border-color: $primary;
       }
+
+      &-txt {
+        width: 98px;
+      }
     }
   }
 }
@@ -354,6 +359,10 @@
 @media (max-width: 1024px) {
   .stub-page {
     display: block;
+
+    .logo-img {
+      max-width: 40px;
+    }
 
     &-header {
       padding-top: 18px;
@@ -468,6 +477,7 @@
     &-subtitle {
       width: 185px;
       @include fz(16);
+      line-height: 20px;
     }
 
     &-img {
@@ -528,6 +538,7 @@
 		margin-bottom: 23px;
 		@include fz(18);
     font-weight: 400;
+    line-height: 28px;
 	}
 
 	.btn-accept {

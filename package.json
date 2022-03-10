@@ -12,9 +12,12 @@
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
-    "gulp-image": "^6.2.1",
+    "gulp-image": "^6.2.0",
     "gulp-sass": "^5.0.0",
     "gulp-svg-sprites": "^4.1.2",
     "node-sass": "^7.0.0"
+  },
+  "dependencies": {
+    "gulp-sourcemaps": "^3.0.0"
   }
 }
