@@ -743,7 +743,7 @@ FARBA.tabs(".ux-tabs a");
 
 
 const mainSlides = () => {
-  if (!D.querySelector('.main-slides')) return;
+  if (!D.querySelector('#main-slides')) return;
 
   return new Vue({
     el: '#main-slides',
@@ -766,3 +766,36 @@ const mainSlides = () => {
 }
 
 mainSlides()
+
+
+const mainActivities = () => {
+  if (!D.querySelector('#main-activities')) return;
+
+  return new Vue({
+    el: '#main-activities',
+    data: {
+      index: 0
+    },
+    methods: {
+      changeTab(index) {
+        this.index = index
+      },
+
+      descrEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0, y: 25},{opacity: 1, y: 0, duration: 0.25, onComplete: done})
+      },
+      descrLeave(el,done) {
+        gsap.to(el,{opacity: 0, y: 25, duration: 0.25, onComplete: done})
+      },
+
+      tabEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.25, onComplete: done})
+      },
+      tabLeave(el,done) {
+        gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
+      }
+    }
+  })
+}
+
+mainActivities()

@@ -1,0 +1,149 @@
+<div class="main-block main-activities ui-bg-grayblue" id="main-activities">
+  <div class="container">
+    <div class="main-block-title h1">С уважением<br> к отрасли
+    </div>
+
+    <div class="main-activities-cols flex">
+      <div class="main-activities-left">
+        <div class="main-activities-nav">
+          <ul class="ui-tags-list">
+            <li>
+              <a href="#" class="ui-tags-link" :class="{active: index === 0}" @click.prevent="changeTab(0)" >Научная деятельность</a>
+            </li>
+            <li>
+              <a href="#" class="ui-tags-link" :class="{active: index === 1}" @click.prevent="changeTab(1)">Музей бумаги</a>
+            </li>
+            <li>
+              <a href="#" class="ui-tags-link" :class="{active: index === 2}" @click.prevent="changeTab(2)">Социальные проекты</a>
+            </li>
+            <li>
+              <a href="#" class="ui-tags-link" :class="{active: index === 3}" @click.prevent="changeTab(3)">Корпоративный университет</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="main-activities-descrs">
+          <transition 
+            v-on:enter="descrEnter"
+            v-on:leave="descrLeave"
+            v-bind:css="false"
+            mode="out-in"
+          >
+            <div class="main-acivities-descr" v-if="index === 0" key="0">4 строки Собственные исследования и разработки позволяют улучшать физико-механические параметры продукции. Собственные исследования и разработки позволяют улучшать. Собственные исследования и разработки позволяют улучшать.</div>
+
+            <div class="main-acivities-descr" v-if="index === 1" key="1">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Диких одна языком над дороге себя страна предупреждал курсивных парадигматическая.</div>
+
+            <div class="main-acivities-descr" v-if="index === 2" key="2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit cum, deserunt dicta voluptatem vero suscipit inventore similique corrupti unde!</div>
+
+            <div class="main-acivities-descr" v-if="index === 3" key="3">4 строки Собственные исследования и разработки позволяют улучшать физико-механические параметры продукции. Собственные исследования и разработки позволяют улучшать. Собственные исследования и разработки позволяют улучшать.</div>
+          </transition>
+        </div>
+      </div><!--.left-->
+
+      <div class="main-activities-right">
+        <div class="main-activities-tabs">
+          <transition 
+            v-on:enter="tabEnter"
+            v-on:leave="tabLeave"
+            v-bind:css="false"
+            mode="out-in"
+          >
+            <div class="main-activities-tab" v-if="index === 0" key="0">
+              <div class="main-activities-img">
+                <img src="./images/examples/main-activities-1.png" alt="alt">
+              </div>
+              <div class="main-activities-sights">
+                <div class="main-activities-sights-btn">
+                  <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Научная деятельность</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="main-activities-sights-tezis">
+                  <h6>63</h6>
+                  <p>чего-то</p>
+                  
+                  <h6>20 тыс.</h6>
+                  <p>чего-то</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="main-activities-tab" v-if="index === 1" key="1">
+              <div class="main-activities-img">
+                <img src="./images/museum-circle.png" alt="alt">
+              </div>
+              <div class="main-activities-sights">
+                <div class="main-activities-sights-btn">
+                  <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Музей бумаги</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="main-activities-sights-tezis">
+                  <h6>152 тыс.</h6>
+                  <p>чего-то</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="main-activities-tab" v-if="index === 2" key="2">
+              <div class="main-activities-img">
+                <img src="./images/bgs/main-partner-3.png" alt="alt">
+              </div>
+              <div class="main-activities-sights">
+                <div class="main-activities-sights-btn">
+                  <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Социальные проекты</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="main-activities-sights-tezis">
+                  <p>тезис без цифр</p>
+                  <p>тезис без цифр</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="main-activities-tab" v-if="index === 3" key="3">
+              <div class="main-activities-img">
+                <img src="./images/examples/main-activities-1.png" alt="alt">
+              </div>
+              <div class="main-activities-sights">
+                <div class="main-activities-sights-btn">
+                  <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Университет</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="main-activities-sights-tezis">
+                  <p>только тезис без цифр</p>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

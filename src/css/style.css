@@ -1004,25 +1004,7 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
 
 .main-block { padding-top: 100px; padding-bottom: 100px; }
 
-.main-block-title { max-width: 1340px; }
-
-.main-entrs-cols { display: -webkit-box; display: -ms-flexbox; display: flex; }
-
-.main-entrs-imgs { position: relative; -webkit-box-flex: 0; -ms-flex: 0 0 44.3%; flex: 0 0 44.3%; max-width: 44.3%; margin-right: 5.2%; }
-
-.main-entrs-imgs .ui-btn-circle { position: absolute; left: 0; bottom: 0; }
-
-.main-entrs-img:not(.main-entrs-img-rounded) { margin-left: -50px; max-width: calc(100% + 50px); }
-
-.main-entrs-content { max-width: 640px; padding-top: 100px; }
-
-.main-entrs-descr { font-size: 22px; font-size: 1.375rem; margin-bottom: 32px; }
-
-.main-entrs-vntg { margin-bottom: 32px; font-size: 28px; font-size: 1.75rem; }
-
-.main-entrs-vntg-title { color: #F08322; font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 8px; }
-
-.main-entrs-vntg small { font-size: 0.65em; display: inline-block; }
+.main-block-title { max-width: 1340px; margin-bottom: 80px; }
 
 .page { padding-top: 100px; }
 
@@ -1202,6 +1184,8 @@ PRODUCTIONS -------------- */
 .ui-bg-blue { background: #4590BA; }
 
 .ui-bg-darkblue { background: #222E3F; }
+
+.ui-bg-grayblue { background: #2F3E53; }
 
 .ui-bg-lightblue { background: #c9dfec; color: #222E3F; }
 
@@ -1580,7 +1564,61 @@ PRODUCTIONS -------------- */
   .main-partner-item { font-size: 18px; font-size: 1.125rem; }
   .main-partner-item-title { font-size: 42px; font-size: 2.625rem; } }
 
-.node-related .main-block-title { margin-bottom: 80px; max-width: 730px; }
+.main-entrs-cols { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.main-entrs-imgs { position: relative; -webkit-box-flex: 0; -ms-flex: 0 0 44.3%; flex: 0 0 44.3%; max-width: 44.3%; margin-right: 5.2%; }
+
+.main-entrs-imgs .ui-btn-circle { position: absolute; left: 0; bottom: 0; }
+
+.main-entrs-img:not(.main-entrs-img-rounded) { margin-left: -50px; max-width: calc(100% + 50px); }
+
+.main-entrs-content { max-width: 640px; padding-top: 100px; }
+
+.main-entrs-descr { font-size: 22px; font-size: 1.375rem; margin-bottom: 32px; }
+
+.main-entrs-vntg { margin-bottom: 32px; font-size: 28px; font-size: 1.75rem; }
+
+.main-entrs-vntg-title { color: #F08322; font-size: 54px; font-size: 3.375rem; line-height: 1; margin-bottom: 8px; }
+
+.main-entrs-vntg sub { vertical-align: baseline; font-size: 0.65em; display: inline-block; }
+
+.main-activities { padding-top: 80px; }
+
+.main-activities-left { -webkit-box-flex: 0; -ms-flex: 0 0 645px; flex: 0 0 645px; max-width: 645px; }
+
+.main-activities-right { -webkit-box-flex: 0; -ms-flex: 0 0 calc(100% - 645px); flex: 0 0 calc(100% - 645px); max-width: calc(100% - 645px); }
+
+.main-activities-nav { margin-bottom: 80px; }
+
+.main-activities-nav .ui-tags-link { font-size: 28px; font-size: 1.75rem; font-weight: 700; height: 70px; line-height: 68px; border-radius: 35px; }
+
+.main-activities-descr { font-size: 22px; font-size: 1.375rem; }
+
+.main-activities-tabs { margin-top: -200px; }
+
+.main-activities-tab { position: relative; padding-right: 31%; }
+
+.main-activities-sights { text-align: right; position: absolute; right: 0; top: -70px; width: 370px; }
+
+.main-activities-sights-btn { margin-bottom: 130px; }
+
+.main-activities-sights-tezis { color: #F08322; font-size: 54px; font-size: 3.375rem; line-height: 1; }
+
+.main-activities-sights-tezis h6, .main-activities-sights-tezis .h6 { font-size: 110px; font-size: 6.875rem; line-height: 1; margin: 0 0 16px; font-weight: 400; color: #F08322; }
+
+@media (maw-width: 1439px) { .main-activities-nav { margin-bottom: 60px; }
+  .main-activities-nav .ui-tags-link { font-size: 24px; font-size: 1.5rem; height: 62px; line-height: 60px; }
+  .main-activities-descr { font-size: 18px; font-size: 1.125rem; }
+  .main-activities-sights { width: 300px; }
+  .main-activities-tezis { font-size: 42px; font-size: 2.625rem; line-height: 1.1; }
+  .main-activities-tezis h6, .main-activities-tezis .h6 { font-size: 90px; font-size: 5.625rem; } }
+
+@media (maw-width: 1259px) { .main-activities-nav .ui-tags-link { font-size: 16px; font-size: 1rem; height: 52px; line-height: 50px; }
+  .main-activities-sights { width: 270px; }
+  .main-activities-tezis { font-size: 32px; font-size: 2rem; }
+  .main-activities-tezis h6, .main-activities-tezis .h6 { font-size: 80px; font-size: 5rem; } }
+
+.node-related .main-block-title { max-width: 730px; }
 
 .analytics { margin-bottom: 80px; }
 
