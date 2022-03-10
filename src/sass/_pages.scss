@@ -226,12 +226,14 @@
       }
     }
 
-    &.ui-color-secondary {
+    &.ui-color-secondary,
+    &.ui-color-green {
       .main-slide-link-arrow {
         stroke: $secondary;
       }
     }
-    &.ui-color-tertiary {
+    &.ui-color-tertiary,
+    &.ui-color-lime {
       .main-slide-link-arrow {
         stroke: $tertiary;
       }
@@ -244,6 +246,11 @@
     &.ui-color-blue {
       .main-slide-link-arrow {
         stroke: $blue;
+      }
+    }
+    &.ui-color-darkyellow {
+      .main-slide-link-arrow {
+        stroke: $darkyellow;
       }
     }
   }
