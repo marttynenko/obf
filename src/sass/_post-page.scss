@@ -1,5 +1,6 @@
 .node {
   // @include fz(22);
+  line-height: $th;
 
   h2,
   h3,
@@ -62,6 +63,7 @@
   &-inner {
     padding-right: 26.3%;
     @include fz(22);
+    line-height: $th;
 
     @media (max-width: 1259px) {
       padding-right: 0;

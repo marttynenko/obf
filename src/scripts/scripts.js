@@ -233,7 +233,7 @@ const D = document;
 
 const Headers = {
   headerHeight: 0,
-  targets: ['.museum','.first-screen','.history-header'],
+  targets: ['.museum','.first-screen','.history-header','.main-screen'],
 
   checkTargets () {
     let res = false;
@@ -296,7 +296,7 @@ if (Headers.checkTargets()) {
   const li = D.querySelectorAll(".main-menu-main > li");
 
   li.forEach((el) => {
-    if (el.querySelector("ul")) {
+    if (el.querySelector("ul") || el.querySelector('.main-menu-sub-pr')) {
       el.querySelector("a").classList.add("childs-in");
     }
   });
@@ -681,18 +681,121 @@ window.addEventListener('load',() => {
 
 
 //charts
-document.querySelectorAll('.ux-chart').forEach((el,index) => {
+document.querySelectorAll('.ux-chart').forEach((el) => {
   const str = el.dataset.data || null
   if (!str) return;
   const data = str.split(',')
-  let max, min;
+  const color = el.dataset.color || 'primary'
 
-  data.forEach(item => {
-    // const bar = document.createElement('div')
-    const pairs = item.split(':')
-  })
+  let max = 0
+  for (let i = 0; i < data.length; i++) {
+    const value = data[i].split(':')[1]
+    if (+value > max) {max = value}
+  }
+  
+  for (let i = 0; i < data.length; i++) {
+    const label = data[i].split(':')[0]
+    const value = data[i].split(':')[1]
 
+    const bar = D.createElement('div')
+    bar.className = 'ui-chart-bar'
+
+    const progress = D.createElement('div')
+    progress.className = `ui-chart-bar-progress ui-bg-${color}`
+    progress.style.height = (value / max * 100) + '%'
+
+    const labelEl = D.createElement('div')
+    labelEl.className = `ui-chart-bar-label  ui-color-${color}`
+    labelEl.textContent = label
+
+    const valueEl = D.createElement('div')
+    valueEl.className = `ui-chart-bar-value`
+    valueEl.textContent = value
+
+    progress.appendChild(valueEl)
+    progress.appendChild(labelEl)
+
+    bar.appendChild(progress)
+    el.appendChild(bar)
+
+    el.addEventListener('mousemove',(e) => {
+      const bar = e.target.closest('.ui-chart-bar');
+      if (!bar) return
+      el.querySelectorAll('.ui-chart-bar').forEach(item => {
+        item.classList.add('darken')
+        item.classList.remove('active')
+      })
+      bar.classList.remove('darken')
+      bar.classList.add('active')
+    })
+
+    el.addEventListener('mouseleave',(e) => {
+      el.querySelectorAll('.ui-chart-bar').forEach(item => {
+        item.classList.remove('darken')
+        item.classList.remove('active')
+      })
+    })
+  }
 })
 
 
 FARBA.tabs(".ux-tabs a");
+
+
+const mainSlides = () => {
+  if (!D.querySelector('#main-slides')) return;
+
+  return new Vue({
+    el: '#main-slides',
+    data: {
+      index: 0
+    },
+    methods: {
+      changeSlide(index) {
+        this.index = index
+      },
+
+      slideEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0},{opacity: 1, duration: 1, onComplete: done})
+      },
+      slideLeave(el,done) {
+        gsap.to(el,{opacity: 0, duration: 1, onComplete: done})
+      }
+    }
+  })
+}
+
+mainSlides()
+
+
+const mainActivities = () => {
+  if (!D.querySelector('#main-activities')) return;
+
+  return new Vue({
+    el: '#main-activities',
+    data: {
+      index: 0
+    },
+    methods: {
+      changeTab(index) {
+        this.index = index
+      },
+
+      descrEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0, y: 25},{opacity: 1, y: 0, duration: 0.25, onComplete: done})
+      },
+      descrLeave(el,done) {
+        gsap.to(el,{opacity: 0, y: 25, duration: 0.25, onComplete: done})
+      },
+
+      tabEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.25, onComplete: done})
+      },
+      tabLeave(el,done) {
+        gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
+      }
+    }
+  })
+}
+
+mainActivities()
