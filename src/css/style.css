@@ -1904,7 +1904,7 @@ PRODUCTIONS -------------- */
 
 .scientific-partners-description-txt { margin-bottom: 25px; }
 
-.scientific-partners-item { padding-left: 10px; margin-bottom: 45px; }
+.scientific-partners-item { margin-bottom: 45px; }
 
 .scientific-partners-title { width: 73%; margin-bottom: 80px; line-height: 1.1; font-size: 54px; font-size: 3.375rem; }
 
@@ -1918,11 +1918,9 @@ PRODUCTIONS -------------- */
 
 @media (max-width: 1439px) { .scientific-partners-img img { max-width: 107px; } }
 
-.scientific-partners-txt { display: inline-block; max-width: 225px; margin-left: auto; margin-right: 0; padding-top: 140px; font-size: 18px; font-size: 1.125rem; color: #FFF; }
+.scientific-partners-txt { display: inline-block; max-width: 140px; margin-left: auto; margin-right: 0; text-align: initial; padding-top: 140px; font-size: 18px; font-size: 1.125rem; color: #FFF; }
 
-@media (max-width: 1439px) { .scientific-partners-txt { max-width: 160px; } }
-
-@media (max-width: 1439px) { .scientific-partners-txt { max-width: 140px; font-size: 14px; font-size: 0.875rem; } }
+@media (max-width: 1439px) { .scientific-partners-txt { padding-top: 100px; max-width: 140px; font-size: 14px; font-size: 0.875rem; } }
 
 .scientific-cardboard { margin-bottom: 70px; }
 
@@ -1963,6 +1961,8 @@ PRODUCTIONS -------------- */
 .mb-160 { margin-bottom: 160px; }
 
 .mb-200 { margin-bottom: 200px; }
+
+.text-align-center { text-align: center; }
 
 .scientific-info-indent { max-width: 70%; line-height: 1.7; margin-bottom: 60px; }
 
