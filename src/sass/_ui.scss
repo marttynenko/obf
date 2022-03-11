@@ -82,7 +82,7 @@ h6, .h6, .ui-h5 {
 .ui-side-title {
 	@include fz(54);
 	color: $primary;
-	margin-bottom: 75px;
+	margin-bottom: 80px;
 	max-width: 480px;
 	line-height: 1.1;
 	font-weight: 600;
@@ -1951,6 +1951,26 @@ a.ui-color {
 				border-color: $blue;
 				color: $blue;
 			}
+		}
+	}
+}
+
+
+.ui-section {
+	padding-top: 80px;
+	padding-bottom: 120px;
+
+	@media (max-width: 1259px) {
+		padding-top: 60px;
+		padding-bottom: 100px;
+	}
+}
+
+.ui-section,
+.productions-block {
+	.col-layout-wide {
+		>*:last-child {
+			margin-bottom: 0;
 		}
 	}
 }
