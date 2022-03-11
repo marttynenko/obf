@@ -583,6 +583,8 @@ a.ui-color-darkyellow:hover { color: #d8c513 !important; }
 
 .swiper-button-prev:hover, .swiper-button-next:hover { background-color: rgba(29, 39, 53, 0.1); }
 
+.swiper-button-prev.swiper-button-white, .swiper-button-next.swiper-button-white { -webkit-filter: brightness(10); filter: brightness(10); }
+
 .ui-chart { color: #FFF; display: -webkit-box; display: -ms-flexbox; display: flex; padding-top: 20px; padding-bottom: 40px; }
 
 .ui-chart-wrp { overflow-y: hidden; overflow-x: auto; }
@@ -630,6 +632,34 @@ a.ui-color-darkyellow:hover { color: #d8c513 !important; }
 @media (max-width: 1259px) { .ui-section { padding-top: 60px; padding-bottom: 100px; } }
 
 .ui-section .col-layout-wide > *:last-child, .productions-block .col-layout-wide > *:last-child { margin-bottom: 0; }
+
+.ui-section .col-layout-wide > *:last-child.enterprises-tezises, .productions-block .col-layout-wide > *:last-child.enterprises-tezises { margin-bottom: -80px; }
+
+.enterprises-tezises { margin-bottom: -80px; }
+
+.enterprises-tezises:not(:last-child) { margin-bottom: 120px; }
+
+.alone-news .news-item { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+
+.ui-cite { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; font-size: 28px; font-size: 1.75rem; }
+
+.ui-cite:not(:last-child) { margin-bottom: 80px; }
+
+.ui-cite-photo { -webkit-box-flex: 0; -ms-flex: 0 0 24.96%; flex: 0 0 24.96%; max-width: 24.96%; margin-right: 4.16%; }
+
+.ui-cite-photo img { display: block; border-radius: 200px; }
+
+.ui-cite-body { padding-right: 12.48%; }
+
+.ui-cite-cite { margin-bottom: 16px; }
+
+.ui-cite-author { font-weight: 700; color: #F08322; margin-bottom: 8px; }
+
+.ui-cite-pos { font-size: 18px; font-size: 1.125rem; color: #F08322; }
+
+@media (max-width: 1439px) { .ui-cite { font-size: 24px; font-size: 1.5rem; }
+  .ui-cite-pos { font-size: 14px; font-size: 0.875rem; }
+  .ui-cite-body { padding-right: 0; } }
 
 .header { padding-top: 18px; padding-bottom: 18px; height: 80px; position: fixed; z-index: 9; top: 0; left: 0; right: 0; background: #222E3F; -webkit-transition: -webkit-transform .4s; transition: -webkit-transform .4s; -o-transition: transform .4s; transition: transform .4s; transition: transform .4s, -webkit-transform .4s; will-change: transform; }
 
@@ -2096,6 +2126,10 @@ PRODUCTIONS -------------- */
 .node-slider-btns { position: absolute; bottom: 50px; left: -180px; }
 
 @media (max-width: 1240px) { .node-slider-btns { bottom: 0; left: 0; } }
+
+.node-slider-title { margin-bottom: 40px; font-size: 28px; font-size: 1.75rem; }
+
+@media (max-width: 1439px) { .node-slider-title { font-size: 24px; font-size: 1.5rem; } }
 
 .ui-swiper { position: relative; padding-bottom: 50px; }
 

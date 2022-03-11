@@ -126,6 +126,15 @@
       left: 0;
     }
   }
+
+  &-title {
+    margin-bottom: 40px;
+    @include fz(28);
+
+    @media (max-width: 1439px) {
+      @include fz(24);
+    }
+  }
 }
 .ui-swiper {
   position: relative;
