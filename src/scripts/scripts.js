@@ -97,7 +97,6 @@ const FARBA = {
     if (!link.length) return
 
     link.forEach(el => {
-      // const targetStr = el.dataset.target;
       const target = D.querySelector(el.dataset.target)
       if (target) {
         el.addEventListener('click',(e)=> {
@@ -105,7 +104,7 @@ const FARBA = {
           e.preventDefault()
           target.scrollIntoView({
             behavior: "smooth"
-        });
+          });
         })
       }
     })

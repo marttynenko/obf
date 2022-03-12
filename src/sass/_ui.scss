@@ -1970,34 +1970,6 @@ a.ui-color {
 	}
 }
 
-.ui-section,
-.productions-block {
-	.col-layout-wide {
-		>*:last-child {
-			margin-bottom: 0;
-
-			&.enterprises-tezises {
-				margin-bottom: -80px;
-			}
-		}
-	}
-}
-
-.enterprises-tezises {
-	margin-bottom: -80px;
-
-	&:not(:last-child) {
-		margin-bottom: 120px;
-	}
-}
-.alone-news {
-	.news-item {
-		padding-bottom: 0;
-		margin-bottom: 0;
-		border-bottom: 0;
-	}
-}
-
 .ui-cite {
 	display: flex;
 	align-items: center;

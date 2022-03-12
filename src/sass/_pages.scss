@@ -866,57 +866,7 @@ PRODUCTIONS -------------- */
     stroke: $primary;
   }
 }
-// .ui-bg-lightlime {
-//   .to-all-news {
-//     a {
-//       color: $bgc;
 
-//       &:hover {
-//         color: $tertiary;
-//       }
-//     }
-//   }
-//   .to-all-news svg.news-item-title-arrow {
-//     stroke: $bgc;
-//   }
-//   .to-all-news a:hover svg.news-item-title-arrow {
-//     stroke: $tertiary;
-//   }
-// }
-// .ui-bg-lightbrown {
-//   .to-all-news {
-//     a {
-//       color: $bgc;
-
-//       &:hover {
-//         color: $brown;
-//       }
-//     }
-//   }
-//   .to-all-news svg.news-item-title-arrow {
-//     stroke: $bgc;
-//   }
-//   .to-all-news a:hover svg.news-item-title-arrow {
-//     stroke: $brown;
-//   }
-// }
-// .ui-bg-lightblue {
-//   .to-all-news {
-//     a {
-//       color: $bgc;
-
-//       &:hover {
-//         color: $blue;
-//       }
-//     }
-//   }
-//   .to-all-news svg.news-item-title-arrow {
-//     stroke: $bgc;
-//   }
-//   .to-all-news a:hover svg.news-item-title-arrow {
-//     stroke: $blue;
-//   }
-// }
 .ui-bg-beige,
 // .ui-bg-lightlime,
 // .ui-bg-lightbrown,
@@ -966,6 +916,16 @@ PRODUCTIONS -------------- */
       stroke: $bgc;
     }
     .to-all-news a:hover svg.news-item-title-arrow {
+      stroke: $value;
+    }
+
+    ul.ui-marked, .node-inner ul {
+      li:before {
+        background: $value;
+      }
+    }
+
+    .ui-video-preview:hover .ui-video-play {
       stroke: $value;
     }
   }
@@ -1563,180 +1523,7 @@ PRODUCTIONS -------------- */
 }
 
 
-// .ui-theme-tertiary {
-//   .ui-theme-color {
-//     color: $tertiary;
-//   }
-//   .productions-tabs {
-//     &-link {
-//       &:hover,
-//       &.selected {
-//         color: $tertiary;
-//         border-color: $tertiary;
-//       }
-//     }
-//   }
-
-//   .tk-subtype {
-//     &-title {
-//       color: $tertiary;
-//     }
-//   }
-
-//   .productions-management {
-//     &-name,
-//     &-contacts-label,
-//     a:hover {
-//       color: $tertiary;
-//     }
-//   }
-
-//   .docs-card {
-//     &-icon {
-//       stroke: $tertiary;
-//     }
-//     &:hover {
-//       color: $tertiary;
-//       border-color: $tertiary;
-
-//       .docs-card-type {
-//         color: $tertiary;
-//       }
-//     }
-//   }
-
-//   .ui-btn {
-//     &:hover {
-//       color: $tertiary;
-//       border-color: $tertiary;
-
-//       .ui-btn-arrow {
-//         stroke: $tertiary;
-//       }
-//     }
-//   }
-
-//   .productions-sights-title {
-//     color: $tertiary;
-//   }
-// }
-
-// .ui-theme-brown {
-//   .ui-theme-color {
-//     color: $brown;
-//   }
-//   .productions-tabs {
-//     &-link {
-//       &:hover,
-//       &.selected {
-//         color: $brown;
-//         border-color: $brown;
-//       }
-//     }
-//   }
-
-//   .tk-subtype {
-//     &-title {
-//       color: $brown;
-//     }
-//   }
-
-//   .productions-management {
-//     &-name,
-//     &-contacts-label,
-//     a:hover {
-//       color: $brown;
-//     }
-//   }
-
-//   .docs-card {
-//     &-icon {
-//       stroke: $brown;
-//     }
-//     &:hover {
-//       color: $brown;
-//       border-color: $brown;
-
-//       .docs-card-type {
-//         color: $brown;
-//       }
-//     }
-//   }
-
-//   .ui-btn {
-//     &:hover {
-//       color: $brown;
-//       border-color: $brown;
-
-//       .ui-btn-arrow {
-//         stroke: $brown;
-//       }
-//     }
-//   }
-
-//   .productions-sights-title {
-//     color: $brown;
-//   }
-// }
-// .ui-theme-blue {
-//   .ui-theme-color {
-//     color: $blue;
-//   }
-//   .productions-tabs {
-//     &-link {
-//       &:hover,
-//       &.selected {
-//         color: $blue;
-//         border-color: $blue;
-//       }
-//     }
-//   }
-
-//   .tk-subtype {
-//     &-title {
-//       color: $blue;
-//     }
-//   }
-
-//   .productions-management {
-//     &-name,
-//     &-contacts-label,
-//     a:hover {
-//       color: $blue;
-//     }
-//   }
-
-//   .docs-card {
-//     &-icon {
-//       stroke: $blue;
-//     }
-//     &:hover {
-//       color: $blue;
-//       border-color: $blue;
-
-//       .docs-card-type {
-//         color: $blue;
-//       }
-//     }
-//   }
-
-//   .ui-btn {
-//     &:hover {
-//       color: $blue;
-//       border-color: $blue;
-
-//       .ui-btn-arrow {
-//         stroke: $blue;
-//       }
-//     }
-//   }
-
-//   .productions-sights-title {
-//     color: $blue;
-//   }
-// }
-
-@each $name, $value in ("blue": $blue, "brown": $brown, "secondary": $secondary, "tertiary": $tertiary) {
+@each $name, $value in ("blue": $blue, "brown": $brown, "secondary": $secondary, "green": $secondary, "tertiary": $tertiary, "lime": $tertiary) {
   .ui-theme-#{$name} {
     .ui-theme-color {
       color: $value;
@@ -2053,5 +1840,76 @@ PRODUCTIONS -------------- */
 .node-related {
   .main-block-title {
     max-width: 730px;
+  }
+}
+
+.ui-section,
+.productions-block {
+	.col-layout-wide {
+		>*:last-child {
+			margin-bottom: 0;
+
+			&.enterprises-tezises {
+				margin-bottom: -80px;
+			}
+		}
+	}
+}
+
+.enterprises-tezises {
+	margin-bottom: -80px;
+
+	&:not(:last-child) {
+		margin-bottom: 120px;
+	}
+}
+.alone-news {
+	.news-item {
+		padding-bottom: 0;
+		margin-bottom: 0;
+		border-bottom: 0;
+	}
+}
+
+.ui-bg {
+  &-lightlime,
+  &-lightbrown,
+  &-lightblue,
+  &-lightgreen,
+  &-beige {
+    .enterprises-proud-img {
+      filter: grayscale(100%) brightness(0);
+    }
+
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .h20 {
+      color: $bgc;
+    }
+
+    .ui-cite {
+      &-pos,
+      &-author {
+        color: $bgc;
+      }
+    }
+
+    .video-item-desc-date {
+      color: $bgc;
+    }
+
+    .docs-card {
+      color: $bgc;
+      border-color: $bgc;
+
+      .docs-card {
+        &-type {
+          color: $bgc;
+        }
+      }
+    }
+
+    .museum-slider-btns .swiper-button-prev,
+    .museum-slider-btns .swiper-button-next {
+      filter: brightness(0);
+    }
   }
 }

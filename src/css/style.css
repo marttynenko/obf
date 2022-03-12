@@ -631,16 +631,6 @@ a.ui-color-darkyellow:hover { color: #d8c513 !important; }
 
 @media (max-width: 1259px) { .ui-section { padding-top: 60px; padding-bottom: 100px; } }
 
-.ui-section .col-layout-wide > *:last-child, .productions-block .col-layout-wide > *:last-child { margin-bottom: 0; }
-
-.ui-section .col-layout-wide > *:last-child.enterprises-tezises, .productions-block .col-layout-wide > *:last-child.enterprises-tezises { margin-bottom: -80px; }
-
-.enterprises-tezises { margin-bottom: -80px; }
-
-.enterprises-tezises:not(:last-child) { margin-bottom: 120px; }
-
-.alone-news .news-item { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
-
 .ui-cite { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; font-size: 28px; font-size: 1.75rem; }
 
 .ui-cite:not(:last-child) { margin-bottom: 80px; }
@@ -1257,6 +1247,10 @@ PRODUCTIONS -------------- */
 
 .ui-bg-lightlime .to-all-news a:hover svg.news-item-title-arrow { stroke: #97B446; }
 
+.ui-bg-lightlime ul.ui-marked li:before, .ui-bg-lightlime .node-inner ul li:before, .node-inner .ui-bg-lightlime ul li:before, .ui-bg-lightlime .node-inner ul li:before { background: #97B446; }
+
+.ui-bg-lightlime .ui-video-preview:hover .ui-video-play { stroke: #97B446; }
+
 .ui-bg-lightbrown .news-item-date { color: #CA7F49; }
 
 .ui-bg-lightbrown .news-item-title-arrow { stroke: #CA7F49; }
@@ -1270,6 +1264,10 @@ PRODUCTIONS -------------- */
 .ui-bg-lightbrown .to-all-news svg.news-item-title-arrow { stroke: #222E3F; }
 
 .ui-bg-lightbrown .to-all-news a:hover svg.news-item-title-arrow { stroke: #CA7F49; }
+
+.ui-bg-lightbrown ul.ui-marked li:before, .ui-bg-lightbrown .node-inner ul li:before, .node-inner .ui-bg-lightbrown ul li:before, .ui-bg-lightbrown .node-inner ul li:before { background: #CA7F49; }
+
+.ui-bg-lightbrown .ui-video-preview:hover .ui-video-play { stroke: #CA7F49; }
 
 .ui-bg-lightblue .news-item-date { color: #4590BA; }
 
@@ -1285,6 +1283,10 @@ PRODUCTIONS -------------- */
 
 .ui-bg-lightblue .to-all-news a:hover svg.news-item-title-arrow { stroke: #4590BA; }
 
+.ui-bg-lightblue ul.ui-marked li:before, .ui-bg-lightblue .node-inner ul li:before, .node-inner .ui-bg-lightblue ul li:before, .ui-bg-lightblue .node-inner ul li:before { background: #4590BA; }
+
+.ui-bg-lightblue .ui-video-preview:hover .ui-video-play { stroke: #4590BA; }
+
 .ui-bg-lightgreen .news-item-date { color: #268E80; }
 
 .ui-bg-lightgreen .news-item-title-arrow { stroke: #268E80; }
@@ -1298,6 +1300,10 @@ PRODUCTIONS -------------- */
 .ui-bg-lightgreen .to-all-news svg.news-item-title-arrow { stroke: #222E3F; }
 
 .ui-bg-lightgreen .to-all-news a:hover svg.news-item-title-arrow { stroke: #268E80; }
+
+.ui-bg-lightgreen ul.ui-marked li:before, .ui-bg-lightgreen .node-inner ul li:before, .node-inner .ui-bg-lightgreen ul li:before, .ui-bg-lightgreen .node-inner ul li:before { background: #268E80; }
+
+.ui-bg-lightgreen .ui-video-preview:hover .ui-video-play { stroke: #268E80; }
 
 .productions-head { overflow: hidden; }
 
@@ -1545,6 +1551,26 @@ PRODUCTIONS -------------- */
 
 .ui-theme-secondary .productions-sights-title { color: #268E80; }
 
+.ui-theme-green .ui-theme-color { color: #268E80; }
+
+.ui-theme-green .productions-tabs-link:hover, .ui-theme-green .productions-tabs-link.selected { color: #268E80; border-color: #268E80; }
+
+.ui-theme-green .tk-subtype-title { color: #268E80; }
+
+.ui-theme-green .productions-management-name, .ui-theme-green .productions-management-contacts-label, .ui-theme-green .productions-management a:hover { color: #268E80; }
+
+.ui-theme-green .docs-card-icon { stroke: #268E80; }
+
+.ui-theme-green .docs-card:hover { color: #268E80; border-color: #268E80; }
+
+.ui-theme-green .docs-card:hover .docs-card-type { color: #268E80; }
+
+.ui-theme-green .ui-btn:hover { color: #268E80; border-color: #268E80; }
+
+.ui-theme-green .ui-btn:hover .ui-btn-arrow { stroke: #268E80; }
+
+.ui-theme-green .productions-sights-title { color: #268E80; }
+
 .ui-theme-tertiary .ui-theme-color { color: #97B446; }
 
 .ui-theme-tertiary .productions-tabs-link:hover, .ui-theme-tertiary .productions-tabs-link.selected { color: #97B446; border-color: #97B446; }
@@ -1564,6 +1590,26 @@ PRODUCTIONS -------------- */
 .ui-theme-tertiary .ui-btn:hover .ui-btn-arrow { stroke: #97B446; }
 
 .ui-theme-tertiary .productions-sights-title { color: #97B446; }
+
+.ui-theme-lime .ui-theme-color { color: #97B446; }
+
+.ui-theme-lime .productions-tabs-link:hover, .ui-theme-lime .productions-tabs-link.selected { color: #97B446; border-color: #97B446; }
+
+.ui-theme-lime .tk-subtype-title { color: #97B446; }
+
+.ui-theme-lime .productions-management-name, .ui-theme-lime .productions-management-contacts-label, .ui-theme-lime .productions-management a:hover { color: #97B446; }
+
+.ui-theme-lime .docs-card-icon { stroke: #97B446; }
+
+.ui-theme-lime .docs-card:hover { color: #97B446; border-color: #97B446; }
+
+.ui-theme-lime .docs-card:hover .docs-card-type { color: #97B446; }
+
+.ui-theme-lime .ui-btn:hover { color: #97B446; border-color: #97B446; }
+
+.ui-theme-lime .ui-btn:hover .ui-btn-arrow { stroke: #97B446; }
+
+.ui-theme-lime .productions-sights-title { color: #97B446; }
 
 .bbi-parallax { position: relative; margin-bottom: -80px; }
 
@@ -1655,6 +1701,30 @@ PRODUCTIONS -------------- */
   .main-activities-tezis h6, .main-activities-tezis .h6 { font-size: 80px; font-size: 5rem; } }
 
 .node-related .main-block-title { max-width: 730px; }
+
+.ui-section .col-layout-wide > *:last-child, .productions-block .col-layout-wide > *:last-child { margin-bottom: 0; }
+
+.ui-section .col-layout-wide > *:last-child.enterprises-tezises, .productions-block .col-layout-wide > *:last-child.enterprises-tezises { margin-bottom: -80px; }
+
+.enterprises-tezises { margin-bottom: -80px; }
+
+.enterprises-tezises:not(:last-child) { margin-bottom: 120px; }
+
+.alone-news .news-item { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+
+.ui-bg-lightlime .enterprises-proud-img, .ui-bg-lightbrown .enterprises-proud-img, .ui-bg-lightblue .enterprises-proud-img, .ui-bg-lightgreen .enterprises-proud-img, .ui-bg-beige .enterprises-proud-img { -webkit-filter: grayscale(100%) brightness(0); filter: grayscale(100%) brightness(0); }
+
+.ui-bg-lightlime h1, .ui-bg-lightlime h2, .ui-bg-lightlime h3, .ui-bg-lightlime h4, .ui-bg-lightlime h5, .ui-bg-lightlime h6, .ui-bg-lightlime .h1, .ui-bg-lightlime .h2, .ui-bg-lightlime .h3, .ui-bg-lightlime .h4, .ui-bg-lightlime .h5, .ui-bg-lightlime .h6, .ui-bg-lightlime .h20, .ui-bg-lightbrown h1, .ui-bg-lightbrown h2, .ui-bg-lightbrown h3, .ui-bg-lightbrown h4, .ui-bg-lightbrown h5, .ui-bg-lightbrown h6, .ui-bg-lightbrown .h1, .ui-bg-lightbrown .h2, .ui-bg-lightbrown .h3, .ui-bg-lightbrown .h4, .ui-bg-lightbrown .h5, .ui-bg-lightbrown .h6, .ui-bg-lightbrown .h20, .ui-bg-lightblue h1, .ui-bg-lightblue h2, .ui-bg-lightblue h3, .ui-bg-lightblue h4, .ui-bg-lightblue h5, .ui-bg-lightblue h6, .ui-bg-lightblue .h1, .ui-bg-lightblue .h2, .ui-bg-lightblue .h3, .ui-bg-lightblue .h4, .ui-bg-lightblue .h5, .ui-bg-lightblue .h6, .ui-bg-lightblue .h20, .ui-bg-lightgreen h1, .ui-bg-lightgreen h2, .ui-bg-lightgreen h3, .ui-bg-lightgreen h4, .ui-bg-lightgreen h5, .ui-bg-lightgreen h6, .ui-bg-lightgreen .h1, .ui-bg-lightgreen .h2, .ui-bg-lightgreen .h3, .ui-bg-lightgreen .h4, .ui-bg-lightgreen .h5, .ui-bg-lightgreen .h6, .ui-bg-lightgreen .h20, .ui-bg-beige h1, .ui-bg-beige h2, .ui-bg-beige h3, .ui-bg-beige h4, .ui-bg-beige h5, .ui-bg-beige h6, .ui-bg-beige .h1, .ui-bg-beige .h2, .ui-bg-beige .h3, .ui-bg-beige .h4, .ui-bg-beige .h5, .ui-bg-beige .h6, .ui-bg-beige .h20 { color: #222E3F; }
+
+.ui-bg-lightlime .ui-cite-pos, .ui-bg-lightlime .ui-cite-author, .ui-bg-lightbrown .ui-cite-pos, .ui-bg-lightbrown .ui-cite-author, .ui-bg-lightblue .ui-cite-pos, .ui-bg-lightblue .ui-cite-author, .ui-bg-lightgreen .ui-cite-pos, .ui-bg-lightgreen .ui-cite-author, .ui-bg-beige .ui-cite-pos, .ui-bg-beige .ui-cite-author { color: #222E3F; }
+
+.ui-bg-lightlime .video-item-desc-date, .ui-bg-lightbrown .video-item-desc-date, .ui-bg-lightblue .video-item-desc-date, .ui-bg-lightgreen .video-item-desc-date, .ui-bg-beige .video-item-desc-date { color: #222E3F; }
+
+.ui-bg-lightlime .docs-card, .ui-bg-lightbrown .docs-card, .ui-bg-lightblue .docs-card, .ui-bg-lightgreen .docs-card, .ui-bg-beige .docs-card { color: #222E3F; border-color: #222E3F; }
+
+.ui-bg-lightlime .docs-card .docs-card-type, .ui-bg-lightbrown .docs-card .docs-card-type, .ui-bg-lightblue .docs-card .docs-card-type, .ui-bg-lightgreen .docs-card .docs-card-type, .ui-bg-beige .docs-card .docs-card-type { color: #222E3F; }
+
+.ui-bg-lightlime .museum-slider-btns .swiper-button-prev, .ui-bg-lightlime .museum-slider-btns .swiper-button-next, .ui-bg-lightbrown .museum-slider-btns .swiper-button-prev, .ui-bg-lightbrown .museum-slider-btns .swiper-button-next, .ui-bg-lightblue .museum-slider-btns .swiper-button-prev, .ui-bg-lightblue .museum-slider-btns .swiper-button-next, .ui-bg-lightgreen .museum-slider-btns .swiper-button-prev, .ui-bg-lightgreen .museum-slider-btns .swiper-button-next, .ui-bg-beige .museum-slider-btns .swiper-button-prev, .ui-bg-beige .museum-slider-btns .swiper-button-next { -webkit-filter: brightness(0); filter: brightness(0); }
 
 .analytics { margin-bottom: 80px; }
 
