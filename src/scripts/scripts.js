@@ -741,30 +741,106 @@ document.querySelectorAll('.ux-chart').forEach((el) => {
 FARBA.tabs(".ux-tabs a");
 
 
-const mainSlides = () => {
-  if (!D.querySelector('#main-slides')) return;
+const mainScreen = () => {
+  if (!D.querySelector('#main-screen')) return;
+  const slides = D.querySelectorAll('.main-slide').length
 
   return new Vue({
-    el: '#main-slides',
+    el: '#main-screen',
     data: {
-      index: 0
+      index: 0,
+      slides: slides,
+      timer: null,
+      isPopup: false,
+      bgCoords: {
+        x: 0,
+        y: 0
+      }
     },
     methods: {
       changeSlide(index) {
         this.index = index
+
+        clearTimeout(this.timer)
+        this.initTimer()
+      },
+
+      initTimer() {
+        this.timer = setInterval(() => {
+          if (this.index === this.slides - 1) {
+            this.index = 0
+          } else {
+            this.index++
+          }
+          console.log(this.index)
+        },5000)
+        
       },
 
       slideEnter(el,done) {
-        gsap.fromTo(el,{opacity: 0},{opacity: 1, duration: 1, onComplete: done})
+        // gsap.fromTo(el,{opacity: 0},{opacity: 1, duration: 1, onComplete: done})
+        const tl = gsap.timeline()
+        tl
+          .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, xPercent: -20},{opacity: 1, xPercent: 0, duration: 0.5})
+          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 20, scale: 0.75}, {opacity: 1, xPercent: 0, scale: 1, duration: 1, delay: -0.5,  onComplete: done})
       },
       slideLeave(el,done) {
-        gsap.to(el,{opacity: 0, duration: 1, onComplete: done})
+        gsap.to(el,{opacity: 0, xPercent: -50, duration: 0.25, onComplete: done})
+      //   const tl = gsap.timeline()
+      //   tl
+      //     .to(el.querySelector('.main-slide-content'),{x:80, opacity: 0, ease: 'none'},0.2)
+      //     .to(el.querySelector('.main-slide-img'),{x:80, opacity: 0, ease: 'none'},'-=0.2')
+      },
+
+      popupEnter(el,done) {
+        const ww = document.documentElement.clientWidth
+        const scale = (ww / 170) * 2
+        const tl = gsap.timeline()
+        tl
+          .to(this.$refs.popupBg,{scale: scale, duration: 0.45})
+          .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5, onComplete: done})
+      },
+
+      popupLeave(el,done) {
+        const tl = gsap.timeline()
+        tl
+          .to(this.$refs.popupBody, {opacity: 0, y: 50, duration: 0.4})
+          .to(this.$refs.popupBg,{scale: 1, duration: 0.3, delay: -0.15, onComplete: done})
+      },
+
+      togglePopup() {
+        this.getBgCoords()
+
+        this.isPopup = !this.isPopup
+      },
+
+      getBgCoords() {
+        const coords = this.$refs.popupToggler.getBoundingClientRect()
+        this.bgCoords.x = coords.x
+        this.bgCoords.y = coords.y
+        console.log(coords)
       }
+    },
+
+    create() {
+      // window.addEventListener('load',this.getBgCoords)
+
+      // window.addEventListener('resize',this.getBgCoords)
+    },
+
+    mounted() {
+      // this.initTimer()
+    },
+
+    beforeDestroy() {
+      // window.removeEventListener('load',this.getBgCoords)
+
+      // window.removeEventListener('resize',this.getBgCoords)
     }
   })
 }
 
-mainSlides()
+mainScreen()
 
 
 const mainActivities = () => {
