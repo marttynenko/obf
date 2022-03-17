@@ -1525,9 +1525,7 @@ a.ui-color {
 // 	}
 // }
 
-.ui-invisible {
-	opacity: 0;
-}
+
 
 // .ui-uploader {
 // 	position: relative;
@@ -2041,4 +2039,12 @@ a.ui-color {
 	width: 2px;
 	height: 2px;
 	background: rgba(#FFF,.5);
+}
+
+.ui-invisible {
+	opacity: 0;
+}
+.ui-hidden {
+	display: none;
+	visibility: hidden;
 }

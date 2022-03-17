@@ -188,16 +188,6 @@
 </div>
 <!--.fs-menu-->
 
-<!-- <div id="cookiePopup" class="cookiePopup hide">
-  <p>Мы используем файлы cookie. Они помогают улучшить ваше взаимодействие с сайтом.</p>
-  <button id="acceptCookie">
-    Принять 
-    <svg class="sprite circle-link-icon cookie">
-      <use xlink:href="svg/svg/symbols.svg#accept" />
-    </svg>
-  </button>
-</div> -->
-
 <footer class="footer" id="footer">
   <div class="container">
     <div class="row">
@@ -247,8 +237,46 @@
     </div>
   </div>
 </footer>
+
+<div id="popup-cookie" class="popup-cookie">
+  <p>Мы используем файлы cookie. Они помогают улучшить ваше взаимодействие с сайтом.</p>
+  <button id="popup-cookie-accept" class="popup-cookie-accept">
+    Принять 
+    <svg class="sprite svg-cookie">
+      <use xlink:href="svg/svg/symbols.svg#accept" />
+    </svg>
+  </button>
 </div>
-<!--.wrapper-->
+
+<div class="plug-mobile">
+  <div class="plug-mobile-header">
+    <div class="container">
+      <a href="/" class="logo flex valign-center">
+        <div class="logo-img"><img src="./images/logo.svg" alt="OBF"></div>
+        <div class="logo-txt">ОБФ</div>
+      </a>
+    </div>
+  </div>
+
+  
+  <div class="container">
+    <div class="plug-mobile-row">
+      <div class="plug-mobile-text">
+        <div class="plug-mobile-title">
+          К сожалению, <br> сайт пока <br> не работает <br> на вашем устройстве
+        </div>
+        <div class="plug-mobile-subtitle">
+          Вы можете посетить сайт с компьютера.
+        </div>
+      </div>
+      <div class="plug-mobile-bg-wrp">
+        <img src="./images/sub.png" alt="alt" class="plug-mobile-bg">
+      </div>
+    </div>
+  </div>
+</div><!--.plug-mobile-->
+
+</div><!--.wrapper-->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"

@@ -778,18 +778,17 @@ const mainScreen = () => {
       },
 
       slideEnter(el,done) {
-        // gsap.fromTo(el,{opacity: 0},{opacity: 1, duration: 1, onComplete: done})
-        const tl = gsap.timeline()
+        const tl = gsap.timeline({ autoRemoveChildren: true })
         tl
-          .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, xPercent: -20},{opacity: 1, xPercent: 0, duration: 0.5})
-          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 20, scale: 0.75}, {opacity: 1, xPercent: 0, scale: 1, duration: 1, delay: -0.5,  onComplete: done})
+          .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, x: -100},{opacity: 1, x: 0, duration: 0.35})
+          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 15, scale: 0.95}, {opacity: 1, xPercent: 0, scale: 0.95, duration: 0.2},'-=0.35')
+          .to(el.querySelector('.main-slide-img'),{scale: 1, duration: 4.5, ease: "sine.out", onComplete: done})
       },
       slideLeave(el,done) {
-        gsap.to(el,{opacity: 0, xPercent: -50, duration: 0.25, onComplete: done})
-      //   const tl = gsap.timeline()
-      //   tl
-      //     .to(el.querySelector('.main-slide-content'),{x:80, opacity: 0, ease: 'none'},0.2)
-      //     .to(el.querySelector('.main-slide-img'),{x:80, opacity: 0, ease: 'none'},'-=0.2')
+        const tl = gsap.timeline({ autoRemoveChildren: true })
+        tl
+          .to(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: -15, duration: 0.35})
+          .to(el.querySelector('.main-slide-content'),{opacity: 0, x: 100, onComplete: done}, '-=0.35')
       },
 
       popupEnter(el,done) {

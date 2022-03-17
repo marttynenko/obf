@@ -263,6 +263,7 @@
     margin: 0 auto;
     bottom: 0;
     max-height: calc(100vh - 108px);
+    transform-origin: center bottom;
   }
 
   @media (max-width: 1439px) {

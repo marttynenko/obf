@@ -292,3 +292,254 @@
   }
 }
 
+
+.page-error {
+  position: relative;
+  margin-bottom: -30px;
+  
+  &-txt {
+    flex: 0 0 calc(100% - 170px);
+    max-width: calc(100% - 170px);
+    padding-right: 30px;
+  }
+
+  &-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: calc(100vh - 80px);
+    padding-top: 70px;
+    padding-bottom: 50px;
+  }
+
+  &-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0;
+    z-index: -1;
+    display: block;
+    max-height: calc(100% - 160px);
+    max-width: 75%;
+  }
+
+  &-title {
+    margin-bottom: 0;
+    @include fz(300);
+    line-height: 0.95;
+    color: $primary;
+  }
+
+  &-subtitle {
+    @include fz(54);
+    line-height: 1;
+  }
+
+  @media (max-width: 1439px) {
+    &-title {
+      @include fz(240);
+    }
+    &-subtitle {
+      @include fz(42);
+    }
+  }
+}
+
+
+//stub
+.plug-mobile {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  html {
+    overflow: hidden;
+  }
+  .plug-mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: block;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    overflow: hidden;
+    background: $bgc;
+
+    .logo-img {
+      max-width: 40px;
+    }
+
+    &-header {
+      padding-top: 28px;
+      padding-bottom: 28px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+
+    &-row {
+      display: flex;
+      height: calc(100vh - 100px);
+    }
+
+    &-text {
+      max-width: 55%;
+    }
+
+    &-title {
+      margin-bottom: 57px;
+      width: 400px;
+      font-weight: 600;
+      @include fz(60);
+      line-height: 1;
+    }
+
+    &-subtitle {
+      width: 280px;
+      font-weight: 500;
+      @include fz(24);
+      line-height: 1.25;
+    }
+    
+    &-bg {
+      position: absolute;
+      right: -10%;
+      bottom: 0;
+      max-width: 60%;
+      z-index: -1;
+    }
+  }
+}
+
+@media (max-width: 1023px) and (orientation: portrait) {
+  .plug-mobile {
+    &-text {
+      max-width: 100%;
+    }
+    &-bg {
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      max-width: 85%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .plug-mobile {
+    padding-top: 80px;
+
+    .container {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    &-header {
+      padding-top: 18px;
+      padding-bottom: 18px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+
+    &-title {
+      @include fz(40);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+    &-subtitle {
+      @include fz(20);
+    }
+  }
+}
+
+@media (max-width: 576px) and (orientation: landscape) {
+  .plug-mobile {
+
+    &-title {
+      @include fz(24);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    &-subtitle {
+      @include fz(16);
+    }
+  }
+}
+@media (max-width: 420px) {
+  .plug-mobile {
+
+    &-title {
+      @include fz(24);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    &-subtitle {
+      @include fz(16);
+    }
+  }
+}
+
+//cookie popup
+.popup-cookie {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 99;
+  padding: 28px 34px;
+  max-width: calc(100% - 100px);
+  width: 320px;
+  @include fz(18);
+  line-height: 1.5;
+  background-color: $primary;
+  color: #FFF;
+
+  &.confirmed {
+    transition: transform .4s, opacity .4s;
+    transform: translate(0px, 50px);
+    opacity: 0;
+  }
+  
+	p {
+		margin-bottom: 23px;
+	}
+
+	&-accept {
+		position: relative;
+		display: flex;
+		padding: 12px 14px 12px 20px;
+		@include fz(18);
+		font-weight: 600;
+		color: #fff;
+		background-color: transparent;
+		border: 2px solid #fff;
+		border-radius: 10px;
+    transition: .4s background-color, .4s color;
+    cursor: pointer;
+
+    &:hover {
+			color: $primary;
+			background-color: #fff;
+
+			.svg-cookie {
+				stroke: $primary;
+			}
+		}
+
+		.svg-cookie {
+			width: 24px;
+			height: 24px;
+			margin-left: 45px;
+			fill: none;
+			stroke: #fff;
+      stroke-width: 2px;
+		}
+	}
+}

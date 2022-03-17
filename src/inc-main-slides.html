@@ -4,8 +4,9 @@
       v-on:enter="slideEnter"
       v-on:leave="slideLeave"
       v-bind:css="false"
+      mode="out-in"
     >
-      <div class="main-slide" v-if="index === 0">
+      <div class="main-slide" v-if="index === 0" key="0">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title">ОБФ —</div>
@@ -17,14 +18,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-if="index === 1">
+      <div class="main-slide" v-if="index === 1" key="1">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-secondary">ОБФ —</div>
@@ -36,14 +31,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-if="index === 2">
+      <div class="main-slide" v-if="index === 2" key="2">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-brown">ОБФ —</div>
@@ -55,14 +44,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-if="index === 3">
+      <div class="main-slide" v-if="index === 3" key="3">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-tertiary">ОБФ —</div>
@@ -74,14 +57,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-if="index === 4">
+      <div class="main-slide" v-if="index === 4" key="4">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-blue">ОБФ —</div>
@@ -94,7 +71,6 @@
         </div>
       </div>
     </transition>
-    
 
     <div class="main-slides-nav">
       <div class="container">
