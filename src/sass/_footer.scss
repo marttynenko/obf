@@ -68,13 +68,21 @@ footer.footer {
 
   &-dev {
     &-label {
-      @include fz(14);
+      @include fz(18);
       margin-bottom: 3px;
     }
     &-name {
       font-weight: 600;
       @include fz(20);
       color: #FFF;
+    }
+  }
+
+  @media (max-width: 1259px) {
+    &-dev {
+      &-label {
+        @include fz(14);
+      }
     }
   }
 }
@@ -385,7 +393,6 @@ footer.footer {
         transform: scale(1.12);
       }
     }
-    
   }
 
   &-secondary {
@@ -445,6 +452,15 @@ footer.footer {
 
     #{$this}-circle-wrap:after {
       border-color: $darkyellow;
+    }
+  }
+
+  &-active {
+    #{$this}-circle-wrap {
+      &:after {
+        opacity: 1;
+        transform: scale(1.12);
+      }
     }
   }
 }

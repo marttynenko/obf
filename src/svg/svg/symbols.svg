@@ -24,7 +24,7 @@
 			<path d="M1.913 0L.621 1.332 6.12 7l5.5-5.668L10.328 0 6.121 4.327 1.913 0z" fill="#1D1D1D"></path>
 		</symbol>
 	
-		<symbol id="arrow-down(museum)" viewBox="0 0 34 13">
+		<symbol id="arrow-down-museum" viewBox="0 0 34 13">
 			<path d="M1 1l16 10L33 1" stroke="#fff" stroke-width="2"></path>
 		</symbol>
 	
@@ -70,6 +70,10 @@
 	
 		<symbol id="childs-toggler" viewBox="0 0 10 5">
 			<path opacity=".5" d="M1 1l4 3 4-3" stroke="#fff"></path>
+		</symbol>
+	
+		<symbol id="childs-toggler-orange" viewBox="0 0 10 5">
+			<path d="M1 1l4 3 4-3" stroke="#F08322"></path>
 		</symbol>
 	
 		<symbol id="circle-btn-arrow" viewBox="0 0 32 32">

@@ -89,6 +89,9 @@
     ul {
       margin-left: -20px;
       margin-right: -20px;
+      white-space: nowrap;
+      overflow: hidden;
+      overflow-x: auto;
     }
 
     li {
@@ -152,8 +155,16 @@
       bottom: 0;
       background-color: $primary;
       transition: ease-out;
+      width: 0%;
     }
   }
+}
+.main-slides-nav ul {
+  scrollbar-width: 0;
+}
+.main-slides-nav ul::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .main-slide {
@@ -191,6 +202,7 @@
     line-height: 1.1;
     color: $primary;
     margin-bottom: 16px;
+    white-space: nowrap;
   }
   &-descr {
     @include fz(80);
@@ -403,6 +415,7 @@
       vertical-align: bottom;
       width: 48px;
       height: 48px;
+      margin-right: -48px;
       stroke: $primary;
       stroke-width: 2;
       fill: none;
@@ -1677,14 +1690,19 @@ PRODUCTIONS -------------- */
 }
 
 .main-entrs {
+  &-slides {
+    position: relative;
+  }
   &-cols {
     display: flex;
+    align-items: flex-start;
   }
   &-imgs {
     position: relative;
     flex: 0 0 44.3%;
     max-width: 44.3%;
     margin-right: 5.2%;
+    margin-top: -140px;
 
     .ui-btn-circle {
       position: absolute;
@@ -1693,9 +1711,16 @@ PRODUCTIONS -------------- */
     }
   }
   &-img {
+    position: relative;
+    z-index: -1;
+
     &:not(.main-entrs-img-rounded) {
       margin-left: -50px;
       max-width: calc(100% + 50px);
+    }
+
+    &-rounded {
+      border-radius: 500px;
     }
   }
   &-content {
@@ -1720,6 +1745,43 @@ PRODUCTIONS -------------- */
       vertical-align: baseline;
       font-size: 0.65em;
       display: inline-block;
+    }
+  }
+
+  &-nav {
+    position: absolute;
+    top: 310px;
+    left: 49.5%;
+    width: 50%;
+
+    ul {
+      white-space: nowrap;
+      overflow: hidden;
+      overflow-x: auto;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+    &-link {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0px 20px;
+      height: 70px;
+      line-height: 68px;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 35px;
+      color: #fff;
+      @include fz(28);
+
+      &:hover,
+      &.active {
+        color: #FFF;
+        border-color: #FFF;
+        border-style: solid;
+      }
     }
   }
 }

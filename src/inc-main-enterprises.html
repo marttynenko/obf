@@ -1,56 +1,232 @@
-<div class="main-block main-entrs">
+<div class="main-block main-entrs" id="main-entrs">
   <div class="main-entrs-slides">
-    <div class="main-entrs-slide">
-      <div class="main-entrs-title main-block-title h1">Объединенные бумажные фабрики</div>
-      <div class="main-entrs-cols">
-        <div class="main-entrs-imgs">
-          <img src="./images/bgs/main-entrs-1.png" alt="Объединенные бумажные фабрики" class="main-entrs-img">
-          <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
-            <div class="ui-btn-circle-circle">
-              <div class="ui-btn-circle-txt">Про ОБФ</div>
-              <svg class="sprite ui-btn-circle-arrow">
-                <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-              </svg>
-            </div>
-          </a>
-        </div>
-        <div class="main-entrs-content">
-          <div class="main-entrs-descr">Компания «ОБФ» — группа производственных предприятий целлюлозно-бумажной промышленности.  Основным видом деятельности является производство тарного картона — сырья для производства гофротары — из вторичного сырья — макулатуры.</div>
-  
-          <div class="main-entrs-vntgs">
-            <div class="row">
-              <div class="col-6">
-                <div class="main-entrs-vntg">
-                  <div class="main-entrs-vntg-title">XXX тыс.</div>
-                  <div class="main-entrs-vntg-txt">тонн тарного<br> картона в год</div>
-                </div>
+    <transition 
+      v-on:enter="slideEnter"
+      v-on:leave="slideLeave"
+      v-bind:css="false"
+      mode="out-in"
+    >
+      <div class="main-entrs-slide" v-if="index === 0" key="0">
+        <div class="main-entrs-title main-block-title h1">Объединенные бумажные фабрики</div>
+        <div class="main-entrs-cols">
+          <div class="main-entrs-imgs">
+            <img src="./images/bgs/main-entrs-1.png" alt="Объединенные бумажные фабрики" class="main-entrs-img">
+            <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+              <div class="ui-btn-circle-circle">
+                <div class="ui-btn-circle-txt">Про ОБФ</div>
+                <svg class="sprite ui-btn-circle-arrow">
+                  <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                </svg>
               </div>
-  
-              <div class="col-6">
-                <div class="main-entrs-vntg">
-                  <div class="main-entrs-vntg-title">ХХ,Х млрд ₽</div>
-                  <div class="main-entrs-vntg-txt">годовая выручка</div>
+            </a>
+          </div>
+          <div class="main-entrs-content">
+            <div class="main-entrs-descr">Компания «ОБФ» — группа производственных предприятий целлюлозно-бумажной промышленности.  Основным видом деятельности является производство тарного картона — сырья для производства гофротары — из вторичного сырья — макулатуры.</div>
+    
+            <div class="main-entrs-vntgs">
+              <div class="row">
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">XXX тыс.</div>
+                    <div class="main-entrs-vntg-txt">тонн тарного<br> картона в год</div>
+                  </div>
                 </div>
-              </div>
-  
-              <div class="col-6">
-                <div class="main-entrs-vntg">
-                  <div class="main-entrs-vntg-title">ХХХХ</div>
-                  <div class="main-entrs-vntg-txt">сотрудников</div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХ,Х млрд ₽</div>
+                    <div class="main-entrs-vntg-txt">годовая выручка</div>
+                  </div>
                 </div>
-              </div>
-  
-              <div class="col-6">
-                <div class="main-entrs-vntg">
-                  <div class="main-entrs-vntg-title">№15</div>
-                  <div class="main-entrs-vntg-txt">в рейтинге ЦБП России <sub>(№1 по экспорту тарного картона в РФ)</sub></div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХХХ</div>
+                    <div class="main-entrs-vntg-txt">сотрудников</div>
+                  </div>
                 </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">№15</div>
+                    <div class="main-entrs-vntg-txt">в рейтинге ЦБП России <sub>(№1 по экспорту тарного картона в РФ)</sub></div>
+                  </div>
+                </div>
+    
               </div>
-  
             </div>
           </div>
         </div>
       </div>
+
+      <div class="main-entrs-slide" v-if="index === 1" key="1">
+        <div class="main-entrs-title main-block-title h1">Сухонский картонно- бумажный комбинат</div>
+        <div class="main-entrs-cols">
+          <div class="main-entrs-imgs">
+            <img src="./images/bgs/main-entrs-2.png" alt="Сухонский картонно-бумажный комбинат" class="main-entrs-img main-entrs-img-rounded">
+            <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+              <div class="ui-btn-circle-circle">
+                <div class="ui-btn-circle-txt">Про СКБК</div>
+                <svg class="sprite ui-btn-circle-arrow">
+                  <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div class="main-entrs-content">
+            <div class="main-entrs-descr">Компания «ОБФ» — группа производственных предприятий целлюлозно-бумажной промышленности.  Основным видом деятельности является производство тарного картона — сырья для производства гофротары — из вторичного сырья — макулатуры.</div>
+    
+            <div class="main-entrs-vntgs">
+              <div class="row">
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">XXX тыс.</div>
+                    <div class="main-entrs-vntg-txt">тонн тарного<br> картона в год</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХ,Х млрд ₽</div>
+                    <div class="main-entrs-vntg-txt">годовая выручка</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХХХ</div>
+                    <div class="main-entrs-vntg-txt">сотрудников</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">№15</div>
+                    <div class="main-entrs-vntg-txt">в рейтинге ЦБП России <sub>(№1 по экспорту тарного картона в РФ)</sub></div>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-entrs-slide" v-if="index === 2" key="2">
+        <div class="main-entrs-title main-block-title h1">Полотняно-Заводская бумажная мануфактура</div>
+        <div class="main-entrs-cols">
+          <div class="main-entrs-imgs">
+            <img src="./images/bgs/main-entrs-3.png" alt="Полотняно-Заводская бумажная мануфактура" class="main-entrs-img main-entrs-img-rounded">
+            <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+              <div class="ui-btn-circle-circle">
+                <div class="ui-btn-circle-txt">Про ПЗБМ</div>
+                <svg class="sprite ui-btn-circle-arrow">
+                  <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div class="main-entrs-content">
+            <div class="main-entrs-descr">Компания «ОБФ» — группа производственных предприятий целлюлозно-бумажной промышленности.  Основным видом деятельности является производство тарного картона — сырья для производства гофротары — из вторичного сырья — макулатуры.</div>
+    
+            <div class="main-entrs-vntgs">
+              <div class="row">
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">XXX тыс.</div>
+                    <div class="main-entrs-vntg-txt">тонн тарного<br> картона в год</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХ,Х млрд ₽</div>
+                    <div class="main-entrs-vntg-txt">годовая выручка</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХХХ</div>
+                    <div class="main-entrs-vntg-txt">сотрудников</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">№15</div>
+                    <div class="main-entrs-vntg-txt">в рейтинге ЦБП России <sub>(№1 по экспорту тарного картона в РФ)</sub></div>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-entrs-slide" v-if="index === 3" key="3">
+        <div class="main-entrs-title main-block-title h1">Балахнинская<br> картонная фабрика</div>
+        <div class="main-entrs-cols">
+          <div class="main-entrs-imgs">
+            <img src="./images/bgs/main-entrs-4.png" alt="Балахнинская картонная фабрика" class="main-entrs-img main-entrs-img-rounded">
+            <a href="javascript:void(0)" class="ui-btn-circle ui-btn-circle-midi">
+              <div class="ui-btn-circle-circle">
+                <div class="ui-btn-circle-txt">Про БКФ</div>
+                <svg class="sprite ui-btn-circle-arrow">
+                  <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div class="main-entrs-content">
+            <div class="main-entrs-descr">Компания «ОБФ» — группа производственных предприятий целлюлозно-бумажной промышленности.  Основным видом деятельности является производство тарного картона — сырья для производства гофротары — из вторичного сырья — макулатуры.</div>
+    
+            <div class="main-entrs-vntgs">
+              <div class="row">
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">XXX тыс.</div>
+                    <div class="main-entrs-vntg-txt">тонн тарного<br> картона в год</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХ,Х млрд ₽</div>
+                    <div class="main-entrs-vntg-txt">годовая выручка</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">ХХХХ</div>
+                    <div class="main-entrs-vntg-txt">сотрудников</div>
+                  </div>
+                </div>
+    
+                <div class="col-6">
+                  <div class="main-entrs-vntg">
+                    <div class="main-entrs-vntg-title">№15</div>
+                    <div class="main-entrs-vntg-txt">в рейтинге ЦБП России <sub>(№1 по экспорту тарного картона в РФ)</sub></div>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <div class="main-entrs-nav">
+      <ul>
+        <span class="main-entrs-nav-border"></span>
+        <li><a href="#" class="main-entrs-nav-link" @click.prevent="changeSlide(0)" :class="{active: index === 0}">ОБФ</a></li>
+        <li><a href="#" class="main-entrs-nav-link" @click.prevent="changeSlide(1)" :class="{active: index === 1}">СКБК</a></li>
+        <li><a href="#" class="main-entrs-nav-link" @click.prevent="changeSlide(2)" :class="{active: index === 2}">ПЗБМ</a></li>
+        <li><a href="#" class="main-entrs-nav-link" @click.prevent="changeSlide(3)" :class="{active: index === 3}">БКФ</a></li>
+      </ul>
     </div>
   </div>
 </div>

@@ -43,11 +43,12 @@
       },
     });
 
-    // slider.querySelectorAll('.ui-swiper-slide').forEach(item => {
-    //   item.addEventListener('click',() => {
-    //     swiper.slideToClosest()
-    //   })
-    // })
+    slider.querySelectorAll('.ui-swiper-slide-img').forEach(item => {
+      item.addEventListener('click',() => {
+        let event = new Event("click")
+        nextArrow.dispatchEvent(event)
+      })
+    })
   });
 })();
 // Enterprises.html Слайдер для дипломов
@@ -60,53 +61,3 @@ const swiper = new Swiper(".enterprises-swipper", {
     prevEl: ".swiper-button-prev",
   },
 });
-
-// if (document.querySelector(".page-404")) {
-//   document.querySelector(".wrapper").classList.add("wrapper-page-404");
-//   document.querySelector("#header").classList.add("header-transparent");
-//   document.querySelector(".footer").classList.add("footer-page-404");
-// }
-
-// if (document.querySelector(".stub-page")) {
-//   document.querySelector(".wrapper").classList.add("wrapper-stub-page");
-//   document.querySelector("#header").classList.add("header-stub-page");
-//   document.querySelector(".footer").classList.add("footer-stub-page");
-// }
-
-// const smoothLinks = document.querySelectorAll('a[href^="#"]');
-// for (let smoothLink of smoothLinks) {
-//   smoothLink.addEventListener("click", function (e) {
-//     e.preventDefault();
-//     const id = smoothLink.getAttribute("href");
-
-//     document.querySelector(id).scrollIntoView({
-//       behavior: "smooth",
-//       block: "start",
-//     });
-//   });
-// }
-
-// [
-//   {}
-// ]
-
-// const DimaNA = {
-//   2001: 10,
-//   2002: 20,
-//   2003: 30,
-//   2004: 40,
-//   2005: 50,
-//   2006: 60,
-//   2007: 70,
-//   2008: 80,
-//   2009: 90,
-//   20010: 100,
-//   2011: 110,
-//   2012: 120,
-//   2013: 10000,
-// }
-
-// for (key in DimaNA) {
- 
-//   console.log(key)
-// }

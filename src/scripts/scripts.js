@@ -50,12 +50,19 @@ const FARBA = {
         }
       });
 
+
       lightGallery(el, {
         download: false,
         selector: "a.ux-gallery-link",
         backdropDuration: 500,
-        speed: 500,
+        speed: 1000
       });
+
+      el.addEventListener("onSlideClick",function(){
+        window.lgData[el.getAttribute("lg-uid")].goToNextSlide()
+      })
+
+      
     });
   },
 
@@ -465,8 +472,12 @@ function animateFSMenu(action) {
           download: false,
           selector: selector,
           backdropDuration: 500,
-          speed: 500,
+          speed: 1000
         });
+
+        el.addEventListener("onSlideClick",function(){
+          window.lgData[el.getAttribute("lg-uid")].goToNextSlide()
+        })
       });
     }
   );
@@ -637,9 +648,6 @@ window.addEventListener('load',() => {
   })
   
   gsap.utils.toArray('.bbi-parallax-img').forEach((el,index,arr) => {
-    // tl.to(el,{yPercent: () => {
-    //   return -((arr.length - index) * 5)
-    // }, duration: 1},">-1")
     const y = -((arr.length - index) * 5);
     tl.to(el,{yPercent: y, ease: "none"},0)
   })
@@ -755,7 +763,9 @@ const mainScreen = () => {
       bgCoords: {
         x: 0,
         y: 0
-      }
+      },
+      line: null,
+      timeout: 5
     },
     methods: {
       changeSlide(index) {
@@ -763,25 +773,35 @@ const mainScreen = () => {
 
         clearTimeout(this.timer)
         this.initTimer()
+
+        //меняем статус анимации прогрессбара
+        this.line.progress(index / this.slides)
       },
 
       initTimer() {
         this.timer = setInterval(() => {
           if (this.index === this.slides - 1) {
             this.index = 0
+            //перезапускаем анимацию прогрессбара
+            this.line.restart()
           } else {
             this.index++
           }
-          console.log(this.index)
-        },5000)
+        },this.timeout*1000)
+      },
+
+      initProgress() {
+        this.line = gsap.timeline()
+        const duration = this.timeout * this.slides
         
+        this.line.to(this.$refs.progress, {width: '100%',duration: duration, ease: 'none'})
       },
 
       slideEnter(el,done) {
         const tl = gsap.timeline({ autoRemoveChildren: true })
         tl
           .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, x: -100},{opacity: 1, x: 0, duration: 0.35})
-          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 15, scale: 0.95}, {opacity: 1, xPercent: 0, scale: 0.95, duration: 0.2},'-=0.35')
+          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 15, scale: 0.95}, {opacity: 1, xPercent: 0, scale: 0.95, ease: "expo.out", duration: 0.35},'-=0.35')
           .to(el.querySelector('.main-slide-img'),{scale: 1, duration: 4.5, ease: "sine.out", onComplete: done})
       },
       slideLeave(el,done) {
@@ -818,23 +838,39 @@ const mainScreen = () => {
         this.bgCoords.x = coords.x
         this.bgCoords.y = coords.y
         console.log(coords)
+      },
+
+      appearAnimation() {
+        const tl = gsap.timeline()
+        const slide = D.querySelector('.main-slide')
+        const content = slide.querySelector('.main-slide-content')
+        const img = slide.querySelector('.main-slide-img')
+        const newsLink = this.$refs.popupToggler
+        const actualLink = D.querySelector('.main-screen-news')
+
+        const clearHeader = () => {
+          D.querySelector('#header').removeAttribute('style')
+        }
+
+        tl
+          .fromTo(img, {scale: 0.95}, {scale: 1, duration: 4.5, delay: 0.5})
+          .fromTo(content,{opacity: 0, x: -75},{opacity: 1, x: 0, duration: 0.35}, '-=4.5')
+          .from(newsLink, {x: 40, opacity: 0, duration: 0.35}, '-=4.5')
+          .from(actualLink, {x: 75, opacity: 0, duration: 0.35}, '-=4.25')
+          .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader}, '-=3.85')
+          .fromTo('.main-slides-nav',{opacity: 0, yPercent: 100},{opacity: 1, yPercent: 0, duration: 0.4}, '-=3.45')
       }
     },
 
-    create() {
-      // window.addEventListener('load',this.getBgCoords)
-
-      // window.addEventListener('resize',this.getBgCoords)
+    created() {
+      window.addEventListener('load',()=>{
+        this.appearAnimation()
+      })
     },
 
     mounted() {
       // this.initTimer()
-    },
-
-    beforeDestroy() {
-      // window.removeEventListener('load',this.getBgCoords)
-
-      // window.removeEventListener('resize',this.getBgCoords)
+      // this.initProgress()
     }
   })
 }
@@ -873,3 +909,30 @@ const mainActivities = () => {
 }
 
 mainActivities()
+
+
+const mainEntrs = () => {
+  if (!D.querySelector('#main-entrs')) return;
+
+  return new Vue({
+    el: '#main-entrs',
+    data: {
+      index: 0
+    },
+    methods: {
+      changeSlide(index) {
+        this.index = index
+      },
+
+      slideEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.25, onComplete: done})
+      },
+      
+      slideLeave(el,done) {
+        gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
+      }
+    }
+  })
+}
+
+mainEntrs()

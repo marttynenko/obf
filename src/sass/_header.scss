@@ -50,11 +50,11 @@ a.logo {
 	}
 
 	@media (max-width: 1259px) {
-		margin-right: 30px;
+		margin-right: 25px;
+		@include fz(22);
 
 		&-img {
 			max-width: 24px;
-			margin-right: 10px;
 		}
 	}
 }
@@ -127,7 +127,7 @@ a.logo {
 		}
 	}
 
-	@media (max-width: 1440px) {
+	@media (max-width: 1439px) {
 		@include fz(16);
 	}
 
@@ -138,6 +138,9 @@ a.logo {
 }
 
 
+.header-right {
+	white-space: nowrap;
+}
 .main-menu {
 	&-main {
 		& > li {
@@ -147,7 +150,12 @@ a.logo {
 		}
 	}
 
+	li ul {
+		white-space: normal;
+	}
+
 	&-sub {
+		white-space: normal;
 		background: $bg_dark;
 		padding: 40px 40px 30px;
 
@@ -155,7 +163,7 @@ a.logo {
 		position: absolute;
 		z-index: 99;
 		top: 100%;
-		margin-top: 15px;
+		margin-top: 44px;
 		left: -35px;
 		width: max-content;
 		max-width: 310px;
@@ -210,7 +218,14 @@ a.logo {
 
 		&:hover {
 			color: $primary;
+
+			&.childs-in {
+				&:after {
+					background: url(../images/svg/childs-toggler-orange.svg) center no-repeat;
+				}
+			}
 		}
+		
 	}
 
 	a.childs-in {
@@ -226,9 +241,10 @@ a.logo {
 			margin-top: -3px;
 			width: 10px;
 			height: 8px;
+			background: url(../images/svg/childs-toggler-orange.svg) center no-repeat;
 			background: url(../images/svg/childs-toggler.svg) center no-repeat;
 			background-size: contain;
-			transition: transform .3s;
+			transition: transform .3s, background .3s;
 		}
 
 		&.opened {
@@ -238,13 +254,14 @@ a.logo {
 		}
 	}
 
-	@media (max-width: 1440px) {
+	@media (max-width: 1439px) {
 		@include fz(16);
 
 		&-main {
 			& > li {
-				margin-right: 10px;
+				margin-right: 13px;
 			}
+
 		}
 	}
 
@@ -300,12 +317,22 @@ a.logo {
 
 @media (max-width: 1259px) {
 	.col-layout-thin-header {
-		flex: 0 0 200px;
-		max-width: 200px;
+		flex: 0 0 25%;
+		max-width: 25%;
 	}
 	.col-layout-wide-header {
-		flex: 0 0 calc(100% - 200px);
-		max-width: calc(100% - 200px);
+		flex: 0 0 75%;
+		max-width: 75%;
+	}
+}
+@media (max-width: 1139px) {
+	.col-layout-thin-header {
+		flex: 0 0 180px;
+		max-width: 180px;
+	}
+	.col-layout-wide-header {
+		flex: 0 0 calc(100% - 180px);
+		max-width: calc(100% - 180px);
 	}
 }
 
@@ -335,17 +362,27 @@ a.logo {
 	&-pr {
 		max-width: 976px;
 		padding-bottom: 0;
+		left: -148px;
 
-		@media (max-width: 1500px) {
-			left: -240px;
+		&:before {
+			left: 184px;
+		}
+
+		@media (max-width: 1439px) {
+			left: -266px;
 
 			&:before {
-				left: 260px;
+				left: 300px;
 			}
 		}
 
 		@media (max-width: 1259px) {
 			max-width: 840px;
+			left: -237px;
+
+			&:before {
+				left: 264px;
+			}
 		}
 	}
 }
