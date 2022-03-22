@@ -359,14 +359,24 @@ if (Headers.checkTargets()) {
 function animateFSMenu(action) {
   const menu = D.querySelector(".fs-menu");
   const header = D.querySelector("#header");
+  const toggler = D.querySelector(".menu-toggler-icon");
+  const bg = D.querySelector(".fs-menu-bg");
 
-  header.classList.toggle("fs-opened");
+  const ww = document.documentElement.clientWidth
+  const scale = (ww / 44) * 2
+
+  const coords = toggler.getBoundingClientRect()
+  bg.style.left = coords.x + 'px'
+  bg.style.top = coords.y + 'px'
+
+  // header.classList.toggle("fs-opened");
 
   if (action === "open") {
+    header.classList.add("fs-opened");
     menu.classList.add("opened");
     const tlStart = gsap.timeline({ autoRemoveChildren: true });
     tlStart
-      .fromTo(".fs-menu-bg", { scale: 0 }, { scale: 1, duration: 0.35 })
+      .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
       .fromTo(
         ".fs-menu-productions",
         { y: 50, opacity: 0 },
@@ -405,10 +415,11 @@ function animateFSMenu(action) {
         delay: -0.15,
       })
       .to(".fs-menu-bg", {
-        scale: 0,
+        scale: 1,
         duration: 0.25,
         onComplete: () => {
           menu.classList.remove("opened");
+          header.classList.remove("fs-opened");
         },
       });
   }
@@ -837,7 +848,7 @@ const mainScreen = () => {
         const coords = this.$refs.popupToggler.getBoundingClientRect()
         this.bgCoords.x = coords.x
         this.bgCoords.y = coords.y
-        console.log(coords)
+        // console.log(coords)
       },
 
       appearAnimation() {
@@ -869,8 +880,8 @@ const mainScreen = () => {
     },
 
     mounted() {
-      // this.initTimer()
-      // this.initProgress()
+      this.initTimer()
+      this.initProgress()
     }
   })
 }
@@ -927,7 +938,7 @@ const mainEntrs = () => {
       slideEnter(el,done) {
         gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.25, onComplete: done})
       },
-      
+
       slideLeave(el,done) {
         gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
       }

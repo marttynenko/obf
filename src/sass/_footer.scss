@@ -7,6 +7,8 @@ footer.footer {
   &-copyright {
     max-width: 210px;
     margin-bottom: 20px;
+    @include fz(18);
+    line-height: 1.55;
   }
 
   &-links {
@@ -75,6 +77,9 @@ footer.footer {
       font-weight: 600;
       @include fz(20);
       color: #FFF;
+      letter-spacing: 0.15em;
+      margin-right: -0.075em;
+      white-space: nowrap;
     }
   }
 
@@ -82,7 +87,16 @@ footer.footer {
     &-dev {
       &-label {
         @include fz(14);
+        margin-bottom: 1px;
       }
+    }
+
+    &-links-col {
+      margin-right: 25px;
+    }
+
+    &-links {
+      line-height: 1.5;
     }
   }
 }
@@ -90,12 +104,16 @@ footer.footer {
 
 @media (max-width: 1259px) {
   .col-layout-thin-footer {
-    flex: 0 0 26%;
-    max-width: 26%;
+    flex: 0 0 31.2%;
+    max-width: 31.2%;
+    // flex: 0 0 26%;
+    // max-width: 26%;
   }
   .col-layout-wide-footer {
-    flex: 0 0 74%;
-    max-width: 74%;
+    flex: 0 0 68.8%;
+    max-width: 68.8%;
+    // flex: 0 0 74%;
+    // max-width: 74%;
   }
 }
 
@@ -131,15 +149,18 @@ footer.footer {
   }
 
   &-bg {
-    position: absolute;
+    // position: absolute;
     z-index: -1;
-    left: 15%;
-    top: 0;
+    // left: 15%;
+    // top: 0;
     border-radius: 2500px;
-    width: 5000px;
-    height: 5000px;
+    // width: 5000px;
+    // height: 5000px;
     background: $bgc;
-    transform: translate(-50%,-50%);
+    // transform: translate(-50%,-50%);
+    width: 44px;
+    height: 44px;
+    position: fixed;
 
     &-wrap {
       position: fixed;
@@ -147,7 +168,7 @@ footer.footer {
       top: 80px;
       bottom: 0;
       right: 0;
-      overflow: hidden;
+      // overflow: hidden;
     }
   }
 
@@ -298,6 +319,18 @@ footer.footer {
   div#{&}-col {
     padding-left: 0;
     padding-right: 7.5vw;
+  }
+  &-col {
+    &-wide {
+      padding-right: 0 !important;
+    }
+    .row {
+      margin: 0;
+    }
+    [class*="col-"] {
+      padding-left: 0;
+      padding-right: 25px;
+    }
   }
   &-ul-wide {
     margin-right: -7.5vw;
