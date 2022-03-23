@@ -323,8 +323,50 @@ a.logo {
 		}
 	}
 
+	&-search {
+		&.opened {
+			svg {
+				opacity: 0;
+			}
+			
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				left: 8px;
+				right: 8px;
+				top: 50%;
+				height: 1px;
+				background-color: #FFF;
+				transition: background-color .3s;
+			}
+			&:before {
+				transform: rotate(45deg);
+			}
+			&:after {
+				transform: rotate(-45deg);
+			}
+			
+			&:hover {
+				border-color: $primary;
+
+				&:before,
+				&:after {
+					background-color: $primary;
+				}
+			}
+		}
+	}
+
 	@media (max-width: 1259px) {
 		margin-left: 8px;
+	}
+}
+
+.fs-search-opened {
+	.circle-link-user,
+	.circle-link-langs {
+		display: none;
 	}
 }
 
@@ -349,7 +391,7 @@ a.logo {
 	}
 }
 
-.header-colored {
+.header-colored:not(.fs-search-opened) {
 	.main-menu {
 		a {
 			&:hover {

@@ -5,12 +5,25 @@ for (var i = 0; i < btnTitle.length; i++) {
   btnTitle[i].addEventListener("click", funOpen);
 
   function funOpen(e) {
-    for (var i = 0; i < btnTitle.length; i++) {
-      btnTitle[i].classList.remove('contacts-tab-toggle-active');
-      btnContant[i].classList.remove("contacts-tab-contant-active");
+    for (let i = 0; i < btnTitle.length; i++) {
+      // btnTitle[i].classList.remove('contacts-tab-toggle-active');
+      // btnContant[i].classList.remove("contacts-tab-contant-active");
+
+      // if (e.currentTarget.classList.contains('contacts-tab-toggle-active')) {
+      //   console.log('active');
+      // }
+
+      btnTitle[i].classList.remove("contacts-tab-toggle-active");
+      gsap.to(btnContant[i],{height: 0,duration: 0.4,onComplete: ()=> {
+        btnContant[i].classList.remove("contacts-tab-contant-active")
+      }})
+
       if (btnTitle[i] == e.currentTarget) {
         btnTitle[i].classList.add('contacts-tab-toggle-active');
-        btnContant[i].classList.add("contacts-tab-contant-active");
+        setTimeout(()=>{
+          btnContant[i].classList.add("contacts-tab-contant-active");
+          gsap.fromTo(btnContant[i],{height: 0},{height: 'auto',duration: 0.4})
+        },430)
       }
     }
   }
@@ -107,8 +120,8 @@ if (document.querySelector('.contacts-map')) {
 }
 
 
-// if (document.querySelector('.scientific-cardboard-img')) {
-//   let html = document.querySelector('.scientific-cardboard-img').innerHTML
-//   document.querySelector('.scientific-cardboard-img').insertAdjacentHTML('beforeend',html)
-//   document.querySelectorAll('.scientific-cardboard-img img')[1].classList.add('scientific-cardboard-shadow')
-// }
+if (document.querySelector('.scientific-cardboard-img')) {
+  let html = document.querySelector('.scientific-cardboard-img').innerHTML
+  document.querySelector('.scientific-cardboard-img').insertAdjacentHTML('beforeend',html)
+  document.querySelectorAll('.scientific-cardboard-img img')[1].classList.add('scientific-cardboard-shadow')
+}

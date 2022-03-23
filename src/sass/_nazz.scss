@@ -391,6 +391,7 @@
 
 .contacts-tab-toggle {
   margin-bottom: 15px;
+  display: inline-block;
   border-bottom: 1px dashed $primary;
   @include fz(20);
   font-weight: 700;
@@ -409,14 +410,11 @@
 }
 .contacts-tab-contant {
   display: none;
-  padding-top: 15px;
   overflow: hidden;
-  transition: all 0.9s;
-}
 
-.contacts-tab-contant-active {
-  display: block;
-  transition: all 0.9s;
+  &-active {
+    display: block;
+  }
 }
 
 .contacts-tab-inner {
@@ -712,12 +710,26 @@
       margin-right: -50px;
       position: relative;
       z-index: 1;
+      
+      @media (min-width: 1920px) {
+        img {
+          opacity: 0;
+        }
+      }
     }
     &-shadow {
       position: absolute;
+      display: none;
+      visibility: hidden;
       z-index: -1;
-      top: 0;
-      right: -50%;
+
+      @media (min-width: 1920px) {
+        display: block;
+        visibility: visible;
+        top: 0;
+        opacity: 1 !important;
+        left: calc((100vw - 1920px) / 2);
+      }
     }
   }
   &-circle {

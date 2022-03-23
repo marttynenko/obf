@@ -383,6 +383,7 @@ if (Headers.checkTargets()) {
   });
 })();
 
+
 //анимируем fullscreen menu
 function animateFSMenu(action) {
   const menu = D.querySelector(".fs-menu");
@@ -450,6 +451,55 @@ function animateFSMenu(action) {
           header.classList.remove("fs-opened");
         },
       });
+  }
+}
+
+//full screen search toggler
+(function () {
+  const toggler = D.querySelector(".circle-link-search");
+  if (!toggler) return;
+
+  toggler.addEventListener("click", function (e) {
+    e = event || window.event;
+    e.preventDefault();
+
+    const action = toggler.classList.contains("opened") ? "close" : "open";
+    //...
+    animateFSsearch(action);
+
+    this.classList.toggle("opened");
+  });
+})();
+//анимируем fullscreen search
+function animateFSsearch(action) {
+  const menu = D.querySelector(".fs-search");
+  const header = D.querySelector("#header");
+  const toggler = D.querySelector(".circle-link-search");
+  const bg = D.querySelector(".fs-search-bg");
+
+  const ww = document.documentElement.clientWidth
+  const scale = (ww / 44) * 2.25
+
+  const coords = toggler.getBoundingClientRect()
+  bg.style.left = coords.x + 'px'
+  bg.style.top = coords.y + 'px'
+
+  if (action === "open") {
+    header.classList.add("fs-opened","fs-search-opened");
+    menu.classList.add("opened");
+    const tlStart = gsap.timeline({ autoRemoveChildren: true });
+    tlStart
+      .to(bg, { scale: scale, duration: 0.45 })
+      .fromTo('.fs-search-content', {opacity: 0, y: 50},{opacity: 1, y: 0, duration: 0.5})
+      
+  } else {
+    const tlEnd = gsap.timeline({ autoRemoveChildren: true });
+    tlEnd
+      .to('.fs-search-content', {opacity: 0, y: 50, duration: 0.5})
+      .to(bg, { scale: 1, duration: 0.45, onComplete: () => {
+        menu.classList.remove("opened");
+        header.classList.remove("fs-opened","fs-search-opened");
+      }})
   }
 }
 

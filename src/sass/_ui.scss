@@ -886,6 +886,9 @@ span.invalid {
 	&-darkyellow {
 		color: $darkyellow !important;
 	}
+	&-makulatura {
+		color: rgb(200, 12, 224) !important;
+	}
 }
 a.ui-color {
 	&-primary,
@@ -929,6 +932,11 @@ a.ui-color {
 	&-darkyellow {
 		&:hover {
 			color: lighten($darkyellow,10%) !important;
+		}
+	}
+	&-makulatura {
+		&:hover {
+			color: lighten(rgb(200, 12, 224),10%) !important;
 		}
 	}
 }
