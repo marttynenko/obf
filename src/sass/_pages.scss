@@ -320,6 +320,10 @@
   &-header,
   &-title {
     margin-bottom: 96px;
+
+    @media (max-width: 1259px) {
+      margin-bottom: 76px;
+    }
   }
 
   &-header {
@@ -861,7 +865,8 @@ PRODUCTIONS -------------- */
 .ui-bg-lightlime,
 .ui-bg-lightbrown,
 .ui-bg-lightblue,
-.ui-bg-lightgreen {
+.ui-bg-lightgreen,
+.ui-bg-beige {
   .ui-side-title {
     color: $bgc;
   }
@@ -1420,7 +1425,10 @@ PRODUCTIONS -------------- */
     font-weight: 600;
     padding-bottom: 195px;
     max-width: 100%;
-    width: ($content_col * 8);
+    width: 50%;
+    border-top: 1px solid $bgc;
+    padding-right: ($content_col * 4);
+    padding-top: 32px;
   }
   &-for {
     line-height: 1;

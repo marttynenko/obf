@@ -9,7 +9,7 @@
 	right: 0;
 	background: $bgc;
 	// background: #000;
-	transition: transform .4s;
+	transition: transform .4s, background-color .3s;
 	will-change: transform;
 
 	&-transparent {
@@ -25,7 +25,7 @@
 		position: fixed;
 		transform: translate3d(0px,0px,0px);
 		z-index: 999;
-		// background: $bgc;
+		background: transparent !important;
 
 		.main-menu {
 			opacity: 0;

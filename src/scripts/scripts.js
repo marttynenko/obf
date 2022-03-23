@@ -48,6 +48,8 @@ const FARBA = {
         if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
           q.childNodes[1].nodeValue = " из ";
         }
+
+        setTimeout(()=>{D.querySelector('.lg-outer').classList.add('lg-appear')},550)
       });
 
 
@@ -62,14 +64,16 @@ const FARBA = {
         window.lgData[el.getAttribute("lg-uid")].goToNextSlide()
       })
 
-      
+      el.addEventListener("onBeforeClose",function(){
+        D.querySelector('.lg-outer').classList.remove('lg-appear')
+      })
     });
   },
 
   initVideo(selector) {
     const target = D.querySelectorAll(selector);
-    const players = [];
     if (!target.length) return;
+    const players = [];
 
     target.forEach((el, index) => {
       el.addEventListener("click", function (e) {
@@ -85,7 +89,9 @@ const FARBA = {
         el.parentElement.classList.add("initialized");
         container.innerHTML = markup;
 
-        players.forEach((el, index) => el.pause());
+        players.forEach((el, index) => {
+          el.pause()
+        });
 
         const player = new Plyr(`.ux-plyr-${index}`, {
           ratio: "16:9",
@@ -94,7 +100,15 @@ const FARBA = {
         });
 
         players.push(player);
+
+        // players.forEach(item => {
+        //   item.on('playing',function() {
+        //     // item.pause()
+        //   })
+        // })
       })
+
+      
     })
   },
 
@@ -147,19 +161,33 @@ const FARBA = {
       for (let i = 0; i < contentDivs.length; i++) {
         let divID = contentDivs[i].getAttribute("id")
         if (divID === id) {
+          // tabLinks[i].classList.add("selected");
+          // contentDivs[i].classList.add("selected");
+
           tabLinks[i].classList.add("selected");
-          contentDivs[i].classList.add("selected");
+          contentDivs[i].classList.remove("leave");
+          setTimeout(()=>{
+            contentDivs[i].classList.add("selected","enter");
+          },151)
+          setTimeout(()=>{
+            contentDivs[i].classList.remove("enter");
+          },200)
           
           if (id !== location.hash.substring(1)) {
             setHash(id)
           }
         } else {
+          // tabLinks[i].classList.remove("selected");
+          // contentDivs[i].classList.remove("selected");
+
           tabLinks[i].classList.remove("selected");
-          contentDivs[i].classList.remove("selected");
+          contentDivs[i].classList.add("leave");
+          contentDivs[i].classList.remove("enter");
+          setTimeout(()=>{
+            contentDivs[i].classList.remove("selected");
+          },151)
         }
       }
-
-      
     }
 
     async function fetchTabData(el,id) {
@@ -363,7 +391,7 @@ function animateFSMenu(action) {
   const bg = D.querySelector(".fs-menu-bg");
 
   const ww = document.documentElement.clientWidth
-  const scale = (ww / 44) * 2
+  const scale = (ww / 44) * 2.25
 
   const coords = toggler.getBoundingClientRect()
   bg.style.left = coords.x + 'px'
@@ -471,6 +499,8 @@ function animateFSMenu(action) {
           if (q.childNodes[1] && q.childNodes[1].nodeType === 3) {
             D.querySelector("#lg-counter").childNodes[1].nodeValue = " из ";
           }
+
+          setTimeout(()=>{D.querySelector('.lg-outer').classList.add('lg-appear')},550)
         });
 
         let selector = 'a.ux-gallery-link'
@@ -488,6 +518,10 @@ function animateFSMenu(action) {
 
         el.addEventListener("onSlideClick",function(){
           window.lgData[el.getAttribute("lg-uid")].goToNextSlide()
+        })
+
+        el.addEventListener("onBeforeClose",function(){
+          D.querySelector('.lg-outer').classList.remove('lg-appear')
         })
       });
     }
@@ -531,28 +565,16 @@ const prdHeadAnimate = () => {
   }
 
   const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
-
-  if (D.querySelector('.productions-head-tk')) {
-    tl
-      .to(head, {zIndex: 2, duration: 0})
-      .to('.productions-head-body', {opacity: 1, duration: 0})
-      .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
-      .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
-      .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.35")
-      .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
-      .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
-      .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
-  } else {
-    tl
-      .to(head, {zIndex: 2, duration: 0})
-      .to('.productions-head-body', {opacity: 1, duration: 0})
-      .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
-      .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
-      .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.5")
-      .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-1")
-      .fromTo('.productions-head-img',{opacity: 0, xPercent: 25}, {opacity: 1, xPercent: 0, duration: 3, ease: "expo.out"}, ">-1")
-      .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-2")
-  }
+  tl
+    .to(null, {}, 0.5)
+    .to(head, {zIndex: 2, duration: 0})
+    .to('.productions-head-body', {opacity: 1, duration: 0})
+    .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
+    .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
+    .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.35")
+    .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
+    .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
+    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
   
 }
 

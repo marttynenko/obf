@@ -252,6 +252,12 @@
         max-width: 450px;
         margin-bottom: 60px;
         color: #FFF;
+        @include fz(24);
+        line-height: 1.16;
+
+        @media (max-width: 1439px) {
+          @include fz(20);
+        }
       }
       a#{&}-item:hover {
         color: $primary;

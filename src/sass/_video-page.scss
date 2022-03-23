@@ -1,16 +1,17 @@
 .video {
   &-item {
     margin-bottom: 100px;
+
     &-desc {
       &-text {
         @include fz(28);
         line-height: 1.35;
         margin-bottom: 32px;
   
-        @media (max-width: 1440px) {
+        @media (max-width: 1439px) {
           @include fz(24);
         }
-        @media (max-width: 1260px) {
+        @media (max-width: 1259px) {
           max-width: 600px;
         }
       }
@@ -19,9 +20,16 @@
         color: $primary;
         @include fz(22);
         margin-bottom: 32px;
-        @media (max-width: 1440px) {
+        @media (max-width: 1439px) {
           @include fz(18);
         }
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .ui-video-play {
+        width: 140px;
+        height: 140px;
       }
     }
   }

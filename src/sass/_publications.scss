@@ -65,14 +65,20 @@
 
     img {
       margin: 0 0 0 auto;
+      transition: transform .3s;
     }
   }
 
   &:hover {
     color: $primary;
 
-    .publication-preview-icon {
-      stroke: #FFF;
+    // .publication-preview-icon {
+    //   stroke: #FFF;
+    // }
+    .publication-preview-img {
+      img {
+        transform: scale(1.03);
+      }
     }
   }
 }
@@ -127,9 +133,9 @@
   &:hover {
     color: $primary;
 
-    .publication-item-icon {
-      stroke: #FFF;
-    }
+    // .publication-item-icon {
+    //   stroke: #FFF;
+    // }
   }
 
   @media (max-width: 1260px) {

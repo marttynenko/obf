@@ -42,7 +42,7 @@
   &-data {
     margin-bottom: 30px;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1260px) {
       padding-top: 15px;
     }
   }
@@ -50,6 +50,12 @@
   &-date {
     @include fz(28);
     margin-bottom: 40px;
+
+    @media (max-width: 1259px) {
+      margin-bottom: 10px;
+      margin-right: 54px;
+      display: inline-block;
+    }
   }
 
   &-share {
@@ -57,6 +63,24 @@
 
     &-label {
       margin-bottom: 7px;
+    }
+
+    @media (max-width: 1259px) {
+      margin-bottom: 10px;
+      display: inline-block;
+
+      &-label {
+        display: inline;
+        margin-right: 7px;
+      }
+      .ui-share {
+        display: inline-block;
+        vertical-align: middle;
+
+        .ya-share2__list.ya-share2__list_direction_horizontal > .ya-share2__item {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 

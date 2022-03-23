@@ -270,12 +270,25 @@
   background-color: #CCE0DE;
   color: $bgc;
   margin-bottom: -30px;
+
+  ul.ui-marked li,
+  .node-inner ul li {
+    &:before {
+      background: $secondary;
+    }
+  }
 }
 .enterprises-bkf {
   // background-color: #E5E5E5;
   background-color: #ECF0E0;
   color: $bgc;
   
+  ul.ui-marked li,
+  .node-inner ul li {
+    &:before {
+      background: $tertiary;
+    }
+  }
   .history-tabs-link {
     
     &:not(.selected) {
@@ -332,6 +345,13 @@
 .enterprises-scbc {
   background: #FFEAC0;
   color: $bgc;
+
+  ul.ui-marked li,
+  .node-inner ul li {
+    &:before {
+      background: $darkbrown;
+    }
+  }
 
   .history-tabs-link {
     
@@ -657,5 +677,20 @@
         stroke: $bgc;
       }
     }
+  }
+}
+
+.enterprises-block {
+  .node-inner {
+    padding-right: 0;
+  }
+}
+.enterprises-activity {
+  display: flex;
+
+  &-block {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding-right: 8%;
   }
 }
