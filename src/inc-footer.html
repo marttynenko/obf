@@ -208,42 +208,70 @@
         <div class="col-layout-wide">
           
           <div class="fs-search-field">
-            <input type="text" class="fs-search-input" placeholder="Найти">
-            <button class="fs-search-submit"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#header-search"/></svg></button>
-
+            <form class="fs-search-form">
+              <input type="text" class="fs-search-input" placeholder="Найти">
+              <button class="fs-search-submit"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#header-search"/></svg></button>
+            </form>
+  
             <div class="fs-search-hints">
               <div class="fs-search-hint" data-value="Картон"><span class="ui-color-orange">Карт</span>он</div>
               <div class="fs-search-hint" data-value="Картон макулатурный"><span class="ui-color-orange">Карт</span>он макулатурный</div>
               <div class="fs-search-hint" data-value="Картонные коробки"><span class="ui-color-orange">Карт</span>онные коробки</div>
             </div>
-
+  
             <script>
               document.querySelector('input.fs-search-input').addEventListener('focus',()=>{
                 document.querySelector('.fs-search-hints').classList.add('opened')
               })
-
+  
               document.querySelector('input.fs-search-input').addEventListener('blur',()=>{
                 document.querySelector('.fs-search-hints').classList.remove('opened')
               })
-
+  
               document.querySelectorAll('.fs-search-hint').forEach(el => {
                 el.addEventListener('click',(e)=>{
                   e.preventDefault();
                   const val = el.dataset.value || null;
                   if (!val) return
                   document.querySelector('input.fs-search-input').value = val
+                  showSearchResults()
                 })
               })
+
+              document.querySelector('form.fs-search-form').addEventListener('submit',(e)=>{
+                e = event || window.event;
+                e.preventDefault();
+                showSearchResults();
+              })
+
+              function showSearchResults() {
+                document.querySelector('.fs-search-results').classList.add('opened');
+                if (document.querySelector('.fs-search-hints')) {
+                  document.querySelector('.fs-search-hints').classList.remove('opened')
+                }
+              }
             </script>
           </div>
+  
+        </div><!--.col-->
 
-          <div class="fs-search-no-results">По вашему запросу ничего не найдено.</div>
-          
+      </div><!--.row-->
+      
+      <div class="fs-search-results">
+        <div class="search-results-title">Результаты поиска (15)</div>
+        <div class="row">
+  
+          <div class="col-layout-thin"></div><!--.col-->
+    
+          <div class="col-layout-wide">
+            <div class="fs-search-no-results">По вашему запросу ничего не найдено.</div>
+          </div><!--.col-->
         </div>
       </div>
     </div>
   </div>
-</div>
+
+</div><!--.fs-search-->
 
 <footer class="footer" id="footer">
   <div class="container">

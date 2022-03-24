@@ -208,8 +208,10 @@
         <div class="col-layout-wide">
           
           <div class="fs-search-field">
-            <input type="text" class="fs-search-input" placeholder="Найти">
-            <button class="fs-search-submit"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#header-search"/></svg></button>
+            <form class="fs-search-form">
+              <input type="text" class="fs-search-input" placeholder="Найти">
+              <button class="fs-search-submit"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#header-search"/></svg></button>
+            </form>
   
             <div class="fs-search-hints">
               <div class="fs-search-hint" data-value="Картон"><span class="ui-color-orange">Карт</span>он</div>
@@ -232,93 +234,111 @@
                   const val = el.dataset.value || null;
                   if (!val) return
                   document.querySelector('input.fs-search-input').value = val
+                  showSearchResults()
                 })
               })
+
+              document.querySelector('form.fs-search-form').addEventListener('submit',(e)=>{
+                e = event || window.event;
+                e.preventDefault();
+                showSearchResults();
+              })
+
+              function showSearchResults() {
+                document.querySelector('.fs-search-results').classList.add('opened');
+                if (document.querySelector('.fs-search-hints')) {
+                  document.querySelector('.fs-search-hints').classList.remove('opened')
+                }
+              }
             </script>
           </div>
   
         </div><!--.col-->
 
-        <div class="col-12"><div class="search-results-title">Результаты поиска (15)</div></div>
-        
+      </div><!--.row-->
+
+      <div class="fs-search-results">
+        <div class="search-results-title">Результаты поиска (15)</div>
+        <div class="row">
   
-        <div class="col-layout-thin"></div><!--.col-->
-  
-        <div class="col-layout-wide">
-        
-          <div class="fs-search-results">
-
-            <a href="#" class="search-result">
-              <div class="search-result-type">Новости</div>
-              <div class="search-result-title">Запуск нового станка на БКФ <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
-              <div class="search-result-descr">ООО «БКФ» успешно запустила в работу второй станок для продольной резки и перемотки рулонного <span class="ui-color-primary">картона</span>.</div>
-            </a>
-
-            <a href="#" class="search-result">
-              <div class="search-result-type">Новости</div>
-              <div class="search-result-title">Обзор рынка тарного <span class="ui-color-primary">картона</span> в России в 2020 г. <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
-              <div class="search-result-descr">Из-за строгих ограничений во время первой волны пандемии обрушилась экономика, множество людей потеряли работу, покупательская способность снизилась. </div>
-            </a>
-
-            <a href="#" class="search-result">
-              <div class="search-result-type">Новости</div>
-              <div class="search-result-title">Запуск нового станка на БКФ <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
-              <div class="search-result-descr">ООО «БКФ» успешно запустила в работу второй станок для продольной резки и перемотки рулонного <span class="ui-color-primary">картона</span>.</div>
-            </a>
-
-            <a href="#" class="search-result">
-              <div class="search-result-type">Новости</div>
-              <div class="search-result-title">Обзор рынка тарного <span class="ui-color-primary">картона</span> в России в 2020 г. <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
-              <div class="search-result-descr">Из-за строгих ограничений во время первой волны пандемии обрушилась экономика, множество людей потеряли работу, покупательская способность снизилась. </div>
-            </a>
-
-            <a href="#" class="search-result">
-              <div class="search-result-type">Новости</div>
-              <div class="search-result-title">Запуск нового станка на БКФ <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
-              <div class="search-result-descr">ООО «БКФ» успешно запустила в работу второй станок для продольной резки и перемотки рулонного <span class="ui-color-primary">картона</span>.</div>
-            </a>
-
-            <a href="#" class="search-result">
-              <div class="search-result-type">Новости</div>
-              <div class="search-result-title">Обзор рынка тарного <span class="ui-color-primary">картона</span> в России в 2020 г. <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
-              <div class="search-result-descr">Из-за строгих ограничений во время первой волны пандемии обрушилась экономика, множество людей потеряли работу, покупательская способность снизилась. </div>
-            </a>
-          </div>
-          <div class="ui-pgn">
-            <div class="ui-pgn-flex">
-              <div class="ui-pgn-ajax">
-                <a href="#" class="ui-btn ui-btn-arrowed"
-                  >Показать еще 6
-                  <svg class="sprite ui-btn-arrow">
-                    <use xlink:href="svg/svg/symbols.svg#btn-arrow" /></svg
-                ></a>
-              </div>
+          <div class="col-layout-thin"></div><!--.col-->
     
-              <div class="ui-pgn-links">
-                <span class="ui-pgn-arrow ui-pgn-arrow-prev">
-                  <svg class="sprite">
-                    <use xlink:href="svg/svg/symbols.svg#arrow-circle-prev" />
-                  </svg>
-                </span>
-                <span class="ui-pgn-current">1</span>
-                <a href="#" class="ui-pgn-link">2</a>
-                <a href="#" class="ui-pgn-link">3</a>
-                <a href="#" class="ui-pgn-link">4</a>
-                <a href="#" class="ui-pgn-link">5</a>
-                <a href="#" class="ui-pgn-arrow ui-pgn-arrow-next">
-                  <svg class="sprite">
-                    <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                  </svg>
-                </a>
+          <div class="col-layout-wide">
+          
+            <div class="search-results-list">
+
+              <a href="#" class="search-result">
+                <div class="search-result-type">Новости</div>
+                <div class="search-result-title">Запуск нового станка на БКФ <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
+                <div class="search-result-descr">ООО «БКФ» успешно запустила в работу второй станок для продольной резки и перемотки рулонного <span class="ui-color-primary">картона</span>.</div>
+              </a>
+
+              <a href="#" class="search-result">
+                <div class="search-result-type">Новости</div>
+                <div class="search-result-title">Обзор рынка тарного <span class="ui-color-primary">картона</span> в России в 2020 г. <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
+                <div class="search-result-descr">Из-за строгих ограничений во время первой волны пандемии обрушилась экономика, множество людей потеряли работу, покупательская способность снизилась. </div>
+              </a>
+
+              <a href="#" class="search-result">
+                <div class="search-result-type">Новости</div>
+                <div class="search-result-title">Запуск нового станка на БКФ <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
+                <div class="search-result-descr">ООО «БКФ» успешно запустила в работу второй станок для продольной резки и перемотки рулонного <span class="ui-color-primary">картона</span>.</div>
+              </a>
+
+              <a href="#" class="search-result">
+                <div class="search-result-type">Новости</div>
+                <div class="search-result-title">Обзор рынка тарного <span class="ui-color-primary">картона</span> в России в 2020 г. <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
+                <div class="search-result-descr">Из-за строгих ограничений во время первой волны пандемии обрушилась экономика, множество людей потеряли работу, покупательская способность снизилась. </div>
+              </a>
+
+              <a href="#" class="search-result">
+                <div class="search-result-type">Новости</div>
+                <div class="search-result-title">Запуск нового станка на БКФ <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
+                <div class="search-result-descr">ООО «БКФ» успешно запустила в работу второй станок для продольной резки и перемотки рулонного <span class="ui-color-primary">картона</span>.</div>
+              </a>
+
+              <a href="#" class="search-result">
+                <div class="search-result-type">Новости</div>
+                <div class="search-result-title">Обзор рынка тарного <span class="ui-color-primary">картона</span> в России в 2020 г. <svg class="sprite search-result-title-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next" /></svg></div>
+                <div class="search-result-descr">Из-за строгих ограничений во время первой волны пандемии обрушилась экономика, множество людей потеряли работу, покупательская способность снизилась. </div>
+              </a>
+            </div>
+            <div class="ui-pgn">
+              <div class="ui-pgn-flex">
+                <div class="ui-pgn-ajax">
+                  <a href="#" class="ui-btn ui-btn-arrowed"
+                    >Показать еще 6
+                    <svg class="sprite ui-btn-arrow">
+                      <use xlink:href="svg/svg/symbols.svg#btn-arrow" /></svg
+                  ></a>
+                </div>
+      
+                <div class="ui-pgn-links">
+                  <span class="ui-pgn-arrow ui-pgn-arrow-prev">
+                    <svg class="sprite">
+                      <use xlink:href="svg/svg/symbols.svg#arrow-circle-prev" />
+                    </svg>
+                  </span>
+                  <span class="ui-pgn-current">1</span>
+                  <a href="#" class="ui-pgn-link">2</a>
+                  <a href="#" class="ui-pgn-link">3</a>
+                  <a href="#" class="ui-pgn-link">4</a>
+                  <a href="#" class="ui-pgn-link">5</a>
+                  <a href="#" class="ui-pgn-arrow ui-pgn-arrow-next">
+                    <svg class="sprite">
+                      <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <!--.ui-pgn-->
-        </div><!--.col-->
+            <!--.ui-pgn-->
+          </div><!--.col-->
+        </div>
       </div>
     </div>
   </div>
-</div>
+</div><!--.fs-search-->
 
 <footer class="footer" id="footer">
   <div class="container">

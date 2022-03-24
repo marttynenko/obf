@@ -470,6 +470,8 @@ function animateFSMenu(action) {
     this.classList.toggle("opened");
   });
 })();
+
+
 //анимируем fullscreen search
 function animateFSsearch(action) {
   const menu = D.querySelector(".fs-search");
@@ -499,6 +501,9 @@ function animateFSsearch(action) {
       .to(bg, { scale: 1, duration: 0.45, onComplete: () => {
         menu.classList.remove("opened");
         header.classList.remove("fs-opened","fs-search-opened");
+        if (document.querySelector('.fs-search-results')) {
+          document.querySelector('.fs-search-results').classList.remove('opened')
+        }
       }})
   }
 }

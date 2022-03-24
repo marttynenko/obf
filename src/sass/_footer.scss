@@ -640,6 +640,17 @@ footer.footer {
       line-height: 1.14;
     }
   }
+
+  &-results {
+    transition: transform .5s, opacity .5s;
+    opacity: 0;
+    transform: translate(0px, 50px);
+
+    &.opened {
+      opacity: 1;
+      transform: translate(0px, 50px);
+    }
+  }
 }
 
 .search-results-title {

@@ -1035,6 +1035,10 @@ footer.footer { padding-top: 57px; padding-bottom: 37px; }
 
 @media (max-width: 1439px) { .fs-search-no-results { font-size: 42px; font-size: 2.625rem; line-height: 1.14; } }
 
+.fs-search-results { -webkit-transition: opacity .5s, -webkit-transform .5s; transition: opacity .5s, -webkit-transform .5s; -o-transition: transform .5s, opacity .5s; transition: transform .5s, opacity .5s; transition: transform .5s, opacity .5s, -webkit-transform .5s; opacity: 0; -webkit-transform: translate(0px, 50px); -ms-transform: translate(0px, 50px); transform: translate(0px, 50px); }
+
+.fs-search-results.opened { opacity: 1; -webkit-transform: translate(0px, 50px); -ms-transform: translate(0px, 50px); transform: translate(0px, 50px); }
+
 .search-results-title { font-size: 42px; font-size: 2.625rem; color: #FFF; margin-bottom: 80px; font-weight: 700; }
 
 .search-result { display: block; margin-bottom: 100px; color: #FFF; }
