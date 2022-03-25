@@ -648,7 +648,7 @@ footer.footer {
 
     &.opened {
       opacity: 1;
-      transform: translate(0px, 50px);
+      transform: translate(0px, 0px);
     }
   }
 }
@@ -684,12 +684,12 @@ footer.footer {
       width: 48px;
       height: 48px;
       margin-right: -48px;
-      stroke: $primary;
+      stroke: #FFF;
       stroke-width: 2;
       fill: none;
-      opacity: 0;
-      transform: translate3d(-10px, 0, 0);
-      transition: transform 0.3s, opacity 0.3s;
+      // opacity: 0;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.3s, stroke .3s;
       will-change: transform, opacity;
     }
   }
@@ -705,9 +705,21 @@ footer.footer {
 
         &-arrow {
           opacity: 1;
-          transform: translate3d(0, 0, 0);
+          transform: translate3d(5px, 0, 0);
+          stroke: $primary;
         }
       }
     }
   }
+
+  @media (max-width: 1439px) {
+    &-type {
+      @include fz(24);
+    }
+    &-title {
+      @include fz(42);
+      line-height: 1.14;
+    }
+  }
+  
 }

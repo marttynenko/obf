@@ -312,14 +312,24 @@ if (Headers.checkTargets()) {
 (function () {
   const toggler = D.querySelector(".ux-toggler-menu");
   if (!toggler) return;
+  let delay = 0;
 
   toggler.addEventListener("click", function (e) {
     e = event || window.event;
     e.preventDefault();
 
+    if (D.querySelector('.fs-search.opened')) {
+      animateFSsearch('close')
+      D.querySelector('.circle-link-search').classList.remove('opened')
+      delay = 1000
+    }
+
     const action = toggler.classList.contains("opened") ? "close" : "open";
-    //...
-    animateFSMenu(action);
+    
+    setTimeout(()=>{
+      animateFSMenu(action);
+    },delay)
+    
 
     this.classList.toggle("opened");
   });
@@ -458,14 +468,24 @@ function animateFSMenu(action) {
 (function () {
   const toggler = D.querySelector(".circle-link-search");
   if (!toggler) return;
+  let delay = 0
 
   toggler.addEventListener("click", function (e) {
     e = event || window.event;
     e.preventDefault();
 
+    if (D.querySelector('.fs-menu.opened')) {
+      animateFSMenu('close')
+      D.querySelector('.ux-toggler-menu').classList.remove('opened')
+      delay = 1000
+    }
+
     const action = toggler.classList.contains("opened") ? "close" : "open";
     //...
-    animateFSsearch(action);
+    setTimeout(()=>{
+      animateFSsearch(action);
+    },delay)
+    
 
     this.classList.toggle("opened");
   });
@@ -901,7 +921,7 @@ const mainScreen = () => {
 
       popupEnter(el,done) {
         const ww = document.documentElement.clientWidth
-        const scale = (ww / 170) * 2
+        const scale = (ww / 170) * 2.25
         const tl = gsap.timeline()
         tl
           .to(this.$refs.popupBg,{scale: scale, duration: 0.45})
@@ -962,7 +982,6 @@ const mainScreen = () => {
     }
   })
 }
-
 mainScreen()
 
 
@@ -980,27 +999,62 @@ const mainActivities = () => {
       },
 
       descrEnter(el,done) {
-        gsap.fromTo(el,{opacity: 0, y: 25},{opacity: 1, y: 0, duration: 0.25, onComplete: done})
+        gsap.fromTo(el,{opacity: 0, y: 25},{opacity: 1, y: 0, duration: 0.49, delay: 0.2, onComplete: done})
       },
       descrLeave(el,done) {
         gsap.to(el,{opacity: 0, y: 25, duration: 0.25, onComplete: done})
       },
 
       tabEnter(el,done) {
-        gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.25, onComplete: done})
+        // gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5, onComplete: done})
+        const img = el.querySelector('.main-activities-img')
+        const sight = el.querySelector('.main-activities-sights')
+        const tl = gsap.timeline()
+        tl.fromTo(img,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5})
+          .fromTo(sight,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5, onComplete: done}, '-=0.5')
       },
       tabLeave(el,done) {
-        gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
+        // gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
+        const img = el.querySelector('.main-activities-img')
+        const sight = el.querySelector('.main-activities-sights')
+        const tl = gsap.timeline()
+        tl.to(img,{opacity: 0, x: 50, duration: 0.25})
+          .to(sight,{opacity: 0, x: 50, duration: 0.25, onComplete: done},'-=0.25')
+      },
+
+      scrollAnim() {
+        const tls = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#main-activities',
+            start: "top 60%",
+            // end: "+=300",
+            end: '+=40%',
+            scrub: 2,
+            // markers: true,
+            // toggleActions: 'play pause resume none'
+          }
+        })
+      
+        tls.from('.main-activities .main-block-title',{opacity: 0, y: 50, duration: 0.5})
+          .from('.main-activities-img',{opacity: 0, y: 50, duration: 0.5}, '>-0.2')
+          .from('.main-activities-sights',{opacity: 0, y: 50, duration: 0.5}, '>-0.15')
+          .from('.main-activities-nav',{opacity: 0, y: 50, duration: 0.5})
+          .from('.main-activities-descrs',{opacity: 0, y: 30, duration: 0.5},'-=0.2')
       }
+    },
+
+    mounted() {
+      this.scrollAnim()
     }
   })
 }
-
 mainActivities()
 
 
 const mainEntrs = () => {
   if (!D.querySelector('#main-entrs')) return;
+
+  console.log('#main-entrs')
 
   return new Vue({
     el: '#main-entrs',
@@ -1012,15 +1066,183 @@ const mainEntrs = () => {
         this.index = index
       },
 
-      slideEnter(el,done) {
-        gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.25, onComplete: done})
+      titleEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0, x: -50},{opacity: 1, x: 0, duration: 0.3, onComplete: done})
       },
 
-      slideLeave(el,done) {
-        gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
+      titleLeave(el, done) {
+        gsap.to(el,{opacity: 0, x: 50, duration: 0.4, onComplete: done})
+      },
+
+      bodyEnter(el,done) {
+        gsap.fromTo(el,{opacity: 0, x: -25},{opacity: 1, x: 0, duration: 0.4, onComplete: done})
+      },
+
+      bodyLeave(el,done) {
+        gsap.to(el,{opacity: 0, x: 25, duration: 0.58, onComplete: done})
+      },
+
+      imgEnter(el,done) {
+        const img = el.querySelector('.main-entrs-img')
+        const btn = el.querySelector('.ui-btn-circle')
+        const tl = gsap.timeline()
+
+        tl.fromTo(img,{opacity: 0, x: 50},{opacity: 1, x: 0, duration:0.8})
+          .fromTo(btn,{opacity: 0, x: 30},{opacity: 1, x: 0, duration: 0.4}, '-=0.3')
+      },
+
+      imgLeave(el, done) {
+        gsap.to(el,{opacity: 0, x: 50, duration: 0.5, onComplete: done})
+      },
+
+      scrollAnim() {
+        const tl = gsap.timeline({
+          overwrite: "auto",
+          // autoRemoveChildren: true,
+          scrollTrigger: {
+            trigger: '#main-entrs',
+            start: "top 60%",
+            end: "+=40%",
+            scrub: 2, 
+            // markers: true,
+            // toggleActions: 'play pause resume none'
+          }
+        })
+      
+        tl.from('.main-entrs-title',{opacity: 0, y: 50, duration: 0.5})
+          .from('.main-entrs-nav',{opacity: 0, y: 30, duration: 0.5}, '-=0.35')
+          .from('.main-entrs-img',{opacity: 0, y: 120, duration: 0.5}, '-=0.35')
+          .from('.main-entrs-imgs .ui-btn-circle',{opacity: 0, y: 50, duration: 0.5}, '-=0.1')
+          .from('.main-entrs-descr',{opacity: 0, y: 30, duration: 0.5})
+          
+        gsap.utils.toArray('.main-entrs-vntg').forEach((el,index)=>{
+          const delay = ((index + 1) % 2 === 0) ? 0.3 : 0
+          tl.from(el,{opacity: 0, y: 30, duration: 0.3}, `-=${delay}`)
+        })
       }
+    },
+
+    mounted() {
+      this.scrollAnim()
+    }
+  })
+}
+mainEntrs();
+
+//анимация массива элементов по скроллy для главной
+function animArrayTrigger(arr,duration) {
+  if (!document.querySelector('#main-slides')) return
+  arr.forEach((el,i) => {
+    gsap.utils.toArray(el).forEach((item,index) => {
+      ScrollTrigger.create({
+        trigger: item,
+        onEnter: function() {
+          const idx = i + index
+          animateFrom(item, idx, duration)
+        },
+        onLeave: false,
+        onEnterBack: false,
+        // start: "top 70%",
+        // onLeave: function() { animateTo(item) },
+        
+        // onEnterBack: function() {
+        //   const idx = i + index
+        //   animateFrom(item, idx, duration)
+        // },
+        // onLeave: function() { hide(item) }
+        // end: "+=100",
+        // scrub: 1,
+        // toggleActions: 'play none none none'
+      });
+    })
+    
+  })
+
+  function hide(elem) {
+    // gsap.set(elem, {opacity: 0});
+  }
+  function animateFrom (elem,index) {
+    const delay = index * (duration * 0.25)
+    gsap.fromTo(elem, 
+      {y: 50, opacity: 0},
+      {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+    )
+  }
+}
+
+
+window.addEventListener('load',()=>{
+  animArrayTrigger(
+    [
+      '.main-partner .main-block-title',
+      '.main-partner-descr',
+      '.main-partner-item',
+      '.node-related .main-block-title',
+      '.news-list'
+    ],
+    0.8);
+
+  animateEnterprises()
+  
+})
+
+//анимируем лендинги предприятий
+function animateEnterprises() {
+  if (!D.querySelector('.history-header')) return
+  const tl = gsap.timeline()
+  tl
+    .from({},{},0.1)
+    .from('.history-header-title',{opacity: 0, y: 30, duration: 0.8})
+    .from('.history-header-text',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
+    .from('.history-header-arrow',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
+    .from('.history-header-btn',{opacity: 0, y: 30, duration: 0.6},'>-0.6');
+
+
+  const duration = 0.8
+  D.querySelectorAll('.enterprises-block, .enterprises-contact, .node-related').forEach((item,index)=> {
+    const title = item.querySelector('.ui-subtitle') || item.querySelector('.ui-side-title')
+    const wide = item.querySelector('.col-layout-wide')
+    const thin = item.querySelector('.col-layout-thin')
+
+    if (title) {
+      ScrollTrigger.create({
+        trigger: title,
+        onEnter: function() {
+          animateFrom(title)
+        }
+      });
+    }
+    
+    if (thin && thin.childNodes.length) {
+      ScrollTrigger.create({
+        trigger: thin,
+        onEnter: function() {
+          animateFrom(thin, 0.2)
+        }
+      });
+    }
+    
+    if (wide) {
+      ScrollTrigger.create({
+        trigger: wide,
+        onEnter: function() {
+          animateFrom(wide,0.4)
+        }
+      });
+    }
+    
+
+    function animateFrom (elem,delay = 0) {
+      gsap.fromTo(elem, 
+        {y: 50, opacity: 0},
+        {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+      )
     }
   })
 }
 
-mainEntrs()
+// (function () {
+  
+//   if (!document.querySelector('#main-entrs')) return
+
+// })();
