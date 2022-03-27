@@ -961,6 +961,8 @@ PRODUCTIONS -------------- */
       padding-top: Min(10vh, 200px);
       padding-bottom: 50px;
       opacity: 0;
+      position: relative;
+      z-index: 1;
     }
 
     &-content {
@@ -1009,11 +1011,33 @@ PRODUCTIONS -------------- */
   }
 }
 
+.productions-screens {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+
+  &-video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
 .productions-screen {
   overflow: hidden;
   height: 100vh;
-  position: relative;
   z-index: 1;
+  // position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  &.opened {
+    display: block;
+  }
 
   &-col {
     display: flex;
@@ -1106,6 +1130,8 @@ PRODUCTIONS -------------- */
     object-fit: cover;
     object-position: center;
     z-index: -1;
+
+    display: none;
   }
 
   @media (max-width: 1439px) {
@@ -1406,7 +1432,9 @@ PRODUCTIONS -------------- */
 }
 
 
-
+.productions-block-mk {
+  overflow: hidden;
+}
 
 .productions-mk {
   &-bg {
@@ -1414,9 +1442,14 @@ PRODUCTIONS -------------- */
     right: 0;
     top: 0;
     display: block;
-    max-width: 75%;
+    // max-width: 75%;
+    width: calc(69.5% + 50px);
     z-index: -1;
-    filter: drop-shadow(-30px 25px 200px rgba(0, 0, 0, 0.15));
+    // filter: drop-shadow(-30px 25px 200px rgba(0, 0, 0, 0.15));
+
+    @media (min-width: 1920px) {
+      // width: calc(100vw - 1920px * 74.5%);
+    }
   }
   &-img {
     opacity: 0;
@@ -1935,6 +1968,13 @@ PRODUCTIONS -------------- */
         height: 52px;
         line-height: 50px;
         @include fz(16);
+        padding-left: 42px;
+
+        &-icon {
+          width: 16px;
+          height: 16px;
+          margin-top: -8px;
+        }
       }
     }
   }

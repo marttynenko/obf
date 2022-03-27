@@ -235,6 +235,25 @@
       fill: #fff;
     }
 
+    @media (max-width: 1439px) {
+      @include fz(24);
+      height: 62px;
+      line-height: 60px;
+    }
+
+    @media (max-width: 1259px) {
+      @include fz(16);
+      height: 52px;
+      line-height: 50px;
+      padding-left: 42px;
+
+      &-sprite {
+        width: 16px;
+        height: 16px;
+        margin-top: -8px;
+      }
+    }
+
     &:hover,
     &.selected {
       border: 1px solid #ffffff;

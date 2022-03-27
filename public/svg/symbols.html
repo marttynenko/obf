@@ -180,7 +180,7 @@
 			<path d="M1.913 0L.621 1.332 6.12 7l5.5-5.668L10.328 0 6.121 4.327 1.913 0z" fill="#1D1D1D"></path>
 		</symbol>
 	
-		<symbol id="arrow-down(museum)" viewBox="0 0 34 13">
+		<symbol id="arrow-down-museum" viewBox="0 0 34 13">
 			<path d="M1 1l16 10L33 1" stroke="#fff" stroke-width="2"></path>
 		</symbol>
 	
@@ -226,6 +226,10 @@
 	
 		<symbol id="childs-toggler" viewBox="0 0 10 5">
 			<path opacity=".5" d="M1 1l4 3 4-3" stroke="#fff"></path>
+		</symbol>
+	
+		<symbol id="childs-toggler-orange" viewBox="0 0 10 5">
+			<path d="M1 1l4 3 4-3" stroke="#F08322"></path>
 		</symbol>
 	
 		<symbol id="circle-btn-arrow" viewBox="0 0 32 32">
@@ -379,7 +383,7 @@
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(55 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(56 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -501,18 +505,18 @@
         </li>
         
 
-        <li title="arrow-down(museum)">
-            <div class="icon-box" id="icon-box-arrow-down(museum)">
-                <svg class="icon arrow-down(museum)">
-                    <use xlink:href="#arrow-down(museum)" />
+        <li title="arrow-down-museum">
+            <div class="icon-box" id="icon-box-arrow-down-museum">
+                <svg class="icon arrow-down-museum">
+                    <use xlink:href="#arrow-down-museum" />
                 </svg>
             </div>
-            <h2>arrow-down(museum)</h2>
-            <button onclick="showPopover('snippet-arrow-down(museum)')">Show Snippet</button>
+            <h2>arrow-down-museum</h2>
+            <button onclick="showPopover('snippet-arrow-down-museum')">Show Snippet</button>
             <br/>
-            <button onclick="invertBackground('icon-box-arrow-down(museum)')">Invert Background</button>
-            <div class="snippet-popover" id="snippet-arrow-down(museum)">
-                <pre><code>&lt;svg class=&quot;icon arrow-down(museum)&quot;&gt;&lt;use xlink:href=&quot;#arrow-down(museum)&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+            <button onclick="invertBackground('icon-box-arrow-down-museum')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-arrow-down-museum">
+                <pre><code>&lt;svg class=&quot;icon arrow-down-museum&quot;&gt;&lt;use xlink:href=&quot;#arrow-down-museum&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
@@ -700,6 +704,23 @@
             <button onclick="invertBackground('icon-box-childs-toggler')">Invert Background</button>
             <div class="snippet-popover" id="snippet-childs-toggler">
                 <pre><code>&lt;svg class=&quot;icon childs-toggler&quot;&gt;&lt;use xlink:href=&quot;#childs-toggler&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="childs-toggler-orange">
+            <div class="icon-box" id="icon-box-childs-toggler-orange">
+                <svg class="icon childs-toggler-orange">
+                    <use xlink:href="#childs-toggler-orange" />
+                </svg>
+            </div>
+            <h2>childs-toggler-orange</h2>
+            <button onclick="showPopover('snippet-childs-toggler-orange')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-childs-toggler-orange')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-childs-toggler-orange">
+                <pre><code>&lt;svg class=&quot;icon childs-toggler-orange&quot;&gt;&lt;use xlink:href=&quot;#childs-toggler-orange&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>

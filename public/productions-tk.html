@@ -36,7 +36,17 @@
 
 
     <div class="productions-screens">
-      <div class="productions-screen">
+      <video class="productions-screens-video" ref="video" muted>
+        <source type="video/mp4" src="./media/tk.mp4">
+      </video>
+
+      <transition
+        v-on:enter="slideEnter"
+        v-on:leave="slideLeave"
+        v-bind:css="false"
+        mode="out-in"
+      >
+      <div class="productions-screen" v-if="index === 0" key="0">
         <div class="container">
 
           <div class="productions-screen-cols flex align-justify">
@@ -75,8 +85,7 @@
         </div><!--.container-->
       </div><!--.screen-->
 
-
-      <div class="productions-screen">
+      <div class="productions-screen" v-if="index === 1" key="1">
         <div class="container">
 
           <div class="productions-screen-cols flex align-justify">
@@ -115,7 +124,7 @@
         </div><!--.container-->
       </div><!--.screen-->
 
-      <div class="productions-screen">
+      <div class="productions-screen" v-if="index === 2" key="2">
         <div class="container">
 
           <div class="productions-screen-cols flex align-justify">
@@ -152,7 +161,7 @@
       </div><!--.screen-->
 
 
-      <div class="productions-screen">
+      <div class="productions-screen" v-if="index === 3" key="3">
         <div class="container">
 
           <div class="productions-screen-cols flex align-justify">
@@ -191,7 +200,7 @@
       </div><!--.screen-->
 
 
-      <div class="productions-screen">
+      <div class="productions-screen" v-if="index === 4" key="4">
         <div class="container">
 
           <div class="productions-screen-cols flex align-justify">
@@ -227,6 +236,7 @@
 
         </div><!--.container-->
       </div><!--.screen-->
+      </transition>
 
 
     </div><!--.screens-->

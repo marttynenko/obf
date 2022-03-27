@@ -101,11 +101,18 @@ const FARBA = {
 
         players.push(player);
 
-        // players.forEach(item => {
-        //   item.on('playing',function() {
-        //     // item.pause()
-        //   })
-        // })
+        //оставляем играть только 1 плеер
+        players.forEach(item => {
+          item.on('playing',function(e) {
+
+            players.forEach(player => {
+              if (e.target !== player.elements.container) {
+                player.pause()
+              }
+            })
+            
+          })
+        })
       })
 
       
@@ -641,8 +648,8 @@ const prdHeadAnimate = () => {
 
   const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
   tl
-    .to(null, {}, 0.5)
-    .to(head, {zIndex: 2, duration: 0})
+    .to({}, {}, 0.5)
+    // .to(head, {zIndex: 2, duration: 0})
     .to('.productions-head-body', {opacity: 1, duration: 0})
     .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
     .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
@@ -650,96 +657,32 @@ const prdHeadAnimate = () => {
     .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
     .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
     .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
-  
+}
+
+const firstScreenAnimate = () => {
+  const head = D.querySelector('.first-screen')
+  if (!head) return;
+
+  const clearHeader = () => {
+    D.querySelector('#header').removeAttribute('style')
+  }
+
+  const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
+  tl
+    .from({},{},0.1)
+    .from('.first-screen-title',{opacity: 0, y: 30, duration: 0.8})
+    .from('.first-screen-txt',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
+    .from('.first-screen-arrow',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
+    .from('.first-screen-right',{opacity: 0, y: 30, duration: 0.6},'>-0.6')
+    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader},'-=1');
 }
 
 window.addEventListener('load',() => {
   prdHeadAnimate()
+  firstScreenAnimate()
 });
 
 
-(function(){
-  if (!D.querySelector('.productions-screensss')) return
-
-  const productionsTL = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.productions',
-      pin: true,
-      start: 'top top',
-      scrub: 3,
-      end: () => {
-        if (D.querySelectorAll('.productions-screen').length) {
-          return D.documentElement.clientHeight * D.querySelectorAll('.productions-screen').length
-        }
-        return D.documentElement.clientHeight
-      },
-      // markers: true,
-      // anticipatePin:1,	
-      // reventOverlaps: true,
-      // fastScrollEnd: true,
-      // snap: 1/5
-      // snap: () => {
-      //   if (D.querySelectorAll('.productions-screen').length) {
-      //     return 1 / D.querySelectorAll('.productions-screen').length
-      //   }
-      //   return 1
-      // }
-    }
-  })
-
-  
-  productionsTL
-    .addLabel('start')
-    .to('.productions-head',{opacity: 0, yPercent: -10, zIndex: 0, duration: 0.2, onReverseComplete: ()=> {
-      D.querySelector('.productions-head').style.zIndex = 2;
-    }})
-
-  
-  D.querySelectorAll('.productions-screen').forEach((el,index) => {
-    const img = el.querySelector('.productions-screen-img')
-    const title = el.querySelector('.productions-screen-title')
-    const details = el.querySelector('.productions-screen-details')
-    const btn = el.querySelector('.ui-btn-circle')
-  
-    productionsTL.addLabel('label_'+index)
-  
-    if (index > 0) {
-      const prev = D.querySelectorAll('.productions-screen')[index - 1]
-      productionsTL
-        .to(prev, {opacity: 0, y: -50, zIndex: 0, duration: 0.3})
-    }
-    
-  
-    productionsTL
-      // .addLabel('label_'+index)
-      .to(el,{opacity: 1, duration: 0, zIndex: 2})
-      .fromTo(title,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1})
-      .fromTo(img,{opacity: 0, scale: 1.3}, {opacity: 1, scale: 1, duration: 3},">-1")
-      .fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
-      .fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-1")
-      .to({}, {duration: 2})
-  })
-
-  // productionsTL.addLabel('end')
-})();
-
-// ScrollTrigger.create({
-//   trigger: ".productions-animation-after",
-//   start: "top bottom",
-//   // end: "+=200", // 200px past the start 
-//   pin: true
-//   // pinSpacing: false,
-// })
-
-// const t = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.productions-animation-after',
-//     start: "top bottom",
-//     pin: true
-//   }
-// })
-// // t.to({'.tk-stock'}, {y: -1000, duration: 3})
-// t.to('.productions-animation-after', {y: -400,duration: 3})
 
 
 (function () {
@@ -1131,36 +1074,23 @@ mainEntrs();
 
 //анимация массива элементов по скроллy для главной
 function animArrayTrigger(arr,duration) {
-  if (!document.querySelector('#main-slides')) return
+  // if (!document.querySelector('#main-slides')) return
   arr.forEach((el,i) => {
     gsap.utils.toArray(el).forEach((item,index) => {
-      ScrollTrigger.create({
-        trigger: item,
-        onEnter: function() {
-          const idx = i + index
-          animateFrom(item, idx, duration)
-        },
-        onLeave: false,
-        onEnterBack: false,
-        // start: "top 70%",
-        // onLeave: function() { animateTo(item) },
-        
-        // onEnterBack: function() {
-        //   const idx = i + index
-        //   animateFrom(item, idx, duration)
-        // },
-        // onLeave: function() { hide(item) }
-        // end: "+=100",
-        // scrub: 1,
-        // toggleActions: 'play none none none'
-      });
+      if (item) {
+        ScrollTrigger.create({
+          trigger: item,
+          onEnter: function() {
+            const idx = i + index
+            animateFrom(item, idx, duration)
+          },
+          onLeave: false,
+          onEnterBack: false,
+        })
+      }
     })
-    
   })
 
-  function hide(elem) {
-    // gsap.set(elem, {opacity: 0});
-  }
   function animateFrom (elem,index) {
     const delay = index * (duration * 0.25)
     gsap.fromTo(elem, 
@@ -1170,21 +1100,6 @@ function animArrayTrigger(arr,duration) {
   }
 }
 
-
-window.addEventListener('load',()=>{
-  animArrayTrigger(
-    [
-      '.main-partner .main-block-title',
-      '.main-partner-descr',
-      '.main-partner-item',
-      '.node-related .main-block-title',
-      '.news-list'
-    ],
-    0.8);
-
-  animateEnterprises()
-  
-})
 
 //анимируем лендинги предприятий
 function animateEnterprises() {
@@ -1241,8 +1156,299 @@ function animateEnterprises() {
   })
 }
 
-// (function () {
-  
-//   if (!document.querySelector('#main-entrs')) return
 
-// })();
+//анимируем блоки на лендингах продукции
+function animateProductions() {
+  const duration = 0.8
+
+  D.querySelectorAll('.productions-block:not(.productions-block-mk), .node-related').forEach((item,index)=> {
+    const title = item.querySelector('.ui-side-title')
+    const wide = item.querySelector('.col-layout-wide')
+    const thin = item.querySelector('.col-layout-thin')
+
+    if (title) {
+      ScrollTrigger.create({
+        trigger: title,
+        onEnter: function() {
+          animateFrom(title)
+        }
+      });
+    }
+    
+    if (thin && thin.childNodes.length) {
+      ScrollTrigger.create({
+        trigger: thin,
+        onEnter: function() {
+          animateFrom(thin, 0.2)
+        }
+      });
+    }
+    
+    if (wide) {
+      ScrollTrigger.create({
+        trigger: wide,
+        onEnter: function() {
+          animateFrom(wide,0.4)
+        }
+      });
+    }
+  })
+
+  function animateFrom (elem,delay = 0) {
+    gsap.fromTo(elem, 
+      {y: 50, opacity: 0},
+      {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+    )
+  }
+}
+
+
+//анимируем лендинги продукции
+function animateProductionsNoTk() {
+  if (!D.querySelector('.productions-block-mk')) return
+
+  ScrollTrigger.create({
+    trigger: '.productions-block-mk',
+    start: 'top 90%',
+    end: "+=100%",
+    scrub: 1,
+    onUpdate: (self) => {
+      mkToUp(self.progress)
+    },
+    onEnter: () => {
+      gsap.to(window, {duration: 1, scrollTo:{y: document.documentElement.clientHeight}});
+    }
+  });
+
+  function mkToUp(progress) {
+    const h = document.documentElement.clientHeight
+    gsap.set('.productions-head',{y: progress * h * 0.85})
+  }
+  
+
+  const duration = 0.8
+  if (D.querySelector('.productions-block-mk')) {
+    ScrollTrigger.create({
+      trigger: '.productions-block-mk .ui-side-title',
+      onEnter: function() {
+        animateFrom('.productions-block-mk .ui-side-title', 0.8)
+      }
+    });
+  
+  
+    ScrollTrigger.create({
+      trigger: '.productions-mk-descr',
+      onEnter: function() {
+        animateFrom('.productions-mk-descr', 0.8)
+      }
+    });
+  
+    ScrollTrigger.create({
+      trigger: '.productions-mk-for',
+      onEnter: function() {
+        animateFrom('.productions-mk-for', 0.5)
+      }
+    });
+  }
+
+  function animateFrom (elem,delay = 0) {
+    gsap.fromTo(elem, 
+      {y: 50, opacity: 0},
+      {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+    )
+  }
+}
+
+
+//анимируем лендинг ТК
+function animateProductionsTk() {
+  const screens = D.querySelector('.productions-screens')
+  if (!screens) return
+
+  const screen = D.querySelectorAll('.productions-screen');
+  
+
+  const tk = new Vue({
+    el: '.productions-screens',
+    data: {
+      index: 0,
+      vd: 0,
+      trigger: false
+    },
+    methods: {
+      slideEnter(el,done) {
+        const img = el.querySelector('.productions-screen-img')
+        const title = el.querySelector('.productions-screen-title') || el.querySelector('h2')
+        const details = el.querySelector('.productions-screen-details')
+        const btn = el.querySelector('.ui-btn-circle')
+  
+      
+        const tl = gsap.timeline()
+        tl
+          .to(el,{opacity: 1, duration: 0.1})
+          .fromTo(title,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1})
+          .fromTo(img,{opacity: 0, scale: 1.3}, {opacity: 1, scale: 1, duration: 3},">-1")
+          .fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
+          .fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, onComplete: done},">-1")
+      },
+  
+      slideLeave(el,done) {
+        gsap.to(el,{opacity: 0, duration: 0.35, onComplete: done})
+      },
+  
+      getIndex(slides, progress) {
+        const step = 100 / slides
+        const idx = parseInt((progress * 100) / step,10)
+        if (idx >= slides) {
+          return this.index = slides - 1
+        }
+        return this.index = idx
+      },
+
+      playPause(index) {
+        const that = this
+        const delay = (this.vd * 1000 / screen.length) * 0.99
+        this.$refs.video.currentTime = this.vd * (1 / screen.length) * index
+        this.$refs.video.play()
+        setTimeout(function(){
+          that.$refs.video.pause()
+        },delay)
+      }
+    },
+
+    watch: {
+      index: function (val) {
+        this.playPause(val)
+      }
+    },
+
+    created() {
+      window.addEventListener('loadedmetadata', (e) => {
+        this.vd = this.$refs.video.duration
+      }, true);
+    },
+
+    mounted() {
+      ScrollTrigger.create({
+        trigger: '.productions-screen',
+        start: 'top 90%',
+        end: "+=100%",
+        onEnter: () => {
+          gsap.to(window, {duration: 1, scrollTo:{y: document.documentElement.clientHeight}});
+        }
+      })
+
+      ScrollTrigger.create({
+        trigger: '.productions-screens',
+        pin: true,
+        // end: `+=${100*screen.length}%`,
+        end: `+=${400*screen.length}`,
+        onUpdate: (self) => {
+          // const time = (this.vd * self.progress).toFixed(5)
+          // console.log(time,this.vd)
+          // this.$refs.video.currentTime = time
+          this.getIndex(screen.length, self.progress)
+        },
+        onEnter: () => {
+          this.playPause(0)
+        }
+      })
+
+      ScrollTrigger.create({
+        trigger: '.productions-tk-stock',
+        end: "+=100%",
+        scrub: 1,
+        onUpdate: (self) => {
+          mkToUp(self.progress)
+        },
+        onEnter: () => {
+          gsap.to(window, {duration: 1, scrollTo:{y: window.scrollY + document.documentElement.clientHeight}});
+        }
+      });
+    
+      function mkToUp(progress) {
+        const h = document.documentElement.clientHeight
+        gsap.set('.productions-screen',{y: progress * h * 0.85})
+      }
+    }
+  })
+}
+animateProductionsTk()
+
+
+function animateCompany() {
+  if (!D.querySelector('.company-pos')) return
+
+  const cpTL = gsap.timeline()
+  cpTL.from('.company-pos-top-num',{opacity: 0, xPercent: -50, duration: 0.5})
+      .from('.company-pos-top-subtitle',{opacity: 0, xPercent: -50, duration: 0.7}, '-=0.4');
+  ScrollTrigger.create({
+    trigger: '.company-pos-top',
+    start: 'top 60%',
+    animation: cpTL
+  });
+
+
+  const cpmTL = gsap.timeline()
+  cpmTL.from('.company-pos-middle-item',{opacity: 0, y: 200, duration: 0.5})
+      .from('.company-pos-bottom-item',{opacity: 0, y: 200, duration: 0.8}, '-=0.4');
+  ScrollTrigger.create({
+    trigger: '.company-pos-middle',
+    start: 'top 60%',
+    animation: cpmTL
+  });
+
+
+  gsap.utils.toArray('.company-purpose-item').forEach((item)=>{
+    const tl = gsap.timeline()
+    tl
+      .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, xPercent: -50, duration: 0.6})
+      .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -50, duration: 0.8},'-=0.4')
+    
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 65%',
+      animation: tl
+    });
+  })
+  
+  
+
+  function animateFrom (elem,delay = 0) {
+    gsap.fromTo(elem, 
+      {y: 50, opacity: 0},
+      {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+    )
+  }
+}
+
+
+window.addEventListener('load',()=>{
+  animArrayTrigger(
+    [
+      '.main-partner .main-block-title',
+      '.main-partner-descr',
+      '.main-partner-item',
+      '.node-related .main-block-title',
+      '.news-list'
+    ],
+    0.8);
+
+  animateEnterprises()
+  animateProductions()
+  animateProductionsNoTk()
+
+  animateCompany()
+
+  animArrayTrigger(
+    [
+      '.company-acs .ui-side-title',
+      '.company-acs .col-layout-wide',
+      '.company-chart .ui-side-title',
+      '.company-chart .ui-chart-block',
+      '.company-fs .ui-side-title',
+      '.company-fs .col-layout-wide'
+    ],
+    0.8
+  );
+})

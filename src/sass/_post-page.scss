@@ -72,6 +72,7 @@
       &-label {
         display: inline;
         margin-right: 7px;
+        @include fz(22);
       }
       .ui-share {
         display: inline-block;

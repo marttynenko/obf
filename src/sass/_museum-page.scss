@@ -27,6 +27,18 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  position: relative;
+  z-index: 1;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#16202E, 0.75);
+  }
 }
 .museum-row {
   display: flex;
@@ -36,6 +48,8 @@
   padding-bottom: 49px;
   min-height: 100vh;
   max-height: 1500px;
+  position: relative;
+  z-index: 1;
 }
 .museum-hide {
   display: none;
@@ -167,6 +181,10 @@
 
     @media (max-width: 1700px) {
       transform: translate(10%,0);
+    }
+
+    @media (max-width: 1439px) {
+      width: 120%;
     }
 
     @media (max-width: 1259px) {

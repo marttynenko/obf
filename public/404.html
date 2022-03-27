@@ -1,31 +1,34 @@
-<!--#include file="inc-header.html"-->
 
-</div>
-<!--.container-->
-<div class="page page-page-404">
-   <div class="page-404">
-      <div class="page-404-header">
-         <div class="container">
-            <div class="page-404-row">
-               <div class="page-404-top-screen">
-                  <h1 class="page-404-top-screen-title">
-                    404
-                  </h1>
-                  <div class="page-404-top-screen-text">
-                    Страница не найдена
-                  </div>
-               </div>
-               <a href="#" class="ui-btn-circle page-404-circle">
-                  <div class="ui-btn-circle-circle page-404-circle-circle">
-                     Перейти на главную
-                     <div class="ui-btn-circle-arrow">
-                        <img src="./images/svg/30x30-arrow.svg" alt="alt">
-                     </div>
-                  </div>
-               </a>
+<!--#include file="inc-header.html"-->
+</div><!--.container-->
+
+<div class="page-error">
+   <div class="container">
+      <div class="page-error-flex">
+         <div class="page-error-txt">
+            <div class="page-error-title">404</div>
+            <div class="page-error-subtitle">
+            Страница не найдена
             </div>
          </div>
+         <div class="page-error-btn">
+            <a href="#" class="ui-btn-circle ui-btn-circle-midi">
+               <div class="ui-btn-circle-circle">
+                  <div class="ui-btn-circle-txt">Перейти на главную</div>
+                  <svg class="sprite ui-btn-circle-arrow">
+                     <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                  </svg>
+               </div>
+            </a>
+         </div>
+      </div>
+
+      <div class="page-error-bg-wrp">
+         <img src="./images/404.png" class="page-error-bg" alt="alt">
       </div>
    </div>
+</div>
+
+<div class="container">
 
 <!--#include file="inc-footer.html"-->

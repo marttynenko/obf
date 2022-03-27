@@ -4,6 +4,16 @@
   background: $bgc;
   overflow: hidden;
 
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#16202E, 0.75);
+  }
+
   &-flex {
     display: flex;
     align-items: flex-end;
@@ -11,6 +21,8 @@
     padding-bottom: 49px;
     min-height: 100vh;
     max-height: 1500px;
+    position: relative;
+    z-index: 1;
   }
 
   &-left {

@@ -1883,7 +1883,7 @@ a.ui-color {
 		margin-right: clamp(10px,1.5vw,24px);
 		position: relative;
 		text-align: center;
-		transition: opacity .1s;
+		transition: opacity .3s;
 
 		&:last-child {
 			margin-right: 0;
@@ -1915,7 +1915,7 @@ a.ui-color {
 			color: #FFF;
 			@include fz(12);
 			font-weight: 700;
-			transition: transform .1s;
+			transition: transform .3s;
 		}
 		&-label {
 			position: absolute;
@@ -1994,10 +1994,15 @@ a.ui-color {
 			}
 		}
 
-		@media (max-width: 1259px) {
+		@media (max-width: 1439px) {
 			@include fz(20);
 			height: 56px;
 			line-height: 54px;
+		}
+		@media (max-width: 1259px) {
+			@include fz(16);
+			height: 52px;
+			line-height: 50px;
 		}
 	}
 }
