@@ -2504,6 +2504,8 @@ PRODUCTIONS -------------- */
 
 .node-body { background: #c9dfec; color: #000000; padding-top: 80px; padding-bottom: 100px; }
 
+.node-body figure { margin: 0px 0px 32px; }
+
 .node h2 { font-size: 80px; font-size: 5rem; margin-bottom: 56px; line-height: 1.1; }
 
 .node h3 { font-size: 54px; font-size: 3.375rem; font-weight: 600; }

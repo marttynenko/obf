@@ -1123,14 +1123,14 @@ const mainActivities = () => {
             start: "top 60%",
             // end: "+=300",
             end: '+=40%',
-            scrub: 2,
-            // markers: true,
-            // toggleActions: 'play pause resume none'
+            scrub: 2
           }
         })
       
-        tls.from('.main-activities .main-block-title',{opacity: 0, y: 50, duration: 0.5})
-          .from('.main-activities-img',{opacity: 0, y: 50, duration: 0.5}, '>-0.2')
+        tls
+          // .from('.main-activities .main-block-title',{opacity: 0, y: 50, duration: 0.5})
+          // .from('.main-activities-img',{opacity: 0, y: 50, duration: 0.5}, '>-0.2')
+          .from('.main-activities-img',{opacity: 0, y: 50, duration: 0.5})
           .from('.main-activities-sights',{opacity: 0, y: 50, duration: 0.5}, '>-0.15')
           .from('.main-activities-nav',{opacity: 0, y: 50, duration: 0.5})
           .from('.main-activities-descrs',{opacity: 0, y: 30, duration: 0.5},'-=0.2')
@@ -1209,8 +1209,6 @@ const mainEntrs = () => {
 
       easeHeight() {
         const h = D.querySelector('.main-entrs-slide').clientHeight
-        // const computedStyle = getComputedStyle(D.querySelector('#main-entrs'));
-        // const paddings = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
 
         const paddings = this.getPaddings()
 
@@ -1268,8 +1266,10 @@ const mainEntrs = () => {
           }
         })
       
-        tl.from('.main-entrs-title',{opacity: 0, y: 50, duration: 0.5})
-          .from('.main-entrs-nav',{opacity: 0, y: 30, duration: 0.5}, '-=0.35')
+        tl
+          // .from('.main-entrs-title',{opacity: 0, y: 50, duration: 0.5})
+          // .from('.main-entrs-nav',{opacity: 0, y: 30, duration: 0.5}, '-=0.35')
+          .from('.main-entrs-nav',{opacity: 0, y: 30, duration: 0.5})
           .from('.main-entrs-img',{opacity: 0, y: 120, duration: 0.5}, '-=0.35')
           .from('.main-entrs-imgs .ui-btn-circle',{opacity: 0, y: 50, duration: 0.5}, '-=0.1')
           .from('.main-entrs-descr',{opacity: 0, y: 30, duration: 0.5})
@@ -1988,6 +1988,8 @@ const toFlyAnim = `
   .page-title,
   .node-title,
   .publication-preview,
+  .main-partner-item,
+  .main-block-title,
   .publication-item,
   .productions-mk-descr,
   .productions-mk-for`;
