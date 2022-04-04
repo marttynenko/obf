@@ -148,6 +148,24 @@ footer.footer {
     visibility: visible;
   }
 
+  .ui-btn-circle {
+    max-width: 130px;
+
+    &-circle {
+      width: 130px;
+      height: 130px;
+    }
+
+    @media (max-width: 1439px) {
+      max-width: 106px;
+
+      &-circle {
+        width: 106px;
+        height: 106px;
+      }
+    }
+  }
+
   &-bg {
     // position: absolute;
     z-index: -1;
@@ -261,6 +279,7 @@ footer.footer {
 
   @media (max-width: 1439px) {
     @include fz(14);
+    line-height: 1.14;
 
     &-ul {
       li {
@@ -271,6 +290,10 @@ footer.footer {
     &-title,
     &-contacts-title {
       @include fz(24);
+    }
+
+    &-adrs {
+      max-width: 312px;
     }
   }
 
@@ -713,6 +736,8 @@ footer.footer {
   }
 
   @media (max-width: 1439px) {
+    @include fz(14);
+    
     &-type {
       @include fz(24);
     }

@@ -277,6 +277,22 @@
       background: $secondary;
     }
   }
+
+  
+}
+.enterprises:not(.enterprises-td) {
+  .swiper-button {
+    &-prev {
+      &:before {
+        background: url(../images/svg/arrow-prev-green.svg) center no-repeat;
+      }
+    }
+    &-next {
+      &:before {
+        background: url(../images/svg/arrow-next-green.svg) center no-repeat;
+      }
+    }
+  }
 }
 .enterprises-bkf {
   // background-color: #E5E5E5;
@@ -340,6 +356,19 @@
       }
     }
   }
+
+  .swiper-button {
+    &-prev {
+      &:before {
+        background: url(../images/svg/arrow-prev-lime.svg) center no-repeat;
+      }
+    }
+    &-next {
+      &:before {
+        background: url(../images/svg/arrow-next-lime.svg) center no-repeat;
+      }
+    }
+  }
 }
 
 .enterprises-scbc {
@@ -350,6 +379,19 @@
   .node-inner ul li {
     &:before {
       background: $darkbrown;
+    }
+  }
+
+  .swiper-button {
+    &-prev {
+      &:before {
+        background: url(../images/svg/arrow-prev-brown.svg) center no-repeat;
+      }
+    }
+    &-next {
+      &:before {
+        background: url(../images/svg/arrow-next-brown.svg) center no-repeat;
+      }
     }
   }
 

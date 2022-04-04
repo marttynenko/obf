@@ -1,4 +1,4 @@
-// Слайдер
+//node slider
 (function () {
   const toggler = document.querySelectorAll(".node-slider");
   if (!toggler.length) return;

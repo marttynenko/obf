@@ -222,6 +222,20 @@
     height: 70px;
     line-height: 68px;
     color: $font;
+    transition: color .4s, border-color .4s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: 50px;
+      border: 1px solid #FFF;
+      opacity: 0;
+      transition: opacity .4s;
+    }
 
     &-sprite {
       display: block;
@@ -256,8 +270,12 @@
 
     &:hover,
     &.selected {
-      border: 1px solid #ffffff;
+      border-color: rgba(255,255,255,0);
       color: $primary;
+
+      &:after {
+        opacity: 1;
+      }
 
       .page-btn {
         &-sprite {

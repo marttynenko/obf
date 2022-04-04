@@ -4,8 +4,8 @@
       v-on:enter="slideEnter"
       v-on:leave="slideLeave"
       v-bind:css="false"
-      mode="out-in"
     >
+    
       <div class="main-slide" v-if="index === 0" key="0">
         <div class="container">      
           <div class="main-slide-content">
@@ -70,6 +70,7 @@
           </div>
         </div>
       </div>
+      
     </transition>
 
     <div class="main-slides-nav">

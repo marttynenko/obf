@@ -142,10 +142,12 @@ const FARBA = {
     var tabLinks = document.querySelectorAll(selector);
     if (!tabLinks.length) return;
 
-    var contentDivs = new Array();
+    let parent = D.createElement('div');
+    parent.className = 'ux-tabs-content-parent'
+    let contentDivs = new Array();
 
     tabLinks.forEach((element) => {
-      var id = getHash(element.getAttribute("href"));
+      let id = getHash(element.getAttribute("href"));
   
       contentDivs.push(document.getElementById(id));
 
@@ -154,6 +156,9 @@ const FARBA = {
   
     tabLinks[0].classList.add("selected");
     contentDivs[0].classList.add("selected");
+    
+    contentDivs[0].insertAdjacentElement('beforebegin',parent)
+    parent.append(...D.querySelectorAll('.ui-tabs-content'))
   
     //functions
     function showTab(id,element,event) {
@@ -164,12 +169,9 @@ const FARBA = {
 
       fetchTabData(element,id)
       
-    
       for (let i = 0; i < contentDivs.length; i++) {
         let divID = contentDivs[i].getAttribute("id")
         if (divID === id) {
-          // tabLinks[i].classList.add("selected");
-          // contentDivs[i].classList.add("selected");
 
           tabLinks[i].classList.add("selected");
           contentDivs[i].classList.remove("leave");
@@ -178,15 +180,15 @@ const FARBA = {
           },151)
           setTimeout(()=>{
             contentDivs[i].classList.remove("enter");
+            easeHeight(contentDivs[i])
           },200)
+
+          
           
           if (id !== location.hash.substring(1)) {
             setHash(id)
           }
         } else {
-          // tabLinks[i].classList.remove("selected");
-          // contentDivs[i].classList.remove("selected");
-
           tabLinks[i].classList.remove("selected");
           contentDivs[i].classList.add("leave");
           contentDivs[i].classList.remove("enter");
@@ -196,6 +198,15 @@ const FARBA = {
         }
       }
     }
+
+    function easeHeight(currentTab) {
+      const height = currentTab.clientHeight
+      gsap.to(parent,{height: height, duration: 1})
+    }
+
+    window.addEventListener('resize',()=>{
+      parent.style.height = parent.querySelector('.ui-tabs-content.selected').clientHeight + 'px'
+    });
 
     async function fetchTabData(el,id) {
       try {
@@ -268,13 +279,22 @@ const FARBA = {
 }
 
 gsap.registerPlugin(ScrollTrigger);
+CustomEase.create('dflt','.25,.1,.25,1')
+CustomEase.create('imgs','0,.25,.8,.96')
+CustomEase.create('easeout','0,0,.58,1')
+gsap.defaults({
+  ease: "dflt"
+});
 
 const D = document;
 
+svg4everybody();
+
 
 const Headers = {
+  header: D.querySelector('#header'),
   headerHeight: 0,
-  targets: ['.museum','.first-screen','.history-header','.main-screen'],
+  targets: ['.museum','.first-screen','.history-header','.main-screen','.productions-head'],
 
   checkTargets () {
     let res = false;
@@ -292,20 +312,19 @@ const Headers = {
   },
 
   scroll: () => {
-    if (window.scrollY >= this.headerHeight) {
-      return D
-        .querySelector("#header")
-        .classList.remove("header-transparent");
+    if (window.scrollY >= 160) {
+      this.header.classList.remove("header-transparent");
+    } else {
+      this.header.classList.add("header-transparent");
     }
-    D.querySelector("#header").classList.add("header-transparent");
   },
 
   init () {
     D.querySelector(".wrapper").classList.add("no-gutters-top");
     D.querySelector("#header").classList.add("header-transparent");
 
-    Headers.updateHeight();
-    window.addEventListener("resize", this.updateHeight, false);
+    // Headers.updateHeight();
+    // window.addEventListener("resize", this.updateHeight, false);
     window.addEventListener("scroll", this.scroll, false);
   }
 };
@@ -386,6 +405,7 @@ if (Headers.checkTargets()) {
   });
 })();
 
+
 //news-archieve toggler
 (function () {
   const toggler = D.querySelector(".ux-toggler-archieve");
@@ -395,6 +415,12 @@ if (Headers.checkTargets()) {
   toggler.addEventListener("click", function (e) {
     e = event || window.event;
     e.preventDefault();
+    // if (!this.classList.contains('opened')) {
+    //   target.classList.add("opened");
+    //   gsap.fromTo(target,{opacity: 0, height: 0}, {opacity: 1, height: 'auto'})
+    // } else {
+    //   gsap.to(target,{opacity: 0, height: 0, onComplete: () => {target.classList.remove("opened");}})
+    // }
     this.classList.toggle("opened");
     target.classList.toggle("opened");
   });
@@ -426,22 +452,22 @@ function animateFSMenu(action) {
       .fromTo(
         ".fs-menu-productions",
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.45 }
+        { y: 0, opacity: 1, duration: 0.35 }
       )
       .fromTo(
         ".fs-menu-links",
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.45, delay: -0.25 }
+        { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
       )
       .fromTo(
         ".fs-menu-contacts-1",
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.45, delay: -0.25 }
+        { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
       )
       .fromTo(
         ".fs-menu-contacts-2",
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.45, delay: -0.25 }
+        { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
       );
   } else {
     const tlEnd = gsap.timeline({ autoRemoveChildren: true });
@@ -451,14 +477,14 @@ function animateFSMenu(action) {
         y: 50,
         opacity: 0,
         duration: 0.3,
-        delay: -0.15,
+        delay: -0.2,
       })
-      .to(".fs-menu-links", { y: 50, opacity: 0, duration: 0.3, delay: -0.15 })
+      .to(".fs-menu-links", { y: 50, opacity: 0, duration: 0.3, delay: -0.2 })
       .to(".fs-menu-productions", {
         y: 5,
         opacity: 0,
         duration: 0.3,
-        delay: -0.15,
+        delay: -0.2,
       })
       .to(".fs-menu-bg", {
         scale: 1,
@@ -533,7 +559,29 @@ function animateFSsearch(action) {
         }
       }})
   }
-}
+};
+
+
+//закрытие карты сайта и попап новостей по Esc
+document.addEventListener('keydown',(e)=>{
+  if (e.code !== 'Escape') return;
+
+  if (D.querySelector('.fs-menu.opened')) {
+    animateFSMenu('close')
+    D.querySelector('.ux-toggler-menu').classList.remove('opened')
+  }
+
+  if (D.querySelector('.fs-search.opened')) {
+    animateFSsearch('close')
+    D.querySelector('.circle-link-search').classList.remove('opened')
+  }
+
+  if (D.querySelector('.news-popup')) {
+    mainScreenEx.togglePopup()
+  }
+});
+
+
 
 //фиксация шапки
 (function () {
@@ -546,13 +594,11 @@ function animateFSsearch(action) {
     } else if (this.scrollY > 81) {
       target.classList.add("not-fixed");
     }
-    // this.oldScroll > this.scrollY
-    //   ? target.classList.remove('not-fixed')
-    //   : target.classList.add('not-fixed')
 
     this.oldScroll = this.scrollY;
   };
 })();
+
 
 // галлерея
 (function () {
@@ -560,13 +606,33 @@ function animateFSsearch(action) {
   if (!target.length) return;
 
   const getSelectors = (parent,link) => {
-    // const res = []
     parent.querySelectorAll(link).forEach(item => {
       if (!item.closest('.swiper-slide-duplicate')) {
         item.classList.add('ux-not-duplicate')
+      } else {
+        item.classList.add('ux-gallery-link-duplicate')
+        item.classList.remove('ux-gallery-link')
       }
     })
-    // return res
+  }
+
+  const shadowSelectors = (parent) => {
+    const event = new Event('click')
+
+    D.querySelectorAll('.ux-gallery-link-duplicate')
+    .forEach(item => {
+      item.addEventListener('click',(e)  => {
+        e = e || window.event;
+        e.preventDefault();
+        const src = item.querySelector('img').getAttribute('src')
+        
+        const notDuplicate = parent.querySelector(`img[src="${src}"]`).parentElement
+        if (notDuplicate) {
+          notDuplicate.dispatchEvent(event)
+        }
+        
+      })
+    })
   }
 
   FARBA.lazyLibraryLoad(
@@ -588,6 +654,7 @@ function animateFSsearch(action) {
         let selector = 'a.ux-gallery-link'
         if (el.classList.contains('swiper-rewards-wrp')) {
           getSelectors(el,'a.ux-gallery-link')
+          shadowSelectors(el)
           selector = 'a.ux-gallery-link.ux-not-duplicate'
         }
 
@@ -597,6 +664,7 @@ function animateFSsearch(action) {
           backdropDuration: 500,
           speed: 1000
         });
+        
 
         el.addEventListener("onSlideClick",function(){
           window.lgData[el.getAttribute("lg-uid")].goToNextSlide()
@@ -609,6 +677,7 @@ function animateFSsearch(action) {
     }
   );
 })();
+
 
 if (D.querySelector(".ux-share")) {
   FARBA.lazyLibraryLoad("//yastatic.net/share2/share.js", "", null);
@@ -648,15 +717,25 @@ const prdHeadAnimate = () => {
 
   const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
   tl
-    .to({}, {}, 0.5)
-    // .to(head, {zIndex: 2, duration: 0})
-    .to('.productions-head-body', {opacity: 1, duration: 0})
-    .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
-    .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
-    .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.35")
-    .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
-    .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
-    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
+    //tk animation
+    // .to({}, {}, 0.5)
+    // .to('.productions-head-body', {opacity: 1, duration: 0})
+    // .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
+    // .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
+    // .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.35")
+    // .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
+    // .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
+    // .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
+    
+    // .to({}, {}, 0.2)
+    .fromTo('.productions-head-img',{ yPercent: 25, scale: 0.95}, {yPercent: 0, scale: 1, duration: 3})
+    // .to('.productions-head-body', {opacity: 1, duration: 0})
+    .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1}, '-=2')
+    .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, "-=1.7")
+    .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, "-=1.4")
+    .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},"-=1.4")
+    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader},"-=1.4")
+
 }
 
 const firstScreenAnimate = () => {
@@ -706,36 +785,32 @@ window.addEventListener('load',() => {
 })();
 
 
-(function () {
-  const toggler = document.querySelectorAll('.swiper-rewards-wrp')
-  if (!toggler.length) return
+const rewards = document.querySelectorAll('.swiper-rewards-wrp')
+rewards.forEach((el,index) => {
+  const slider = el.querySelector('.swiper-rewards')
+  const prevArrow = el.querySelector('.swiper-button-prev')
+  const nextArrow = el.querySelector('.swiper-button-next')
 
-  toggler.forEach((el,index) => {
-    const slider = el.querySelector('.swiper-rewards')
-    const prevArrow = el.querySelector('.swiper-button-prev')
-    const nextArrow = el.querySelector('.swiper-button-next')
+  const ds = `swiper-reward-${index}`
+  slider.classList.add(ds)
 
-    const ds = `swiper-reward-${index}`
-    slider.classList.add(ds)
-
-    prevArrow.classList.add(`swiper-button-prev-${index}`)
-    nextArrow.classList.add(`swiper-button-next-${index}`)
+  prevArrow.classList.add(`swiper-button-prev-${index}`)
+  nextArrow.classList.add(`swiper-button-next-${index}`)
 
 
-    const swiper = new Swiper(`.${ds}`, {
-      autoHeight: true,
-      loop: true,
-      slidesPerView: 2,
-      spaceBetween: 30,
-      speed: 500,
-      navigation: {
-        nextEl: nextArrow,
-        prevEl: prevArrow,
-      }
-    })
+  const swiper = new Swiper(`.${ds}`, {
+    autoHeight: true,
+    loop: true,
+    grabCursor: true,
+    slidesPerView: 2,
+    spaceBetween: 30,
+    speed: 500,
+    navigation: {
+      nextEl: nextArrow,
+      prevEl: prevArrow,
+    }
   })
-  
-})();
+})
 
 
 //charts
@@ -804,6 +879,13 @@ const mainScreen = () => {
   if (!D.querySelector('#main-screen')) return;
   const slides = D.querySelectorAll('.main-slide').length
 
+  D.querySelectorAll('.main-slide').forEach(item => {
+    const img = item.querySelector('img.main-slide-img')
+    const src = img.getAttribute('src')
+    const pic = new Image()
+    pic.src = src
+  })
+
   return new Vue({
     el: '#main-screen',
     data: {
@@ -818,6 +900,13 @@ const mainScreen = () => {
       line: null,
       timeout: 5
     },
+
+    watch: {
+      index: function(val) {
+        this.animateShadow(val)
+      }
+    },
+
     methods: {
       changeSlide(index) {
         this.index = index
@@ -827,6 +916,14 @@ const mainScreen = () => {
 
         //меняем статус анимации прогрессбара
         this.line.progress(index / this.slides)
+      },
+
+      animateShadow(index) {
+        const shadow = D.querySelector('.main-slides-nav-border')
+        const activeLink = D.querySelectorAll('.main-slides-nav-link')[index]
+        const coords = activeLink.getBoundingClientRect()
+
+        gsap.to(shadow,{width: coords.width, x: coords.x})
       },
 
       initTimer() {
@@ -845,30 +942,50 @@ const mainScreen = () => {
         this.line = gsap.timeline()
         const duration = this.timeout * this.slides
         
-        this.line.to(this.$refs.progress, {width: '100%',duration: duration, ease: 'none'})
+        this.line = gsap.timeline()
+        for (let i = 0; i < this.slides; i++) {
+          this.line.to(this.$refs.progress,
+            {
+              width: () => {
+                const w = (i+1) * (100 / this.slides)
+                return w + '%'
+              },
+              duration: this.timeout,
+              ease: "easeout"
+            }
+          )
+        }
+        // this.line.to(this.$refs.progress, {width: '100%',duration: duration, ease: 'none'})
       },
 
       slideEnter(el,done) {
         const tl = gsap.timeline({ autoRemoveChildren: true })
         tl
-          .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, x: -100},{opacity: 1, x: 0, duration: 0.35})
-          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 15, scale: 0.95}, {opacity: 1, xPercent: 0, scale: 0.95, ease: "expo.out", duration: 0.35},'-=0.35')
-          .to(el.querySelector('.main-slide-img'),{scale: 1, duration: 4.5, ease: "sine.out", onComplete: done})
+          .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, x: -150},{opacity: 1, x: 0, duration: 0.35, delay: 0.1})
+          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 50, yPercent: 5, scale: 0.95}, {opacity: 1, xPercent: 0, yPercent: 5, scale: 0.95, duration: 0.51, ease: "easeout"},'-=0.51')
+          .to(el.querySelector('.main-slide-img'),{scale: 1, duration: 4.5, yPercent: 0, ease: "imgs", delay: 0.15, onComplete: done})
       },
       slideLeave(el,done) {
         const tl = gsap.timeline({ autoRemoveChildren: true })
         tl
-          .to(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: -15, duration: 0.35})
-          .to(el.querySelector('.main-slide-content'),{opacity: 0, x: 100, onComplete: done}, '-=0.35')
+          .to(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: -50, duration: 0.45, ease: "easeout"})
+          .to(el.querySelector('.main-slide-content'),{opacity: 0, x: 150, onComplete: done}, '-=0.45')
       },
 
       popupEnter(el,done) {
         const ww = document.documentElement.clientWidth
         const scale = (ww / 170) * 2.25
+        const news = this.$refs.popupBody.querySelectorAll('.news-item')
+
         const tl = gsap.timeline()
         tl
           .to(this.$refs.popupBg,{scale: scale, duration: 0.45})
-          .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5, onComplete: done})
+          .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3})
+          // .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5, onComplete: done})
+          news.forEach((item,index) => {
+            tl.fromTo(item,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3}, '-=0.15')
+          })
+          tl.to({},{onComlete: done},0);
       },
 
       popupLeave(el,done) {
@@ -904,7 +1021,7 @@ const mainScreen = () => {
         }
 
         tl
-          .fromTo(img, {scale: 0.95}, {scale: 1, duration: 4.5, delay: 0.5})
+          .fromTo(img, {scale: 0.95}, {scale: 1, duration: 4.5, delay: 0.5, ease: 'imgs'})
           .fromTo(content,{opacity: 0, x: -75},{opacity: 1, x: 0, duration: 0.35}, '-=4.5')
           .from(newsLink, {x: 40, opacity: 0, duration: 0.35}, '-=4.5')
           .from(actualLink, {x: 75, opacity: 0, duration: 0.35}, '-=4.25')
@@ -915,35 +1032,66 @@ const mainScreen = () => {
 
     created() {
       window.addEventListener('load',()=>{
+        this.initTimer()
+        this.initProgress()
+        this.animateShadow(0)
+
         this.appearAnimation()
       })
     },
 
     mounted() {
-      this.initTimer()
-      this.initProgress()
+      
+
+      window.addEventListener('resize', ()=>{
+        this.animateShadow(this.index)
+      }, false)
     }
   })
 }
-mainScreen()
+const mainScreenEx = mainScreen()
 
 
 const mainActivities = () => {
   if (!D.querySelector('#main-activities')) return;
 
+  D.querySelectorAll('.main-activities-img img').forEach(item => {
+    const img = new Image();
+    img.src = item.getAttribute('src')
+  })
+
   return new Vue({
     el: '#main-activities',
     data: {
-      index: 0
+      index: 0,
+      appearHeight: 0
     },
+
     methods: {
       changeTab(index) {
         this.index = index
       },
 
+      getPaddings() {
+        const computedStyle = getComputedStyle(D.querySelector('#main-activities'));
+        const paddings = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
+        return paddings
+      },
+
+      easeHeight() {
+        const h = D.querySelector('#main-activities .container').clientHeight
+        const paddings = this.getPaddings()
+
+        gsap.fromTo('#main-activities',{height: this.appearHeight},{height: h+paddings, onComplete: ()=>{
+          this.appearHeight = h+paddings
+        }})
+      },
+
+
       descrEnter(el,done) {
         gsap.fromTo(el,{opacity: 0, y: 25},{opacity: 1, y: 0, duration: 0.49, delay: 0.2, onComplete: done})
       },
+
       descrLeave(el,done) {
         gsap.to(el,{opacity: 0, y: 25, duration: 0.25, onComplete: done})
       },
@@ -953,7 +1101,10 @@ const mainActivities = () => {
         const img = el.querySelector('.main-activities-img')
         const sight = el.querySelector('.main-activities-sights')
         const tl = gsap.timeline()
-        tl.fromTo(img,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5})
+        tl
+          .fromTo(img,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5, onStart: () => {
+            this.easeHeight()
+        }})
           .fromTo(sight,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5, onComplete: done}, '-=0.5')
       },
       tabLeave(el,done) {
@@ -983,11 +1134,30 @@ const mainActivities = () => {
           .from('.main-activities-sights',{opacity: 0, y: 50, duration: 0.5}, '>-0.15')
           .from('.main-activities-nav',{opacity: 0, y: 50, duration: 0.5})
           .from('.main-activities-descrs',{opacity: 0, y: 30, duration: 0.5},'-=0.2')
+      },
+
+      setHeight() {
+        const h = D.querySelector('#main-activities .container').clientHeight
+        const paddings = this.getPaddings()
+        this.appearHeight = h + paddings
+        D.querySelector('#main-activities').style.height = this.appearHeight + 'px'
       }
     },
 
     mounted() {
       this.scrollAnim()
+
+      //Устанавливаем начальную высоту
+      // const h = D.querySelector('#main-activities .container').clientHeight
+      // const paddings = this.getPaddings()
+      // this.appearHeight = h + paddings
+      // D.querySelector('#main-activities').style.height = this.appearHeight + 'px'
+      this.setHeight()
+
+      window.addEventListener('resize', this.setHeight, false)
+
+
+      window.addEventListener('load', this.setHeight, false)
     }
   })
 }
@@ -997,32 +1167,78 @@ mainActivities()
 const mainEntrs = () => {
   if (!D.querySelector('#main-entrs')) return;
 
-  console.log('#main-entrs')
+  D.querySelectorAll('.main-entrs-imgs img').forEach(item => {
+    const img = new Image();
+    img.src = item.getAttribute('src')
+  })
 
   return new Vue({
     el: '#main-entrs',
     data: {
-      index: 0
+      index: 0,
+      appearHeight: 0
     },
+
+    watch: {
+      index: function(val) {
+        this.animateShadow(val)
+      }
+    },
+
     methods: {
       changeSlide(index) {
         this.index = index
       },
 
+      animateShadow(index) {
+        const shadow = D.querySelector('.main-entrs-nav-border')
+        const activeLink = D.querySelectorAll('.main-entrs-nav-link')[index]
+        const coords = activeLink.getBoundingClientRect()
+        const ww = D.documentElement.clientWidth
+        const cw = D.querySelector('.container').clientWidth
+        const rw = (ww - cw) / 2
+
+        gsap.to(shadow,{width: coords.width, height: coords.height, x: coords.x - rw - 30})
+      },
+
+      getPaddings() {
+        const computedStyle = getComputedStyle(D.querySelector('#main-entrs'));
+        const paddings = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
+        return paddings
+      },
+
+      easeHeight() {
+        const h = D.querySelector('.main-entrs-slide').clientHeight
+        // const computedStyle = getComputedStyle(D.querySelector('#main-entrs'));
+        // const paddings = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
+
+        const paddings = this.getPaddings()
+
+        gsap.fromTo('#main-entrs',{height: this.appearHeight},{height: h+paddings, onComplete: ()=>{
+          this.appearHeight = h+paddings
+        }})
+      },
+
       titleEnter(el,done) {
-        gsap.fromTo(el,{opacity: 0, x: -50},{opacity: 1, x: 0, duration: 0.3, onComplete: done})
+        gsap.fromTo(el,{opacity: 0, x: -50},{opacity: 1, x: 0, duration: 0.3, delay: -0.05, onComplete: done})
       },
 
       titleLeave(el, done) {
-        gsap.to(el,{opacity: 0, x: 50, duration: 0.4, onComplete: done})
+        gsap.to(el,{opacity: 0, x: 50, duration: 0.3, onComplete: done})
       },
 
       bodyEnter(el,done) {
-        gsap.fromTo(el,{opacity: 0, x: -25},{opacity: 1, x: 0, duration: 0.4, onComplete: done})
+        gsap.fromTo(el,{opacity: 0, x: -25},{
+          opacity: 1, x: 0, duration: 0.4, delay: -0.05,
+          onStart: () => {
+            this.easeHeight()
+          },
+          onComplete: done
+        })
       },
 
       bodyLeave(el,done) {
-        gsap.to(el,{opacity: 0, x: 25, duration: 0.58, onComplete: done})
+        gsap.to(el,{opacity: 0, x: 25, duration: 0.3, onComplete: done})
       },
 
       imgEnter(el,done) {
@@ -1030,12 +1246,12 @@ const mainEntrs = () => {
         const btn = el.querySelector('.ui-btn-circle')
         const tl = gsap.timeline()
 
-        tl.fromTo(img,{opacity: 0, x: 50},{opacity: 1, x: 0, duration:0.8})
-          .fromTo(btn,{opacity: 0, x: 30},{opacity: 1, x: 0, duration: 0.4}, '-=0.3')
+        tl.fromTo(img,{opacity: 0, x: 50},{opacity: 1, x: 0, duration:0.5, delay: -0.1})
+          .fromTo(btn,{opacity: 0, x: 30},{opacity: 1, x: 0, duration: 0.4, onComlete: done}, '-=0.35')
       },
 
       imgLeave(el, done) {
-        gsap.to(el,{opacity: 0, x: 50, duration: 0.5, onComplete: done})
+        gsap.to(el,{opacity: 0, x: 50, duration: 0.3, onComplete: done})
       },
 
       scrollAnim() {
@@ -1067,6 +1283,28 @@ const mainEntrs = () => {
 
     mounted() {
       this.scrollAnim()
+      this.animateShadow(0)
+
+      //Устанавливаем начальную высоту
+      this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+      D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+
+      window.addEventListener('resize', ()=>{
+        this.animateShadow(this.index)
+        
+        // this.appearHeight = D.querySelector('#main-entrs').clientHeight
+        // D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+      }, false)
+
+
+      window.addEventListener('load', ()=>{
+        this.animateShadow(this.index)
+        
+        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+      }, false)
     }
   })
 }
@@ -1113,93 +1351,97 @@ function animateEnterprises() {
     .from('.history-header-btn',{opacity: 0, y: 30, duration: 0.6},'>-0.6');
 
 
-  const duration = 0.8
-  D.querySelectorAll('.enterprises-block, .enterprises-contact, .node-related').forEach((item,index)=> {
-    const title = item.querySelector('.ui-subtitle') || item.querySelector('.ui-side-title')
-    const wide = item.querySelector('.col-layout-wide')
-    const thin = item.querySelector('.col-layout-thin')
+  // const duration = 0.8
+  // D.querySelectorAll('.enterprises-block, .enterprises-contact, .node-related').forEach((item,index)=> {
+  //   const title = item.querySelector('.ui-subtitle') || item.querySelector('.ui-side-title')
+  //   const wide = item.querySelector('.col-layout-wide')
+  //   const thin = item.querySelector('.col-layout-thin')
 
-    if (title) {
-      ScrollTrigger.create({
-        trigger: title,
-        onEnter: function() {
-          animateFrom(title)
-        }
-      });
-    }
+  //   if (title) {
+  //     ScrollTrigger.create({
+  //       trigger: title,
+  //       onEnter: function() {
+  //         animateFrom(title)
+  //       }
+  //     });
+  //   }
     
-    if (thin && thin.childNodes.length) {
-      ScrollTrigger.create({
-        trigger: thin,
-        onEnter: function() {
-          animateFrom(thin, 0.2)
-        }
-      });
-    }
+  //   if (thin && thin.childNodes.length) {
+  //     ScrollTrigger.create({
+  //       trigger: thin,
+  //       onEnter: function() {
+  //         animateFrom(thin, 0.2)
+  //       }
+  //     });
+  //   }
     
-    if (wide) {
-      ScrollTrigger.create({
-        trigger: wide,
-        onEnter: function() {
-          animateFrom(wide,0.4)
-        }
-      });
-    }
+  //   if (wide) {
+  //     ScrollTrigger.create({
+  //       trigger: wide,
+  //       onEnter: function() {
+  //         animateFrom(wide,0.4)
+  //       }
+  //     });
+  //   }
     
 
-    function animateFrom (elem,delay = 0) {
-      gsap.fromTo(elem, 
-        {y: 50, opacity: 0},
-        {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
-      )
-    }
-  })
+  //   function animateFrom (elem,delay = 0) {
+  //     gsap.fromTo(elem, 
+  //       {y: 50, opacity: 0},
+  //       {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+  //     )
+  //   }
+  // })
 }
 
 
 //анимируем блоки на лендингах продукции
 function animateProductions() {
-  const duration = 0.8
+  // const duration = 0.8
 
-  D.querySelectorAll('.productions-block:not(.productions-block-mk), .node-related').forEach((item,index)=> {
-    const title = item.querySelector('.ui-side-title')
-    const wide = item.querySelector('.col-layout-wide')
-    const thin = item.querySelector('.col-layout-thin')
+  // D.querySelectorAll('.productions-block:not(.productions-block-mk), .node-related').forEach((item,index)=> {
+  //   const title = item.querySelector('.ui-side-title')
+  //   const wide = item.querySelector('.col-layout-wide')
+  //   const thin = item.querySelector('.col-layout-thin')
 
-    if (title) {
-      ScrollTrigger.create({
-        trigger: title,
-        onEnter: function() {
-          animateFrom(title)
-        }
-      });
-    }
+  //   if (title) {
+  //     ScrollTrigger.create({
+  //       trigger: title,
+  //       onEnter: function() {
+  //         animateFrom(title)
+  //       }
+  //     });
+  //   }
     
-    if (thin && thin.childNodes.length) {
-      ScrollTrigger.create({
-        trigger: thin,
-        onEnter: function() {
-          animateFrom(thin, 0.2)
-        }
-      });
-    }
+  //   if (thin && thin.childNodes.length) {
+  //     ScrollTrigger.create({
+  //       trigger: thin,
+  //       onEnter: function() {
+  //         animateFrom(thin, 0.2)
+  //       }
+  //     });
+  //   }
     
-    if (wide) {
-      ScrollTrigger.create({
-        trigger: wide,
-        onEnter: function() {
-          animateFrom(wide,0.4)
-        }
-      });
-    }
-  })
+  //   if (wide) {
+  //     ScrollTrigger.create({
+  //       trigger: wide,
+  //       onEnter: function() {
+  //         animateFrom(wide,0.4)
+  //       }
+  //     });
+  //   }
+  // })
 
-  function animateFrom (elem,delay = 0) {
-    gsap.fromTo(elem, 
-      {y: 50, opacity: 0},
-      {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
-    )
-  }
+  // function animateFrom (elem,delay = 0) {
+  //   gsap.fromTo(elem, 
+  //     {y: 50, opacity: 0},
+  //     {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+  //   )
+  // }
+}
+
+if (D.querySelector('.productions-tk-stock-row')) {
+  D.querySelector('.productions-tk-stock-row').closest('.productions-block').classList.add('productions-tk-stock')
 }
 
 
@@ -1207,56 +1449,79 @@ function animateProductions() {
 function animateProductionsNoTk() {
   if (!D.querySelector('.productions-block-mk')) return
 
-  ScrollTrigger.create({
-    trigger: '.productions-block-mk',
-    start: 'top 90%',
-    end: "+=100%",
-    scrub: 1,
-    onUpdate: (self) => {
-      mkToUp(self.progress)
-    },
-    onEnter: () => {
-      gsap.to(window, {duration: 1, scrollTo:{y: document.documentElement.clientHeight}});
-    }
-  });
-
-  function mkToUp(progress) {
-    const h = document.documentElement.clientHeight
-    gsap.set('.productions-head',{y: progress * h * 0.85})
-  }
-  
-
-  const duration = 0.8
-  if (D.querySelector('.productions-block-mk')) {
+  const h = document.documentElement.clientHeight
+  if (window.scrollY < h) {
     ScrollTrigger.create({
-      trigger: '.productions-block-mk .ui-side-title',
-      onEnter: function() {
-        animateFrom('.productions-block-mk .ui-side-title', 0.8)
-      }
-    });
-  
-  
-    ScrollTrigger.create({
-      trigger: '.productions-mk-descr',
-      onEnter: function() {
-        animateFrom('.productions-mk-descr', 0.8)
-      }
-    });
-  
-    ScrollTrigger.create({
-      trigger: '.productions-mk-for',
-      onEnter: function() {
-        animateFrom('.productions-mk-for', 0.5)
+      trigger: '.productions-block-mk',
+      start: 'top 95%',
+      end: "+=100%",
+      scrub: true,
+      onUpdate: (self) => {
+        parallaxBlock('.productions-head',self.progress, h)
+      },
+      onEnter: () => {
+        gsap.to(window, {duration: 1, scrollTo:{y: h}});
+      },
+      onEnterBack: () => {
+        gsap.to(window, {duration: 1, scrollTo:{y: 0}});
       }
     });
   }
 
-  function animateFrom (elem,delay = 0) {
-    gsap.fromTo(elem, 
-      {y: 50, opacity: 0},
-      {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
-    )
+  // ScrollTrigger.create({
+  //   trigger: '.productions-tk-stock',
+  //   start: 'top 95%',
+  //   end: "+=100%",
+  //   scrub: 1,
+  //   markers: true,
+  //   onUpdate: (self) => {
+  //     parallaxBlock('.productions-block-mk', self.progress, h)
+  //   },
+  //   onEnter: () => {
+  //     gsap.to(window, {duration: 1, scrollTo:{y: window.scrollY + h}});
+  //   },
+  //   onEnterBack: () => {
+  //     const top = D.querySelector('.productions-tk-stock').offsetTop - h
+  //     gsap.to(window, {duration: 1, scrollTo:{y: top}});
+  //   }
+  // });
+
+
+  function parallaxBlock(selector,progress,h) {
+    gsap.set(selector,{y: progress * h * 0.75})
   }
+
+
+  // const duration = 0.8
+  // ScrollTrigger.create({
+  //   trigger: '.productions-block-mk .ui-side-title',
+  //   onEnter: function() {
+  //     animateFrom('.productions-block-mk .ui-side-title')
+  //   }
+  // });
+
+
+  // ScrollTrigger.create({
+  //   trigger: '.productions-mk-descr',
+  //   onEnter: function() {
+  //     animateFrom('.productions-mk-descr')
+  //   }
+  // });
+
+  // ScrollTrigger.create({
+  //   trigger: '.productions-mk-for',
+  //   onEnter: function() {
+  //     animateFrom('.productions-mk-for', 0.5)
+  //   }
+  // });
+  
+
+  // function animateFrom (elem,delay = 0) {
+  //   gsap.fromTo(elem, 
+  //     {y: 50, opacity: 0},
+  //     {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
+  //   )
+  // }
 }
 
 
@@ -1331,26 +1596,29 @@ function animateProductionsTk() {
     mounted() {
       ScrollTrigger.create({
         trigger: '.productions-screen',
-        start: 'top 90%',
+        start: 'top 95%',
         end: "+=100%",
+        // markers: true,
+        scrub: true,
         onEnter: () => {
           gsap.to(window, {duration: 1, scrollTo:{y: document.documentElement.clientHeight}});
+          this.playPause(0)
+        },
+        onEnterBack: () => {
+          gsap.to(window, {duration: 1, scrollTo:{y: 0}});
         }
       })
 
       ScrollTrigger.create({
         trigger: '.productions-screens',
         pin: true,
-        // end: `+=${100*screen.length}%`,
-        end: `+=${400*screen.length}`,
+        end: `+=${450*screen.length}`,
+        scrub: true,
         onUpdate: (self) => {
-          // const time = (this.vd * self.progress).toFixed(5)
-          // console.log(time,this.vd)
-          // this.$refs.video.currentTime = time
           this.getIndex(screen.length, self.progress)
         },
-        onEnter: () => {
-          this.playPause(0)
+        onEnterBack: () => {
+          this.playPause(screen.length - 1)
         }
       })
 
@@ -1363,12 +1631,16 @@ function animateProductionsTk() {
         },
         onEnter: () => {
           gsap.to(window, {duration: 1, scrollTo:{y: window.scrollY + document.documentElement.clientHeight}});
+        },
+        onEnterBack: () => {
+          const top = D.querySelector('.productions-tk-stock').offsetTop - document.documentElement.clientHeight
+          gsap.to(window, {duration: 1, scrollTo:{y: top}});
         }
       });
     
       function mkToUp(progress) {
         const h = document.documentElement.clientHeight
-        gsap.set('.productions-screen',{y: progress * h * 0.85})
+        gsap.set('.productions-screen',{y: progress * h * 0.75})
       }
     }
   })
@@ -1380,11 +1652,13 @@ function animateCompany() {
   if (!D.querySelector('.company-pos')) return
 
   const cpTL = gsap.timeline()
-  cpTL.from('.company-pos-top-num',{opacity: 0, xPercent: -50, duration: 0.5})
-      .from('.company-pos-top-subtitle',{opacity: 0, xPercent: -50, duration: 0.7}, '-=0.4');
+  cpTL
+    .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.61})
+    .from('.company-pos-top-subtitle',{opacity: 0, y: -40, duration: 0.34}, '-=0.27');
+
   ScrollTrigger.create({
     trigger: '.company-pos-top',
-    start: 'top 60%',
+    start: 'top 40%',
     animation: cpTL
   });
 
@@ -1402,8 +1676,8 @@ function animateCompany() {
   gsap.utils.toArray('.company-purpose-item').forEach((item)=>{
     const tl = gsap.timeline()
     tl
-      .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, xPercent: -50, duration: 0.6})
-      .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -50, duration: 0.8},'-=0.4')
+      .from(item.querySelector('.company-purpose-item-title'),{y: -20, duration: 0.6})
+      .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -50, duration: 0.8},'-=0.3')
     
     ScrollTrigger.create({
       trigger: item,
@@ -1424,15 +1698,16 @@ function animateCompany() {
 
 
 window.addEventListener('load',()=>{
-  animArrayTrigger(
-    [
-      '.main-partner .main-block-title',
-      '.main-partner-descr',
-      '.main-partner-item',
-      '.node-related .main-block-title',
-      '.news-list'
-    ],
-    0.8);
+
+  // animArrayTrigger(
+  //   [
+  //     '.main-partner .main-block-title',
+  //     '.main-partner-descr',
+  //     '.main-partner-item',
+  //     '.node-related .main-block-title',
+  //     '.news-list'
+  //   ],
+  //   0.8);
 
   animateEnterprises()
   animateProductions()
@@ -1440,15 +1715,302 @@ window.addEventListener('load',()=>{
 
   animateCompany()
 
-  animArrayTrigger(
-    [
-      '.company-acs .ui-side-title',
-      '.company-acs .col-layout-wide',
-      '.company-chart .ui-side-title',
-      '.company-chart .ui-chart-block',
-      '.company-fs .ui-side-title',
-      '.company-fs .col-layout-wide'
-    ],
-    0.8
-  );
+  // animArrayTrigger(
+  //   [
+  //     '.company-acs .ui-side-title',
+  //     '.company-acs .col-layout-wide',
+  //     '.company-chart .ui-side-title',
+  //     '.company-chart .ui-chart-block',
+  //     '.company-fs .ui-side-title',
+  //     '.company-fs .col-layout-wide'
+  //   ],
+  //   0.8
+  // );
+});
+
+
+
+//node slider
+(function () {
+  const toggler = document.querySelectorAll(".node-slider");
+  if (!toggler.length) return;
+
+  toggler.forEach((el, index) => {
+    const slider = el.querySelector(".ui-swiper");
+    const prevArrow = el.querySelector(".swiper-button-prev");
+    const nextArrow = el.querySelector(".swiper-button-next");
+
+    const ds = `ui-swiper-${index}`;
+    slider.classList.add(ds);
+
+    prevArrow.classList.add(`swiper-button-prev-${index}`);
+    nextArrow.classList.add(`swiper-button-next-${index}`);
+
+    const swiper = new Swiper(`.${ds}`, {
+      autoHeight: true,
+      loop: true,
+      speed: 1000,
+      pagination: {
+        el: ".swiper-pagination",
+        type: "custom",
+        renderCustom: function (swiper, current, total) {
+          return current + " из " + total;
+        },
+      },
+      navigation: {
+        nextEl: nextArrow,
+        prevEl: prevArrow,
+      },
+      effect: "creative",
+      creativeEffect: {
+        perspective: true,
+        prev: {
+          translate: ["-25%", 0, -1],
+          // rotate: [0,0,3]
+        },
+        next: {
+          translate: ["100%", 0, 0],
+          // rotate: [0,0,0]
+        },
+      },
+    });
+
+    slider.querySelectorAll('.ui-swiper-slide-img').forEach(item => {
+      item.addEventListener('click',() => {
+        let event = new Event("click")
+        nextArrow.dispatchEvent(event)
+      })
+    })
+  });
+})();
+
+
+// Enterprises.html Слайдер для дипломов
+const entSwiper = new Swiper(".enterprises-swipper", {
+  loop: true,
+  slidesPerView: 2,
+  autoHeight: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+
+
+const btnTitle = document.querySelectorAll(".contacts-tab-toggle");
+const btnContant = document.querySelectorAll(".contacts-tab-contant");
+
+for (var i = 0; i < btnTitle.length; i++) {
+  btnTitle[i].addEventListener("click", funOpen);
+
+  function funOpen(e) {
+    for (let i = 0; i < btnTitle.length; i++) {
+      btnTitle[i].classList.remove("contacts-tab-toggle-active");
+      gsap.to(btnContant[i],{height: 0,duration: 0.4,onComplete: ()=> {
+        btnContant[i].classList.remove("contacts-tab-contant-active")
+      }})
+
+      if (btnTitle[i] == e.currentTarget) {
+        btnTitle[i].classList.add('contacts-tab-toggle-active');
+        setTimeout(()=>{
+          btnContant[i].classList.add("contacts-tab-contant-active");
+          gsap.fromTo(btnContant[i],{height: 0},{height: 'auto',duration: 0.4})
+        },430)
+      }
+    }
+  }
+}
+if (document.querySelector('.contacts-tab-toggle')) {
+  let event = new Event("click")
+  document.querySelector('.contacts-tab-toggle').dispatchEvent(event)
+}
+
+if (document.querySelector('.contacts') && document.querySelector('.page-buttons')) {
+  document.querySelector('.page-buttons').classList.add('page-buttons-contacts')
+  document.querySelector('.contacts').closest('.row').classList.add('contacts-row')
+}
+
+
+//карта для контактов
+function initYandexMap() {
+  let myOptions = {
+    center: [55.63393951216643, 37.44033897875346],
+    zoom: 12,
+  };
+
+  let zoomUp = document.querySelector(".map-zoom-up");
+  let zoomIn = document.querySelector(".map-zoom-in");
+
+  zoomUp.addEventListener("click", function () {
+    map.setZoom(myOptions.zoom - 1, { duration: 300 });
+    myOptions.zoom -= 1;
+  });
+  zoomIn.addEventListener("click", function () {
+    map.setZoom(myOptions.zoom + 1, { duration: 300 });
+    myOptions.zoom += 1;
+  });
+
+  let map = new ymaps.Map("contacts-map", myOptions);
+
+  function open() {
+    let fullscreenControl = new ymaps.control.FullscreenControl();
+    map.controls.add(fullscreenControl);
+    fullscreenControl.enterFullscreen();
+  }
+  
+  var fullscreenControl = new ymaps.control.FullscreenControl();
+  map.controls.add(fullscreenControl);
+  let isFull = false;
+  let fullScrean = document.querySelector(".map-subtract");
+
+  fullScrean.addEventListener("click", function () {
+    isFull = !isFull;
+    if (isFull == false) {
+      fullscreenControl.exitFullscreen();
+      document.querySelectorAll(".map-control").forEach(el => el.classList.remove("map-fullscreen"))
+    } else {
+      fullscreenControl.enterFullscreen();
+      document.querySelectorAll(".map-control").forEach(el => el.classList.add("map-fullscreen"))
+    }
+  });
+
+  const links = document.querySelectorAll(".ux-map-to");
+
+
+  for (i = 0; i < links.length; ++i) {
+    let lat = links[i].dataset.coordinates.split(',')[0]
+    let lng = links[i].dataset.coordinates.split(',')[1]
+
+    let place = new ymaps.Placemark(
+      [lat,lng],
+      {},
+      {
+        iconLayout: "default#image",
+        iconImageHref: "images/svg/map-market.svg",
+        iconImageSize: [41, 53],
+      }
+    );
+    map.geoObjects.add(place);
+  }
+
+  
+  links.forEach((element) => {
+    element.addEventListener("click", function () {
+      cordsStr = element.dataset.coordinates;
+      num1 = Number(cordsStr.split(",")[0]);
+      num2 = Number(cordsStr.split(",")[1]);
+
+      map.panTo([num1, num2], { flying: true, duration: 1500 });
+    });
+  });
+}
+
+if (document.querySelector('.contacts-map')) {
+  FARBA.lazyLibraryLoad("//api-maps.yandex.ru/2.1/?lang=ru_RU", "", () => {
+    ymaps.ready(initYandexMap);
+  });
+}
+
+
+if (document.querySelector('.scientific-cardboard-img')) {
+  let html = document.querySelector('.scientific-cardboard-img').innerHTML
+  document.querySelector('.scientific-cardboard-img').insertAdjacentHTML('beforeend',html)
+  document.querySelectorAll('.scientific-cardboard-img img')[1].classList.add('scientific-cardboard-shadow')
+}
+
+
+
+
+// preloader
+function prloader() {
+  const preloader = document.querySelector('.preloader');
+  if (!preloader) return;
+  preloader.classList.add('loaded');
+  setTimeout(()=>{
+    preloader.remove()
+  },601)
+}
+
+setTimeout(()=>{prloader()},30000)
+window.addEventListener('load', prloader);
+
+
+// popup cookie
+(function (){
+  const popUp = document.getElementById("popup-cookie");
+  const btnAcceptCookie = document.getElementById("popup-cookie-accept");
+  if (!popUp || !btnAcceptCookie) return;
+
+
+  btnAcceptCookie.addEventListener("click", () => {
+    localStorage.setItem('cookiePopup','y')
+  
+    popUp.classList.add("confirmed");
+    setTimeout(()=>{
+      popUp.remove()
+    },401);
+  });
+
+  if (localStorage.getItem('cookiePopup') && localStorage.getItem('cookiePopup') === 'y') {
+    popUp.remove()
+  }
+})();
+
+
+if (document.querySelector(".page-error")) {
+  document.querySelector("#footer").classList.add("ui-hidden");
+}
+
+
+;(function(){
+  if (!D.querySelector('.swiper')) return
+
+  const bg = D.querySelectorAll('[class*="ui-bg-light"]')
+  bg.forEach(el => {
+    const btns = el.querySelectorAll('.swiper-button-white')
+    btns.forEach(item => item.classList.remove('swiper-button-white'))
+  })
+})();
+
+
+const toFlyAnim = `
+  .ui-side-title,
+  .ui-subtitle,
+  .col-layout-thin:not(:empty),
+  .col-layout-wide,
+  .gallery-title,
+  .gallery-img,
+  .news-item,
+  .to-all-news,
+  .analytics-item,
+  .docs-card,
+  .page-title,
+  .node-title,
+  .publication-preview,
+  .publication-item,
+  .productions-mk-descr,
+  .productions-mk-for`;
+D.querySelectorAll(toFlyAnim).forEach(el => el.classList.add('anim-fly'));
+
+window.addEventListener('scroll',() => {
+  const h = document.documentElement.clientHeight
+  D.querySelectorAll('.anim-fly').forEach(el => {
+    if (el.getBoundingClientRect().top + window.pageYOffset - h * 0.85 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - h) * 0.95) {
+      el.classList.add('visible')
+    } else {
+      el.classList.remove('visible')
+    }
+  })
+})
+
+window.addEventListener('load',() => {
+  const h = document.documentElement.clientHeight
+  D.querySelectorAll('.anim-fly').forEach(el => {
+    if (el.getBoundingClientRect().top + window.pageYOffset - h * 0.85 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - h) * 0.95) {
+      el.classList.add('visible')
+    } else {
+      el.classList.remove('visible')
+    }
+  })
 })

@@ -7,11 +7,11 @@
   margin-bottom: 80px;
   flex: 0 0 25.5%;
   max-width: 25.5%;
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     flex: 0 0 40%;
     max-width: 40%;
   }
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -53,7 +53,7 @@
 }
 .museum-hide {
   display: none;
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     display: inline-block;
   }
 }
@@ -112,7 +112,7 @@
   max-width: 74.88%;
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1259px) {
   .col-musl-11 {
     flex: 0 0 45.76%;
     max-width: 45.76%;
@@ -130,13 +130,13 @@
     @include fz(54);
     line-height: 1.1;
     margin-bottom: 80px;
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       @include fz(42);
     }
   }
   &-text {
     max-width: 400px;
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       @include fz(18);
       margin-bottom: 32px;
     }
@@ -156,7 +156,7 @@
     line-height: 100px;
     margin-bottom: 32px;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       @include fz(120);
     }
     &-visitors {
@@ -165,7 +165,7 @@
       line-height: 1.35;
       padding-top: 18px;
 
-      @media (max-width: 1440px) {
+      @media (max-width: 1439px) {
         @include fz(24);
       }
     }
@@ -173,11 +173,6 @@
   &-img {
     margin-right: -50px;
     width: 950px;
-    // margin-right: -87px;
-    // height: 650px;
-    // margin-right: -100px;
-    // margin-left: 100px;
-    // background-image: url(../images/museum-circle.png);
 
     @media (max-width: 1700px) {
       transform: translate(10%,0);
@@ -195,11 +190,11 @@
 }
 .museum-circle-col {
   display: none;
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     display: inline-block;
   }
 }
-@media (max-width: 1260px) {
+@media (max-width: 1259px) {
   .museum-circle-hide {
     display: none;
   }
@@ -217,12 +212,6 @@
     margin: 0;
     margin-right: 20px;
     background-image: url(../images/svg/slider-arrow-right_orange.svg);
-  }
-  .swiper-button-prev,
-  .swiper-button-next {
-    &:hover {
-      background-color: rgba($primary,.1);
-    }
   }
 }
 .museum-history {
@@ -249,7 +238,7 @@
     padding-right: 15%;
     padding-left: 50px;
     max-width: 75.177%;
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       padding-right: 0;
     }
   }
@@ -306,7 +295,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     @include fz(18);
 
     &-title {
@@ -345,7 +334,7 @@
   &-body {
     padding-right: 15%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       padding-right: 5%;
     }
   }
@@ -386,7 +375,7 @@
   &-txt {
     @include fz(28);
     margin-bottom: 16px;
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       @include fz(24);
     }
   }
@@ -395,14 +384,14 @@
     font-weight: 700;
     color: $primary;
     margin-bottom: 8px;
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       @include fz(24);
     }
   }
   &-info {
     @include fz(18);
     color: $primary;
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       @include fz(14);
     }
   }
@@ -411,7 +400,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     @include fz(18);
 
     &-title {
@@ -441,28 +430,17 @@
     @include fz(18);
     color: $primary;
 
-    // @media (max-width: 1440px) {
+    // @media (max-width: 1439px) {
     //   @include fz(14);
     // }
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     @include fz(24);
 
     &-position {
       @include fz(14);
     }
-  }
-}
-
-.museum-circle-circle {
-  height: 170px;
-  width: 170px;
-  border-radius: 170px;
-  gap: 8px;
-  @media (max-width: 1260px) {
-    height: 130px;
-    width: 130px;
   }
 }
 

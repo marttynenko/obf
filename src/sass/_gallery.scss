@@ -6,7 +6,7 @@
     margin-bottom: 0;
   }
   &-pgn {
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       margin-bottom: 40px;
     }
   }
@@ -17,11 +17,11 @@
     font-weight: 600;
     margin-bottom: 80px;
     max-width: 1100px;
-    @media (max-width: 1440px) {
+    @media (max-width: 1439px) {
       @include fz(42);
       max-width: 755px;
     }
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       max-width: 50%;
     }
   }

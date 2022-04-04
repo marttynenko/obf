@@ -19,7 +19,7 @@
     line-height: 1.35;
     color: $primary;
     margin-bottom: 32px;
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       @include fz(24);
     }
   }
@@ -27,7 +27,7 @@
     @include fz(54);
     line-height: 1.1;
     margin-bottom: 32px;
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       @include fz(42);
     }
   }
@@ -37,7 +37,7 @@
     justify-content: space-between;
     color: #ffffff;
     @include fz(28);
-    @media (max-width: 1260px) {
+    @media (max-width: 1259px) {
       @include fz(24);
     }
   }
@@ -138,7 +138,7 @@
     // }
   }
 
-  @media (max-width: 1260px) {
+  @media (max-width: 1259px) {
     @include fz(24);
   }
 }

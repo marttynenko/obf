@@ -145,6 +145,7 @@
     position: absolute;
     bottom: 50px;
     left: -180px;
+    font-size: 0;
 
     @media (max-width: 1240px) {
       bottom: 0;
@@ -202,7 +203,7 @@
 .swiper-button-next,
 .swiper-button-prev {
   display: inline-block;
-  position: static;
+  // position: static;
   vertical-align: middle;
   margin-top: 0;
   margin: 0 6px;
@@ -212,16 +213,17 @@
   display: none;
 }
 .swiper-button-prev {
-  width: 64px;
-  height: 64px;
   background-image: url(../images/svg/slider-arrow-prev.svg);
 }
 .swiper-button-next {
-  width: 64px;
-  height: 64px;
   background-image: url(../images/svg/slider-arrow-next.svg);
-  left: 85px;
 }
+// .node-slider-btns {
+//   .swiper-button-next {
+//     left: 85px;
+//   }
+// }
+
 
 .to-all-news {
   padding-right: 10%;

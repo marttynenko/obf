@@ -7,24 +7,24 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	background: $bgc;
+	background-color: $bgc;
 	// background: #000;
 	transition: transform .4s, background-color .3s;
 	will-change: transform;
 
 	&-transparent {
-		background: transparent;
+		background: transparent !important;
 	}
 
 	&.not-fixed {
 		// position: absolute;
 		transform: translate3d(0px,-80px,0px);
-		transition: transform .5s;
 	}
 	&.fs-opened {
 		position: fixed;
 		transform: translate3d(0px,0px,0px);
 		z-index: 999;
+		transition: none !important;
 		background: transparent !important;
 
 		.main-menu {
@@ -163,10 +163,6 @@ a.logo {
 		}
 	}
 
-	li ul {
-		white-space: normal;
-	}
-
 	&-sub {
 		white-space: normal;
 		background: $bg_dark;
@@ -178,11 +174,11 @@ a.logo {
 		top: 100%;
 		margin-top: 55px;
 		left: -35px;
-		width: max-content;
-		max-width: 310px;
+		width: auto;
+		white-space: nowrap;
 		opacity: 0;
 		visibility: hidden;
-		transform: translate(0px, 10px);
+		transform: translate(0px, -10px);
 		transition: visibility .3s, opacity .3s, transform .3s;
 
 		&:before {
@@ -199,10 +195,9 @@ a.logo {
 
 		li {
 			opacity: 0;
-			transform: translate3d(0px, 7px, 0px);
+			transform: translate3d(0px, -7px, 0px);
 			will-change: transform;
 			margin-bottom: 10px;
-			
 		}
 
 		&.opened {
@@ -217,7 +212,7 @@ a.logo {
 
 				@for $i from 2 through 10 {
 					&:nth-of-type(#{$i}) {
-						transition-delay: (.09s * ($i - 1));
+						transition-delay: (.08s * ($i - 1));
 					}
 				}
 			}
@@ -391,18 +386,24 @@ a.logo {
 	}
 }
 
-.header-colored:not(.fs-search-opened) {
+.header-colored:not(.fs-opened) {
 	.main-menu {
 		a {
 			&:hover {
-				color: rgba(#FFF,.75);
+				color: rgba(#FFF,.65);
+			}
+			&.childs-in {
+				&:hover:after {
+					background: url(../images/svg/childs-toggler.svg) center no-repeat;
+					opacity: 0.65;
+				}
 			}
 		}
 	}
 	.circle-link {
 		transition: border .3s, background-color .3s;
 		&:hover {
-			border-color: rgba(#FFF,.75);
+			border-color: rgba(#FFF,.65);
 			color: #FFF;
 			background-color: rgba(#FFF,.05);
 
@@ -411,13 +412,28 @@ a.logo {
 			}
 		}
 	}
+
+	.menu-toggler {
+		&:hover {
+			color: rgba(#FFF,.65);
+
+			.menu-toggler-icon {
+				border-color: rgba(#FFF,.65);
+			}
+			.menu-toggler-line {
+				background-color: rgba(#FFF,.65);
+			}
+		}
+	}
 }
 
 .main-menu-sub {
 	&-pr {
+		width: 976px;
 		max-width: 976px;
 		padding-bottom: 0;
 		left: -148px;
+		white-space: normal;
 
 		&:before {
 			left: 184px;
@@ -433,6 +449,7 @@ a.logo {
 
 		@media (max-width: 1259px) {
 			max-width: 848px;
+			width: 848px;
 			left: -237px;
 
 			&:before {
@@ -444,7 +461,7 @@ a.logo {
 
 .col-main-menu-pr {
   opacity: 0;
-  transform: translate3d(0px, 10px, 0px);
+  transform: translate3d(0px, -15px, 0px);
   will-change: transform;
 }
 .main-menu-sub.opened {
@@ -452,7 +469,7 @@ a.logo {
 		transition: opacity .7s, transform .7s;
     opacity: 1;
     transform: translate3d(0px, 0px, 0px);
-		transition-delay: .2s;
+		transition-delay: .4s;
 
 		// @for $i from 1 through 6 {
 		// 	&:nth-of-type(#{$i}) {
@@ -462,7 +479,7 @@ a.logo {
 		&:nth-of-type(4),
 		&:nth-of-type(5),
 		&:nth-of-type(6) {
-			transition-delay: .3s;
+			transition-delay: .55s;
 		}
   }
 }
