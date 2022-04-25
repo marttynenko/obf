@@ -42,8 +42,6 @@
       font-style: normal;
       font-display: swap;
     }
-  </style>
-  <style>
     .preloader {
       position: fixed;
       z-index: 9999;
@@ -54,8 +52,8 @@
       background: #222E3F;
     }
     .preloader.loaded {
-      -webkit-transition: transform .6s;
-      transition: transform .6s;
+      -webkit-transition: transform .5s .3s;
+      transition: transform .5s .3s;
       -webkit-transform: translate(0,-100%);
       transform: translate(0,-100%);
     }
@@ -64,6 +62,10 @@
       min-height: 100%;
       align-items: center;
       justify-content: center;
+      transition: opacity .3s;
+    }
+    .preloader.loaded .preloader-logo {
+      opacity: 0;
     }
     @keyframes prld {
       50% {
@@ -82,7 +84,6 @@
     .preloader-g-4 {
       animation: .95s .75s infinite prld;
     }
-
   </style>
 
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -142,7 +143,7 @@
     <header class="header" id="header">
       <div class="container">
         <div class="row valign-center">
-          <div class="col-layout-thin col-layout-thin-header">
+          <div class="col-layout-thin not-anim col-layout-thin-header">
             <div class="header-left flex valign-center">
 
               <a href="/" class="logo flex valign-center">
@@ -163,7 +164,7 @@
           </div>
           <!--.col-->
 
-          <div class="col-layout-wide col-layout-wide-header">
+          <div class="col-layout-wide not-anim col-layout-wide-header">
             <div class="header-right flex align-justify valign-center">
 
               <nav class="main-menu">
@@ -173,7 +174,7 @@
                     <ul class="main-menu-sub">
                       <li><a href="#">О компании</a></li>
                       <li><a href="#">Предприятия</a></li>
-                      <li><a href="#">Руководство</a></li>
+                      <li><a href="#" class="active">Руководство</a></li>
                       <li><a href="#">Лицензия и сертификаты</a></li>
                       <li><a href="#">Раскрытие информации</a></li>
                       <li><a href="#">Социальная политика</a></li>
@@ -283,7 +284,7 @@
                       <li><a href="#">Фотогалерея</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Контакты</a></li>
+                  <li><a href="#" class="active">Контакты</a></li>
                 </ul>
               </nav>
 

@@ -1,4 +1,6 @@
 const FARBA = {
+  WH: 0,
+
   //lazy load для сторонних либ
   lazyLibraryLoad(scriptSrc, linkHref, callback) {
     let script;
@@ -138,6 +140,7 @@ const FARBA = {
     })
   },
 
+
   tabs(selector) {
     var tabLinks = document.querySelectorAll(selector);
     if (!tabLinks.length) return;
@@ -275,12 +278,35 @@ const FARBA = {
     }
 
     checkHash()
+  },
+
+
+  clearStyles() {
+    for (let i = 0; i < arguments.length; i++) {
+      if (document.querySelector(arguments[i])) {
+        document.querySelector(arguments[i]).removeAttribute('style')
+      }
+    }
   }
+}
+
+var supportsPassive = false;
+try {
+  var opts = Object.defineProperty({}, 'passive', {
+    get: function() {
+      supportsPassive = true;
+    }
+  });
+  window.addEventListener("testPassive", null, opts);
+  window.removeEventListener("testPassive", null, opts);
+} catch (e) {
+  console.log(e)
 }
 
 gsap.registerPlugin(ScrollTrigger);
 CustomEase.create('dflt','.25,.1,.25,1')
-CustomEase.create('imgs','0,.25,.8,.96')
+// CustomEase.create('imgs','0,.25,.8,.96')
+CustomEase.create('imgs','0,.85,.8,.96')
 CustomEase.create('easeout','0,0,.58,1')
 gsap.defaults({
   ease: "dflt"
@@ -325,7 +351,7 @@ const Headers = {
 
     // Headers.updateHeight();
     // window.addEventListener("resize", this.updateHeight, false);
-    window.addEventListener("scroll", this.scroll, false);
+    window.addEventListener("scroll", this.scroll, supportsPassive ? { passive: true } : false);
   }
 };
 
@@ -415,14 +441,12 @@ if (Headers.checkTargets()) {
   toggler.addEventListener("click", function (e) {
     e = event || window.event;
     e.preventDefault();
-    // if (!this.classList.contains('opened')) {
-    //   target.classList.add("opened");
-    //   gsap.fromTo(target,{opacity: 0, height: 0}, {opacity: 1, height: 'auto'})
-    // } else {
-    //   gsap.to(target,{opacity: 0, height: 0, onComplete: () => {target.classList.remove("opened");}})
-    // }
+    if (!this.classList.contains('opened')) {
+      gsap.fromTo(target,{autoAlpha: 0, height: 0}, {autoAlpha: 1, height: 'auto'})
+    } else {
+      gsap.to(target,{autoAlpha: 0, height: 0})
+    }
     this.classList.toggle("opened");
-    target.classList.toggle("opened");
   });
 })();
 
@@ -617,7 +641,7 @@ document.addEventListener('keydown',(e)=>{
   }
 
   const shadowSelectors = (parent) => {
-    const event = new Event('click')
+    let evt = new Event('click',{cancelable: true})
 
     D.querySelectorAll('.ux-gallery-link-duplicate')
     .forEach(item => {
@@ -626,9 +650,9 @@ document.addEventListener('keydown',(e)=>{
         e.preventDefault();
         const src = item.querySelector('img').getAttribute('src')
         
-        const notDuplicate = parent.querySelector(`img[src="${src}"]`).parentElement
+        const notDuplicate = parent.querySelector(`.ux-not-duplicate img[src="${src}"]`).parentElement
         if (notDuplicate) {
-          notDuplicate.dispatchEvent(event)
+          notDuplicate.dispatchEvent(evt)
         }
         
       })
@@ -711,40 +735,36 @@ const prdHeadAnimate = () => {
   const head = D.querySelector('.productions-head')
   if (!head) return;
 
-  const clearHeader = () => {
-    D.querySelector('#header').removeAttribute('style')
-  }
-
-  const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
+  const tl = gsap.timeline();
   tl
-    //tk animation
-    // .to({}, {}, 0.5)
-    // .to('.productions-head-body', {opacity: 1, duration: 0})
-    // .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
-    // .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.5")
-    // .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, ">-0.35")
-    // .fromTo('.productions-head-img',{opacity: 0, yPercent: 25, scale: 0.95}, {opacity: 1, yPercent: 0, scale: 1, duration: 3, ease: "expo.out"}, ">-1")
-    // .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
-    // .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.5, onComplete: clearHeader},">-1")
+    // .fromTo('.productions-head-img',{ yPercent: 25, scale: 0.95, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 3})
+    // .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1}, '-=2')
+    // .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, "-=1.7")
+    // .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, "-=1.4")
+    // .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},"-=1.4")
+    // .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4, onComplete: () => {
+    // }},"-=1.4")
     
-    // .to({}, {}, 0.2)
-    .fromTo('.productions-head-img',{ yPercent: 25, scale: 0.95}, {yPercent: 0, scale: 1, duration: 3})
-    // .to('.productions-head-body', {opacity: 1, duration: 0})
-    .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1}, '-=2')
-    .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, "-=1.7")
-    .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, "-=1.4")
-    .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},"-=1.4")
-    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader},"-=1.4")
+    // .to({},{},0.3)
+    .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
+    .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.6")
+    .fromTo('.productions-head-arrow',{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
+    .fromTo('.productions-head-img',{ yPercent: 20, scale: 0.9, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power1.inOut"}, '>-1.5')
+    .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-0.4")
+    .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4},1);
 
+
+  //убираем инлайн-стили после анимации
+  tl.eventCallback(
+    "onComplete",
+    FARBA.clearStyles,
+    ['.productions-head-img','.productions-head-title','.productions-head-descr','.productions-head-arrow','.productions-head-btn','#header']
+  )
 }
 
 const firstScreenAnimate = () => {
   const head = D.querySelector('.first-screen')
   if (!head) return;
-
-  const clearHeader = () => {
-    D.querySelector('#header').removeAttribute('style')
-  }
 
   const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
   tl
@@ -753,12 +773,39 @@ const firstScreenAnimate = () => {
     .from('.first-screen-txt',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
     .from('.first-screen-arrow',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
     .from('.first-screen-right',{opacity: 0, y: 30, duration: 0.6},'>-0.6')
-    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader},'-=1');
+    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4},'-=1');
+  
+  tl.eventCallback(
+    "onComplete",
+    FARBA.clearStyles,
+    ['.first-screen-title','.first-screen-txt','.first-screen-arrow','.first-screen-right','#header']
+  )
+}
+
+const museumScreenAnimate = () => {
+  const head = D.querySelector('.museum-header')
+  if (!head) return;
+
+  const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
+  tl
+    .from({},{},0.1)
+    .from('.museum-top-screen-title',{opacity: 0, y: 30, duration: 0.8})
+    .from('.museum-top-screen-text',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
+    .from('.history-header-arrow',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
+    .from('.museum-circle',{opacity: 0, y: 30, duration: 0.6},'>-0.6')
+    .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4},'>-0.4');
+  
+  tl.eventCallback(
+    "onComplete",
+    FARBA.clearStyles,
+    ['.museum-top-screen-title','.museum-top-screen-text','.history-header-arrow','.museum-circle','#header']
+  )
 }
 
 window.addEventListener('load',() => {
   prdHeadAnimate()
   firstScreenAnimate()
+  museumScreenAnimate()
 });
 
 
@@ -804,13 +851,24 @@ rewards.forEach((el,index) => {
     grabCursor: true,
     slidesPerView: 2,
     spaceBetween: 30,
+    // simulateTouch: false,
+    // slideToClickedSlide: false,
+    // allowTouchMove: false,
     speed: 500,
     navigation: {
       nextEl: nextArrow,
       prevEl: prevArrow,
     }
   })
+
+  el.addEventListener('mousedown', event => {
+    // console.log(event.which)
+    event.preventDefault()
+    return false
+  });
 })
+
+
 
 
 //charts
@@ -881,9 +939,14 @@ const mainScreen = () => {
 
   D.querySelectorAll('.main-slide').forEach(item => {
     const img = item.querySelector('img.main-slide-img')
-    const src = img.getAttribute('src')
-    const pic = new Image()
-    pic.src = src
+    if (img) {
+      const src = img.getAttribute('src')
+      const pic = new Image()
+      pic.src = src
+      pic.className = 'main-screen-cache'
+      D.querySelector('#main-screen').appendChild(pic)
+    }
+    
   })
 
   return new Vue({
@@ -960,10 +1023,11 @@ const mainScreen = () => {
 
       slideEnter(el,done) {
         const tl = gsap.timeline({ autoRemoveChildren: true })
+        gsap.set(el.querySelector('.main-slide-img'), {scale: 0.92})
         tl
-          .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, x: -150},{opacity: 1, x: 0, duration: 0.35, delay: 0.1})
-          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 50, yPercent: 5, scale: 0.95}, {opacity: 1, xPercent: 0, yPercent: 5, scale: 0.95, duration: 0.51, ease: "easeout"},'-=0.51')
-          .to(el.querySelector('.main-slide-img'),{scale: 1, duration: 4.5, yPercent: 0, ease: "imgs", delay: 0.15, onComplete: done})
+          .fromTo(el.querySelector('.main-slide-content'),{opacity: 0, x: -150},{opacity: 1, x: 0, duration: 0.35})
+          .fromTo(el.querySelector('.main-slide-img'),{opacity: 0, xPercent: 50}, {opacity: 1, xPercent: 0, duration: 0.51, ease: "easeout"},'-=0.51')
+          .to(el.querySelector('.main-slide-img'),{scale: 1, duration: 4.5, ease: "imgs", onComplete: done}, '-=0.51')
       },
       slideLeave(el,done) {
         const tl = gsap.timeline({ autoRemoveChildren: true })
@@ -1024,9 +1088,9 @@ const mainScreen = () => {
           .fromTo(img, {scale: 0.95}, {scale: 1, duration: 4.5, delay: 0.5, ease: 'imgs'})
           .fromTo(content,{opacity: 0, x: -75},{opacity: 1, x: 0, duration: 0.35}, '-=4.5')
           .from(newsLink, {x: 40, opacity: 0, duration: 0.35}, '-=4.5')
-          .from(actualLink, {x: 75, opacity: 0, duration: 0.35}, '-=4.25')
-          .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader}, '-=3.85')
-          .fromTo('.main-slides-nav',{opacity: 0, yPercent: 100},{opacity: 1, yPercent: 0, duration: 0.4}, '-=3.45')
+          .from(actualLink, {x: 100, opacity: 0, duration: 0.35}, '-=4.5')
+          .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader}, '-=4.5')
+          .fromTo('.main-slides-nav',{opacity: 0, yPercent: 100},{opacity: 1, yPercent: 0, duration: 0.4}, '-=4.1')
       }
     },
 
@@ -1041,15 +1105,16 @@ const mainScreen = () => {
     },
 
     mounted() {
-      
-
       window.addEventListener('resize', ()=>{
         this.animateShadow(this.index)
       }, false)
+
     }
   })
 }
 const mainScreenEx = mainScreen()
+
+
 
 
 const mainActivities = () => {
@@ -1058,6 +1123,8 @@ const mainActivities = () => {
   D.querySelectorAll('.main-activities-img img').forEach(item => {
     const img = new Image();
     img.src = item.getAttribute('src')
+    img.className = 'main-activities-cache'
+    D.querySelector('#main-activities').appendChild(img)
   })
 
   return new Vue({
@@ -1097,7 +1164,6 @@ const mainActivities = () => {
       },
 
       tabEnter(el,done) {
-        // gsap.fromTo(el,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5, onComplete: done})
         const img = el.querySelector('.main-activities-img')
         const sight = el.querySelector('.main-activities-sights')
         const tl = gsap.timeline()
@@ -1108,7 +1174,6 @@ const mainActivities = () => {
           .fromTo(sight,{opacity: 0, x: 50},{opacity: 1, x: 0, duration: 0.5, onComplete: done}, '-=0.5')
       },
       tabLeave(el,done) {
-        // gsap.to(el,{opacity: 0, x: 50, duration: 0.25, onComplete: done})
         const img = el.querySelector('.main-activities-img')
         const sight = el.querySelector('.main-activities-sights')
         const tl = gsap.timeline()
@@ -1121,15 +1186,13 @@ const mainActivities = () => {
           scrollTrigger: {
             trigger: '#main-activities',
             start: "top 60%",
-            // end: "+=300",
             end: '+=40%',
-            scrub: 2
+            // scrub: 2,
+            toggleActions: 'play none none none'
           }
         })
       
         tls
-          // .from('.main-activities .main-block-title',{opacity: 0, y: 50, duration: 0.5})
-          // .from('.main-activities-img',{opacity: 0, y: 50, duration: 0.5}, '>-0.2')
           .from('.main-activities-img',{opacity: 0, y: 50, duration: 0.5})
           .from('.main-activities-sights',{opacity: 0, y: 50, duration: 0.5}, '>-0.15')
           .from('.main-activities-nav',{opacity: 0, y: 50, duration: 0.5})
@@ -1145,17 +1208,11 @@ const mainActivities = () => {
     },
 
     mounted() {
-      this.scrollAnim()
-
-      //Устанавливаем начальную высоту
-      // const h = D.querySelector('#main-activities .container').clientHeight
-      // const paddings = this.getPaddings()
-      // this.appearHeight = h + paddings
-      // D.querySelector('#main-activities').style.height = this.appearHeight + 'px'
       this.setHeight()
 
-      window.addEventListener('resize', this.setHeight, false)
+      this.scrollAnim()
 
+      window.addEventListener('resize', this.setHeight, false)
 
       window.addEventListener('load', this.setHeight, false)
     }
@@ -1170,7 +1227,10 @@ const mainEntrs = () => {
   D.querySelectorAll('.main-entrs-imgs img').forEach(item => {
     const img = new Image();
     img.src = item.getAttribute('src')
+    img.className = 'main-entrs-cache'
+    D.querySelector('#main-entrs').appendChild(img)
   })
+  D.querySelector('.main-entrs-title').classList.add('main-entrs-title-main')
 
   return new Vue({
     el: '#main-entrs',
@@ -1208,13 +1268,16 @@ const mainEntrs = () => {
       },
 
       easeHeight() {
-        const h = D.querySelector('.main-entrs-slide').clientHeight
+        setTimeout(()=>{
+          const h = D.querySelector('.main-entrs-slide').clientHeight
 
-        const paddings = this.getPaddings()
+          const paddings = this.getPaddings()
 
-        gsap.fromTo('#main-entrs',{height: this.appearHeight},{height: h+paddings, onComplete: ()=>{
-          this.appearHeight = h+paddings
-        }})
+          gsap.fromTo('#main-entrs',{height: this.appearHeight},{height: h+paddings, onComplete: ()=>{
+            this.appearHeight = h+paddings
+          }})
+        },1)
+        
       },
 
       titleEnter(el,done) {
@@ -1254,24 +1317,22 @@ const mainEntrs = () => {
 
       scrollAnim() {
         const tl = gsap.timeline({
-          overwrite: "auto",
-          // autoRemoveChildren: true,
+          // overwrite: "auto",
           scrollTrigger: {
             trigger: '#main-entrs',
             start: "top 60%",
             end: "+=40%",
-            scrub: 2, 
+            // scrub: 2,
             // markers: true,
             // toggleActions: 'play pause resume none'
+            toggleActions: 'play none none none'
           }
         })
       
         tl
-          // .from('.main-entrs-title',{opacity: 0, y: 50, duration: 0.5})
-          // .from('.main-entrs-nav',{opacity: 0, y: 30, duration: 0.5}, '-=0.35')
-          .from('.main-entrs-nav',{opacity: 0, y: 30, duration: 0.5})
-          .from('.main-entrs-img',{opacity: 0, y: 120, duration: 0.5}, '-=0.35')
-          .from('.main-entrs-imgs .ui-btn-circle',{opacity: 0, y: 50, duration: 0.5}, '-=0.1')
+          .from('.main-entrs-nav',{opacity: 0, y: 50, duration: 1})
+          .from('.main-entrs-img',{opacity: 0, y: 120, duration: 0.5}, '>-0.35')
+          .from('.main-entrs-imgs .ui-btn-circle',{opacity: 0, y: 50, duration: 0.5}, '>-0.2')
           .from('.main-entrs-descr',{opacity: 0, y: 30, duration: 0.5})
           
         gsap.utils.toArray('.main-entrs-vntg').forEach((el,index)=>{
@@ -1349,99 +1410,15 @@ function animateEnterprises() {
     .from('.history-header-text',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
     .from('.history-header-arrow',{opacity: 0, y: 30, duration: 0.8},'>-0.6')
     .from('.history-header-btn',{opacity: 0, y: 30, duration: 0.6},'>-0.6');
-
-
-  // const duration = 0.8
-  // D.querySelectorAll('.enterprises-block, .enterprises-contact, .node-related').forEach((item,index)=> {
-  //   const title = item.querySelector('.ui-subtitle') || item.querySelector('.ui-side-title')
-  //   const wide = item.querySelector('.col-layout-wide')
-  //   const thin = item.querySelector('.col-layout-thin')
-
-  //   if (title) {
-  //     ScrollTrigger.create({
-  //       trigger: title,
-  //       onEnter: function() {
-  //         animateFrom(title)
-  //       }
-  //     });
-  //   }
-    
-  //   if (thin && thin.childNodes.length) {
-  //     ScrollTrigger.create({
-  //       trigger: thin,
-  //       onEnter: function() {
-  //         animateFrom(thin, 0.2)
-  //       }
-  //     });
-  //   }
-    
-  //   if (wide) {
-  //     ScrollTrigger.create({
-  //       trigger: wide,
-  //       onEnter: function() {
-  //         animateFrom(wide,0.4)
-  //       }
-  //     });
-  //   }
-    
-
-  //   function animateFrom (elem,delay = 0) {
-  //     gsap.fromTo(elem, 
-  //       {y: 50, opacity: 0},
-  //       {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
-  //     )
-  //   }
-  // })
 }
 
-
-//анимируем блоки на лендингах продукции
-function animateProductions() {
-  // const duration = 0.8
-
-  // D.querySelectorAll('.productions-block:not(.productions-block-mk), .node-related').forEach((item,index)=> {
-  //   const title = item.querySelector('.ui-side-title')
-  //   const wide = item.querySelector('.col-layout-wide')
-  //   const thin = item.querySelector('.col-layout-thin')
-
-  //   if (title) {
-  //     ScrollTrigger.create({
-  //       trigger: title,
-  //       onEnter: function() {
-  //         animateFrom(title)
-  //       }
-  //     });
-  //   }
-    
-  //   if (thin && thin.childNodes.length) {
-  //     ScrollTrigger.create({
-  //       trigger: thin,
-  //       onEnter: function() {
-  //         animateFrom(thin, 0.2)
-  //       }
-  //     });
-  //   }
-    
-  //   if (wide) {
-  //     ScrollTrigger.create({
-  //       trigger: wide,
-  //       onEnter: function() {
-  //         animateFrom(wide,0.4)
-  //       }
-  //     });
-  //   }
-  // })
-
-  // function animateFrom (elem,delay = 0) {
-  //   gsap.fromTo(elem, 
-  //     {y: 50, opacity: 0},
-  //     {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
-  //   )
-  // }
-}
 
 if (D.querySelector('.productions-tk-stock-row')) {
   D.querySelector('.productions-tk-stock-row').closest('.productions-block').classList.add('productions-tk-stock')
+}
+
+if (D.querySelector('.productions-block .node-slider')) {
+  D.querySelector('.productions-block .node-slider').closest('.productions-block').classList.add('productions-block-best')
 }
 
 
@@ -1449,283 +1426,500 @@ if (D.querySelector('.productions-tk-stock-row')) {
 function animateProductionsNoTk() {
   if (!D.querySelector('.productions-block-mk')) return
 
-  const h = document.documentElement.clientHeight
-  if (window.scrollY < h) {
-    ScrollTrigger.create({
-      trigger: '.productions-block-mk',
-      start: 'top 95%',
-      end: "+=100%",
-      scrub: true,
-      onUpdate: (self) => {
-        parallaxBlock('.productions-head',self.progress, h)
-      },
-      onEnter: () => {
-        gsap.to(window, {duration: 1, scrollTo:{y: h}});
-      },
-      onEnterBack: () => {
-        gsap.to(window, {duration: 1, scrollTo:{y: 0}});
-      }
-    });
-  }
+  // const anim = gsap.from('.productions-mk-bg',{opacity: 0, yPercent: -50})
 
+  // const h = document.documentElement.clientHeight
   // ScrollTrigger.create({
-  //   trigger: '.productions-tk-stock',
+  //   trigger: '.productions-block-mk',
   //   start: 'top 95%',
   //   end: "+=100%",
-  //   scrub: 1,
-  //   markers: true,
+  //   scrub: true,
+  //   animation: anim,
   //   onUpdate: (self) => {
-  //     parallaxBlock('.productions-block-mk', self.progress, h)
-  //   },
-  //   onEnter: () => {
-  //     gsap.to(window, {duration: 1, scrollTo:{y: window.scrollY + h}});
-  //   },
-  //   onEnterBack: () => {
-  //     const top = D.querySelector('.productions-tk-stock').offsetTop - h
-  //     gsap.to(window, {duration: 1, scrollTo:{y: top}});
+  //     parallaxBlock('.productions-head',self.progress, h)
   //   }
   // });
 
-
-  function parallaxBlock(selector,progress,h) {
-    gsap.set(selector,{y: progress * h * 0.75})
-  }
-
-
-  // const duration = 0.8
-  // ScrollTrigger.create({
-  //   trigger: '.productions-block-mk .ui-side-title',
-  //   onEnter: function() {
-  //     animateFrom('.productions-block-mk .ui-side-title')
-  //   }
-  // });
-
-
-  // ScrollTrigger.create({
-  //   trigger: '.productions-mk-descr',
-  //   onEnter: function() {
-  //     animateFrom('.productions-mk-descr')
-  //   }
-  // });
-
-  // ScrollTrigger.create({
-  //   trigger: '.productions-mk-for',
-  //   onEnter: function() {
-  //     animateFrom('.productions-mk-for', 0.5)
-  //   }
-  // });
-  
-
-  // function animateFrom (elem,delay = 0) {
-  //   gsap.fromTo(elem, 
-  //     {y: 50, opacity: 0},
-  //     {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
-  //   )
+  // function parallaxBlock(selector,progress,h) {
+  //   gsap.to(selector,{y: progress * h * 0.8, duration: 0.05, ease: 'none'})
   // }
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.productions-block-mk',
+      start: 'top 100%',
+      end: "+=100%",
+      scrub: true
+    }
+  })
+  tl
+    // .from('.productions-mk-bg',{opacity: 0, yPercent: -70}, 0)
+    .to('.productions-head',{yPercent: 50, ease: 'none'}, 0)
 }
+animateProductionsNoTk()
 
+// const tl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.productions-block-mk',
+//     start: 'top 100%',
+//     end: "+=100%",
+//     scrub: true,
+//     markers: true
+//   }
+// })
+// tl
+//   .from('.productions-mk-bg',{opacity: 0, yPercent: -50, duration: 1}, 0)
+//   .to('.productions-head',{yPercent: 50, duration: 1, ease: 'none'}, 0)
 
-//анимируем лендинг ТК
-function animateProductionsTk() {
+function wheelProductionsTK() {
   const screens = D.querySelector('.productions-screens')
   if (!screens) return
 
-  const screen = D.querySelectorAll('.productions-screen');
-  
+
+  const videoScreens = D.querySelectorAll('.productions-screen');
+  videoScreens.forEach(el => {
+    const video = el.querySelector('video')
+    if (video) {
+      const src = video.currentSrc
+      const cache = D.createElement('video');
+      const source = D.createElement('source');
+      source.setAttribute('src', src);
+      source.setAttribute('type', 'video/mp4');
+      source.setAttribute('preload', 'metadata');
+      cache.appendChild(source);
+    }
+  })
 
   const tk = new Vue({
-    el: '.productions-screens',
+    el: '.wheel-screens',
     data: {
-      index: 0,
+      index: -1,
       vd: 0,
-      trigger: false
+      trigger: false,
+      isAnimating: false,
+      activeScreen: 0,
+      translate: 0,
+      isAll: false
     },
+
     methods: {
+      headEnter(el, done) {
+        const tl = gsap.timeline();
+        tl
+        .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
+        .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.6")
+        .fromTo('.productions-head-arrow',{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
+        .fromTo('.productions-head-img',{ yPercent: 20, scale: 0.9, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power1.inOut"}, '>-1.5')
+        .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-0.4")
+        .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4,onComplete: () => {
+          this.index = -1;
+          setTimeout(()=>{
+            this.isAnimating = false;
+          },100)
+        }},1);
+
+
+        //убираем инлайн-стили после анимации
+        tl.eventCallback(
+          "onComplete",
+          FARBA.clearStyles,
+          ['.productions-head-img','.productions-head-title','.productions-head-descr','.productions-head-arrow','.productions-head-btn','#header']
+        )
+      },
+
+      headLeave(el,done) {
+        gsap.to(el,{y: 50, opacity: 0, duration: 1, onComplete: done})
+      },
+
+      productionsEnter(el,done) {
+        gsap.from(el,{yPercent: 35, opacity: 0, duration: 1.5,onStart: () => {
+          this.index = this.index < 1 ? 0 : videoScreens.length - 1;
+        }, onComplete: () => {
+          done()
+          
+          // this.index = this.index < 1 ? 0 : videoScreens.length - 1;
+          setTimeout(()=>{
+            this.isAnimating = false;
+          },1551)
+        }})
+      },
+
+      productionsLeave(el,done) {
+        gsap.to(el,{yPercent: 35, opacity: 0, duration: 1, onComplete: done})
+      },
+
       slideEnter(el,done) {
         const img = el.querySelector('.productions-screen-img')
         const title = el.querySelector('.productions-screen-title') || el.querySelector('h2')
         const details = el.querySelector('.productions-screen-details')
         const btn = el.querySelector('.ui-btn-circle')
-  
-      
+        const video = el.querySelector('video')
+        let delay = 3
+
+        if (video) { video.play() }
+
+        video.addEventListener('loadedmetadata',()=>{
+          delay = video.duration
+          createTimeline()
+          setTimeout(()=> {
+            this.isAnimating = false
+          },delay * 1000)
+        })
+        gsap.set(details,{opacity: 0})
+        gsap.set(btn,{opacity: 0})
+
         const tl = gsap.timeline()
         tl
-          .to(el,{opacity: 1, duration: 0.1})
-          .fromTo(title,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1})
-          .fromTo(img,{opacity: 0, scale: 1.3}, {opacity: 1, scale: 1, duration: 3},">-1")
-          .fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-2")
-          .fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, onComplete: done},">-1")
+          .to({},{onStart: () => {
+            // if (video) { video.play() }
+          }},0.5)
+          .fromTo(title,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1});
+          // .fromTo(img,{opacity: 0, scale: 1.3}, {opacity: 1, scale: 1, duration: 3},">-1");
+
+        const createTimeline = () => {
+          
+          gsap.fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1})
+          gsap.fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1, onComplete: () => {
+            if (this.index >= videoScreens.length - 1) {
+              this.isAll = true
+            }
+            done()
+          }})
+        }
+        
       },
   
       slideLeave(el,done) {
-        gsap.to(el,{opacity: 0, duration: 0.35, onComplete: done})
+        const titles = el.querySelector('.productions-screen-titles')
+        const details = el.querySelector('.productions-screen-details')
+        const tl = gsap.timeline()
+        tl.to(titles,{opacity: 0, y: -50, duration: 1})
+          .to(details,{opacity: 0, y: -50, duration: 1, onStart: () => {
+          if (this.index === videoScreens.length - 2) {
+            this.isAll = false
+          }
+        }, onComplete: done}, '>-0.7');
       },
   
-      getIndex(slides, progress) {
-        const step = 100 / slides
-        const idx = parseInt((progress * 100) / step,10)
-        if (idx >= slides) {
-          return this.index = slides - 1
-        }
-        return this.index = idx
+      // getIndex(slides, progress) {
+      //   const step = 100 / slides
+      //   const idx = parseInt((progress * 100) / step,10)
+      //   if (idx >= slides) {
+      //     return this.index = slides - 1
+      //   }
+      //   return this.index = idx
+      // },
+
+      // playPause(index) {
+      //   const delay = (this.vd * 1000 / videoScreens.length) * 0.99
+      //   const time = this.vd * (1 / videoScreens.length) * index
+      //   this.$refs.video.currentTime = time
+      //   this.$refs.video.play()
+      //   // console.log(index,this.index, this.activeScreen,delay,time)
+      //   setTimeout(()=>{
+      //     this.$refs.video.pause()
+      //   },delay)
+      // },
+
+      // emulateScroll(delta) {
+      //   let prevent = false
+      //   if (this.activeScreen !== 2) {return prevent}
+
+      //   const content = D.querySelector('.wheel-screen-content');
+        
+      //   const h = D.documentElement.clientHeight
+      //   const ch = content.clientHeight
+
+      //   if (h < ch && D.querySelector('.wheel-screens').getBoundingClientRect().top === 0) {
+      //     const max = ch - h
+      //     this.translate += delta;
+      //     this.translate = Math.min(Math.max(0, this.translate), max)
+      //     gsap.to(content,{y: () => {
+      //       return -this.translate
+      //     }, duration: 0.5})
+
+      //     // prevent = true
+      //     if (this.translate >= max) {
+      //       prevent = true
+      //     }
+      //     console.log(prevent, max, this.translate)
+      //   }
+
+      //   return prevent
+      // },
+
+      wheel(event) {
+        let delta = event.deltaY;
+        
+        if (delta > 0) {
+          return this.setScreen('down', event)
+        } 
+        this.setScreen('up',event)
       },
 
-      playPause(index) {
-        const that = this
-        const delay = (this.vd * 1000 / screen.length) * 0.99
-        this.$refs.video.currentTime = this.vd * (1 / screen.length) * index
-        this.$refs.video.play()
-        setTimeout(function(){
-          that.$refs.video.pause()
-        },delay)
+      setScreen(direction,event) {
+        if (!this.isAll && D.querySelector('.wheel-screens').getBoundingClientRect().top === 0) {
+          event.preventDefault()
+        }
+
+        if (this.isAnimating || D.querySelector('.wheel-screens').getBoundingClientRect().top !== 0) {
+          return;
+        }
+        
+        if (direction === 'down') {
+
+          if (this.activeScreen === 1 && this.index < videoScreens.length - 1) {
+            this.index = (this.index < videoScreens.length - 1)
+              ? ++this.index
+              : videoScreens.length - 1
+          } else {
+            this.activeScreen = (this.activeScreen >= 1)
+              ? 1
+              : ++this.activeScreen
+          }
+
+        } else {
+          
+          if (this.activeScreen === 1 && this.index > 0) {
+            this.index = (this.index === 0)
+              ? 0
+              : --this.index
+          } else {
+            this.activeScreen = (this.activeScreen <= 0) 
+              ? 0
+              : --this.activeScreen
+          }
+          
+        }
       }
     },
 
     watch: {
       index: function (val) {
-        this.playPause(val)
+        this.isAnimating = true
+      },
+      activeScreen: function (val) {
+        this.isAnimating = true
       }
-    },
-
-    created() {
-      window.addEventListener('loadedmetadata', (e) => {
-        this.vd = this.$refs.video.duration
-      }, true);
     },
 
     mounted() {
-      ScrollTrigger.create({
-        trigger: '.productions-screen',
-        start: 'top 95%',
-        end: "+=100%",
-        // markers: true,
-        scrub: true,
-        onEnter: () => {
-          gsap.to(window, {duration: 1, scrollTo:{y: document.documentElement.clientHeight}});
-          this.playPause(0)
-        },
-        onEnterBack: () => {
-          gsap.to(window, {duration: 1, scrollTo:{y: 0}});
-        }
-      })
-
-      ScrollTrigger.create({
-        trigger: '.productions-screens',
-        pin: true,
-        end: `+=${450*screen.length}`,
-        scrub: true,
-        onUpdate: (self) => {
-          this.getIndex(screen.length, self.progress)
-        },
-        onEnterBack: () => {
-          this.playPause(screen.length - 1)
-        }
-      })
-
-      ScrollTrigger.create({
-        trigger: '.productions-tk-stock',
-        end: "+=100%",
-        scrub: 1,
-        onUpdate: (self) => {
-          mkToUp(self.progress)
-        },
-        onEnter: () => {
-          gsap.to(window, {duration: 1, scrollTo:{y: window.scrollY + document.documentElement.clientHeight}});
-        },
-        onEnterBack: () => {
-          const top = D.querySelector('.productions-tk-stock').offsetTop - document.documentElement.clientHeight
-          gsap.to(window, {duration: 1, scrollTo:{y: top}});
-        }
-      });
-    
-      function mkToUp(progress) {
-        const h = document.documentElement.clientHeight
-        gsap.set('.productions-screen',{y: progress * h * 0.75})
-      }
+      D.querySelector('.wheel-screens').addEventListener('wheel',this.wheel)
     }
   })
 }
-animateProductionsTk()
+wheelProductionsTK()
+
+
+
+// function wheelCompany() {
+//   const target = D.querySelector('.company-animation')
+//   if (!target) return
+  
+
+//   new Vue({
+//     el: '.company-animation',
+    
+//     data: {
+//       index: 0,
+//       isAnimating: false,
+//       played: [],
+//       isAll: false
+//     },
+
+//     methods: {
+//       wheel(event) {
+//         if (!this.isAll) {
+//           event.preventDefault()
+//         }
+        
+//         if (this.isAnimating) return
+//         let delta = event.deltaY
+//         if (delta > 0) {
+//           // return this.index++
+//           if (this.index === 4) {
+//             this.isAll = true
+//           }
+//           return this.index = (this.index >= 4) ? 4 : ++this.index
+//         }
+//         this.index = (this.index === 0) ? 0 : --this.index
+//         if (this.index < 4) {
+//           window.scrollTo({top: 0, behavior: 'smooth'})
+//           this.isAll = false
+//         }
+//       },
+
+//       animate(index) {
+        
+//         const h = D.documentElement.clientHeight
+//         if (this.isAnimating) return;
+
+//         if (index === 0) {
+//           gsap.to(this.$refs.content,{y: 0, duration: 1})
+          
+//         }
+
+//         if (index === 1) {
+//           gsap.to(this.$refs.content,{y: -h, duration: 1})
+
+//           if (!this.played.includes(index)) {
+//             const tl = gsap.timeline()
+//             tl
+//             .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.71, delay: 0.75})
+//             .from('.company-pos-top-subtitle',{opacity: 0, y: -40, duration: 0.44}, '-=0.37');
+//           }
+//         }
+
+//         if (index === 2) {
+//           const top = D.querySelector('.company-pos-middle').offsetTop
+//           gsap.to(this.$refs.content,{y: -(top + h*0.75), duration: 1})
+
+//           if (!this.played.includes(index)) {
+//             const tl = gsap.timeline()
+//             tl
+//             .from('.company-pos-middle-item',{opacity: 0, y: 200, duration: 0.5, delay: 0.7})
+//             .from('.company-pos-bottom-digit',{opacity: 0, y: 200, duration: 0.8}, '-=0.4')
+//             .from('.company-pos-bottom-subtitle',{opacity: 0, y: 20, duration: 0.4}, '-=0.2')
+//           }
+//         }
+
+//         if (index === 3) {
+//           const item = D.querySelector('.company-purpose')
+//           const top = item.offsetTop
+//           gsap.to(this.$refs.content,{y: -(top), duration: 1})
+
+//           if (!this.played.includes(index)) {
+//             const tl = gsap.timeline()
+//             tl
+//             .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, yPercent: 20, duration: 0.6, delay: 0.8})
+//             .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -30, duration: 0.8},'-=0.5')
+//           }
+//         }
+
+//         if (index === 4) {
+//           const item = D.querySelectorAll('.company-purpose-item')[1]
+//           const top = D.querySelector('.company-purpose').offsetTop
+//           gsap.to(this.$refs.content,{y: -(top + h), duration: 1})
+
+//           if (!this.played.includes(index)) {
+//             const tl = gsap.timeline()
+//             tl
+//             .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, yPercent: 20, duration: 0.6, delay: 0.8})
+//             .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -30, duration: 0.8},'-=0.5')
+//           }
+//         }
+
+//         this.played.push(index)
+//       }
+//     },
+
+//     watch: {
+//       index: function(val) {
+//         this.animate(val)
+//         this.isAnimating = true
+
+//         setTimeout(()=>{
+//           this.isAnimating = false
+//         },2000)
+
+//         console.log(val)
+        
+//       }
+//     },
+
+//     mounted() {
+      
+//     }
+//   })
+// }
 
 
 function animateCompany() {
   if (!D.querySelector('.company-pos')) return
 
-  const cpTL = gsap.timeline()
-  cpTL
-    .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.61})
-    .from('.company-pos-top-subtitle',{opacity: 0, y: -40, duration: 0.34}, '-=0.27');
 
-  ScrollTrigger.create({
-    trigger: '.company-pos-top',
-    start: 'top 40%',
-    animation: cpTL
-  });
-
-
-  const cpmTL = gsap.timeline()
-  cpmTL.from('.company-pos-middle-item',{opacity: 0, y: 200, duration: 0.5})
-      .from('.company-pos-bottom-item',{opacity: 0, y: 200, duration: 0.8}, '-=0.4');
-  ScrollTrigger.create({
-    trigger: '.company-pos-middle',
-    start: 'top 60%',
-    animation: cpmTL
-  });
-
-
-  gsap.utils.toArray('.company-purpose-item').forEach((item)=>{
-    const tl = gsap.timeline()
-    tl
-      .from(item.querySelector('.company-purpose-item-title'),{y: -20, duration: 0.6})
-      .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -50, duration: 0.8},'-=0.3')
-    
-    ScrollTrigger.create({
-      trigger: item,
-      start: 'top 65%',
-      animation: tl
-    });
+  const tlh = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.company-pos',
+      start: 'top 100%',
+      end: "+=100%",
+      scrub: true
+    }
   })
-  
-  
+  tlh
+    .to('.first-screen',{yPercent: 50, ease: 'none'}, 0)
 
-  function animateFrom (elem,delay = 0) {
-    gsap.fromTo(elem, 
-      {y: 50, opacity: 0},
-      {y: 0, opacity: 1, duration: duration, delay: delay, overwrite: "auto"}
-    )
-  }
+
+  const cpTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.company-pos-top-num',
+      start: 'top 70%',
+      end: 160,
+      scrub: 5
+    }
+  })
+  cpTL
+    .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.71})
+    .from('.company-pos-top-subtitle',{opacity: 0, y: -50, duration: 0.44}, '-=0.37');
+    // .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.71})
+    // .from('.company-pos-top-subtitle',{opacity: 0, y: -100, duration: 0.44}, '-=0.37');
+
+  // ScrollTrigger.create({
+  //   trigger: '.company-pos',
+  //   start: 'top 95%',
+  //   end: '+=100%',
+  //   animation: cpTL,
+  //   // toggleActions: "play pause resume reset",
+  // });
+
+
+  const cpmTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.company-pos-middle',
+      start: 'top 70%',
+      end: 300,
+      scrub: 5
+    }
+  })
+  cpmTL
+    // .from('.company-pos-middle-item',{opacity: 0, y: 200, duration: 0.5})
+    // .from('.company-pos-bottom-digit',{opacity: 0, y: 200, duration: 0.8}, '-=0.4')
+    // .from('.company-pos-bottom-subtitle',{opacity: 0, y: 20, duration: 0.4}, '-=0.2');
+    .from('.company-pos-middle-top',{opacity: 0, y: 100, duration: 0.8})
+    .from('.company-pos-middle-txt',{opacity: 0, y: 200, duration: 0.6})
+    .from('.company-pos-bottom-digit',{opacity: 0, y: 200, duration: 1}, '-=0.6')
+    .from('.company-pos-bottom-subtitle',{opacity: 0, y: 20, duration: 0.8}, '-=0.3');
+
+
+  
+  gsap.utils.toArray('.company-purpose-item').forEach((item)=>{
+    const tls = gsap.timeline({
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 60%',
+        end: 400,
+        scrub: 5
+      }
+    })
+    tls
+      .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, yPercent: -15, duration: 1})
+      .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -30, duration: 1}, '-=0.5');
+    
+    // ScrollTrigger.create({
+    //   trigger: item,
+    //   start: 'top 65%',
+    //   end: 400,
+    //   scrub: 2,
+    //   animation: tls
+    // });
+  })
 }
+// animateCompany()
 
 
 window.addEventListener('load',()=>{
-
-  // animArrayTrigger(
-  //   [
-  //     '.main-partner .main-block-title',
-  //     '.main-partner-descr',
-  //     '.main-partner-item',
-  //     '.node-related .main-block-title',
-  //     '.news-list'
-  //   ],
-  //   0.8);
-
   animateEnterprises()
-  animateProductions()
-  animateProductionsNoTk()
-
-  animateCompany()
-
-  // animArrayTrigger(
-  //   [
-  //     '.company-acs .ui-side-title',
-  //     '.company-acs .col-layout-wide',
-  //     '.company-chart .ui-side-title',
-  //     '.company-chart .ui-chart-block',
-  //     '.company-fs .ui-side-title',
-  //     '.company-fs .col-layout-wide'
-  //   ],
-  //   0.8
-  // );
+  // animateProductionsNoTk()
+  
 });
 
 
@@ -1746,6 +1940,11 @@ window.addEventListener('load',()=>{
     prevArrow.classList.add(`swiper-button-prev-${index}`);
     nextArrow.classList.add(`swiper-button-next-${index}`);
 
+    const descr = D.createElement('div')
+    descr.className = 'ui-swiper-slide-subtitle node-slider-descr'
+    descr.textContent = el.querySelector('.ui-swiper-slide-subtitle').textContent
+    el.appendChild(descr)
+
     const swiper = new Swiper(`.${ds}`, {
       autoHeight: true,
       loop: true,
@@ -1765,14 +1964,29 @@ window.addEventListener('load',()=>{
       creativeEffect: {
         perspective: true,
         prev: {
-          translate: ["-25%", 0, -1],
-          // rotate: [0,0,3]
+          // translate: ["-25%", 0, -1],
+          translate: ["-100%", 0, 1],
         },
         next: {
-          translate: ["100%", 0, 0],
-          // rotate: [0,0,0]
+          // translate: ["100%", 0, 0],
+          translate: ["75%", 0, -1],
         },
       },
+      breakpoints: {
+        0: {
+          allowTouchMove: true,
+        },
+        1024: {
+          allowTouchMove: false,
+        }
+      },
+      on: {
+        slideChangeTransitionEnd: function () {
+          if (!el.querySelector('.swiper-slide-active .ui-swiper-slide-subtitle')) return
+          const text = el.querySelector('.swiper-slide-active .ui-swiper-slide-subtitle').textContent || ''
+          el.querySelector('.node-slider-descr').textContent = text
+        }
+      }
     });
 
     slider.querySelectorAll('.ui-swiper-slide-img').forEach(item => {
@@ -1928,8 +2142,13 @@ function prloader() {
   if (!preloader) return;
   preloader.classList.add('loaded');
   setTimeout(()=>{
+    if(!D.querySelector('#header').hasAttribute('style') && window.scrollY < 50) {
+      gsap.from('#header',{opacity: 0, yPercent: -100, duration: 0.4, onComplete: FARBA.clearStyles, onCompleteParams: ['#header']})
+    }
+  },150)
+  setTimeout(()=>{
     preloader.remove()
-  },601)
+  },651)
 }
 
 setTimeout(()=>{prloader()},30000)
@@ -1984,7 +2203,9 @@ const toFlyAnim = `
   .news-item,
   .to-all-news,
   .analytics-item,
+  .ui-chart-block,
   .docs-card,
+  .cert-item,
   .page-title,
   .node-title,
   .publication-preview,
@@ -1992,27 +2213,51 @@ const toFlyAnim = `
   .main-block-title,
   .publication-item,
   .productions-mk-descr,
-  .productions-mk-for`;
-D.querySelectorAll(toFlyAnim).forEach(el => el.classList.add('anim-fly'));
+  .productions-mk-for,
+  .museum-review`;
+const toFlyAnimDelay = `
+  .node-body .container,
+  .page > .row
+`;
+D.querySelectorAll(toFlyAnim).forEach(el => {if (!(el).classList.contains('not-anim')) {el.classList.add('anim-fly')}});
 
-window.addEventListener('scroll',() => {
-  const h = document.documentElement.clientHeight
-  D.querySelectorAll('.anim-fly').forEach(el => {
-    if (el.getBoundingClientRect().top + window.pageYOffset - h * 0.85 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - h) * 0.95) {
+const toFlyAnimDelayLength = D.querySelectorAll(toFlyAnimDelay).length
+
+function flyAnimations(selectors = '.anim-fly', offset = 0.9) {
+  D.querySelectorAll(selectors).forEach(el => {
+    if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * offset < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
       el.classList.add('visible')
     } else {
       el.classList.remove('visible')
     }
-  })
-})
+  })  
+}
 
 window.addEventListener('load',() => {
-  const h = document.documentElement.clientHeight
-  D.querySelectorAll('.anim-fly').forEach(el => {
-    if (el.getBoundingClientRect().top + window.pageYOffset - h * 0.85 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - h) * 0.95) {
-      el.classList.add('visible')
-    } else {
-      el.classList.remove('visible')
+  FARBA.WH = document.documentElement.clientHeight
+  
+  setTimeout(()=>{
+    flyAnimations('.anim-fly')
+    flyAnimations('.anim-fly-upper',0.7)
+
+    if (toFlyAnimDelayLength) {
+      D.querySelectorAll(toFlyAnimDelay).forEach(el => {
+        if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * 0.9 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
+          setTimeout(()=>{el.classList.add('visible')},300)
+        } else {
+          el.classList.remove('visible')
+        }
+      })
     }
-  })
+  },530)
 })
+
+window.addEventListener('resize',() => {
+  FARBA.WH = document.documentElement.clientHeight
+})
+
+
+window.addEventListener('scroll',() => {
+  flyAnimations('.anim-fly')
+  flyAnimations('.anim-fly-upper',0.7)
+},supportsPassive ? { passive: true } : false)

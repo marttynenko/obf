@@ -675,6 +675,13 @@ footer.footer {
     }
   }
 }
+.fs-search::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.fs-search {
+  scrollbar-width: 0;
+}
 
 .search-results-title {
   @include fz(42);
@@ -747,4 +754,8 @@ footer.footer {
     }
   }
   
+}
+
+.fs-menu-ul.fs-menu-contacts-2 {
+  white-space: nowrap;
 }

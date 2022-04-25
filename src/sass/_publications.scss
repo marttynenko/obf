@@ -1,12 +1,30 @@
-.col-pub-8 {
-  flex: 0 0 33.28%;
-  max-width: 33.28%;
+// .col-pub-8 {
+//   flex: 0 0 33.28%;
+//   max-width: 33.28%;
+// }
+// .col-pub-16 {
+//   flex: 0 0 66.56%;
+//   max-width: 66.56%;
+// }
+.publication-preview {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .col-pub-16 {
+    flex: 0 0 $content_col*16;
+    max-width: $content_col*16;
+    margin-right: $content_col*2;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .col-pub-8 {
+    flex: 0 0 $content_col*6;
+    max-width: $content_col*6;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
-.col-pub-16 {
-  flex: 0 0 66.56%;
-  max-width: 66.56%;
-}
-
 .publication-preview {
   display: block;
   padding-bottom: 80px;
@@ -19,7 +37,7 @@
     line-height: 1.35;
     color: $primary;
     margin-bottom: 32px;
-    @media (max-width: 1259px) {
+    @media (max-width: 1439px) {
       @include fz(24);
     }
   }
@@ -27,8 +45,10 @@
     @include fz(54);
     line-height: 1.1;
     margin-bottom: 32px;
-    @media (max-width: 1259px) {
+
+    @media (max-width: 1439px) {
       @include fz(42);
+      line-height: 1.14;
     }
   }
   
@@ -37,7 +57,7 @@
     justify-content: space-between;
     color: #ffffff;
     @include fz(28);
-    @media (max-width: 1259px) {
+    @media (max-width: 1439px) {
       @include fz(24);
     }
   }
@@ -46,6 +66,7 @@
     position: relative;
     text-transform: uppercase;
     color: $primary;
+    padding-right: 27px;
   }
   &-icon {
     position: absolute;
@@ -57,7 +78,7 @@
     fill: none;
     transform: scale(0.75);
     top: 7px;
-    right: -27px;
+    right: -2px;
     transition: stroke 0.3s;
   }
   &-img {
@@ -72,9 +93,6 @@
   &:hover {
     color: $primary;
 
-    // .publication-preview-icon {
-    //   stroke: #FFF;
-    // }
     .publication-preview-img {
       img {
         transform: scale(1.03);
@@ -85,7 +103,7 @@
 
 .publication-item {
   display: block;
-  padding-right: 12.5%;
+  padding-right: $content_col*3;
   padding-bottom: 80px;
   margin-bottom: 80px;
   border-bottom: 2px solid rgba(#fff, 0.15);
@@ -115,6 +133,7 @@
     position: relative;
     text-transform: uppercase;
     color: $primary;
+    padding-right: 27px;
   }
   &-icon {
     position: absolute;
@@ -126,19 +145,15 @@
     fill: none;
     transform: scale(0.75);
     top: 7px;
-    right: -27px;
+    right: -2px;
     transition: stroke 0.3s;
   }
 
   &:hover {
     color: $primary;
-
-    // .publication-item-icon {
-    //   stroke: #FFF;
-    // }
   }
 
-  @media (max-width: 1259px) {
+  @media (max-width: 1439px) {
     @include fz(24);
   }
 }

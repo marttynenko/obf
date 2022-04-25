@@ -87,8 +87,12 @@ h6, .h6, .ui-h5 {
 	line-height: 1.1;
 	font-weight: 600;
 
-	@media (max-width: 1259px) {
+	@media (max-width: 1439px) {
 		@include fz(42);
+		line-height: 1.14;
+	}
+	@media (max-width: 1259px) {
+		margin-bottom: 60px;
 	}
 }
 
@@ -276,6 +280,7 @@ ol.ui-marked {
 	  }
 	}
 }
+
 .not-styled ul,
 .content .not-styled ul,
 ul.not-styled,
@@ -1831,6 +1836,9 @@ a.ui-color {
 		width: 64px;
 		height: 64px;
 		outline: none !important;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
 
 		&:before {
 			content: "";
@@ -1842,6 +1850,8 @@ a.ui-color {
 			opacity: 0;
 			transition: opacity .4s;
 			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 
 		&:hover {
@@ -1860,10 +1870,18 @@ a.ui-color {
 		}
 	}
 	&-prev:before {
-		background: url(../images/svg/slider-arrow-left_orange.svg) center no-repeat;
+		background-image: url(../images/svg/slider-arrow-left_orange.svg);
 	}
 	&-next:before {
-		background: url(../images/svg/slider-arrow-right_orange.svg) center no-repeat;
+		background-image: url(../images/svg/slider-arrow-right_orange.svg);
+	}
+
+	@media (max-width: 1259px) {
+		&-prev,
+		&-next {
+			width: 50px;
+			height: 50px;
+		}
 	}
 }
 

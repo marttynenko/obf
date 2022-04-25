@@ -259,6 +259,9 @@
     .logo-img {
       max-width: 40px;
     }
+    .logo {
+      @include fz(28);
+    }
 
     &-header {
       padding-top: 28px;

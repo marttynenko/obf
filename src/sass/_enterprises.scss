@@ -49,12 +49,15 @@
     }
 
     &-item {
-      max-width: 520px;
+      padding-right: 24%;
       margin-bottom: 80px;
     }
     &-img {
       margin-bottom: 25px;
       height: 88px;
+      display: flex;
+      align-items: flex-end;
+
       img {
         max-height: 88px;
       }
@@ -511,6 +514,10 @@
     max-width: 320px;
     margin-bottom: 60px;
     cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
    
     &-item {
       position: relative;
@@ -535,13 +542,14 @@
       width: 140px;
       border-radius: 50%;
       overflow: hidden;
+
       img {
         position: relative;
         bottom: -2px;
       }
     
       
-      @media (max-width:1259px) {
+      @media (max-width:1439px) {
         height: 100px;
         width: 100px;
       }
@@ -552,7 +560,8 @@
       max-width: 155px;
       margin-left: 14px;
       line-height: 1.15;
-      @media (max-width:1259px) {
+
+      @media (max-width:1439px) {
         @include fz(22);
       }
     }
@@ -601,7 +610,7 @@
   flex: 0 0 140px;
   max-width: 140px;
 
-  @media (max-width: 1259px) {
+  @media (max-width: 1439px) {
     flex: 0 0 100px;
     max-width: 100px;
   }
