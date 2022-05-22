@@ -45,24 +45,19 @@ a.logo {
 	@include fz(28);
 
 	&-img {
-		max-width: 40px;
-		margin-right: 12px;
+		// max-width: 40px;
+		// margin-right: 12px;
 		line-height: 0;
-	}
 
-	@media (max-width: 1439px) {
-		&-img {
-			max-width: 32px;
+		&:not(:last-child) {
+			margin-right: 12px;
 		}
 	}
+
 
 	@media (max-width: 1259px) {
 		margin-right: 25px;
 		@include fz(22);
-
-		&-img {
-			max-width: 24px;
-		}
 	}
 }
 

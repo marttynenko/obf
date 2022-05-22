@@ -1,19 +1,18 @@
 <!--#include file="inc-header.html"-->
 </div><!--.container-->
 
-
 <div class="history-header">
    <div class="container">
       <div class="flex history-header-row">
          <div class="history-header-top">
             <div class="page-buttons history-page-buttons">
-               <a href="#" class="page-btn page-btn-brown">
+               <a href="#" class="page-btn page-btn-brown selected">
                   <svg class="sprite page-btn-sprite">
                      <use xlink:href="svg/svg/symbols.svg#btn-tab-tertiary" />
                   </svg>
                   СКБК
                </a>
-               <a href="#" class="page-btn page-btn-secondary selected">
+               <a href="#" class="page-btn page-btn-secondary">
                   <svg class="sprite page-btn-sprite">
                      <use xlink:href="svg/svg/symbols.svg#btn-tab-green" />
                   </svg>
@@ -36,10 +35,9 @@
 
          <div class="history-header-bottom">
             <div class="history-header-titles">
-               <h1 class="history-header-title">ПЗБМ</h1>
+               <h1 class="history-header-title">СКБК</h1>
                <div class="history-header-text">
-                  ООО «Полотняно-заводская бумажная мануфактура» производит тартный картон, а также широкий
-                  ассортимент писчебумажных изделий.
+                  ООО «Сухонский картонно-бумажный комбинат» занимается производством тарного картона, а также вердых древесноволокнистых плит и гофропродукции.
                </div>
                <a href="#history-info" class="ux-scroller history-header-arrow" data-target=".enterprises">
                   <svg class="sprite">
@@ -48,12 +46,12 @@
                </a>
             </div>
             <div class="history-header-btn">
-               <a href="#" class="ui-btn-circle ui-btn-circle-secondary ui-btn-circle-fixsize">
+               <a href="#" class="ui-btn-circle ui-btn-circle-darkbrown ui-btn-circle-fixsize">
                   <div class="ui-btn-circle-circle">
                      <div class="ui-btn-circle-txt">Перейти на сайт фабрики</div>
-                     <div class="ui-btn-circle-arrow">
-                        <img src="./images/svg/30x30-arrow.svg" alt="alt">
-                     </div>
+                     <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                     </svg>
                   </div>
                </a>
             </div>
@@ -61,22 +59,26 @@
          </div>
       </div>
    </div>
+   
    <div class="history-header-bg-wrp">
-      <img src="./images/bgs/company-header.png" alt="Компания Объединенные бумажные фабрики" class="history-header-bg">
+      <video class="first-screen-video" muted autoplay loop>
+        <source type="video/mp4" src="./media/1.mp4">
+      </video>
    </div>
 </div>
 
-<div class="enterprises">
+<div class="enterprises enterprises-scbc">
+
    <div class="enterprises-tabs">
       <div class="container">
          <ul class="history-tabs ux-tabs">
             <li><a href="#tab-about" class="history-tabs-link ui-tabs-link">О фабрике</a></li>
-            <li><a href="#tab-history" class="history-tabs-link ui-tabs-link" data-url="./ajax/pzbm-history.html" data-isload="false">История ПЗБМ</a></li>
+            <li><a href="#tab-history" class="history-tabs-link ui-tabs-link" data-url="./ajax/pzbm-history.html" data-isload="false">История СКБК</a></li>
             <li><a href="#tab-techno" class="history-tabs-link ui-tabs-link" data-url="./ajax/pzbm-techno.html" data-isload="false">Технологический процесс</a></li>
          </ul>
       </div>
    </div><!--.tabs-->
-
+   
    <div class="enterprises-content">
       <div id="tab-about" class="ui-tabs-content">
          <div class="enterprises-block">
@@ -87,7 +89,7 @@
                   <div class="col-layout-wide">
                      
                      <figure>
-                        <img src="./images/examples/enterprises-pr.png" alt="alt" loading="lazy">
+                        <img src="./images/examples/entr-scbc.png" alt="alt" loading="lazy">
                         <figcaption>Подпись к фотографии</figcaption>
                      </figure>
                      
@@ -98,7 +100,7 @@
       
          <div class="enterprises-block">
             <div class="container">
-               <div class="ui-subtitle">ПЗБМ в цифрах</div>
+               <div class="ui-subtitle">СКБК в цифрах</div>
                <div class="row">
                   <div class="col-layout-thin"></div>
                   <div class="col-layout-wide">
@@ -203,7 +205,7 @@
                      фабрики
                   </div>
                   <div class="enterprises-sort-adaptive-link">
-                     <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-secondary enterprises-circle">
+                     <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkbrown enterprises-circle">
                         <div class="ui-btn-circle-circle">
                            <div class="ui-btn-cirlce-txt">Тарный картон</div>
                            <svg class="sprite ui-btn-circle-arrow">
@@ -211,7 +213,7 @@
                            </svg>
                         </div>
                      </a>
-                     <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-secondary enterprises-circle">
+                     <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkbrown enterprises-circle">
                         <div class="ui-btn-circle-circle">
                            <div class="ui-btn-cirlce-txt">Бумажно- беловые изделия</div>
                            <svg class="sprite ui-btn-circle-arrow">
@@ -225,7 +227,7 @@
                <div class="row">
                   <div class="col-layout-thin">
                      <div class="circle-flex">
-                        <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-secondary enterprises-circle">
+                        <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkbrown enterprises-circle">
                            <div class="ui-btn-circle-circle">
                               <div class="ui-btn-cirlce-txt">Тарный картон</div>
                               <svg class="sprite ui-btn-circle-arrow">
@@ -234,7 +236,7 @@
                               
                            </div>
                         </a>
-                        <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-secondary enterprises-circle">
+                        <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkbrown enterprises-circle">
                            <div class="ui-btn-circle-circle">
                               <div class="ui-btn-cirlce-txt">Бумажно- беловые изделия</div>
                               <svg class="sprite ui-btn-circle-arrow">
@@ -257,27 +259,6 @@
                         </div>
                         <div class="swiper ui-swiper">
                            <div class="swiper-wrapper">
-                              <div class="swiper-slide ui-swiper-slide">
-                                 <div class="swiper-slide-container">
-                                    <img class="ui-swiper-slide-img" src="https://via.placeholder.com/1350x730.png"
-                                       alt="alt" loading="lazy">
-                                    <div class="ui-swiper-slide-subtitle slider-museum-subtitle">Описание фото</div>
-                                 </div>
-                              </div>
-                              <div class="swiper-slide ui-swiper-slide">
-                                 <div class="swiper-slide-container">
-                                    <img class="ui-swiper-slide-img" src="https://via.placeholder.com/1350x730.png"
-                                       alt="alt" loading="lazy">
-                                    <div class="ui-swiper-slide-subtitle slider-museum-subtitle">Описание фото</div>
-                                 </div>
-                              </div>
-                              <div class="swiper-slide ui-swiper-slide">
-                                 <div class="swiper-slide-container">
-                                    <img class="ui-swiper-slide-img" src="https://via.placeholder.com/1350x730.png"
-                                       alt="alt" loading="lazy">
-                                    <div class="ui-swiper-slide-subtitle slider-museum-subtitle">Описание фото</div>
-                                 </div>
-                              </div>
                               <div class="swiper-slide ui-swiper-slide">
                                  <div class="swiper-slide-container">
                                     <img class="ui-swiper-slide-img" src="https://via.placeholder.com/1350x730.png"
@@ -351,6 +332,7 @@
                            <div class="swiper-button-next"></div>
                         </div>
                      </div>
+      
       
                   </div>
                </div>
@@ -526,10 +508,8 @@
 
       <div id="tab-techno" class="ui-tabs-content"></div><!--tab-->
    </div><!--.enterprises-content-->
-   
+
 </div>
 
-
-
-<div class="container"><!--.container-->
+<div class="container">
 <!--#include file="inc-footer.html"-->

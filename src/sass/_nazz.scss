@@ -206,7 +206,7 @@
 
 .page {
   &-buttons {
-    margin-bottom: 80px;
+    margin-bottom: 20px;
   }
 
   &-btn {
@@ -980,8 +980,14 @@
   }
 }
 .contacts-row {
+
+  &.map-fullscreen {
+    transform: none !important;
+    transition: none;
+  }
   @media (max-width: 1259px) {
-    margin: 0;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 
     .col-md-3 {
       flex: 0 0 ($content_col * 8);

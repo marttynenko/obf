@@ -378,6 +378,10 @@
 .page {
   padding-top: 100px;
 
+  @media (max-width: 1259px) {
+    padding-top: 60px;
+  }
+
   &-header,
   &-title {
     margin-bottom: 96px;
@@ -1037,7 +1041,7 @@ PRODUCTIONS -------------- */
     overflow: hidden;
 
     &-body {
-      min-height: 100vh;
+      height: 100vh;
       padding-top: Min(10vh, 200px);
       padding-bottom: 50px;
       // opacity: 0;
@@ -1694,14 +1698,9 @@ PRODUCTIONS -------------- */
   margin: 0px -10px;
 
   &-img {
-    // height: 310px;
     position: relative;
     z-index: 1;
-    // height: 0;
     line-height: 0;
-    // display: flex;
-    // align-items: flex-end;
-    // justify-content: center;
     flex: 0 0 33%;
     max-width: 33.3%;
     margin-right: 8%;
@@ -1713,7 +1712,6 @@ PRODUCTIONS -------------- */
     }
 
     img {
-      // max-height: 310px;
       position: absolute;
       left: 0;
       right: 0;
@@ -2038,11 +2036,12 @@ PRODUCTIONS -------------- */
     }
     &-stanok {
       // padding-bottom: 65%;
-      height: 1183px;
+      // height: 1183px;
+      height: 1250px;
 
       img {
         position: absolute;
-        bottom: -15%;
+        bottom: -8%;
         left: -83%;
         max-width: none;
       }
@@ -2492,6 +2491,19 @@ PRODUCTIONS -------------- */
     .museum-slider-btns .swiper-button-prev,
     .museum-slider-btns .swiper-button-next {
       filter: brightness(0);
+    }
+  }
+}
+
+.ui-bg-beige {
+  .docs-card:hover {
+    color: $primary;
+    border-color: $primary;
+
+    .docs-card {
+      &-type {
+        color: $primary;
+      }
     }
   }
 }

@@ -238,10 +238,12 @@
 }
 .node-slider {
   &-descr {
-    bottom: 1px;
+    // bottom: 1px;
+    top: 100%;
+    margin-top: -1.42em;
 
     @media (max-width: 1259px) {
-      bottom: -1px;
+      // bottom: -1px;
     }
   }
 }

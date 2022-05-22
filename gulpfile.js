@@ -20,6 +20,16 @@ function styles(cb) {
     cb();
 }
 
+function buildStyles(cb) {
+    return src('src/sass/style.scss')
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(autoprefixer(
+            ['last 4 versions']
+        ))
+        .pipe(dest('public/css'))
+    cb();
+}
+
 
 function svg(cb) {
     return src('src/images/svg/*.svg')
@@ -62,7 +72,7 @@ const copyAll = async () => {
             './src/scripts/**/*',
             './src/images/svg/**/*',
             './src/images/*.svg',
-            './src/css/**/*',
+            // './src/css/**/*',
             './src/js/**/*',
             './src/fonts/**/*',
             './src/svg/**/*',
@@ -72,7 +82,7 @@ const copyAll = async () => {
         ],
         { base: './src' }
     )
-        .pipe(dest('./public'));
+    .pipe(dest('./public'));
 }
 
 
@@ -83,5 +93,5 @@ exports.default = function () {
     watch('src/images/svg/*.svg', svg);
 };
 
-const buildSeries = series(clean, compressImages, copyAll)
+const buildSeries = series(clean, compressImages, buildStyles, copyAll)
 exports.build = buildSeries;

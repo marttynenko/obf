@@ -42,8 +42,6 @@
       font-style: normal;
       font-display: swap;
     }
-  </style>
-  <style>
     .preloader {
       position: fixed;
       z-index: 9999;
@@ -54,10 +52,37 @@
       background: #222E3F;
     }
     .preloader.loaded {
-      -webkit-transition: transform .6s;
-      transition: transform .6s;
+      -webkit-transition: transform .5s .3s;
+      transition: transform .5s .3s;
       -webkit-transform: translate(0,-100%);
       transform: translate(0,-100%);
+    }
+    .preloader-logo {
+      display: flex;
+      min-height: 100%;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .3s;
+    }
+    .preloader.loaded .preloader-logo {
+      opacity: 0;
+    }
+    @keyframes prld {
+      50% {
+        opacity: 0.5
+      }
+    }
+    .preloader-g-1 {
+      animation: .95s infinite prld;
+    }
+    .preloader-g-2 {
+      animation: .95s .25s infinite prld;
+    }
+    .preloader-g-3 {
+      animation: .95s .5s infinite prld;
+    }
+    .preloader-g-4 {
+      animation: .95s .75s infinite prld;
     }
   </style>
 
@@ -82,18 +107,54 @@
 </head>
 
 <body>
-  <div id="preloader" class="preloader"></div>
+  <div id="preloader" class="preloader">
+    <div class="preloader-logo">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g class="preloader-g-4">
+          <path d="M33.9785 49.2737C35.2342 49.2737 36.6684 48.825 38.0903 48.0505V41.9531H32.1011C30.6361 44.5777 30.3652 47.1593 31.6579 48.4562C32.1934 48.9971 32.9751 49.2737 33.9785 49.2737Z" fill="#F08322"/>
+          <path d="M30.8371 55.9841C33.0838 55.9841 35.5952 55.2772 38.0943 54.0172V50.7902C36.6908 51.3988 35.2936 51.7245 33.9825 51.7245C32.3267 51.7245 30.9232 51.1959 29.9199 50.1879C28.0302 48.3009 27.9379 45.1661 29.3598 41.9453H25.8758C23.4567 46.8134 23.229 51.6016 25.7712 54.1524C26.9715 55.351 28.7196 55.9841 30.8371 55.9841Z" fill="#F08322"/>
+          <path d="M18.9056 61.1858C20.6107 62.8884 23.1159 63.7919 26.1505 63.7919C29.7884 63.7919 33.9371 62.5319 38.0859 60.3007V56.7541C35.6175 57.8482 33.1369 58.4444 30.8286 58.4444C28.0464 58.4444 25.695 57.5593 24.0208 55.8936C20.8384 52.7158 20.6784 47.4174 23.0913 41.9531H19.7982C15.5756 49.704 14.9477 57.2274 18.9056 61.1858Z" fill="#F08322"/>
+          <path d="M10.4766 69.6619C12.5879 71.7702 15.5917 72.8397 19.4081 72.8397C24.9603 72.8397 31.5096 70.6085 38.0959 66.6624V63.0605C33.9594 65.1134 29.8353 66.2505 26.1606 66.2505C22.4612 66.2505 19.3527 65.1011 17.1737 62.9252C12.5879 58.346 12.8218 50.3002 17.0198 41.9531H13.5605C6.67873 53.2997 5.06602 64.2652 10.4766 69.6619Z" fill="#F08322"/>
+          <path d="M19.408 75.2983C14.9761 75.2983 11.289 73.9522 8.73451 71.4014C4.48728 67.1602 3.66862 60.0978 6.42623 51.5172C7.43572 48.3763 8.88839 45.1555 10.7165 41.9531H0V79.9943H38.0958V69.4959C31.5341 73.2146 25.0155 75.2983 19.408 75.2983Z" fill="#F08322"/>
+        </g>
+      
+        <g class="preloader-g-2">
+          <path d="M74.4991 17.6345C72.4247 17.0813 70.4242 16.7986 68.5653 16.7986C66.2016 16.7986 64.8967 17.2657 64.8843 17.2719C64.8782 17.278 64.5643 17.4071 64.1949 17.4071C63.9118 17.4071 63.6656 17.3272 63.4686 17.1735C62.9823 16.7925 63.2963 15.8336 63.3086 15.7906C63.3763 15.5508 64.9521 9.78535 62.0836 3.57116C61.4373 2.15745 60.6556 0.977306 59.8677 0H41.9062V38.035H80.002L79.9404 20.2591C78.3031 19.1466 76.4442 18.157 74.4991 17.6345Z" fill="#B1D34A"/>
+          <path d="M68.56 14.3881C70.6282 14.3881 72.8318 14.7015 75.1216 15.31C76.3527 15.642 77.5407 16.1214 78.661 16.693L71.5699 9.60602L64.0234 2.07031C64.1035 2.23627 64.1958 2.39608 64.2697 2.56819C66.5595 7.54691 66.3563 12.1753 66.0055 14.5663C66.8057 14.4495 67.6674 14.3881 68.56 14.3881Z" fill="#B1D34A"/>
+        </g>
+        
+        <g class="preloader-g-3">
+          <path d="M55.886 41.9453H50.7031V79.9865H55.886V41.9453Z" fill="#268E80"/>
+          <path d="M63.5422 41.9453H58.3594V79.9865H63.5422V41.9453Z" fill="#268E80"/>
+          <path d="M71.2102 41.9453H66.0273V79.9865H71.2102V41.9453Z" fill="#268E80"/>
+          <path d="M79.999 41.9453H73.6836V79.9865H79.999V41.9453Z" fill="#268E80"/>
+          <path d="M48.2278 41.9453H41.9062V79.9865H48.2278V41.9453Z" fill="#268E80"/>
+        </g>
+        
+        <g class="preloader-g-1">
+          <path d="M30.3892 19.5591C27.7116 25.0357 24.9478 30.6967 19.0694 30.6967C13.191 30.6967 10.4272 25.0357 7.74965 19.5591C5.56448 15.0967 3.48395 10.8617 0 9.97656V38.0357H38.0958V9.98886C34.6303 10.8863 32.562 15.109 30.3892 19.5591Z" fill="#B16531"/>
+          <path d="M9.95943 18.4828C12.4093 23.4984 14.7299 28.2374 19.0633 28.2374C23.3967 28.2374 25.7172 23.4984 28.1671 18.4828C30.6231 13.461 33.1591 8.30403 38.0896 7.47424V0H0V7.46809C4.95509 8.27329 7.50343 13.4487 9.95943 18.4828Z" fill="#B16531"/>
+        </g>
+      </svg>
+    </div>
+  </div>
 
   <div class="wrapper" id="wrapper">
     <header class="header" id="header">
       <div class="container">
         <div class="row valign-center">
-          <div class="col-layout-thin col-layout-thin-header">
+          <div class="col-layout-thin not-anim col-layout-thin-header">
             <div class="header-left flex valign-center">
 
               <a href="/" class="logo flex valign-center">
-                <div class="logo-img"><img src="./images/logo.svg" alt="OBF"></div>
-                <div class="logo-txt">ОБФ</div>
+                <div class="logo-img">
+                  <picture>
+                    <source srcset="./images/logo-full.svg" media="(min-width: 1440px)">
+                    <source srcset="./images/logo-full-midi.svg" media="(min-width: 1260px)">
+                    <img src="./images/logo-full-mini.svg" alt="ОБФ">
+                  </picture>
+                </div>
+                <!-- <div class="logo-txt">ОБФ</div> -->
               </a>
 
               <div class="menu-toggler ux-toggler-menu" onclick="">
@@ -109,7 +170,7 @@
           </div>
           <!--.col-->
 
-          <div class="col-layout-wide col-layout-wide-header">
+          <div class="col-layout-wide not-anim col-layout-wide-header">
             <div class="header-right flex align-justify valign-center">
 
               <nav class="main-menu">
@@ -119,7 +180,7 @@
                     <ul class="main-menu-sub">
                       <li><a href="#">О компании</a></li>
                       <li><a href="#">Предприятия</a></li>
-                      <li><a href="#">Руководство</a></li>
+                      <li><a href="#" class="active">Руководство</a></li>
                       <li><a href="#">Лицензия и сертификаты</a></li>
                       <li><a href="#">Раскрытие информации</a></li>
                       <li><a href="#">Социальная политика</a></li>
@@ -229,7 +290,7 @@
                       <li><a href="#">Фотогалерея</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Контакты</a></li>
+                  <li><a href="#" class="active">Контакты</a></li>
                 </ul>
               </nav>
 

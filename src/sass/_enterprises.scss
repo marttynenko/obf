@@ -1,4 +1,17 @@
-
+.enterprises:not(.enterprises-td):not(.enterprises-bkf):not(.enterprises-scbc) {
+  .swiper-button {
+    &-prev {
+      &:before {
+        background: url(../images/svg/arrow-prev-green.svg) center no-repeat;
+      }
+    }
+    &-next {
+      &:before {
+        background: url(../images/svg/arrow-next-green.svg) center no-repeat;
+      }
+    }
+  }
+}
 .enterprises {
   .ui-subtitle {
     color: $bgc;
@@ -209,9 +222,17 @@
   }
   .museum-slider-btns .swiper-button-next {
     background-image: url(../images/svg/slider-arrow-next.svg);
+
+    &:before {
+      filter: none;
+    }
   }
   .museum-slider-btns .swiper-button-prev {
     background-image: url(../images/svg/slider-arrow-prev.svg);
+
+    &:before {
+      filter: none;
+    }
   }
   .enterprises-circle-circle {
     background: $secondary;
@@ -278,22 +299,6 @@
   .node-inner ul li {
     &:before {
       background: $secondary;
-    }
-  }
-
-  
-}
-.enterprises:not(.enterprises-td) {
-  .swiper-button {
-    &-prev {
-      &:before {
-        background: url(../images/svg/arrow-prev-green.svg) center no-repeat;
-      }
-    }
-    &-next {
-      &:before {
-        background: url(../images/svg/arrow-next-green.svg) center no-repeat;
-      }
     }
   }
 }

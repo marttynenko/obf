@@ -33,6 +33,7 @@
   background-position: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 
   &-no-bg {
     background-image: none;
@@ -220,6 +221,12 @@
     margin: 0;
     margin-right: 20px;
     background-image: url(../images/svg/slider-arrow-right_orange.svg);
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    &:before {
+      filter: brightness(10);
+    }
   }
 }
 .museum-history {

@@ -2,245 +2,298 @@
 </div><!--.container-->
 
 <div class="productions">
-  <div class="productions-animation ui-bg-primary" data-headerbg="ui-bg-primary">
-    <div class="productions-head productions-head-tk">
-      <div class="container">
-        <div class="productions-head-body flex valign-end">
-          <div class="productions-head-content">
-            <h1 class="productions-head-title">Тарный картон</h1>
-            <div class="productions-head-descr">Широкий ассортимент<br> для любых целей</div>
-            <div class="productions-head-arrow ux-scroller" data-target=".productions-screens">
-              <svg class="sprite productions-head-svg">
-                <use xlink:href="svg/svg/symbols.svg#arrow-down-no-fill"></use>
-              </svg>
-            </div>
-          </div>
+  <div class="productions-animation ui-bg-primary wheel-screens" data-headerbg="ui-bg-primary">
 
-          <div class="productions-head-btn">
-            <a href="#" class="ui-btn-circle ui-btn-circle-fixsize ui-btn-circle-darkblue" download>
-              <div class="ui-btn-circle-circle">
-                <div class="ui-btn-circle-txt">Скачать прайс лист</div>
-                <svg class="sprite ui-btn-circle-arrow">
-                  <use xlink:href="svg/svg/symbols.svg#circle-btn-download"></use>
+    <transition
+      v-on:enter="headEnter"
+      v-on:leave="headLeave"
+      v-bind:css="false"
+      mode="out-in"
+    >
+      <div class="productions-head productions-head-tk wheel-screen" v-if="activeScreen === 0">
+        <div class="container">
+          <div class="productions-head-body flex valign-end">
+            <div class="productions-head-content">
+              <h1 class="productions-head-title">Тарный картон</h1>
+              <div class="productions-head-descr">Широкий ассортимент<br> для любых целей</div>
+              <div class="productions-head-arrow" @click.prevent="activeScreen = 1">
+                <svg class="sprite productions-head-svg">
+                  <use xlink:href="svg/svg/symbols.svg#arrow-down-no-fill"></use>
                 </svg>
               </div>
-            </a>
-          </div>
+            </div>
 
-          <div class="productions-head-img-wrp">
-            <img src="./images/bgs/productions-tk-head.png" class="productions-head-img" alt="Тарный картон">
+            <div class="productions-head-btn">
+              <a href="#" class="ui-btn-circle ui-btn-circle-fixsize ui-btn-circle-darkblue" download>
+                <div class="ui-btn-circle-circle">
+                  <div class="ui-btn-circle-txt">Скачать прайс лист</div>
+                  <svg class="sprite ui-btn-circle-arrow">
+                    <use xlink:href="svg/svg/symbols.svg#circle-btn-download"></use>
+                  </svg>
+                </div>
+              </a>
+            </div>
+
+            <div class="productions-head-img-wrp">
+              <img src="./images/bgs/productions-tk-head.png" class="productions-head-img" alt="Тарный картон">
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </transition>
 
+    
 
-    <div class="productions-screens">
-      <video class="productions-screens-video" ref="video" muted>
-        <source type="video/mp4" src="./media/tk.mp4">
-      </video>
+    <transition
+      v-on:enter="productionsEnter"
+      v-on:leave="productionsLeave"
+      v-bind:css="false"
+      mode="out-in"
+    >
+      <div class="productions-screens wheel-screen" v-if="activeScreen === 1">
 
-      <transition
-        v-on:enter="slideEnter"
-        v-on:leave="slideLeave"
-        v-bind:css="false"
-        mode="out-in"
-      >
-      <div class="productions-screen" v-if="index === 0" key="0">
-        <div class="container">
+        <transition
+          v-on:enter="slideEnter"
+          v-on:leave="slideLeave"
+          v-bind:css="false"
+          mode="out-in"
+        >
+          <div class="productions-screen" v-if="index === 0">
+            <video class="productions-screens-video" muted preload="metadata">
+              <source type="video/mp4" src="./media/1.mp4">
+            </video>
+            <div class="container">
 
-          <div class="productions-screen-cols flex align-justify">
+              <div class="productions-screen-cols flex align-justify">
 
-            <div class="productions-screen-col productions-screen-titles">
-              <h2>Крупнейшее<br> производство<br> тарного картона<br> в стране</h2>
+                <div class="productions-screen-col productions-screen-titles">
+                  <h2>Крупнейшее<br> производство<br> тарного картона<br> в стране</h2>
 
-              <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                <div class="ui-btn-circle-circle">
-                  <div class="ui-btn-circle-txt">Статья о макулатурном картоне</div>
-                  <svg class="sprite ui-btn-circle-arrow">
-                    <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                  </svg>
+                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Статья о макулатурном картоне</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
 
-            <div class="productions-screen-col productions-screen-details">
-              <div class="productions-screen-details-top">
-                Наше преимущество — научный подход к разработке и внедрению инновационных технологических решений в области производства продукции из вторичного сырья.
-              </div>
+                <div class="productions-screen-col productions-screen-details">
+                  <div class="productions-screen-details-top">
+                    Наше преимущество — научный подход к разработке и внедрению инновационных технологических решений в области производства продукции из вторичного сырья.
+                  </div>
 
-              <div class="productions-screen-details-bottom">
-                <h5>530 тыс.</h5>
-                <b>тонн продукции в месяц</b> 
-                <br><br>
-                <h5>8 марок</h5>
-                <b>востребованных у крупнейших производителей гофроупаковки в стране</b> 
-              </div>
-            </div><!--.details-->
-
-            <img src="./images/bgs/productions-tk-1.png" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
-
-          </div>
-
-        </div><!--.container-->
-      </div><!--.screen-->
-
-      <div class="productions-screen" v-if="index === 1" key="1">
-        <div class="container">
-
-          <div class="productions-screen-cols flex align-justify">
-
-            <div class="productions-screen-col productions-screen-titles">
-              <div class="productions-screen-title">Наука<br> в основе всех<br> процессов</div>
-
-              <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                <div class="ui-btn-circle-circle">
-                  <div class="ui-btn-circle-txt">Научная деятельность</div>
-                  <svg class="sprite ui-btn-circle-arrow">
-                    <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                  </svg>
+                  <div class="productions-screen-details-bottom">
+                    <h5>530 тыс.</h5>
+                    <b>тонн продукции в месяц</b> 
+                    <br><br>
+                    <h5>8 марок</h5>
+                    <b>востребованных у крупнейших производителей гофроупаковки в стране</b> 
+                  </div>
                 </div>
-              </a>
-            </div>
 
-            <div class="productions-screen-col productions-screen-details">
-              <div class="productions-screen-details-top">
-                Наше преимущество — научный подход к разработке и внедрению инновационных технологических решений в области производства продукции из вторичного сырья.
+                <img src="./images/bgs/productions-tk-1.png" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+
               </div>
 
-              <div class="productions-screen-details-bottom">
-                <h5>8 научных сотрудников</h5>
-                <b>сделавших производство картона делом всей жизни</b>
-                <br><br>
-                <h5>Более 50</h5>
-                <b>публикаций в профильных изданиях</b>
-              </div>
-            </div><!--.details-->
+            </div><!--.container-->
+          </div><!--.screen-->
+        </transition>
 
-            <img src="./images/bgs/productions-tk-2.png" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+        <transition
+          v-on:enter="slideEnter"
+          v-on:leave="slideLeave"
+          v-bind:css="false"
+          mode="out-in"
+        >
+          <div class="productions-screen" v-if="index === 1">
+            <video class="productions-screens-video" muted preload="metadata">
+              <source type="video/mp4" src="./media/2.mp4">
+            </video>
+            <div class="container">
 
-          </div>
+              <div class="productions-screen-cols flex align-justify">
 
-        </div><!--.container-->
-      </div><!--.screen-->
+                <div class="productions-screen-col productions-screen-titles">
+                  <div class="productions-screen-title">Наука<br> в основе всех<br> процессов</div>
 
-      <div class="productions-screen" v-if="index === 2" key="2">
-        <div class="container">
-
-          <div class="productions-screen-cols flex align-justify">
-
-            <div class="productions-screen-col productions-screen-titles">
-              <h2>Многократно<br> перерабатываемый<br> материал</h2>
-
-              <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                <div class="ui-btn-circle-circle">
-                  <div class="ui-btn-circle-txt">Статья о макулатуре</div>
-                  <svg class="sprite ui-btn-circle-arrow">
-                    <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                  </svg>
+                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Научная деятельность</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
 
-            <div class="productions-screen-col productions-screen-details">
-              <div class="productions-screen-details-top">
-                Основным видом деятельности является производство тарного картона — сырья для производства гофротары — из вторичного сырья — макулатуры.
+                <div class="productions-screen-col productions-screen-details">
+                  <div class="productions-screen-details-top">
+                    Наше преимущество — научный подход к разработке и внедрению инновационных технологических решений в области производства продукции из вторичного сырья.
+                  </div>
+
+                  <div class="productions-screen-details-bottom">
+                    <h5>8 научных сотрудников</h5>
+                    <b>сделавших производство картона делом всей жизни</b>
+                    <br><br>
+                    <h5>Более 50</h5>
+                    <b>публикаций в профильных изданиях</b>
+                  </div>
+                </div><!--.details-->
+
+                <img src="./images/bgs/productions-tk-2.png" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+
               </div>
 
-              <div class="productions-screen-details-bottom">
-                <h5>20 тонн макулатуры</h5>
-                <b>ежедневно мы превращаем в превосходный тарный картон</b> 
-              </div>
-            </div><!--.details-->
+            </div><!--.container-->
+          </div><!--.screen-->
+        </transition>
 
-            <img src="./images/bgs/productions-tk-3.png" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy">
+        <transition
+          v-on:enter="slideEnter"
+          v-on:leave="slideLeave"
+          v-bind:css="false"
+          mode="out-in"
+        >
+          <div class="productions-screen" v-if="index === 2">
+            <video class="productions-screens-video" muted preload="metadata">
+              <source type="video/mp4" src="./media/3.mp4">
+            </video>
+            <div class="container">
 
-          </div>
+              <div class="productions-screen-cols flex align-justify">
 
-        </div><!--.container-->
-      </div><!--.screen-->
+                <div class="productions-screen-col productions-screen-titles">
+                  <h2>Многократно<br> перерабатываемый<br> материал</h2>
 
-
-      <div class="productions-screen" v-if="index === 3" key="3">
-        <div class="container">
-
-          <div class="productions-screen-cols flex align-justify">
-
-            <div class="productions-screen-col productions-screen-titles">
-              <div class="productions-screen-title">Постоянно<br> улучшающиеся<br> технологии</div>
-
-              <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                <div class="ui-btn-circle-circle">
-                  <div class="ui-btn-circle-txt">Статья о макулатуре</div>
-                  <svg class="sprite ui-btn-circle-arrow">
-                    <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                  </svg>
+                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Статья о макулатуре</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
 
-            <div class="productions-screen-col productions-screen-details">
-              <div class="productions-screen-details-top">
-                Производство продукции в компании основано на применении инновационных технологий и собственных разработок. ОБФ занимается научной работой в области технологии тарного картона более 15 лет
+                <div class="productions-screen-col productions-screen-details">
+                  <div class="productions-screen-details-top">
+                    Основным видом деятельности является производство тарного картона — сырья для производства гофротары — из вторичного сырья — макулатуры.
+                  </div>
+
+                  <div class="productions-screen-details-bottom">
+                    <h5>20 тонн макулатуры</h5>
+                    <b>ежедневно мы превращаем в превосходный тарный картон</b> 
+                  </div>
+                </div><!--.details-->
+
+                <img src="./images/bgs/productions-tk-3.png" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy">
+
               </div>
 
-              <div class="productions-screen-details-bottom">
-                <div class="productions-screen-block">
-                  <h4>Уникальные формулы</h4>
-                  позволяют непрерывно совершенствовать процессы производства продукции и создавать новые продукты
+            </div><!--.container-->
+          </div><!--.screen-->
+        </transition>
+
+        <transition
+          v-on:enter="slideEnter"
+          v-on:leave="slideLeave"
+          v-bind:css="false"
+          mode="out-in"
+        >
+          <div class="productions-screen" v-if="index === 3">
+            <video class="productions-screens-video" muted preload="metadata">
+              <source type="video/mp4" src="./media/4.mp4">
+            </video>
+            <div class="container">
+
+              <div class="productions-screen-cols flex align-justify">
+
+                <div class="productions-screen-col productions-screen-titles">
+                  <div class="productions-screen-title">Постоянно<br> улучшающиеся<br> технологии</div>
+
+                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Статья о макулатуре</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
                 </div>
+
+                <div class="productions-screen-col productions-screen-details">
+                  <div class="productions-screen-details-top">
+                    Производство продукции в компании основано на применении инновационных технологий и собственных разработок. ОБФ занимается научной работой в области технологии тарного картона более 15 лет
+                  </div>
+
+                  <div class="productions-screen-details-bottom">
+                    <div class="productions-screen-block">
+                      <h4>Уникальные формулы</h4>
+                      позволяют непрерывно совершенствовать процессы производства продукции и создавать новые продукты
+                    </div>
+                  </div>
+                </div><!--.details-->
+
+                <img src="./images/bgs/productions-tk-4.png" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy">
+
               </div>
-            </div><!--.details-->
 
-            <img src="./images/bgs/productions-tk-4.png" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy">
+            </div><!--.container-->
+          </div><!--.screen-->
+        </transition>
 
-          </div>
+        <transition
+          v-on:enter="slideEnter"
+          v-on:leave="slideLeave"
+          v-bind:css="false"
+          mode="out-in"
+        >
+          <div class="productions-screen" v-if="index === 4">
+            <video class="productions-screens-video" muted preload="metadata">
+              <source type="video/mp4" src="./media/5.mp4">
+            </video>
+            <div class="container">
 
-        </div><!--.container-->
-      </div><!--.screen-->
+              <div class="productions-screen-cols flex align-justify">
 
+                <div class="productions-screen-col productions-screen-titles">
+                  <div class="productions-screen-title">Качество,<br> приносящее<br> выгоду</div>
 
-      <div class="productions-screen" v-if="index === 4" key="4">
-        <div class="container">
-
-          <div class="productions-screen-cols flex align-justify">
-
-            <div class="productions-screen-col productions-screen-titles">
-              <div class="productions-screen-title">Качество,<br> приносящее<br> выгоду</div>
-
-              <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                <div class="ui-btn-circle-circle">
-                  <div class="ui-btn-circle-txt">Аналитика</div>
-                  <svg class="sprite ui-btn-circle-arrow">
-                    <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                  </svg>
+                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Аналитика</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
 
-            <div class="productions-screen-col productions-screen-details">
-              <div class="productions-screen-details-top">
-                Качеству выпускаемой продукции наша компания уделяет особое внимание. Мы постоянно совершенствуем качество продукта на всех стадиях производства. Все это обеспечивает высокие потребительские свойства и технологичность переработки тарного картона ОБФ.
+                <div class="productions-screen-col productions-screen-details">
+                  <div class="productions-screen-details-top">
+                    Качеству выпускаемой продукции наша компания уделяет особое внимание. Мы постоянно совершенствуем качество продукта на всех стадиях производства. Все это обеспечивает высокие потребительские свойства и технологичность переработки тарного картона ОБФ.
+                  </div>
+
+                  <div class="productions-screen-details-bottom">
+                    <div class="productions-screen-block">
+                      <h6>Нон-стоп проверка качества по всей ширине картона</h6>
+                    </div>
+                  </div>
+                </div><!--.details-->
+
+                <img src="./images/bgs/productions-tk-5.png" alt="Качество, приносящее выгоду" class="productions-screen-img" loading="lazy">
+
               </div>
 
-              <div class="productions-screen-details-bottom">
-                <div class="productions-screen-block">
-                  <h6>Нон-стоп проверка качества по всей ширине картона</h6>
-                </div>
-              </div>
-            </div><!--.details-->
+            </div><!--.container-->
+          </div><!--.screen-->
+        </transition>
+      </div>
+    </transition>    
+  </div><!--.productions-animations-->
 
-            <img src="./images/bgs/productions-tk-5.png" alt="Качество, приносящее выгоду" class="productions-screen-img" loading="lazy">
-
-          </div>
-
-        </div><!--.container-->
-      </div><!--.screen-->
-      </transition>
-
-
-    </div><!--.screens-->
-  </div><!--.productions-->
 
   <div class="productions-block productions-tk-stock ui-bg-darkblue">
     <div class="container">

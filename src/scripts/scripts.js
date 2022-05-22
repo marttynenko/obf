@@ -132,9 +132,13 @@ const FARBA = {
         el.addEventListener('click',(e)=> {
           e = e || window.event
           e.preventDefault()
-          target.scrollIntoView({
+          // target.scrollIntoView({
+          //   behavior: "smooth"
+          // });
+          window.scrollTo({
+            top: target.offsetTop,
             behavior: "smooth"
-          });
+        });
         })
       }
     })
@@ -204,7 +208,7 @@ const FARBA = {
 
     function easeHeight(currentTab) {
       const height = currentTab.clientHeight
-      gsap.to(parent,{height: height, duration: 1})
+      gsap.to(parent,{minHeight: height, duration: 1, overwrite: true})
     }
 
     window.addEventListener('resize',()=>{
@@ -305,7 +309,6 @@ try {
 
 gsap.registerPlugin(ScrollTrigger);
 CustomEase.create('dflt','.25,.1,.25,1')
-// CustomEase.create('imgs','0,.25,.8,.96')
 CustomEase.create('imgs','0,.85,.8,.96')
 CustomEase.create('easeout','0,0,.58,1')
 gsap.defaults({
@@ -349,8 +352,6 @@ const Headers = {
     D.querySelector(".wrapper").classList.add("no-gutters-top");
     D.querySelector("#header").classList.add("header-transparent");
 
-    // Headers.updateHeight();
-    // window.addEventListener("resize", this.updateHeight, false);
     window.addEventListener("scroll", this.scroll, supportsPassive ? { passive: true } : false);
   }
 };
@@ -464,8 +465,6 @@ function animateFSMenu(action) {
   const coords = toggler.getBoundingClientRect()
   bg.style.left = coords.x + 'px'
   bg.style.top = coords.y + 'px'
-
-  // header.classList.toggle("fs-opened");
 
   if (action === "open") {
     header.classList.add("fs-opened");
@@ -737,15 +736,6 @@ const prdHeadAnimate = () => {
 
   const tl = gsap.timeline();
   tl
-    // .fromTo('.productions-head-img',{ yPercent: 25, scale: 0.95, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 3})
-    // .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1}, '-=2')
-    // .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, "-=1.7")
-    // .fromTo('.productions-head-arrow',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5}, "-=1.4")
-    // .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},"-=1.4")
-    // .fromTo('#header',{opacity: 0, yPercent: -100}, {opacity: 1, yPercent: 0, duration: 0.4, onComplete: () => {
-    // }},"-=1.4")
-    
-    // .to({},{},0.3)
     .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
     .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.6")
     .fromTo('.productions-head-arrow',{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
@@ -766,7 +756,7 @@ const firstScreenAnimate = () => {
   const head = D.querySelector('.first-screen')
   if (!head) return;
 
-  const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
+  const tl = gsap.timeline();
   tl
     .from({},{},0.1)
     .from('.first-screen-title',{opacity: 0, y: 30, duration: 0.8})
@@ -786,7 +776,7 @@ const museumScreenAnimate = () => {
   const head = D.querySelector('.museum-header')
   if (!head) return;
 
-  const tl = gsap.timeline(/*{ autoRemoveChildren: true }*/);
+  const tl = gsap.timeline();
   tl
     .from({},{},0.1)
     .from('.museum-top-screen-title',{opacity: 0, y: 30, duration: 0.8})
@@ -851,9 +841,6 @@ rewards.forEach((el,index) => {
     grabCursor: true,
     slidesPerView: 2,
     spaceBetween: 30,
-    // simulateTouch: false,
-    // slideToClickedSlide: false,
-    // allowTouchMove: false,
     speed: 500,
     navigation: {
       nextEl: nextArrow,
@@ -862,7 +849,6 @@ rewards.forEach((el,index) => {
   })
 
   el.addEventListener('mousedown', event => {
-    // console.log(event.which)
     event.preventDefault()
     return false
   });
@@ -1018,7 +1004,6 @@ const mainScreen = () => {
             }
           )
         }
-        // this.line.to(this.$refs.progress, {width: '100%',duration: duration, ease: 'none'})
       },
 
       slideEnter(el,done) {
@@ -1045,7 +1030,6 @@ const mainScreen = () => {
         tl
           .to(this.$refs.popupBg,{scale: scale, duration: 0.45})
           .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3})
-          // .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.5, onComplete: done})
           news.forEach((item,index) => {
             tl.fromTo(item,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3}, '-=0.15')
           })
@@ -1069,7 +1053,6 @@ const mainScreen = () => {
         const coords = this.$refs.popupToggler.getBoundingClientRect()
         this.bgCoords.x = coords.x
         this.bgCoords.y = coords.y
-        // console.log(coords)
       },
 
       appearAnimation() {
@@ -1317,14 +1300,10 @@ const mainEntrs = () => {
 
       scrollAnim() {
         const tl = gsap.timeline({
-          // overwrite: "auto",
           scrollTrigger: {
             trigger: '#main-entrs',
             start: "top 60%",
             end: "+=40%",
-            // scrub: 2,
-            // markers: true,
-            // toggleActions: 'play pause resume none'
             toggleActions: 'play none none none'
           }
         })
@@ -1353,8 +1332,6 @@ const mainEntrs = () => {
       window.addEventListener('resize', ()=>{
         this.animateShadow(this.index)
         
-        // this.appearHeight = D.querySelector('#main-entrs').clientHeight
-        // D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
         this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
         D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
       }, false)
@@ -1373,7 +1350,6 @@ mainEntrs();
 
 //анимация массива элементов по скроллy для главной
 function animArrayTrigger(arr,duration) {
-  // if (!document.querySelector('#main-slides')) return
   arr.forEach((el,i) => {
     gsap.utils.toArray(el).forEach((item,index) => {
       if (item) {
@@ -1426,23 +1402,6 @@ if (D.querySelector('.productions-block .node-slider')) {
 function animateProductionsNoTk() {
   if (!D.querySelector('.productions-block-mk')) return
 
-  // const anim = gsap.from('.productions-mk-bg',{opacity: 0, yPercent: -50})
-
-  // const h = document.documentElement.clientHeight
-  // ScrollTrigger.create({
-  //   trigger: '.productions-block-mk',
-  //   start: 'top 95%',
-  //   end: "+=100%",
-  //   scrub: true,
-  //   animation: anim,
-  //   onUpdate: (self) => {
-  //     parallaxBlock('.productions-head',self.progress, h)
-  //   }
-  // });
-
-  // function parallaxBlock(selector,progress,h) {
-  //   gsap.to(selector,{y: progress * h * 0.8, duration: 0.05, ease: 'none'})
-  // }
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.productions-block-mk',
@@ -1452,23 +1411,10 @@ function animateProductionsNoTk() {
     }
   })
   tl
-    // .from('.productions-mk-bg',{opacity: 0, yPercent: -70}, 0)
     .to('.productions-head',{yPercent: 50, ease: 'none'}, 0)
 }
 animateProductionsNoTk()
 
-// const tl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.productions-block-mk',
-//     start: 'top 100%',
-//     end: "+=100%",
-//     scrub: true,
-//     markers: true
-//   }
-// })
-// tl
-//   .from('.productions-mk-bg',{opacity: 0, yPercent: -50, duration: 1}, 0)
-//   .to('.productions-head',{yPercent: 50, duration: 1, ease: 'none'}, 0)
 
 function wheelProductionsTK() {
   const screens = D.querySelector('.productions-screens')
@@ -1536,7 +1482,6 @@ function wheelProductionsTK() {
         }, onComplete: () => {
           done()
           
-          // this.index = this.index < 1 ? 0 : videoScreens.length - 1;
           setTimeout(()=>{
             this.isAnimating = false;
           },1551)
@@ -1573,7 +1518,6 @@ function wheelProductionsTK() {
             // if (video) { video.play() }
           }},0.5)
           .fromTo(title,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1});
-          // .fromTo(img,{opacity: 0, scale: 1.3}, {opacity: 1, scale: 1, duration: 3},">-1");
 
         const createTimeline = () => {
           
@@ -1599,53 +1543,6 @@ function wheelProductionsTK() {
           }
         }, onComplete: done}, '>-0.7');
       },
-  
-      // getIndex(slides, progress) {
-      //   const step = 100 / slides
-      //   const idx = parseInt((progress * 100) / step,10)
-      //   if (idx >= slides) {
-      //     return this.index = slides - 1
-      //   }
-      //   return this.index = idx
-      // },
-
-      // playPause(index) {
-      //   const delay = (this.vd * 1000 / videoScreens.length) * 0.99
-      //   const time = this.vd * (1 / videoScreens.length) * index
-      //   this.$refs.video.currentTime = time
-      //   this.$refs.video.play()
-      //   // console.log(index,this.index, this.activeScreen,delay,time)
-      //   setTimeout(()=>{
-      //     this.$refs.video.pause()
-      //   },delay)
-      // },
-
-      // emulateScroll(delta) {
-      //   let prevent = false
-      //   if (this.activeScreen !== 2) {return prevent}
-
-      //   const content = D.querySelector('.wheel-screen-content');
-        
-      //   const h = D.documentElement.clientHeight
-      //   const ch = content.clientHeight
-
-      //   if (h < ch && D.querySelector('.wheel-screens').getBoundingClientRect().top === 0) {
-      //     const max = ch - h
-      //     this.translate += delta;
-      //     this.translate = Math.min(Math.max(0, this.translate), max)
-      //     gsap.to(content,{y: () => {
-      //       return -this.translate
-      //     }, duration: 0.5})
-
-      //     // prevent = true
-      //     if (this.translate >= max) {
-      //       prevent = true
-      //     }
-      //     console.log(prevent, max, this.translate)
-      //   }
-
-      //   return prevent
-      // },
 
       wheel(event) {
         let delta = event.deltaY;
@@ -1710,129 +1607,6 @@ function wheelProductionsTK() {
 wheelProductionsTK()
 
 
-
-// function wheelCompany() {
-//   const target = D.querySelector('.company-animation')
-//   if (!target) return
-  
-
-//   new Vue({
-//     el: '.company-animation',
-    
-//     data: {
-//       index: 0,
-//       isAnimating: false,
-//       played: [],
-//       isAll: false
-//     },
-
-//     methods: {
-//       wheel(event) {
-//         if (!this.isAll) {
-//           event.preventDefault()
-//         }
-        
-//         if (this.isAnimating) return
-//         let delta = event.deltaY
-//         if (delta > 0) {
-//           // return this.index++
-//           if (this.index === 4) {
-//             this.isAll = true
-//           }
-//           return this.index = (this.index >= 4) ? 4 : ++this.index
-//         }
-//         this.index = (this.index === 0) ? 0 : --this.index
-//         if (this.index < 4) {
-//           window.scrollTo({top: 0, behavior: 'smooth'})
-//           this.isAll = false
-//         }
-//       },
-
-//       animate(index) {
-        
-//         const h = D.documentElement.clientHeight
-//         if (this.isAnimating) return;
-
-//         if (index === 0) {
-//           gsap.to(this.$refs.content,{y: 0, duration: 1})
-          
-//         }
-
-//         if (index === 1) {
-//           gsap.to(this.$refs.content,{y: -h, duration: 1})
-
-//           if (!this.played.includes(index)) {
-//             const tl = gsap.timeline()
-//             tl
-//             .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.71, delay: 0.75})
-//             .from('.company-pos-top-subtitle',{opacity: 0, y: -40, duration: 0.44}, '-=0.37');
-//           }
-//         }
-
-//         if (index === 2) {
-//           const top = D.querySelector('.company-pos-middle').offsetTop
-//           gsap.to(this.$refs.content,{y: -(top + h*0.75), duration: 1})
-
-//           if (!this.played.includes(index)) {
-//             const tl = gsap.timeline()
-//             tl
-//             .from('.company-pos-middle-item',{opacity: 0, y: 200, duration: 0.5, delay: 0.7})
-//             .from('.company-pos-bottom-digit',{opacity: 0, y: 200, duration: 0.8}, '-=0.4')
-//             .from('.company-pos-bottom-subtitle',{opacity: 0, y: 20, duration: 0.4}, '-=0.2')
-//           }
-//         }
-
-//         if (index === 3) {
-//           const item = D.querySelector('.company-purpose')
-//           const top = item.offsetTop
-//           gsap.to(this.$refs.content,{y: -(top), duration: 1})
-
-//           if (!this.played.includes(index)) {
-//             const tl = gsap.timeline()
-//             tl
-//             .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, yPercent: 20, duration: 0.6, delay: 0.8})
-//             .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -30, duration: 0.8},'-=0.5')
-//           }
-//         }
-
-//         if (index === 4) {
-//           const item = D.querySelectorAll('.company-purpose-item')[1]
-//           const top = D.querySelector('.company-purpose').offsetTop
-//           gsap.to(this.$refs.content,{y: -(top + h), duration: 1})
-
-//           if (!this.played.includes(index)) {
-//             const tl = gsap.timeline()
-//             tl
-//             .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, yPercent: 20, duration: 0.6, delay: 0.8})
-//             .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -30, duration: 0.8},'-=0.5')
-//           }
-//         }
-
-//         this.played.push(index)
-//       }
-//     },
-
-//     watch: {
-//       index: function(val) {
-//         this.animate(val)
-//         this.isAnimating = true
-
-//         setTimeout(()=>{
-//           this.isAnimating = false
-//         },2000)
-
-//         console.log(val)
-        
-//       }
-//     },
-
-//     mounted() {
-      
-//     }
-//   })
-// }
-
-
 function animateCompany() {
   if (!D.querySelector('.company-pos')) return
 
@@ -1860,17 +1634,6 @@ function animateCompany() {
   cpTL
     .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.71})
     .from('.company-pos-top-subtitle',{opacity: 0, y: -50, duration: 0.44}, '-=0.37');
-    // .from('.company-pos-top-num',{xPercent: -20, opacity: 0, duration: 0.71})
-    // .from('.company-pos-top-subtitle',{opacity: 0, y: -100, duration: 0.44}, '-=0.37');
-
-  // ScrollTrigger.create({
-  //   trigger: '.company-pos',
-  //   start: 'top 95%',
-  //   end: '+=100%',
-  //   animation: cpTL,
-  //   // toggleActions: "play pause resume reset",
-  // });
-
 
   const cpmTL = gsap.timeline({
     scrollTrigger: {
@@ -1881,9 +1644,6 @@ function animateCompany() {
     }
   })
   cpmTL
-    // .from('.company-pos-middle-item',{opacity: 0, y: 200, duration: 0.5})
-    // .from('.company-pos-bottom-digit',{opacity: 0, y: 200, duration: 0.8}, '-=0.4')
-    // .from('.company-pos-bottom-subtitle',{opacity: 0, y: 20, duration: 0.4}, '-=0.2');
     .from('.company-pos-middle-top',{opacity: 0, y: 100, duration: 0.8})
     .from('.company-pos-middle-txt',{opacity: 0, y: 200, duration: 0.6})
     .from('.company-pos-bottom-digit',{opacity: 0, y: 200, duration: 1}, '-=0.6')
@@ -1903,14 +1663,6 @@ function animateCompany() {
     tls
       .from(item.querySelector('.company-purpose-item-title'),{opacity: 0, yPercent: -15, duration: 1})
       .from(item.querySelector('.company-purpose-item-text'),{opacity: 0, yPercent: -30, duration: 1}, '-=0.5');
-    
-    // ScrollTrigger.create({
-    //   trigger: item,
-    //   start: 'top 65%',
-    //   end: 400,
-    //   scrub: 2,
-    //   animation: tls
-    // });
   })
 }
 // animateCompany()
@@ -1989,13 +1741,55 @@ window.addEventListener('load',()=>{
       }
     });
 
-    slider.querySelectorAll('.ui-swiper-slide-img').forEach(item => {
+    slider.querySelectorAll('.ui-swiper-slide-img').forEach((item,index) => {
       item.addEventListener('click',() => {
         let event = new Event("click")
         nextArrow.dispatchEvent(event)
       })
+
+      item.addEventListener('load', () => {
+        swiper.update()
+      })
+      
     })
   });
+})();
+
+
+(function () {
+  const target = D.querySelectorAll('.node-inner img, .node img')
+  if (!target.length) return
+  const parents = ['.swiper', '.ui-video', '.ui-share', 'figure']
+
+  target.forEach(el => {
+    let isParent = false;
+    for (let parent of parents) {
+      if (el.closest(parent)) {
+        isParent = true
+      }
+    }
+    if (!isParent) {
+      const figure = D.createElement('figure')
+      const caption = D.createElement('figcaption')
+      const title = el.getAttribute('alt') || el.getAttribute('title') || ''
+      caption.textContent = title
+      el.insertAdjacentElement('afterend',figure)
+
+      figure.appendChild(el)
+      if (title && title != '') {
+        figure.appendChild(caption)
+      }
+    }
+  })
+
+  D.querySelectorAll('.node figure', '.node-inner figure').forEach(el => {
+    if (!el.querySelector('figcaption') && (el.querySelector('img').hasAttribute('alt') || el.querySelector('img').hasAttribute('title'))) {
+      const caption = D.createElement('figcaption')
+      const title = el.querySelector('img').getAttribute('alt') || el.querySelector('img').getAttribute('title') || ''
+      caption.textContent = title
+      el.appendChild(caption)
+    }
+  })
 })();
 
 
@@ -2017,23 +1811,28 @@ const btnContant = document.querySelectorAll(".contacts-tab-contant");
 
 for (var i = 0; i < btnTitle.length; i++) {
   btnTitle[i].addEventListener("click", funOpen);
+}
+function funOpen(e) {
+  for (let i = 0; i < btnTitle.length; i++) {
+    btnTitle[i].classList.remove("contacts-tab-toggle-active");
+    gsap.to(btnContant[i],{height: 0,duration: 0.4,onComplete: ()=> {
+      btnContant[i].classList.remove("contacts-tab-contant-active")
+    }})
 
-  function funOpen(e) {
-    for (let i = 0; i < btnTitle.length; i++) {
-      btnTitle[i].classList.remove("contacts-tab-toggle-active");
-      gsap.to(btnContant[i],{height: 0,duration: 0.4,onComplete: ()=> {
-        btnContant[i].classList.remove("contacts-tab-contant-active")
-      }})
-
-      if (btnTitle[i] == e.currentTarget) {
-        btnTitle[i].classList.add('contacts-tab-toggle-active');
-        setTimeout(()=>{
-          btnContant[i].classList.add("contacts-tab-contant-active");
-          gsap.fromTo(btnContant[i],{height: 0},{height: 'auto',duration: 0.4})
-        },430)
-      }
+    if (btnTitle[i] == e.currentTarget) {
+      btnTitle[i].classList.add('contacts-tab-toggle-active');
+      setTimeout(()=>{
+        btnContant[i].classList.add("contacts-tab-contant-active");
+        gsap.fromTo(btnContant[i],{height: 0},{height: 'auto',duration: 0.4})
+      },430)
     }
   }
+
+  //анимируем высоту родителя
+  setTimeout(()=>{
+    const height = D.querySelector('.contacts-tab.selected').clientHeight
+    gsap.to('.ux-tabs-content-parent',{minHeight: height, duration: 1, overwrite: true})
+  },831)
 }
 if (document.querySelector('.contacts-tab-toggle')) {
   let event = new Event("click")
@@ -2067,6 +1866,16 @@ function initYandexMap() {
 
   let map = new ymaps.Map("contacts-map", myOptions);
 
+  //отрубаем скролл карты мышью
+  map.behaviors.disable('scrollZoom');
+
+  map.container.events.add('fullscreenenter', function(){
+    map.behaviors.enable(['scrollZoom']);
+  });
+  map.container.events.add('fullscreenexit', function(){
+    map.behaviors.disable(['scrollZoom']);
+  });
+
   function open() {
     let fullscreenControl = new ymaps.control.FullscreenControl();
     map.controls.add(fullscreenControl);
@@ -2083,9 +1892,11 @@ function initYandexMap() {
     if (isFull == false) {
       fullscreenControl.exitFullscreen();
       document.querySelectorAll(".map-control").forEach(el => el.classList.remove("map-fullscreen"))
+      document.querySelector(".contacts-row").classList.remove("map-fullscreen")
     } else {
       fullscreenControl.enterFullscreen();
       document.querySelectorAll(".map-control").forEach(el => el.classList.add("map-fullscreen"))
+      document.querySelector(".contacts-row").classList.add("map-fullscreen")
     }
   });
 
@@ -2118,6 +1929,25 @@ function initYandexMap() {
       map.panTo([num1, num2], { flying: true, duration: 1500 });
     });
   });
+
+
+  if (location.hash && location.hash !== '') {
+    const current = D.querySelector('.ux-map-to[href="'+location.hash+'"]')
+    if (current) {
+      const cordsStr = current.dataset.coordinates;
+      const num1 = Number(cordsStr.split(",")[0]);
+      const num2 = Number(cordsStr.split(",")[1]);
+
+      map.panTo([num1, num2], { flying: true, duration: 500 });
+    }
+
+    setTimeout(()=>{
+      const height = D.querySelector('.contacts-tab.selected').clientHeight
+      console.log(height)
+      gsap.to('.ux-tabs-content-parent',{minHeight: height, duration: 1, overwrite: true})
+    },500)
+    
+  }
 }
 
 if (document.querySelector('.contacts-map')) {
@@ -2214,7 +2044,8 @@ const toFlyAnim = `
   .publication-item,
   .productions-mk-descr,
   .productions-mk-for,
-  .museum-review`;
+  .museum-review,
+  .page-buttons-contacts`;
 const toFlyAnimDelay = `
   .node-body .container,
   .page > .row

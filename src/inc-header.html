@@ -147,8 +147,14 @@
             <div class="header-left flex valign-center">
 
               <a href="/" class="logo flex valign-center">
-                <div class="logo-img"><img src="./images/logo.svg" alt="OBF"></div>
-                <div class="logo-txt">ОБФ</div>
+                <div class="logo-img">
+                  <picture>
+                    <source srcset="./images/logo-full.svg" media="(min-width: 1440px)">
+                    <source srcset="./images/logo-full-midi.svg" media="(min-width: 1260px)">
+                    <img src="./images/logo-full-mini.svg" alt="ОБФ">
+                  </picture>
+                </div>
+                <!-- <div class="logo-txt">ОБФ</div> -->
               </a>
 
               <div class="menu-toggler ux-toggler-menu" onclick="">
