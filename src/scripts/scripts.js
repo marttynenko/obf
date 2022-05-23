@@ -842,6 +842,7 @@ rewards.forEach((el,index) => {
     slidesPerView: 2,
     spaceBetween: 30,
     speed: 500,
+    shortSwipes: false,
     navigation: {
       nextEl: nextArrow,
       prevEl: prevArrow,
@@ -1701,6 +1702,7 @@ window.addEventListener('load',()=>{
       autoHeight: true,
       loop: true,
       speed: 1000,
+      shortSwipes: false,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -1790,6 +1792,20 @@ window.addEventListener('load',()=>{
       el.appendChild(caption)
     }
   })
+
+  const listParents = ['.swiper', '.ui-video', '.ui-share', 'figure', '.ui-tags']
+  const lists = D.querySelectorAll('.node-inner ul, .node ul, .node-inner ol, .node ol')
+  lists.forEach(el => {
+    let isParent = false;
+    for (let parent of listParents) {
+      if (el.closest(parent)) {
+        isParent = true
+      }
+    }
+    if (!isParent) {
+      el.classList.add('ui-marked')
+    }
+  })
 })();
 
 
@@ -1798,6 +1814,7 @@ const entSwiper = new Swiper(".enterprises-swipper", {
   loop: true,
   slidesPerView: 2,
   autoHeight: true,
+  shortSwipes: false,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
