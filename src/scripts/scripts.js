@@ -1427,14 +1427,24 @@ function wheelProductionsTK() {
     const video = el.querySelector('video')
     if (video) {
       const src = video.currentSrc
+      const link = D.createElement('link');
+      link.href = src
+      link.rel = 'prefetch';
+      // link.as = 'video';
+      document.head.appendChild(link);
+
       const cache = D.createElement('video');
       const source = D.createElement('source');
       source.setAttribute('src', src);
       source.setAttribute('type', 'video/mp4');
-      source.setAttribute('preload', 'metadata');
+      cache.setAttribute('preload', 'auto');
       cache.appendChild(source);
+      // cache.className = 'ui-hidden'
     }
   })
+
+  
+
 
   const tk = new Vue({
     el: '.wheel-screens',
@@ -1510,6 +1520,10 @@ function wheelProductionsTK() {
             this.isAnimating = false
           },delay * 1000)
         })
+        video.addEventListener('ended',()=>{
+          gsap.to(el.querySelector('.productions-screen-img'),{opacity: 1, duration: 1})
+        })
+        
         gsap.set(details,{opacity: 0})
         gsap.set(btn,{opacity: 0})
 
@@ -1543,6 +1557,8 @@ function wheelProductionsTK() {
             this.isAll = false
           }
         }, onComplete: done}, '>-0.7');
+
+        gsap.to(el.querySelector('.productions-screen-img'),{opacity: 0, duration: 0.5})
       },
 
       wheel(event) {
@@ -1726,14 +1742,14 @@ window.addEventListener('load',()=>{
           translate: ["75%", 0, -1],
         },
       },
-      breakpoints: {
-        0: {
-          allowTouchMove: true,
-        },
-        1024: {
-          allowTouchMove: false,
-        }
-      },
+      // breakpoints: {
+      //   0: {
+      //     allowTouchMove: true,
+      //   },
+      //   1024: {
+      //     allowTouchMove: false,
+      //   }
+      // },
       on: {
         slideChangeTransitionEnd: function () {
           if (!el.querySelector('.swiper-slide-active .ui-swiper-slide-subtitle')) return
@@ -1792,9 +1808,14 @@ window.addEventListener('load',()=>{
       el.appendChild(caption)
     }
   })
+})();
 
-  const listParents = ['.swiper', '.ui-video', '.ui-share', 'figure', '.ui-tags']
+
+(function () {
   const lists = D.querySelectorAll('.node-inner ul, .node ul, .node-inner ol, .node ol')
+  if (!lists.length) return;
+  const listParents = ['.swiper', '.ui-video', '.ui-share', 'figure', '.ui-tags']
+  
   lists.forEach(el => {
     let isParent = false;
     for (let parent of listParents) {
@@ -2109,3 +2130,8 @@ window.addEventListener('scroll',() => {
   flyAnimations('.anim-fly')
   flyAnimations('.anim-fly-upper',0.7)
 },supportsPassive ? { passive: true } : false)
+
+
+D.querySelectorAll('[class*=ui-bg-] .node-slider-btns').forEach((el)=>{
+  el.classList.remove('museum-slider-btns');
+})

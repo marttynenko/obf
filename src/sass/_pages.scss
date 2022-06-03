@@ -1139,7 +1139,7 @@ PRODUCTIONS -------------- */
     transform: translate(-50%,-50%);
     min-width: 100%;
     min-height: 100%;
-    z-index: -1;
+    z-index: -2;
   }
 }
 .productions-screen {
@@ -1246,8 +1246,8 @@ PRODUCTIONS -------------- */
     object-fit: cover;
     object-position: center;
     z-index: -1;
-
-    display: none;
+    opacity: 0;
+    // display: none;
   }
 
   @media (max-width: 1439px) {
