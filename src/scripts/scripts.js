@@ -187,7 +187,7 @@ const FARBA = {
           },151)
           setTimeout(()=>{
             contentDivs[i].classList.remove("enter");
-            easeHeight(contentDivs[i])
+            easeHeights(contentDivs[i])
           },200)
 
           
@@ -206,14 +206,21 @@ const FARBA = {
       }
     }
 
-    function easeHeight(currentTab) {
+    function easeHeights(currentTab) {
       const height = currentTab.clientHeight
-      gsap.to(parent,{minHeight: height, duration: 1, overwrite: true})
+      gsap.to(parent,{height: height, duration: 1, overwrite: true})
+
+      const imgs = currentTab.querySelectorAll('img')
+      imgs.forEach(element => element.addEventListener('load',() => {
+        parent.style.height = parent.querySelector('.ui-tabs-content.selected').clientHeight + 'px'
+      }))
     }
 
     window.addEventListener('resize',()=>{
       parent.style.height = parent.querySelector('.ui-tabs-content.selected').clientHeight + 'px'
     });
+
+    
 
     async function fetchTabData(el,id) {
       try {
@@ -2129,6 +2136,16 @@ window.addEventListener('resize',() => {
 window.addEventListener('scroll',() => {
   flyAnimations('.anim-fly')
   flyAnimations('.anim-fly-upper',0.7)
+
+  if (toFlyAnimDelayLength) {
+    D.querySelectorAll(toFlyAnimDelay).forEach(el => {
+      if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * 0.9 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
+        setTimeout(()=>{el.classList.add('visible')},300)
+      } else {
+        el.classList.remove('visible')
+      }
+    })
+  }
 },supportsPassive ? { passive: true } : false)
 
 
