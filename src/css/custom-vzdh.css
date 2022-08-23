@@ -1,0 +1,1043 @@
+/*Custom CSS by VZDH*/
+
+
+/*main icons fix */
+
+@media (min-width: 1439px){
+.main-partner-item-img {
+
+margin-bottom: -50px;
+    margin-left: -166px;
+}
+
+.main-partner-row {
+
+    margin-top: 110px;
+}
+
+
+.main-partner-item {
+
+    margin-bottom: 100px;
+}
+
+.main-partner-item-title {
+
+
+    max-width: 84%;
+}
+}
+
+
+@media (max-width: 1439px)
+{
+.main-partner-item-img {
+    margin-left: -45%;
+	}
+
+.main-partner-item-img img {
+    max-width: 75%;
+}
+}
+
+/*respect icons fix 
+
+.main-activities-right {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 calc(100% - 445px);
+    flex: 0 0 calc(100% - 445px);
+    max-width: calc(100% - 445px);
+    padding-left: 0px;}
+
+
+    .main-activities-left {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 445px;
+    flex: 0 0 445px;
+    max-width: 445px;
+}
+
+
+.main-activities-tabs {
+    margin-top: -300px;
+}
+
+    .main-activities-sights {
+
+    top: 0px;
+
+    }
+
+    .main-activities-sights-btn {
+    margin-bottom: 115px;
+}
+
+.main-activities-tab {
+
+    padding-right: 16%;
+    }
+
+*/
+
+/*product landing descr width fix */
+
+@media (min-width: 1440px)
+{
+.productions-head-descr {
+    max-width: 1120px;
+}
+}
+
+
+
+/*tk landing bottom */
+
+/* .productions-screen-col {
+
+    padding: 100px  0 50px  0;
+} */
+
+
+/*музей уменьшил отступ между директором и отзывом  */
+/* .museum-history {
+    margin-bottom: 150px;
+} */
+
+
+
+/*drop menu timing fix  */
+
+
+.main-menu-sub.opened li {
+    -webkit-transition: opacity .3s, -webkit-transform .3s;
+    transition: opacity .3s, -webkit-transform .3s;
+    -o-transition: transform .3s, opacity .3s;
+    transition: transform .3s, opacity .3s;
+    transition: transform .3s, opacity .3s, -webkit-transform .3s;
+ }
+
+
+ .main-menu-sub li {
+    opacity: 0;
+    -webkit-transform: translate3d(0px, -20px, 0px);
+    transform: translate3d(0px, -20px, 0px);
+
+}
+
+
+.main-menu-sub.opened li:nth-of-type(2) {
+    -webkit-transition-delay: 0.03s;
+    -o-transition-delay: 0.03s;
+    transition-delay: 0.03s;
+}
+
+.main-menu-sub.opened li:nth-of-type(3) {
+    -webkit-transition-delay: 0.06s;
+    -o-transition-delay: 0.06s;
+    transition-delay: 0.06s;
+}
+
+.main-menu-sub.opened li:nth-of-type(4) {
+    -webkit-transition-delay: 0.09s;
+    -o-transition-delay: 0.09s;
+    transition-delay: 0.09s;
+}
+
+.main-menu-sub.opened li:nth-of-type(5) {
+    -webkit-transition-delay: 0.12s;
+    -o-transition-delay: 0.12s;
+    transition-delay: 0.12s;
+}
+
+.main-menu-sub.opened li:nth-of-type(6) {
+    -webkit-transition-delay: 0.15s;
+    -o-transition-delay: 0.15s;
+    transition-delay: 0.15s;
+}
+
+.main-menu-sub.opened li:nth-of-type(7) {
+    -webkit-transition-delay: 0.18s;
+    -o-transition-delay: 0.18s;
+    transition-delay: 0.18s;
+}
+
+.main-menu-sub.opened li:nth-of-type(8) {
+    -webkit-transition-delay: 0.18s;
+    -o-transition-delay: 0.18s;
+    transition-delay: 0.18s;
+}
+
+.main-menu-sub.opened li:nth-of-type(9) {
+    -webkit-transition-delay: 0.18s;
+    -o-transition-delay: 0.18s;
+    transition-delay: 0.18s;
+}
+
+.main-menu-sub.opened li:nth-of-type(10) {
+    -webkit-transition-delay: 0.18s;
+    -o-transition-delay: 0.18s;
+    transition-delay: 0.18s;
+}
+
+.main-menu-sub.opened .col-main-menu-pr:nth-of-type(4), .main-menu-sub.opened .col-main-menu-pr:nth-of-type(5), .main-menu-sub.opened .col-main-menu-pr:nth-of-type(6) {
+    -webkit-transition-delay: .1s;
+    -o-transition-delay: .1s;
+    transition-delay: .1s;
+}
+
+
+
+.main-menu-sub.opened .col-main-menu-pr {
+    -webkit-transition: opacity .3s, -webkit-transform .3s;
+    transition: opacity .3s, -webkit-transform .3s;
+    -o-transition: opacity .3s, transform .3s;
+    transition: opacity .3s, transform .3s;
+    transition: opacity .3s, transform .3s, -webkit-transform .3s;
+    -webkit-transition-delay: .05s;
+    -o-transition-delay: .05s;
+    transition-delay: .05s;
+}
+
+/* makulatura colors  */
+
+.ui-color-makulatura { color: #517FBD !important; }/*элементы главного слайдера */
+a.ui-color-makulatura:hover { color: #517FBD !important; }/*элементы главного слайдера ховеры */
+.ui-bg-makulatura { background: #517FBD !important; } /*фон 1 слайда, хедера */
+
+.ui-color-lightmakulatura { color: #000000 !important; }
+a.ui-color-lightmakulatura:hover { color: #000000 !important; }
+.ui-bg-lightmakulatura { background: #D3EFFF !important; /*светлый фон везде*/
+color: #222E3F !important;  /*тексты 2 слайда, текст над слайдером 2ой текст под слайдером, подписи дипломов*/
+} 
+
+.ui-theme-makulatura .productions-sights-title {
+    color: #517FBD; /* 1ый текст под слайдером*/
+}
+
+.ui-theme-makulatura .tk-subtype-title {
+    color: #517FBD; /* названия товаров */
+}
+
+.ui-btn-circle-makulatura .ui-btn-circle-circle {
+    background: #517FBD; /* круги */
+}
+
+.ui-btn-circle-makulatura:after {
+    border-color: #517FBD; /* обводка круга */
+}
+
+.ui-theme-makulatura .productions-tabs-link:hover, .ui-theme-makulatura .productions-tabs-link.selected {
+    color: #517FBD;
+    border-color: #517FBD; /* табы товаров */
+
+}
+
+.ui-theme-makulatura .docs-card:hover {
+    color: #517FBD;
+    border-color: #517FBD; /* несколько ховеров доков */
+}
+
+
+.ui-theme-makulatura .docs-card:hover .docs-card-type{
+ color: #517FBD;  /* доки формат ховер */
+}
+
+.ui-theme-makulatura .docs-card-icon{
+ stroke: #517FBD; /* доки иконка ховер */
+}
+
+.production-btn-makulatura {
+    color: #517FBD;
+}
+
+.main-slide-title .ui-color-makulatura
+
+{
+    color: #517FBD;
+    
+}
+
+
+.ui-theme-makulatura .productions-management-name, .ui-theme-makulatura .productions-management-contacts-label, .ui-theme-makulatura .productions-management a:hover {
+    color: #517FBD; /* контакты: имя вопрсотр ховеры */
+}
+
+
+.ui-btn:hover {
+
+    border-color: #F08322;
+    color: #F08322;
+}
+
+.ui-bg-lightmakulatura .news-item:hover .news-item-title {
+    color: #517FBD; /* ховер новости */
+}
+
+.ui-bg-lightmakulatura .news-item-title-arrow {
+    stroke: #517FBD; /* ховер новости стрелка  */
+}
+
+.ui-bg-lightmakulatura .news-item-date {
+    color: #517FBD; /* дата новости */
+}
+
+.ui-bg-lightmakulatura .to-all-news a:hover {
+    color: #517FBD; /* все новости ховер */
+}
+
+.ui-bg-lightmakulatura .to-all-news a {
+    color: #222E3F;  /* все новости  */
+}
+
+.ui-bg-lightmakulatura .to-all-news svg.news-item-title-arrow {
+    stroke: #222E3F; /* все новости стрелочка  */
+}
+
+
+
+.ui-bg-lightmakulatura .to-all-news a:hover svg.news-item-title-arrow {
+    stroke: #517FBD; /* все новости стрелочка ховер  */
+}
+
+.ui-bg-lightmakulatura .ui-side-title
+{  color: #222E3F; /* заголовки блоков на светлом фоне  */
+}
+
+.ui-theme-makulatura .ui-side-title {
+    color: #517FBD;  /* заголовки блока руководитель  */
+}
+
+.ui-theme-makulatura .ui-btn:hover {
+
+    border-color: #517FBD; /* доки кнопка  */
+    color: #517FBD;
+	}
+
+
+.ui-theme-makulatura .ui-btn:hover .ui-btn-arrow {
+    stroke: #517FBD;/* доки кнопка стрелка  */
+}
+
+.ui-color-makulatura .main-slide-link-arrow {
+    stroke: #517FBD; /* слайдер на главной стрелка  */
+} 
+
+/* main slider description fix  */
+
+.main-slide-descr {
+
+    font-size: 4rem;
+}
+
+@media (max-width: 1439px){
+.main-slide-descr {
+
+    font-size: 3rem;
+}
+}
+
+/* respect text size  */
+.main-activities-sights-tezis h6, .main-activities-sights-tezis .h6  {
+
+    margin: 0 0 8px;
+}
+
+/* respect text size  */
+
+@media (max-width: 1439px)
+{
+.main-activities-nav {
+    margin-bottom: 40px;
+}
+}
+
+/* main page small res block title margin  */
+@media (max-width: 1439px)
+{
+.main-block-title {
+
+    margin-bottom: 60px;
+	}
+}
+
+
+/* inner page width fix  */
+.node-inner {
+    padding-right: 0;
+max-width: 990px;
+	}
+
+.node-title {
+
+    max-width: 1400px;
+}
+
+
+
+/* main page fabrik digits wight fix  
+
+@media (max-width: 1259px)
+{
+.main-entrs-body {
+    width: 466px;
+}
+}*/
+
+
+/* enterprises margins fix */
+
+@media (min-width: 1024px){
+.enterprises-block {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+}
+
+@media (min-width: 1260px){
+.enterprises-block {
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+}
+
+@media (min-width: 1440px){
+.enterprises-block {
+    padding-top: 80px;
+    padding-bottom: 90px;
+}
+}
+
+
+.enterprises-sort {
+  padding-bottom: 0px;
+}
+
+
+
+
+/* press sizes fix */
+
+@media (min-width: 1440px){
+.museum-history-img {
+
+    width: 1050px;
+    margin-left: -80px;
+}
+}
+
+/* respect descr inner */
+.main-acivities-descr {
+
+    line-height: 1.55;
+}
+
+@media (max-width: 1439px){
+.main-acivities-descr {
+    max-width: 545px;
+	}}
+
+/* small desktop product descroption size */
+
+/* @media (max-width: 1439px)
+{
+.tk-subtype {
+    font-size: 16px;
+	}
+} */
+
+/* @media (max-width: 1439px){
+.tk-custom {
+    width: 462px;
+font-size: 16px;
+} */
+
+/* small desktop custom order fix */
+
+/* .tk-custom-title-icon {
+
+    top: 0;
+
+	}
+
+.tk-custom-title {
+
+    margin-bottom: 12px;
+	}
+} */
+
+/* small desktop product landing line width fix */
+
+/* @media (max-width: 1439px){
+.productions-mk-descr {
+
+    padding-right: 16.67%;
+    width: 500px;
+	}
+} */
+
+/* very small desktop product landing line width fix */
+/* @media (max-width: 1259px){
+.productions-mk-descr {
+    padding-right: 20%;
+    width: 65%;
+}
+} */
+
+/* big desktop product landing line width fix */
+/* @media (min-width: 1440px){
+.productions-mk-descr {
+    min-width: 610px;
+	}
+} */
+
+body {
+
+    line-height: 1.45;
+}
+/* открыть эту штуку когда будет 6 продуктов
+.company-fs .fs-menu-col {
+
+    max-width: 16%;
+}
+*/
+
+/* поправил всратый блок в науке */
+@media (min-width: 1259px){
+.scientific-info-description {
+    margin-left: 25%;
+    width: 70%;
+}
+}
+
+/* cookie fix */
+/* rsd */
+    /* .popup-cookie {
+
+bottom: 30px;
+right: 30px;
+} */
+
+
+.popup-cookie-accept .svg-cookie {
+
+margin-left: 82px;
+}
+
+/* news header size */
+/* @media (min-width: 1440px){
+
+.node-header h1.node-title{
+font-size: 100px;
+}
+
+} */
+/* @media (max-width: 1439px){
+.node-header h1.node-title {
+font-size: 80px;
+    max-width: 1000px;
+    margin-bottom: 50px;
+	}
+
+} */
+
+ .main-partner {
+padding-top: 30px;
+}
+
+/* bbi head light color */
+.ui-bg-bbilight{background: #1D9D8C;}
+
+
+.ui-theme-bbilight .swiper-button-prev:before { background: url(../images/svg/arrow-prev-green.svg) center no-repeat; }
+
+.ui-theme-bbilight .swiper-button-next:before { background: url(../images/svg/arrow-next-green.svg) center no-repeat;}
+
+.ui-theme-bbilight .productions-tabs-link:hover, .ui-theme-bbilight .productions-tabs-link.selected { color: #1D9D8C; border-color: #1D9D8C; }
+
+.ui-theme-bbilight .tk-subtype-title { color: #1D9D8C; }
+
+.ui-theme-bbilight .productions-management-name, .ui-theme-bbilight .productions-management-contacts-label, .ui-theme-bbilight .productions-management a:hover { color: #1D9D8C; }
+
+.ui-theme-bbilight .docs-card-icon { stroke: #1D9D8C; }
+
+.ui-theme-bbilight .docs-card:hover { color: #1D9D8C; border-color: #1D9D8C; }
+
+.ui-theme-bbilight .docs-card:hover .docs-card-type { color: #1D9D8C; }
+
+.ui-theme-bbilight .ui-btn:hover { color: #1D9D8C; border-color: #1D9D8C; }
+
+.ui-theme-bbilight .ui-btn:hover .ui-btn-arrow { stroke: #1D9D8C; }
+
+.ui-theme-bbilight .productions-sights-title { color: #1D9D8C; }
+
+.ui-btn-circle-bbilight .ui-btn-circle-circle {background: #1D9D8C;}
+
+.ui-btn-circle-bbilight:after {border: 1px solid #1D9D8C;}
+
+.ui-theme-bbilight .ui-side-title { color: #1D9D8C !important; }
+
+.ui-bg-lightgreen .ui-side-title { color: #222E3F !important;}
+
+/* custom order redesign */
+.tk-custom {
+border-width: 1px 0px 0px 0px;
+    padding-left: 0px;
+border-radius: 0px;
+}
+
+/* cookie redesign 
+.popup-cookie-accept {
+	border: 2px solid #1D2735;
+	color: #1D2735;
+
+-webkit-transition: .4s background-color, .4s color, .4s border-color;
+-o-transition: .4s background-color, .4s color, .4s border-color;
+transition: .4s background-color, .4s color, .4s border-color;
+}
+
+
+.popup-cookie-accept .svg-cookie {
+ 
+  stroke: #1D2735
+
+  }
+
+  .popup-cookie {
+ 
+  background-color: #FFF;
+  color: #1D2735;
+  border-radius: 10px;
+
+  }
+
+.popup-cookie-accept:hover {
+
+  border-color:  #F08322;
+}
+*/
+
+/* cookie redesign 2 */
+.popup-cookie-accept {
+	border: 2px solid #FFF;
+	color: #FFF;
+
+-webkit-transition: .4s background-color, .4s color, .4s border-color;
+-o-transition: .4s background-color, .4s color, .4s border-color;
+transition: .4s background-color, .4s color, .4s border-color;
+}
+
+
+.popup-cookie-accept .svg-cookie {
+ 
+  stroke: #FFF
+
+  }
+
+  .popup-cookie {
+ 
+  background-color: #1D2735;
+  color: #FFF;
+  border-radius: 10px;
+border: 2px solid #fff;
+  }
+
+.popup-cookie-accept:hover {
+
+  border-color:  #F08322;
+background-color: #1D2735;
+}
+
+/* mission size fix */
+@media (min-width: 1440px){
+.company-purpose-item-title {
+    font-size: 236px;
+}
+
+.company-purpose-item-text {
+    font-size: 36px;
+}
+}
+
+@media (max-width: 1259px){
+.company-purpose-item-text {
+    max-width: 815px;
+	}}
+
+@media (min-width: 1440px){
+.scientific-article-number {
+    font-size: 130px;
+	}
+}
+
+/* main 
+.main-partner {
+    padding-top: 60px;
+}
+*/
+/* about - 1st screen sizes fix */
+/* .first-screen-txt {
+    font-size: 26px;
+    line-height: 1.5;
+        max-width: 970px;
+    
+ }
+
+.first-screen-title-mini {
+    font-size: 90px;
+max-width: 1090px;
+    }
+
+
+
+    @media (max-width: 1439px) {
+.first-screen-txt {
+    font-size: 22px;
+max-width: 760px;
+}
+
+.first-screen-title-mini {
+    font-size: 80px;
+max-width: 970px;
+
+}
+
+} */
+
+
+/* @media (max-width: 1259px)
+{
+.first-screen-title-mini {
+    font-size: 70px;
+    max-width: 840px;
+    }
+
+
+    .first-screen-txt {
+    font-size: 18px;
+    max-width: 630px;
+    }
+    } */
+
+
+/* product - for - fix */
+/* .productions-mk-for {
+
+    line-height: 1.2;
+    width: 85%;
+} */
+
+/* product - big number - fix */
+/* .productions-sights-title 
+{
+    font-size: 130px;
+
+}
+
+@media (max-width: 1439px) {
+.productions-sights-title {
+    font-size: 110px;
+}
+}
+
+@media (max-width: 1259px) {
+.productions-sights-title {
+    font-size: 100px;
+} 
+}*/
+
+/* table - increase text */
+    /* .ui-table tr, .node-inner table tr {
+  
+    font-size: 18px;
+    padding: 4px 25px 14px 0px;
+vertical-align: top;
+}
+
+    .ui-table th, .node-inner table th {
+  
+
+vertical-align: top;
+} */
+
+/* inner - small res - increase texts*/
+ /* rsd */
+  /* @media (max-width: 1439px) {
+
+.node h2 {
+    font-size: 60px;
+ 
+    margin-bottom: 46px;
+    }
+
+
+    .node h3 {
+    font-size: 44px;
+    }
+
+    .node h4 {
+    font-size: 44px;
+}
+
+    .node h5 {
+    font-size: 36px;
+}
+   
+    .node p {
+    font-size: 22px;
+}
+} */
+
+/* fabrika - med - 1 screen - wide fix arina*/
+@media (max-width: 1439px){
+.history-header-titles {
+    max-width: 890px;
+}
+}
+
+@media (max-width: 1259px){
+.history-header-titles {
+    max-width: 720px;
+}
+}
+
+@media (min-width: 1440px){
+.productions-head-title {
+
+    font-size: 130px;
+    line-height: 0.9;
+max-width: 1120px;
+	}
+}
+
+
+/* prod - line moving */
+
+
+
+/* science - lnumbers fix */
+@media (min-width: 1440px)
+{
+.scientific-article-sights {
+    padding-right: 3.0%;
+}
+}
+
+/* header - menu bg */
+/* .fs-menu-bg {
+
+    background: #2F3E53;
+} */
+
+/* global - doc card size */
+
+
+/* rsd */
+/* .docs-card-title {
+    margin-bottom: 22px;
+    font-size: 26px;
+    line-height: 1.3;
+
+} */
+
+/* rsd */
+/* @media (max-width: 1439px)
+{
+.docs-card-title {
+    font-size: 22px;
+
+}
+} */
+
+/* sciense - university name small */
+
+@media (min-width: 1440px)
+{
+.scientific-partners-item-txt {
+   
+    font-size: 16px;
+    }
+}
+
+/* global - block margins increase */
+/* 
+.ui-section {
+    padding-top: 80px;
+    padding-bottom: 90px;
+}
+
+
+@media (max-width: 1439px)
+{
+.ui-section {
+    padding-top: 70px;
+    padding-bottom: 80px;
+}
+}
+
+
+@media (max-width: 1259px)
+{
+.ui-section {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+} */
+
+/* products - block margins increase */
+
+/* .productions-block {
+    padding-top: 80px;
+    padding-bottom: 100px;
+} */
+
+
+/* @media (max-width: 1439px)
+{
+.productions-block {
+    padding-top: 70px;
+    padding-bottom: 80px;
+}
+} */
+
+
+/* @media (max-width: 1259px)
+{
+.productions-block {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+} */
+
+/* products - last block - предыдущий код ломает этот отступ */
+.productions-tk-types {
+    padding-bottom: 45px;
+}
+
+/* museum - reviews margins fix */
+
+/* .museum-review {
+ 
+    margin-top: 120px;
+} */
+
+
+/* .node-slider-comm-body {
+    padding-right: 0;
+    }
+*/
+
+
+.museum-review-txt {
+
+    max-width: 800px;
+}
+
+/* .museum-reviews  .ui-subtitle {
+    margin-bottom: 20px
+} */
+
+.museum-history .ui-subtitle, .museum-reviews .ui-subtitle, .museum-news .ui-side-title, .museum-social .ui-subtitle {
+max-width: 480px;
+}
+
+/* @media (max-width: 1259px){
+.museum-review {
+    font-size: 20px;
+	}
+} */
+
+/* products - small - slider text width */
+/* @media (max-width: 1259px)
+{
+.productions-slider p {
+    width: 85%;
+}
+} */
+
+/* factories - tehprocess margin */
+/* rsd */
+/* .enterprises-content-block {
+    padding-bottom: 60px;
+} */
+/*
+.node-inner figure
+
+{
+    margin: 0px 0px 0px;
+}
+
+.node-inner img
+{
+    margin: 0px 0px 32px;
+}
+*/
+
+
+    .main-entrs-vntg-title {
+
+    font-size: 50px;
+
+}
+
+    .main-entrs-vntg {
+
+    font-size: 26px;
+
+    line-height: 1.3;
+    }
+.main-entrs-vntgs {
+    padding-right: 50px
+    }
+
+
+    @media (max-width: 1439px){
+    .main-entrs-vntgs {
+    padding-right: 100px
+    }
+
+.main-entrs-vntg-title {
+    font-size: 40px;
+    }
+.main-entrs-vntg {
+    font-size: 16px;
+	}
+
+}
+
+
+ @media (max-width: 1259px){
+    .main-entrs-vntgs {
+    padding-right: 10px
+    }
+
+}
+
+/* mobile dummy fix 
+
+@media (max-width: 1023px) and (orientation: portrait){
+
+.plug-mobile-bg {
+
+
+    max-height: calc(100% - 250px);
+   
+    }
+    }
+*/
+
+/* small - news - arrow*/
+@media (max-width: 1259px) {
+.news-item-title-arrow {
+    top: 0.1em;
+    }
+
+
+    .news-item-title-arrow {
+    width: 40px;
+    height: 40px;
+    }
+.news-item-title {
+ 
+    line-height: 1.2;
+}
+}

@@ -9,6 +9,13 @@
     @media (max-width: 1259px) {
       margin-bottom: 40px;
     }
+
+    @media (max-width: 959px) {
+
+      &:not(.ui-pgn) {
+        margin-bottom: 0;
+      }
+    }
   }
   &-title {
     @include fz(54);
@@ -17,6 +24,7 @@
     font-weight: 600;
     margin-bottom: 80px;
     max-width: 1100px;
+
     @media (max-width: 1439px) {
       @include fz(42);
       max-width: 755px;
@@ -44,17 +52,45 @@
     img {
       display: block;
       line-height: 0;
-      // transition: 1s;
     }
-
-    // &:hover {
-    //   // img {
-    //   //   transform: scale(1.1);
-    //   // }
-    // }
   }
   &-btn {
     text-align: right;
+  }
+
+  @media (max-width: 959px) {
+    &-group {
+      margin-bottom: 40px;
+    }
+    &-title {
+      max-width: 100%;
+      @include fz(32);
+      margin-bottom: 16px;
+    }
+    &-list {
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-bottom: 8px;
+    }
+    &-col {
+      padding-left: 4px;
+      padding-right: 4px;
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+    }
+    &-img {
+      margin-bottom: 8px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    &-title {
+      @include fz(24);
+    }
+    &-btn-link {
+      display: block;
+      width: 100%;
+    }
   }
 }
 
@@ -74,13 +110,20 @@
       img {
         transform: scale(1.03);
       }
-      
-      .ui-gallery-zoom {
-        opacity: 1;
-        transform: scale(1);
+    }
+
+    @media (min-width: 1024px) {
+      &:hover {
+        .ui-gallery-zoom {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
+      
     }
   }
+
+  
   &-zoom {
     position: absolute;
     right: 30px;
@@ -93,6 +136,24 @@
     stroke: $primary;
     stroke-width: 3;
     fill: none
+  }
+
+  @media (max-width: 959px) {
+    &-link {
+      position: relative;
+      height: 0;
+      padding-bottom: 100%;
+
+      img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
   }
 
 }

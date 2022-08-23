@@ -32,6 +32,45 @@
         height: 140px;
       }
     }
+
+    .ui-video {
+      margin-bottom: 0;
+    }
   }
- 
+
+  @media (max-width: 959px) {
+    &-item {
+      margin-bottom: 40px;
+
+      &-desc {
+        &-text {
+          max-width: 100%;
+          @include fz(18);
+          margin-bottom: 8px;
+        }
+
+        &-date {
+          margin-bottom: 8px;
+          @include fz(14);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 599px) {
+    &-item {
+      
+
+      &-desc {
+        &-text {
+          @include fz(16);
+        }
+
+        &-date {
+          @include fz(12);
+        }
+      }
+    }
+  }
 }

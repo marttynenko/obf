@@ -12,6 +12,7 @@
 
   &-title {
     margin-bottom: 100px;
+    @include fz(100);
   }
 
   &-body {
@@ -138,6 +139,122 @@
     @media (max-width: 1259px) {
       padding-top: 60px;
     }
+
+    @media (max-width: 959px) {
+      padding-top: 40px;
+    }
+  }
+
+  @media (max-width: 1439px) {
+    &-title {
+      margin-bottom: 50px;
+      @include fz(80);
+      max-width: 1000px;
+    }
+    h2 {
+      @include fz(60);
+      margin-bottom: 46px;
+    }
+  
+    h3 {
+      @include fz(44);
+    }
+  
+    h4 {
+      @include fz(44);
+    }
+  
+    h5 {
+      @include fz(36);
+    }
+  }
+
+  @media (max-width: 959px) {
+    &-title {
+      margin-bottom: 40px;
+      @include fz(40);
+      max-width: 100%;
+    }
+
+    &-body {
+      padding-top: 25px;
+      padding-bottom: 40px;
+    }
+    
+    &-data {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    &-date {
+      @include fz(16);
+      font-weight: 400;
+    }
+
+    &-share {
+      &-label {
+        @include fz(16);
+        margin-right: 4px;
+      }
+    }
+
+    &-inner {
+      @include fz(20);
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      @include fz(40);
+      margin-bottom: 32px;
+    }
+    h3 {
+      @include fz(36);
+    }
+    h4 {
+      @include fz(32);
+    }
+    h5 {
+      @include fz(24);
+    }
+  }
+
+  @media (max-width: 599px) {
+    &-title {
+      margin-bottom: 24px;
+      @include fz(36);
+    }
+
+    &-date {
+      @include fz(14);
+    }
+
+    &-share-label {
+      @include fz(14);
+    }
+
+    &-inner {
+      @include fz(16);
+    }
+
+    h2 {
+      @include fz(32);
+    }
+    h3 {
+      @include fz(28);
+    }
+    h4 {
+      @include fz(24);
+    }
+    h5 {
+      @include fz(20);
+    }
   }
 }
 
@@ -164,6 +281,16 @@
 
     @media (max-width: 1439px) {
       @include fz(24);
+    }
+
+    @media (max-width: 929px) {
+      @include fz(20);
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 599px) {
+      @include fz(16);
+      margin-bottom: 16px;
     }
   }
   .swiper-slide .ui-swiper-slide-subtitle {
@@ -273,4 +400,85 @@
 }
 .node-content-links {
   margin-top: 45px;
+
+  @media (max-width: 959px) {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 959px) {
+  .to-all-news {
+    padding-right: 0;
+    max-width: 100%;
+
+    .news-item {
+      &-title {
+        position: relative;
+        padding-right: 50px;
+      }
+    }
+
+    svg.news-item-title-arrow {
+      position: absolute;
+      top: -5px;
+      right: 0;
+      display: block;
+      visibility: visible;
+      margin-left: 0;
+      margin-right: 0;
+      width: 32px;
+      height: 32px;
+      max-height: 32px;
+    }
+  }
+
+  .ui-swiper {
+    padding-bottom: 70px;
+
+    &-slide {
+      &-subtitle {
+        padding-right: 0;
+        left: 0;
+        top: auto;
+        bottom: 40px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 0;
+        @include fz(16);
+      }
+    }
+  }
+
+  .node-slider {
+    margin-bottom: 32px;
+
+    &-btns {
+      bottom: 0;
+    }
+    .ui-swiper-pagination {
+      bottom: 8px;
+      @include fz(16);
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .ui-swiper {
+    padding-bottom: 70px;
+
+    &-slide {
+      &-subtitle {        
+        @include fz(14);
+      }
+    }
+  }
+
+  .node-slider {
+    .ui-swiper-pagination {
+      font-size: 12px;
+      bottom: 11px;
+    }
+  }
 }

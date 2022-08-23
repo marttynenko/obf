@@ -9,6 +9,10 @@ html {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // @media (max-width: 959px) {
+  //   height: -webkit-fill-available;
+  // }
 }
 body {
   height: 100%;
@@ -21,6 +25,14 @@ body {
 
   @media (max-width: 1259px) {
     @include fz(16);
+  }
+
+  // @media (max-width: 959px) {
+  //   height: -webkit-fill-available;
+  // }
+
+  @media (max-width: 599px) {
+    @include fz(14);
   }
 }
 #wrapper {
@@ -49,6 +61,10 @@ body {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
   padding-bottom: 30px;
+
+  @media (max-width: 959px) {
+    padding-bottom: 10px;
+  }
 }
 #footer {
   -webkit-flex: 0 0 auto;

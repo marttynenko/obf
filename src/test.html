@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: -webkit-fill-available;
+    }
+    body {
+      height: -webkit-fill-available;
+    }
+    .full {
+      height: -webkit-fill-available;
+      /* min-height: 100vh; */
+      background: yellow;
+      padding: 20px;
+    }
+    .after  {
+      background: red;
+      padding: 20px;
+      color: rgba(#FFF,.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit harum eius laudantium sint et maiores molestiae optio temporibus atque dolor!</div>
+  <div class="after">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae consectetur inventore facilis nesciunt quasi rem debitis quisquam, illum soluta dolores unde explicabo alias a, delectus nulla ullam? Consequatur temporibus laborum deserunt nostrum eveniet asperiores earum provident! Molestiae repellat facilis similique assumenda sint excepturi iusto in magnam odit, adipisci, nihil minima doloremque ratione provident nulla. Expedita assumenda earum tempore, dolore fuga impedit, vero incidunt doloribus corrupti eum cupiditate quaerat voluptatibus natus minus cumque ab reiciendis ullam unde sapiente? Mollitia obcaecati distinctio voluptatem provident quaerat odio id eaque, eum, deserunt amet harum neque, minima possimus quis. Harum dignissimos consequatur magni enim obcaecati.</div>
+</body>
+<script>
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+  window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
+</script>
+<style>
+  .full {
+    height: calc(var(--vh, 1vh) * 100);
+  }
+</style>
+</html>

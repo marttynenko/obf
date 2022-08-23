@@ -1,6 +1,8 @@
 <!--#include file="inc-header.html"-->
 </div><!--.container-->
 
+<div id="dmo"></div>
+
 <div class="productions">
   <div class="productions-animation ui-bg-primary wheel-screens" data-headerbg="ui-bg-primary">
 
@@ -10,7 +12,7 @@
       v-bind:css="false"
       mode="out-in"
     >
-      <div class="productions-head productions-head-tk wheel-screen" v-if="activeScreen === 0">
+      <div class="productions-head productions-head-tk wheel-screen" v-if="activeScreen === 0 || isMobile">
         <div class="container">
           <div class="productions-head-body flex valign-end">
             <div class="productions-head-content">
@@ -20,6 +22,15 @@
                 <svg class="sprite productions-head-svg">
                   <use xlink:href="svg/svg/symbols.svg#arrow-down-no-fill"></use>
                 </svg>
+              </div>
+
+              <div class="productions-head-img-wrp">
+
+                <picture>
+                  <source srcset="./images/bgs/productions-tk-head-mobile.png" media="(max-width: 600px)">
+                  <img src="./images/bgs/productions-tk-head.png" class="productions-head-img" alt="Тарный картон">
+                </picture>
+                
               </div>
             </div>
 
@@ -34,15 +45,11 @@
               </a>
             </div>
 
-            <div class="productions-head-img-wrp">
-              <img src="./images/bgs/productions-tk-head.png" class="productions-head-img" alt="Тарный картон">
-            </div>
+            
           </div>
         </div>
       </div>
     </transition>
-
-    
 
     <transition
       v-on:enter="productionsEnter"
@@ -50,7 +57,7 @@
       v-bind:css="false"
       mode="out-in"
     >
-      <div class="productions-screens wheel-screen" v-if="activeScreen === 1">
+      <div class="productions-screens wheel-screen" v-if="activeScreen === 1 || isMobile">
 
         <transition
           v-on:enter="slideEnter"
@@ -58,8 +65,8 @@
           v-bind:css="false"
           mode="out-in"
         >
-          <div class="productions-screen" v-if="index === 0">
-            <video class="productions-screens-video" muted preload="metadata">
+          <div class="productions-screen" v-if="index === 0 || isMobile">
+            <video class="productions-screens-video" muted preload="metadata" v-if="!isMobile">
               <source type="video/mp4" src="./media/1.mp4">
             </video>
             <div class="container">
@@ -93,7 +100,11 @@
                   </div>
                 </div>
 
-                <img src="./images/bgs/productions-tk-1.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                <picture>
+                  <source srcset="./images/bgs/productions-tk-1-mobile.png" media="(max-width:600px)">
+                  <img src="./images/bgs/productions-tk-1.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                </picture>
+                
 
               </div>
 
@@ -107,8 +118,8 @@
           v-bind:css="false"
           mode="out-in"
         >
-          <div class="productions-screen" v-if="index === 1">
-            <video class="productions-screens-video" muted preload="metadata">
+          <div class="productions-screen" v-if="index === 1 || isMobile">
+            <video class="productions-screens-video" muted preload="metadata" v-if="!isMobile">
               <source type="video/mp4" src="./media/2.mp4">
             </video>
             <div class="container">
@@ -142,7 +153,11 @@
                   </div>
                 </div><!--.details-->
 
-                <img src="./images/bgs/productions-tk-2.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                <!-- <img src="./images/bgs/productions-tk-2.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy"> -->
+                <picture>
+                  <source srcset="./images/bgs/productions-tk-2-mobile.png" media="(max-width:600px)">
+                  <img src="./images/bgs/productions-tk-2.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                </picture>
 
               </div>
 
@@ -156,8 +171,8 @@
           v-bind:css="false"
           mode="out-in"
         >
-          <div class="productions-screen" v-if="index === 2">
-            <video class="productions-screens-video" muted preload="metadata">
+          <div class="productions-screen" v-if="index === 2 || isMobile">
+            <video class="productions-screens-video" muted preload="metadata" v-if="!isMobile">
               <source type="video/mp4" src="./media/3.mp4">
             </video>
             <div class="container">
@@ -188,7 +203,11 @@
                   </div>
                 </div><!--.details-->
 
-                <img src="./images/bgs/productions-tk-3.jpeg" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy">
+                <!-- <img src="./images/bgs/productions-tk-3.jpeg" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy"> -->
+                <picture>
+                  <source srcset="./images/bgs/productions-tk-3-mobile.png" media="(max-width:600px)">
+                  <img src="./images/bgs/productions-tk-3.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                </picture>
 
               </div>
 
@@ -202,8 +221,8 @@
           v-bind:css="false"
           mode="out-in"
         >
-          <div class="productions-screen" v-if="index === 3">
-            <video class="productions-screens-video" muted preload="metadata">
+          <div class="productions-screen" v-if="index === 3 || isMobile">
+            <video class="productions-screens-video" muted preload="metadata" v-if="!isMobile">
               <source type="video/mp4" src="./media/4.mp4">
             </video>
             <div class="container">
@@ -236,7 +255,11 @@
                   </div>
                 </div><!--.details-->
 
-                <img src="./images/bgs/productions-tk-4.jpeg" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy">
+                <!-- <img src="./images/bgs/productions-tk-4.jpeg" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy"> -->
+                <picture>
+                  <source srcset="./images/bgs/productions-tk-4-mobile.png" media="(max-width:600px)">
+                  <img src="./images/bgs/productions-tk-4.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                </picture>
 
               </div>
 
@@ -250,8 +273,8 @@
           v-bind:css="false"
           mode="out-in"
         >
-          <div class="productions-screen" v-if="index === 4">
-            <video class="productions-screens-video" muted preload="metadata">
+          <div class="productions-screen" v-if="index === 4 || isMobile">
+            <video class="productions-screens-video" muted preload="metadata" v-if="!isMobile">
               <source type="video/mp4" src="./media/5.mp4">
             </video>
             <div class="container">
@@ -283,7 +306,11 @@
                   </div>
                 </div><!--.details-->
 
-                <img src="./images/bgs/productions-tk-5.jpeg" alt="Качество, приносящее выгоду" class="productions-screen-img" loading="lazy">
+                <!-- <img src="./images/bgs/productions-tk-5.jpeg" alt="Качество, приносящее выгоду" class="productions-screen-img" loading="lazy"> -->
+                <picture>
+                  <source srcset="./images/bgs/productions-tk-5-mobile.png" media="(max-width:600px)">
+                  <img src="./images/bgs/productions-tk-5.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                </picture>
 
               </div>
 
@@ -326,28 +353,28 @@
           <div class="tk-list">
             <div class="tk-col">
               <div class="tk-subtype">
-                <div class="tk-subtype-title">Влагопрочный картон</div>
+                <div class="tk-subtype-title">Влагопрочный картон<svg class="sprite tk-subtype-title-arrow"><use xlink:href="svg/svg/symbols.svg#btn-arrow"/></svg></div>
                 <div class="tk-subtype-descr">Граммаж 100, 110, 115, 120, 125, 135, 140, 150, 160, 175, 200 г/м2, формат от 550 до 2500 мм</div>
               </div>
             </div>
 
             <div class="tk-col">
               <div class="tk-subtype">
-                <div class="tk-subtype-title">Название 2</div>
+                <div class="tk-subtype-title">Название 2<svg class="sprite tk-subtype-title-arrow"><use xlink:href="svg/svg/symbols.svg#btn-arrow"/></svg></div>
                 <div class="tk-subtype-descr">Граммаж 100, 110, 115, 120, 125, 135, 140, 150, 160, 175, 200, 110, 115, 120, 125, 135, 140, 150, 160, 175, 200, 110, 115, 120, 125, 135, 140, 150, 160, 175, 200, 110, 115, 120, 125, 135, 140, 150, 160, 175, 200 г/м2, формат от 550 до 2500 мм</div>
               </div>
             </div>
 
             <div class="tk-col">
               <div class="tk-subtype">
-                <div class="tk-subtype-title">Название 3</div>
+                <div class="tk-subtype-title">Название 3<svg class="sprite tk-subtype-title-arrow"><use xlink:href="svg/svg/symbols.svg#btn-arrow"/></svg></div>
                 <div class="tk-subtype-descr">Граммаж 100, 110, 115, 120, 125, 135, 140, 150, 160, 175, 200 г/м2, формат от 550 до 2500 мм</div>
               </div>
             </div>
 
             <div class="tk-col">
               <div class="tk-subtype">
-                <div class="tk-subtype-title">Название 4</div>
+                <div class="tk-subtype-title">Название 4<svg class="sprite tk-subtype-title-arrow"><use xlink:href="svg/svg/symbols.svg#btn-arrow"/></svg></div>
                 <div class="tk-subtype-descr">Граммаж 100, 110, 115, 120, 125, 135, 140, 150, 160, 175, 200 г/м2, формат от 550 до 2500 мм</div>
               </div>
             </div>
@@ -474,23 +501,21 @@
         <div class="col-layout-wide">
 
           <div class="news-list">
-            <a href="#" class="news-item">
-              <div class="news-item-body">
-                <div class="news-item-title">
-                  <span
-                    >На БКФ улучшили производительность труда
-                    <svg class="sprite news-item-title-arrow">
-                      <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                    </svg>
-                  </span>
-                </div>
-                <div class="news-item-txt">
-                  Ъ FM рассказывает, как власти намерены сократить объем захоронения
-                  отходов. Новый сервис позволит.
-                </div>
-                <div class="news-item-date">14 сентября</div>
+            <a href="#" class="news-grid">
+              <div class="news-grid-title">
+                <span>На БКФ улучшили производительность труда
+                  <svg class="sprite news-grid-title-arrow">
+                    <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
+                  </svg>
+                </span>
               </div>
-              <div class="news-item-img">
+              <div class="news-grid-txt">
+                Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                отходов. Новый сервис позволит.
+              </div>
+              <div class="news-grid-date">14 сентября</div>
+    
+              <div class="news-grid-img">
                 <img
                   src="./images/examples/news-item.jpg"
                   loading="lazy"
@@ -498,55 +523,36 @@
                 />
               </div>
             </a>
-
-            <a href="#" class="news-item">
-              <div class="news-item-body">
-                <div class="news-item-title">
-                  <span
-                    >На БКФ улучшили производительность труда
-                    <svg class="sprite news-item-title-arrow">
-                      <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                    </svg>
-                  </span>
-                </div>
-                <div class="news-item-txt">
-                  Ъ FM рассказывает, как власти намерены сократить объем захоронения
-                  отходов. Новый сервис позволит.
-                </div>
-                <div class="news-item-date">14 сентября</div>
+    
+            <a href="#" class="news-grid">
+              <div class="news-grid-title">
+                <span
+                  >На БКФ улучшили производительность труда
+                  <svg class="sprite news-grid-title-arrow">
+                    <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
+                  </svg>
+                </span>
               </div>
-              <div class="news-item-img">
-                <img
-                  src="./images/examples/news-item.jpg"
-                  loading="lazy"
-                  alt="alt"
-                />
+              <div class="news-grid-txt">
+                Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                отходов. Новый сервис позволит.
               </div>
+              <div class="news-grid-date">14 сентября</div>
             </a>
-
-            <a href="#" class="news-item">
-              <div class="news-item-body">
-                <div class="news-item-title">
-                  <span
-                    >Новые ТУ переплетного картона
-                    <svg class="sprite news-item-title-arrow">
-                      <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
-                    </svg>
-                  </span>
-                </div>
-                <div class="news-item-txt">
-                  Ъ FM рассказывает, как власти намерены сократить объем захоронения
-                  отходов. Новый сервис позволит.
-                </div>
-                <div class="news-item-date">14 сентября</div>
+    
+            <a href="#" class="news-grid">
+              <div class="news-grid-title">
+                <span>На БКФ улучшили производительность труда
+                  <svg class="sprite news-grid-title-arrow">
+                    <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
+                  </svg>
+                </span>
               </div>
-              <div class="news-item-img">
-                <img
-                  src="./images/examples/news-item.jpg"
-                  loading="lazy"
-                  alt="alt"
-                />
+              <div class="news-grid-txt">
+                Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                отходов. Новый сервис позволит.
               </div>
+              <div class="news-grid-date">14 сентября</div>
             </a>
 
             <div class="to-all-news">

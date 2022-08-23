@@ -24,6 +24,16 @@
 		padding-left: $gutter;
 		padding-right: $gutter;
 	}
+
+  @media (max-width: 1023px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @media (max-width: 959px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 *,

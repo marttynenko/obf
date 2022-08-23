@@ -19,6 +19,13 @@
     max-width: 100%;
     margin-bottom: 60px;
   }
+  @media (max-width: 959px) {
+    margin-bottom: 24px;
+    @include fz(36);
+  }
+  @media (max-width: 599px) {
+    @include fz(28);
+  }
 }
 .page-museum {
   padding-top: 0;
@@ -88,6 +95,10 @@
   @media (max-width: 1259px) {
     bottom: -25px;
     left: 0;
+  }
+
+  @media (max-width: 959px) {
+    bottom: 0;
   }
 }
 .col-layout-center {
@@ -228,9 +239,16 @@
       filter: brightness(10);
     }
   }
+
+  @media (max-width: 959px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      margin-right: 10px;
+    }
+  }
 }
 .museum-history {
-  margin-bottom: 200px;
+  margin-bottom: 150px;
 }
 .node-slider-comm {
   display: flex;
@@ -323,9 +341,39 @@
       @include fz(32);
     }
   }
+
+  @media (max-width: 959px) {
+    align-items: flex-start;
+
+    &-img {
+      flex: 0 0 200px;
+      max-width: 200px;
+      margin-right: 24px;
+    }
+
+    &-body {
+      flex: unset;
+      max-width: 100%;
+      width: 100%;
+      padding-left: 0;
+    }
+  }
 }
+
+
 .museum-reviews {
   margin-bottom: 135px;
+
+  @media (min-width: 960px) {
+    .col-layout-thin {
+      flex: 0 0 25.5%;
+      max-width: 25.5%;
+    }
+    .col-layout-wide {
+      flex: 0 0 74.5%;
+      max-width: 74.5%;
+    }
+  }
 }
 .mus-review {
   height: 100%;
@@ -333,6 +381,13 @@
 }
 .museum-news {
   margin-bottom: 120px;
+
+  @media (max-width: 959px) {
+    margin-bottom: 40px;
+  }
+  @media (max-width: 599px) {
+    margin-bottom: 30px;
+  }
 }
 .mus-review-item {
   display: flex;
@@ -444,10 +499,6 @@
   &-position {
     @include fz(18);
     color: $primary;
-
-    // @media (max-width: 1439px) {
-    //   @include fz(14);
-    // }
   }
 
   @media (max-width: 1439px) {
@@ -457,6 +508,124 @@
       @include fz(14);
     }
   }
+
+  @media (max-width: 1259px) {
+    @include fz(20);
+  }
+
+  @media (max-width: 959px) {
+
+    &-author {
+      margin-bottom: 4px;
+      @include fz(18);
+    }
+    &-position {
+      @include fz(16);
+    }
+  }
+
+  @media (max-width: 599px) {
+    @include fz(16);
+    
+    &-author {
+      @include fz(16);
+    }
+    &-position {
+      @include fz(14);
+    }
+  }
+}
+.museum-opinion {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 24.833% 1fr;
+  grid-gap: 0 50px;
+  grid-template-areas: 
+  'img txt'
+  'img person';
+  margin-top: 120px;
+
+  &-img {
+    grid-area: img;
+  }
+  &-person {
+    grid-area: person;
+    align-self: start;
+  }
+  &-txt {
+    grid-area: txt;
+    align-self: end;
+  }
+
+  @media (max-width: 959px) {
+    grid-template-columns: 200px 1fr;
+    grid-gap: 0 24px;
+    margin-top: 56px;
+  }
+
+  @media (max-width: 599px) {
+    grid-template-areas: 
+      'img person'
+      'txt txt';
+    grid-template-columns: 80px 1fr;
+    grid-gap: 8px 16px;
+    margin-top: 32px;
+
+    &-person {
+      align-self: center;
+    }
+    &-txt {
+      align-items: start;
+    }
+  }
+}
+
+.museum-recall {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 24.833%;
+  grid-gap: 0 50px;
+  grid-template-areas: 
+  'txt img'
+  'person img';
+
+  &-img {
+    grid-area: img;
+    line-height: 0;
+
+    img {
+      display: block;
+      border-radius: 300px;
+    }
+  }
+  &-person {
+    grid-area: person;
+    align-self: start;
+  }
+  &-txt {
+    grid-area: txt;
+    align-self: end;
+  }
+
+  @media (max-width: 959px) {
+    grid-template-columns: 1fr 200px;
+    grid-gap: 0 24px;
+  }
+
+  @media (max-width: 599px) {
+    grid-template-areas: 
+      'img person'
+      'txt txt';
+    grid-template-columns: 80px 1fr;
+    grid-gap: 8px 16px;
+
+    &-person {
+      align-self: center;
+    }
+    &-txt {
+      align-items: start;
+    }
+  }
 }
 
 .museum-social-row {
@@ -464,6 +633,38 @@
   margin-right: -15px;
   margin-left: -15px;
   margin-bottom: 80px;
+
+  @media (max-width: 959px) {
+    margin-left: -4px;
+    margin-right: -4px;
+    margin-bottom: 40px;
+
+    [class*="col-"] {
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    overflow: hidden;
+    overflow-x: auto;
+    margin-left: -15px;
+    margin-right: -19px;
+    padding-left: 15px;
+    padding-right: 15px;
+    scrollbar-width: 0;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      -webkit-appearance: none;
+    }
+
+    .col-4 {
+      flex: 0 0 236px;
+      max-width: 236px;
+    }
+  }
 }
 .museum-social-item-img {
   width: 100%;
@@ -519,6 +720,23 @@
       }
     }
   }
+
+  @media (max-width: 959px) {
+    margin-bottom: 18px;
+
+    &-link {
+      @include fz(16);
+      padding-left: 34px;
+      font-weight: 600;
+
+      &-icon {
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+        margin-top: -12px;
+      }
+    }
+  }
 }
 .museum-social-link {
   .footer-link-et {
@@ -536,4 +754,187 @@
 }
 .footer-links-social-inst {
   padding: 0;
+}
+
+.museum-history-mobile-circle {
+  display: none;
+  visibility: hidden;
+}
+
+
+@media (max-width: 959px) {
+  .museum-row {
+    flex-wrap: wrap;
+    min-height: 420px;
+    // height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 32px;
+  }
+  // .museum-top-screen {
+  //   flex: 0 0 100%;
+  //   max-width: 100%;
+  // }
+  .museum-top-screen-title {
+    margin-bottom: 16px;
+    line-height: 1.05;
+  }
+  .museum-top-screen-text {
+    @include fz(24);
+    margin-bottom: 32px;
+  }
+
+  .museum-history .ui-subtitle, .museum-reviews .ui-subtitle, .museum-news .ui-side-title, .museum-social .ui-subtitle {
+    max-width: 100%;
+  }
+  .museum-history {
+    padding-top: 40px;
+    margin-bottom: 80px;
+
+    &-row {
+      margin-bottom: 20px;
+    }
+    &-title {
+      @include fz(32);
+    }
+    &-year {
+      @include fz(104);
+      line-height: 1;
+      margin-bottom: 8px;
+
+      &-visitors {
+        @include fz(32);
+        padding-top: 0;
+      }
+    }
+    &-info {
+      display: block;
+      @include fz(20);
+      position: static;
+
+      .museum-circle {
+        display: none;
+        visibility: hidden;
+      }
+    }
+
+    &-text {
+      max-width: 100%;
+      @include fz(20);
+      margin-bottom: 32px;
+    }
+
+    &-img {
+      width: 100%;
+      position: relative;
+      transform: none;
+
+      & > img {
+        transform: translate(20%,0);
+      }
+    }
+
+    &-mobile-circle {
+      display: inline-block;
+      visibility: visible;
+      position: absolute;
+      left: 0;
+      top: 33%;
+      margin-top: -59px;
+
+      .ui-btn-circle-circle {
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+    }
+  }
+  .col-mus-8,
+  .col-mus-16,
+  .col-mus-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .museum-reviews {
+    margin-bottom: 40px;
+  
+    .ui-subtitle {
+      max-width: 165px !important;
+      margin-bottom: 34px;
+    }
+    .col-layout-center {
+      position: relative;
+    }
+
+    &-circle {
+      position: absolute;
+      right: 15px;
+      top: -128px;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .museum-row {
+    padding-bottom: 16px;
+  }
+  .museum-top-screen-title {
+    margin-bottom: 8px;
+  }
+  .museum-top-screen-text {
+    @include fz(16);
+    margin-bottom: 16px;
+  }
+  .museum-history-title {
+    @include fz(24);
+    margin-bottom: 24px;
+  }
+
+  .museum-history {
+    margin-bottom: 48px;
+
+    &-year {
+      @include fz(72);
+
+      &-visitors {
+        @include fz(24);
+      }
+    }
+    &-info {
+      @include fz(16);
+    }
+
+    &-text {
+      @include fz(16);
+      margin-bottom: 8px;
+    }
+
+    &-mobile-circle {
+      margin-top: -46px;
+    }
+  }
+
+  .museum-reviews {
+    margin-bottom: 10px;
+
+    &-circle {
+      top: -103px;
+    }
+  }
+}
+
+
+@media (max-width: 480px) {
+  .museum-history {
+
+
+    &-img {
+      & > img {
+        margin-right: 65px;
+        max-width: calc(100% + 65px);
+      }
+    }
+  }
 }

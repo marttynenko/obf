@@ -13,6 +13,7 @@
     flex: 0 0 50%;
     max-width: 50%;
     padding-right: 12.48%;
+
     @media (max-width: 1439px) {
       padding-right: 0;
     }
@@ -71,6 +72,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 60px;
+
     @media (max-width: 1259px) {
       margin-bottom: 40px;
     }
@@ -110,5 +112,95 @@
         line-height: 1.7;
       }
     }
+  }
+
+  @media (max-width: 959px) {
+    &-list {
+      &-col {
+        padding-right: 10%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &-header {
+      margin-bottom: 64px;
+      display: block;
+
+      &-img {
+        margin-bottom: 12px;
+      }
+      &-info {
+        &-name {
+          max-width: 100%;
+          font-weight: 600;
+          @include fz(36);
+          margin-bottom: 8px;
+        }
+        &-pos {
+          max-width: 100%;
+        }
+      }
+    }
+    &-left-col {
+      padding-right: 0;
+      max-width: 100%;
+    }
+    &-right-col {
+      max-width: 100%;
+    }
+
+    &-list-col {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding-right: 0;
+    }
+
+    &-card {
+      margin-bottom: 64px;
+
+      &-img {
+        margin-bottom: 12px;
+      }
+      &-lastname,
+      &-firstname {
+        @include fz(32);
+      }
+      &-firstname {
+        margin-bottom: 8px;
+      }
+      &-pos {
+        @include fz(16);
+      }
+    }
+  }
+
+  @media (max-width: 599px) {
+    &-header {
+      margin-bottom: 40px;
+
+      &-info {
+        &-name {
+          @include fz(28);
+        }
+        &-pos {
+          max-width: 100%;
+          @include fz(14);
+        }
+      }
+    }
+
+    &-card {
+      margin-bottom: 40px;
+
+      &-lastname,
+      &-firstname {
+        @include fz(24);
+      }
+      &-pos {
+        @include fz(14);
+      }
+    }
+    
   }
 }
