@@ -966,7 +966,8 @@ const mainScreen = () => {
         y: 0
       },
       line: null,
-      timeout: 5
+      timeout: 5,
+      isMobile: true
     },
 
     watch: {
@@ -1042,7 +1043,10 @@ const mainScreen = () => {
 
       popupEnter(el,done) {
         const ww = document.documentElement.clientWidth
-        const scale = (ww / 170) * 2.25
+        const hw = document.documentElement.clientHeight
+        const size = ww < 600 ? 92 : (ww < 960) ? 106 : (ww < 1440) ? 130 : 170 
+        const diagonal = Math.sqrt(Math.pow(ww, 2) + Math.pow(hw, 2))
+        const scale = (diagonal / size) * 2
         const news = this.$refs.popupBody.querySelectorAll('.news-item')
 
         const tl = gsap.timeline()
@@ -1053,6 +1057,11 @@ const mainScreen = () => {
             tl.fromTo(item,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3}, '-=0.15')
           })
           tl.to({},{onComlete: done},0);
+
+          tl.eventCallback("onComplete", () => {
+            this.$refs.popupBody.style = ''
+            gsap.to(this.$refs.popupBtn,{opacity: 1, y: 0, duration: 0.3});
+          });
       },
 
       popupLeave(el,done) {
@@ -1093,21 +1102,127 @@ const mainScreen = () => {
           .from(actualLink, {x: 100, opacity: 0, duration: 0.35}, '-=4.5')
           .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader}, '-=4.5')
           .fromTo('.main-slides-nav',{opacity: 0, yPercent: 100},{opacity: 1, yPercent: 0, duration: 0.4}, '-=4.1')
+      },
+
+      appearAnimationMobile() {
+        const clearImg = (img) => {
+          setTimeout(()=>{
+            img.removeAttribute('style')
+          },1)
+        }
+        
+        const slide = D.querySelector('.mobile-slides-swiper .swiper-slide-active')
+        const img = slide.querySelector('.mobile-slides-img img')
+        const body = slide.querySelector('.mobile-slides-body')
+
+        gsap.fromTo(img,{scale: 0.9},{scale: 1, duration: 4.5, ease: "imgs",onComplete: clearImg, onCompleteParams: [img]})
+        gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: 1})
+        
+      },
+
+      initCarousel() {
+       
+        const wiper = new Swiper('.mobile-slides-swiper',{
+          slidesPerView: 1,
+          loop: true,
+          speed: 500,
+          effect: "fade",
+          // shortSwipes: false,
+          pagination: {
+            el: ".mobile-slides-pgn",
+            type: "custom",
+            renderCustom: function (swiper, current, total) {
+              return current + " из " + total;
+            },
+          },
+          navigation: {
+            nextEl: '.mobile-slides-next',
+            prevEl: '.mobile-slides-prev',
+          },
+        })
+        
+        //wiper.on('slideChangeTransitionStart',(swiper)=> {
+          // console.log('end')
+          // const slide = D.querySelector('.mobile-slides-swiper .swiper-slide-active')
+          // const img = slide.querySelector('.mobile-slides-img img')
+          // const body = slide.querySelector('.mobile-slides-body')
+
+          // const clearImg = () => {
+          //   setTimeout(()=>{
+          //     img.removeAttribute('style')
+          //   },1)
+          // }
+
+          // gsap.fromTo(img,{scale: 0.9, opacity: 0},{scale: 1, opacity: 1, duration: 4.5, ease: "imgs",onComplet: clearImg})
+          // gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: 1})
+        //})
+
+        wiper.on('realIndexChange',(swiper)=> {
+          console.log('touch')
+
+          const clearImg = (img) => {
+            setTimeout(()=>{
+              img.removeAttribute('style')
+            },1)
+          }
+          
+          setTimeout(()=>{
+            const slide = D.querySelector('.mobile-slides-swiper .swiper-slide-active')
+            const img = slide.querySelector('.mobile-slides-img img')
+            const body = slide.querySelector('.mobile-slides-body')
+
+            gsap.fromTo(img,{scale: 0.9},{scale: 1, duration: 4.5, ease: "imgs",onComplete: clearImg, onCompleteParams: [img]})
+            gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: 1})
+          },1)
+        });
+      },
+
+      mediaHandler() {
+        const sc959 = window.matchMedia("(max-width:959px)");
+      
+        const changes = (sc959) => {
+          if (sc959.matches) {
+            this.isMobile = true
+            
+            setTimeout(() => {
+              this.initCarousel()
+              this.appearAnimationMobile()
+            },2)
+            
+          } else {
+            this.isMobile = false
+            
+            setTimeout(() => {
+              this.initTimer()
+              this.initProgress()
+              this.animateShadow(0)
+              this.appearAnimation()
+            },2)
+          }
+        }
+
+        sc959.addListener(changes);
+        changes(sc959);
       }
     },
 
     created() {
-      window.addEventListener('load',()=>{
-        this.initTimer()
-        this.initProgress()
-        this.animateShadow(0)
+      // window.addEventListener('load',()=>{
+      //   this.initTimer()
+      //   this.initProgress()
+      //   this.animateShadow(0)
+      //   this.appearAnimation()
+      // })
 
-        this.appearAnimation()
+      window.addEventListener('load',()=>{
+        this.mediaHandler()
       })
+      
     },
 
     mounted() {
       window.addEventListener('resize', ()=>{
+        if (this.isMobile) return
         this.animateShadow(this.index)
       }, false)
 
