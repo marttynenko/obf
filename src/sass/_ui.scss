@@ -2684,6 +2684,9 @@ a.ui-color {
 	display: none;
 	visibility: hidden;
 }
+.ui-no-scroll {
+	overflow: hidden;
+}
 
 .ui-swiper-slide-img {
 	cursor: pointer;

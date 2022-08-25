@@ -1,5 +1,7 @@
 const FARBA = {
-  WH: 0,
+  WH: document.documentElement.clientHeight,
+
+  WW: document.documentElement.clientWidth,
 
   //lazy load для сторонних либ
   lazyLibraryLoad(scriptSrc, linkHref, callback) {
@@ -942,17 +944,19 @@ const mainScreen = () => {
   if (!D.querySelector('#main-screen')) return;
   const slides = D.querySelectorAll('.main-slide').length
 
-  D.querySelectorAll('.main-slide').forEach(item => {
-    const img = item.querySelector('img.main-slide-img')
-    if (img) {
-      const src = img.getAttribute('src')
-      const pic = new Image()
-      pic.src = src
-      pic.className = 'main-screen-cache'
-      D.querySelector('#main-screen').appendChild(pic)
-    }
-    
-  })
+  if (D.documentElement.clientWidth > 959) {
+    D.querySelectorAll('.main-slide').forEach(item => {
+      const img = item.querySelector('img.main-slide-img')
+      if (img) {
+        const src = img.getAttribute('src')
+        const pic = new Image()
+        pic.src = src
+        pic.className = 'main-screen-cache'
+        D.querySelector('#main-screen').appendChild(pic)
+      }
+    })
+  }
+  
 
   return new Vue({
     el: '#main-screen',
@@ -1127,7 +1131,9 @@ const mainScreen = () => {
           loop: true,
           speed: 500,
           effect: "fade",
-          // shortSwipes: false,
+          autoplay: {
+            delay: 5000,
+          },
           pagination: {
             el: ".mobile-slides-pgn",
             type: "custom",
@@ -1140,26 +1146,8 @@ const mainScreen = () => {
             prevEl: '.mobile-slides-prev',
           },
         })
-        
-        //wiper.on('slideChangeTransitionStart',(swiper)=> {
-          // console.log('end')
-          // const slide = D.querySelector('.mobile-slides-swiper .swiper-slide-active')
-          // const img = slide.querySelector('.mobile-slides-img img')
-          // const body = slide.querySelector('.mobile-slides-body')
-
-          // const clearImg = () => {
-          //   setTimeout(()=>{
-          //     img.removeAttribute('style')
-          //   },1)
-          // }
-
-          // gsap.fromTo(img,{scale: 0.9, opacity: 0},{scale: 1, opacity: 1, duration: 4.5, ease: "imgs",onComplet: clearImg})
-          // gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: 1})
-        //})
 
         wiper.on('realIndexChange',(swiper)=> {
-          console.log('touch')
-
           const clearImg = (img) => {
             setTimeout(()=>{
               img.removeAttribute('style')
@@ -1237,18 +1225,22 @@ const mainScreenEx = mainScreen()
 const mainActivities = () => {
   if (!D.querySelector('#main-activities')) return;
 
-  D.querySelectorAll('.main-activities-img img').forEach(item => {
-    const img = new Image();
-    img.src = item.getAttribute('src')
-    img.className = 'main-activities-cache'
-    D.querySelector('#main-activities').appendChild(img)
-  })
+  if (FARBA.WW > 959) {
+    D.querySelectorAll('.main-activities-img img').forEach(item => {
+      const img = new Image();
+      img.src = item.getAttribute('src')
+      img.className = 'main-activities-cache'
+      D.querySelector('#main-activities').appendChild(img)
+    })
+  }
+  
 
   return new Vue({
     el: '#main-activities',
     data: {
       index: 0,
-      appearHeight: 0
+      appearHeight: 0,
+      isMobile: true
     },
 
     methods: {
@@ -1270,7 +1262,6 @@ const mainActivities = () => {
           this.appearHeight = h+paddings
         }})
       },
-
 
       descrEnter(el,done) {
         gsap.fromTo(el,{opacity: 0, y: 25},{opacity: 1, y: 0, duration: 0.49, delay: 0.2, onComplete: done})
@@ -1321,17 +1312,111 @@ const mainActivities = () => {
         const paddings = this.getPaddings()
         this.appearHeight = h + paddings
         D.querySelector('#main-activities').style.height = this.appearHeight + 'px'
-      }
+      },
+
+      desctopStartup() {
+        this.setHeight()
+
+        this.scrollAnim()
+
+        // window.addEventListener('resize', this.setHeight, false)
+
+        // window.addEventListener('load', this.setHeight, false)
+      },
+
+      initCarousel() {
+        const wiper = new Swiper('.mobile-activities-swiper',{
+          slidesPerView: 1,
+          autoHeight: true,
+          loop: true,
+          speed: 500,
+          effect: "fade",
+          navigation: {
+            nextEl: '.mobile-activities-next',
+            prevEl: '.mobile-activities-prev',
+          },
+        })
+
+        wiper.on('init',()=>{
+          setTimeout(()=>{
+            const slide = D.querySelector('.mobile-activities-swiper .swiper-slide-active')
+            if (!slide) return
+            const name = slide.dataset.name || ''
+            this.$refs.flipTitle.textContent = name
+          },1)
+        })
+
+        wiper.on('realIndexChange',(swiper)=> {
+          setTimeout(()=>{
+            const slide = D.querySelector('.mobile-activities-swiper .swiper-slide-active')
+            if (!slide) return
+            const name = slide.dataset.name || ''
+            this.$refs.flipTitle.textContent = name
+
+            const img = slide.querySelector('.mobile-activities-img img')
+            const txt = slide.querySelector('.mobile-activities-txt')
+            const data = slide.querySelector('.mobile-activities-data')
+
+            const tl = gsap.timeline()
+            tl
+              .fromTo(img,{x: 50, opacity: 0},{x: 0, opacity: 1, duration: .5})
+              .fromTo(data,{y: 15, opacity: 0},{y: 0, opacity: 1, duration: .5},'<0.2')
+              .fromTo(txt,{y: 15, opacity: 0},{y: 0, opacity: 1, duration: .5},'<0.2')
+          },1)
+  
+        });
+      },
+
+      flipNav(event) {
+        const panel = this.$refs.flipPanel
+        const links = this.$refs.flip
+        const block = D.querySelector('.main-activities')
+        if (!links || !block) return
+        const sy = window.scrollY
+        const linksBox = panel.getBoundingClientRect()
+        const blockBox = block.getBoundingClientRect()
+        const margin = FARBA.WW < 600 ? 48 : 62
+
+        if (sy > linksBox.top + window.pageYOffset - margin && sy < blockBox.bottom + window.pageYOffset - margin*2) {
+          links.classList.add('flipped')
+        } else {
+          links.classList.remove('flipped')
+        }
+      },
+
+      mediaHandler() {
+        const sc959 = window.matchMedia("(max-width:959px)");
+      
+        const changes = (sc959) => {
+          if (sc959.matches) {
+            this.isMobile = true
+            
+            setTimeout(() => {
+              this.initCarousel()
+              window.addEventListener('scroll',this.flipNav, false)
+              window.removeEventListener('resize', this.setHeight, false)
+              window.removeEventListener('load', this.setHeight, false)
+            },2)
+            
+          } else {
+            this.isMobile = false
+            
+            setTimeout(() => {
+              this.desctopStartup()
+              window.removeEventListener('scroll',this.flipNav, false)
+              window.addEventListener('resize', this.setHeight, false)
+              window.addEventListener('load', this.setHeight, false)
+            },2)
+          }
+        }
+
+        sc959.addListener(changes);
+        changes(sc959);
+      },
     },
 
     mounted() {
-      this.setHeight()
-
-      this.scrollAnim()
-
-      window.addEventListener('resize', this.setHeight, false)
-
-      window.addEventListener('load', this.setHeight, false)
+      this.mediaHandler()
     }
   })
 }
@@ -1353,7 +1438,10 @@ const mainEntrs = () => {
     el: '#main-entrs',
     data: {
       index: 0,
-      appearHeight: 0
+      appearHeight: 0,
+      isMobile: true,
+      isPopup: false,
+      popupIndex: -1
     },
 
     watch: {
@@ -1401,7 +1489,7 @@ const mainEntrs = () => {
         gsap.fromTo(el,{opacity: 0, x: -50},{opacity: 1, x: 0, duration: 0.3, delay: -0.05, onComplete: done})
       },
 
-      titleLeave(el, done) {
+      titleLeave(el,done) {
         gsap.to(el,{opacity: 0, x: 50, duration: 0.3, onComplete: done})
       },
 
@@ -1452,31 +1540,105 @@ const mainEntrs = () => {
           const delay = ((index + 1) % 2 === 0) ? 0.3 : 0
           tl.from(el,{opacity: 0, y: 30, duration: 0.3}, `-=${delay}`)
         })
+      },
+
+      desktopStart() {
+        this.scrollAnim()
+        this.animateShadow(0)
+
+        //Устанавливаем начальную высоту
+        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+
+        window.addEventListener('resize', ()=>{
+          this.animateShadow(this.index)
+          
+          this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+          D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+        }, false)
+
+
+        window.addEventListener('load', ()=>{
+          this.animateShadow(this.index)
+          
+          this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+          D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+        }, false)
+      },
+
+      openPopup(index) {
+        this.popupIndex = index
+        this.isPopup = true
+        D.documentElement.classList.add('ui-no-scroll')
+      },
+
+      closePopup() {
+        this.isPopup = false
+        this.popupIndex = -1
+        D.documentElement.classList.remove('ui-no-scroll')
+      },
+
+      popupEnter(el,done) {
+        const tl = gsap.timeline()
+        tl
+          .from(el,{y:50, opacity: 0, duration: 1})
+          .from(el.querySelector('.main-entrs-title'),{y: 30, opacity: 0, duration: 0.5},"<0.35")
+          .from(el.querySelector('.main-entrs-imgs'),{y: 30, opacity: 0, duration: 0.5},"<0.2")
+          .from(el.querySelector('.main-entrs-descr'),{y: 30, opacity: 0, duration: 0.5},"<0.2")
+          .from(el.querySelector('.main-entrs-vntgs'),{y: 30, opacity: 0, duration: 0.5, onComplete: done},"<0.2")
+      },
+
+      popupLeave(el,done) {
+        const tl = gsap.timeline()
+        tl
+          .to(el,{y: 50, opacity: 0, duration: .8, onComplete: done})
+      },
+
+      flipNav(event) {
+        const panel = D.querySelector('.main-entrs-in-panel')
+        const links = D.querySelector('.main-entrs-in-links')
+        const block = D.querySelector('.main-entrs')
+        if (!links || !block) return
+        const sy = window.scrollY
+        const linksBox = panel.getBoundingClientRect()
+        const blockBox = block.getBoundingClientRect()
+        const margin = FARBA.WW < 600 ? 48 : 62
+
+        if (sy > linksBox.top + window.pageYOffset - margin && sy < blockBox.bottom + window.pageYOffset - margin*2) {
+          links.classList.add('flipped')
+        } else {
+          links.classList.remove('flipped')
+        }
+      },
+
+      mediaHandler() {
+        const sc959 = window.matchMedia("(max-width:959px)");
+      
+        const changes = (sc959) => {
+          if (sc959.matches) {
+            this.isMobile = true
+            
+            setTimeout(() => {
+              window.addEventListener('scroll',this.flipNav)
+            },2)
+            
+          } else {
+            this.isMobile = false
+            
+            setTimeout(() => {
+              this.desktopStart()
+              window.removeEventListener('scroll',this.flipNav)
+            },2)
+          }
+        }
+
+        sc959.addListener(changes);
+        changes(sc959);
       }
     },
 
     mounted() {
-      this.scrollAnim()
-      this.animateShadow(0)
-
-      //Устанавливаем начальную высоту
-      this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
-      D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
-
-      window.addEventListener('resize', ()=>{
-        this.animateShadow(this.index)
-        
-        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
-        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
-      }, false)
-
-
-      window.addEventListener('load', ()=>{
-        this.animateShadow(this.index)
-        
-        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
-        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
-      }, false)
+      this.mediaHandler()
     }
   })
 }
@@ -1588,10 +1750,6 @@ function wheelProductionsTK() {
       }
     })
   }
-  
-
-  
-
 
   const tk = new Vue({
     el: '.wheel-screens',
@@ -2330,6 +2488,7 @@ function flyAnimations(selectors = '.anim-fly', offset = 0.9) {
 
 window.addEventListener('load',() => {
   FARBA.WH = document.documentElement.clientHeight
+  FARBA.WW = document.documentElement.clientWidth
   
   setTimeout(()=>{
     flyAnimations('.anim-fly')
@@ -2349,6 +2508,7 @@ window.addEventListener('load',() => {
 
 window.addEventListener('resize',() => {
   FARBA.WH = document.documentElement.clientHeight
+  FARBA.WW = document.documentElement.clientWidth
 })
 
 

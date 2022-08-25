@@ -3,7 +3,7 @@
 
 /*main icons fix */
 
-@media (min-width: 1439px){
+/* @media (min-width: 1439px){
 .main-partner-item-img {
 
 margin-bottom: -50px;
@@ -26,10 +26,10 @@ margin-bottom: -50px;
 
     max-width: 84%;
 }
-}
+} */
 
 
-@media (max-width: 1439px)
+/* @media (max-width: 1439px)
 {
 .main-partner-item-img {
     margin-left: -45%;
@@ -38,7 +38,7 @@ margin-bottom: -50px;
 .main-partner-item-img img {
     max-width: 75%;
 }
-}
+} */
 
 /*respect icons fix 
 
@@ -352,13 +352,13 @@ color: #222E3F !important;  /*тексты 2 слайда, текст над с�
 }
 
 /* main page small res block title margin  */
-@media (max-width: 1439px)
+/* @media (max-width: 1439px)
 {
 .main-block-title {
 
     margin-bottom: 60px;
 	}
-}
+} */
 
 
 /* inner page width fix  */
@@ -972,20 +972,20 @@ max-width: 480px;
 }
 */
 
-
+/* 
     .main-entrs-vntg-title {
 
     font-size: 50px;
 
-}
+} */
 
-    .main-entrs-vntg {
+    /* .main-entrs-vntg {
 
     font-size: 26px;
 
     line-height: 1.3;
-    }
-.main-entrs-vntgs {
+    } */
+/* .main-entrs-vntgs {
     padding-right: 50px
     }
 
@@ -1002,15 +1002,15 @@ max-width: 480px;
     font-size: 16px;
 	}
 
-}
+} */
 
 
- @media (max-width: 1259px){
+ /* @media (max-width: 1259px){
     .main-entrs-vntgs {
     padding-right: 10px
     }
 
-}
+} */
 
 /* mobile dummy fix 
 
