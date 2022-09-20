@@ -214,8 +214,10 @@
           padding-right: 15px;
           max-width: calc(100% + 30px);
           scrollbar-width: 0;
+          -webkit-overflow-scrolling: touch;
 
           &::-webkit-scrollbar {
+            display: none;
             width: 0;
             height: 0;
             -webkit-appearance: none;
@@ -343,9 +345,13 @@
       padding-top: 40px;
       padding-bottom: 40px;
 
+      &-body {
+        padding-bottom: 40px;
+      }
+
       &-adress {
         padding-right: 0;
-        margin-bottom: 40px;
+        margin-bottom: 0px;
         @include fz(20);
 
         &-title {
@@ -364,12 +370,18 @@
         }
         &-text {
           margin-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
       &-container {
         margin-bottom: 0;
       }
       .node-slider-comm {
+        align-items: center;
+
         &-body {
           padding-right: 24px;
           max-width: calc(100% - 200px);
@@ -377,6 +389,7 @@
         &-img {
           flex: 0 0 200px;
           max-width: 200px;
+          margin-right: 0;
         }
       }
       .museum-review {
@@ -408,7 +421,9 @@
       }
 
       .node-slider-comm {
-        align-items: flex-start;
+        align-items: center;
+        position: relative;
+        padding-top: 44px;
 
         &-body {
           padding-right: 8px;
@@ -417,7 +432,15 @@
         &-img {
           flex: 0 0 128px;
           max-width: 128px;
-          padding-top: 48px;
+        }
+        .museum-review-position {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
       .museum-review {
@@ -444,7 +467,8 @@
     .ui-side-title {
       color: #fff;
     }
-    .news-item-date {
+    .news-item-date,
+    .news-grid-date {
       color: $bgc;
     }
   }
@@ -538,10 +562,16 @@
     @include fz(16);
     color: #FFF;
 
-    &.selected,
-    &:hover {
+    &.selected {
       border: 1px solid $secondary;
       color: $secondary;
+    }
+
+    @media (min-width: 960px) {
+      &:hover {
+        border: 1px solid $secondary;
+        color: $secondary;
+      }
     }
   }
 
@@ -552,12 +582,14 @@
       margin-bottom: 20px;
       white-space: nowrap;
       scrollbar-width: 0;
-      margin-right: -15px;
-      margin-left: -15px;
+      margin-right: -16px;
+      margin-left: -16px;
       padding-left: 15px;
       padding-right: 15px;
+      -webkit-overflow-scrolling: touch;
 
       &::-webkit-scrollbar {
+        display: none;
         width: 0;
         height: 0;
         -webkit-appearance: none;
@@ -632,13 +664,16 @@
   .enterprises-news {
     background: $tertiary;
   }
-  .enterprises-contact-adress-link:hover {
-    border: 1px solid $tertiary;
-    color: $tertiary;
 
-  }
-  .enterprises-contact-adress-link:hover .docs-card-icon {
-    stroke: $tertiary;
+  @media (min-width: 960px) {
+
+    .enterprises-contact-adress-link:hover {
+      border: 1px solid $tertiary;
+      color: $tertiary;
+    }
+    .enterprises-contact-adress-link:hover .docs-card-icon {
+      stroke: $tertiary;
+    }
   }
 
   .enterprises-content-title {
@@ -647,18 +682,26 @@
 
   .enterprises-contact-adress {
     a {
-  
-      &:hover {
-        color: $tertiary;
+      @media (min-width: 960px) {
+
+        &:hover {
+          color: $tertiary;
+        }
       }
     }
   }
 
   .enterprises-contact-tab {
-    &.selected,
-    &:hover {
+    &.selected {
       border: 1px solid $tertiary;
       color: $tertiary;
+    }
+
+    @media (min-width: 960px) {
+      &:hover {
+        border: 1px solid $tertiary;
+        color: $tertiary;
+      }
     }
   }
 
@@ -732,30 +775,41 @@
   .enterprises-news {
     background: $darkbrown;
   }
-  .enterprises-contact-adress-link:hover {
-    border: 1px solid $darkbrown;
-    color: $darkbrown;
 
-  }
-  .enterprises-contact-adress-link:hover .docs-card-icon {
-    stroke: $darkbrown;
+  @media (min-width: 960px) {
+
+    .enterprises-contact-adress-link:hover {
+      border: 1px solid $darkbrown;
+      color: $darkbrown;
+    }
+    .enterprises-contact-adress-link:hover .docs-card-icon {
+      stroke: $darkbrown;
+    }
   }
   
 
   .enterprises-contact-adress {
     a {
-  
-      &:hover {
-        color: $darkbrown;
+      @media (min-width: 960px) {
+
+        &:hover {
+          color: $darkbrown;
+        }
       }
     }
   }
 
   .enterprises-contact-tab {
-    &.selected,
-    &:hover {
+    &.selected {
       border: 1px solid $darkbrown;
       color: $darkbrown;
+    }
+
+    @media (min-width: 960px) {
+      &:hover {
+        border: 1px solid $darkbrown;
+        color: $darkbrown;
+      }
     }
   }
 }
@@ -785,29 +839,39 @@
   .enterprises-news {
     background: #F68833;
   }
-  .enterprises-contact-adress-link:hover {
-    border: 1px solid #F68833;
-    color: #F68833;
 
-  }
-  .enterprises-contact-adress-link:hover .docs-card-icon {
-    stroke: #F68833;
+  @media (min-width: 960px) {
+
+    .enterprises-contact-adress-link:hover {
+      border: 1px solid #F68833;
+      color: #F68833;
+    }
+    .enterprises-contact-adress-link:hover .docs-card-icon {
+      stroke: #F68833;
+    }
   }
 
   .enterprises-contact-adress {
     a {
-  
-      &:hover {
-        color: #F68833;
+      @media (min-width: 960px) {
+
+        &:hover {
+          color: #F68833;
+        }
       }
     }
   }
 
   .enterprises-contact-tab {
-    &.selected,
-    &:hover {
+    &.selected {
       border: 1px solid #F68833;
       color: #F68833;
+    }
+    @media (min-width: 960px) {
+      &:hover {
+        border: 1px solid #F68833;
+        color: #F68833;
+      }
     }
   }
 }
@@ -884,9 +948,12 @@
       }
     }
 
-    &:hover .enterprises-activity-items-item::after {
-      opacity: 1;
-      transform: scale(1.12);
+    @media (min-width: 960px) {
+
+      &:hover .enterprises-activity-items-item::after {
+        opacity: 1;
+        transform: scale(1.12);
+      }
     }
   }
   .activity-primary {
@@ -1050,26 +1117,34 @@
 }
 
 .enterprises {
-  .news-item {
+  .news-item,
+  .news-grid {
     &-title-arrow {
       stroke: $bgc;
     }
 
-    &:hover {
-      .news-item {
-        &-title {
-          color: $bgc;
+    @media (min-width: 960px) {
+
+      &:hover {
+        .news-item,
+        .news-grid {
+          &-title {
+            color: $bgc;
+          }
         }
       }
     }
   }
 
   .to-all-news a {
-    &:hover {
-      color: $bgc;
-      
-      .news-item-title-arrow {
-        stroke: $bgc;
+    @media (min-width: 960px) {
+
+      &:hover {
+        color: $bgc;
+        
+        .news-item-title-arrow {
+          stroke: $bgc;
+        }
       }
     }
   }
@@ -1163,5 +1238,11 @@
         @include fz(14);
       }
     }
+  }
+}
+
+@media (max-width: 599px) {
+  .enterprises-circle {
+    margin-right: 4px;
   }
 }

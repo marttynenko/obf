@@ -57,6 +57,7 @@
   }
 }
 .museum-row {
+  flex-wrap: nowrap;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -83,6 +84,10 @@
     @include fz(28);
     margin-bottom: 33px;
     line-height: 1.38;
+  }
+
+  @media (max-width: 959px) {
+    width: 100%;
   }
 }
 .slider-museum-subtitle {
@@ -285,14 +290,18 @@
       display: inline-block;
       position: relative;
 
-      &:hover {
-        color: $primary;
+      @media (min-width: 960px) {
 
-        .news-item-title-arrow {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
+        &:hover {
+          color: $primary;
+  
+          .news-item-title-arrow {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
         }
       }
+
     }
 
     &-arrow {
@@ -360,6 +369,20 @@
   }
 }
 
+.enterprises-block {
+  @media (max-width: 959px) {
+    .node-slider-comm-img {
+      margin-left: 24px;
+      margin-right: 0;
+    }
+  }
+  @media (max-width: 559px) {
+    .node-slider-comm-img {
+      margin-left: 8px;
+    }
+  }
+}
+
 
 .museum-reviews {
   margin-bottom: 135px;
@@ -418,14 +441,18 @@
       display: inline-block;
       position: relative;
 
-      &:hover {
-        color: $primary;
+      @media (min-width: 960px) {
 
-        .news-item-title-arrow {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
+        &:hover {
+          color: $primary;
+  
+          .news-item-title-arrow {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
         }
       }
+
     }
 
     &-arrow {
@@ -518,9 +545,11 @@
     &-author {
       margin-bottom: 4px;
       @include fz(18);
+      line-height: 1.33;
     }
     &-position {
       @include fz(16);
+      line-height: 1.25;
     }
   }
 
@@ -529,9 +558,11 @@
     
     &-author {
       @include fz(16);
+      line-height: 1.25;
     }
     &-position {
       @include fz(14);
+      line-height: 1.15;
     }
   }
 }
@@ -648,21 +679,43 @@
   @media (max-width: 599px) {
     overflow: hidden;
     overflow-x: auto;
-    margin-left: -15px;
-    margin-right: -19px;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-left: -16px;
+    margin-right: -16px;
+    // max-width: calc(100% + 32px);
+    padding-left: 16px;
+    padding-right: 8px;
     scrollbar-width: 0;
+    -webkit-overflow-scrolling: touch;
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(34, 46, 63, 0) 0%, #222e3f 100%);
+      width: 70px;
+    }
 
     &::-webkit-scrollbar {
+      display: none;
       width: 0;
       height: 0;
       -webkit-appearance: none;
     }
 
     .col-4 {
+      width: auto;
+      padding-left: 0;
+      padding-right: 8px;
       flex: 0 0 236px;
       max-width: 236px;
+
+      &:last-child {
+        flex: 0 0 244px;
+        max-width: 244px;
+        padding-right: 16px;
+      }
     }
   }
 }
@@ -675,8 +728,12 @@
     width: 100%;
     height: 100%;
     transition: 0.5s ease;
-    &:hover {
-      transform: scale(1.03);
+
+    @media (min-width: 960px) {
+
+      &:hover {
+        transform: scale(1.03);
+      }
     }
   }
 }
@@ -708,14 +765,17 @@
       }
     }
 
-    &:hover {
-      color: #ffffff;
+    @media (min-width: 960px) {
 
-      .museum-insta-link-icon {
-        border-color: #FFF;
-
-        svg {
-          fill: #FFF;
+      &:hover {
+        color: #ffffff;
+  
+        .museum-insta-link-icon {
+          border-color: #FFF;
+  
+          svg {
+            fill: #FFF;
+          }
         }
       }
     }
@@ -764,7 +824,7 @@
 
 @media (max-width: 959px) {
   .museum-row {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     min-height: 420px;
     // height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
@@ -874,6 +934,11 @@
       top: -128px;
     }
   }
+
+  .museum-top-screen-img {
+    display: none;
+    visibility: hidden;
+  }
 }
 
 @media (max-width: 599px) {
@@ -932,8 +997,9 @@
 
     &-img {
       & > img {
-        margin-right: 65px;
-        max-width: calc(100% + 65px);
+        // margin-right: 65px;
+        max-width: 118%;
+        transform: translate(5%, 0);
       }
     }
   }

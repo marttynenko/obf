@@ -165,8 +165,8 @@
     &-span {
       display: inline-block;
       vertical-align: middle;
-      width: min-content;
-      max-width: 60vw;
+      // width: min-content;
+      // max-width: 60vw;
       margin-right: 24px;
     } 
   }
@@ -223,9 +223,9 @@
   .contacts-horizontal-tab {
     @include fz(20);
 
-    &-span {
-      max-width: 60vw;
-    }
+    // &-span {
+    //   max-width: 60vw;
+    // }
   }
 }
 // 599 end

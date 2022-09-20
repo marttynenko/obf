@@ -1,7 +1,17 @@
 const FARBA = {
-  WH: document.documentElement.clientHeight,
+  WH: window.innerHeight,
 
   WW: document.documentElement.clientWidth,
+
+  isTouch: 'ontouchstart' in window || navigator.msMaxTouchPoints,
+
+  removeScroll() {
+    D.documentElement.classList.add('ui-no-scroll')
+  },
+
+  addScroll() {
+    D.documentElement.classList.remove('ui-no-scroll')
+  },
 
   //lazy load для сторонних либ
   lazyLibraryLoad(scriptSrc, linkHref, callback) {
@@ -293,11 +303,39 @@ const FARBA = {
     checkHash()
   },
 
-
   clearStyles() {
     for (let i = 0; i < arguments.length; i++) {
       if (document.querySelector(arguments[i])) {
         document.querySelector(arguments[i]).removeAttribute('style')
+      }
+    }
+  },
+
+  rebuildPager() {
+    if (!document.querySelector('.ui-pgn-link') || !document.querySelector('.ui-pgn-current')) return
+    const current = document.querySelector('.ui-pgn-current')
+    const links = document.querySelectorAll('.ui-pgn-link')
+    let prev = current.previousElementSibling
+    let prevCounter = 0
+
+    links[links.length - 1].classList.add('mobile-visible')
+
+    while (prev && prev.classList.contains('ui-pgn-link') && prevCounter < 3) {
+      prev.classList.add('mobile-visible')
+      prev = prev.previousElementSibling
+      prevCounter++
+    }
+
+    console.log(prevCounter)
+
+    if (prevCounter < 3) {
+      let next = current.nextElementSibling
+      console.log(next)
+
+      while (next && next.classList.contains('ui-pgn-link') && prevCounter < 3) {
+        next.classList.add('mobile-visible')
+        next = next.nextElementSibling
+        prevCounter++
       }
     }
   }
@@ -329,6 +367,21 @@ const D = document;
 svg4everybody();
 
 
+const bdy = document.body;
+let timer;
+window.addEventListener('scroll', function() {
+  if (FARBA.isTouch) return
+  clearTimeout(timer);
+  if(!bdy.classList.contains('disable-hover')) {
+    bdy.classList.add('disable-hover')
+  }
+  
+  timer = setTimeout(function(){
+    bdy.classList.remove('disable-hover')
+  },350);
+}, false);
+
+
 const Headers = {
   header: D.querySelector('#header'),
   headerHeight: 0,
@@ -350,7 +403,8 @@ const Headers = {
   },
 
   scroll: () => {
-    if (window.scrollY >= 160) {
+    const offset = FARBA.WW <= 959 ? 0 : 160 
+    if (window.scrollY >= offset) {
       this.header.classList.remove("header-transparent");
     } else {
       this.header.classList.add("header-transparent");
@@ -452,13 +506,49 @@ if (Headers.checkTargets()) {
     e = event || window.event;
     e.preventDefault();
     if (!this.classList.contains('opened')) {
-      gsap.fromTo(target,{autoAlpha: 0, height: 0}, {autoAlpha: 1, height: 'auto'})
+      if (FARBA.WW < 960) {
+
+        if (!D.querySelector('.news-archieve-mobile')) {
+          const tags = D.querySelector('.ui-tags-news')
+          const newsFilters = D.createElement('div')
+          newsFilters.className = 'news-filters'
+          tags.after(newsFilters)
+          newsFilters.appendChild(tags)
+          const clone = target.cloneNode(true)
+          clone.classList.add('news-archieve-mobile')
+          newsFilters.appendChild(clone)
+        }
+
+        setTimeout(()=>{
+          D.querySelector('.news-archieve-mobile').classList.add('opened')
+        },1)
+
+      } else {
+        gsap.fromTo(target,{autoAlpha: 0, height: 0}, {autoAlpha: 1, height: 'auto'})
+      }
     } else {
-      gsap.to(target,{autoAlpha: 0, height: 0})
+      if (FARBA.WW < 960) {
+        D.querySelector('.news-archieve-mobile').classList.remove('opened')
+      } else {
+        gsap.to(target,{autoAlpha: 0, height: 0})
+      }
     }
     this.classList.toggle("opened");
   });
 })();
+// function setArchieveOffset() {
+//   const target = D.querySelector(".news-archieve");
+//   const tags = D.querySelector('.ui-tags-news');
+
+//   if (!target || !tags) return
+//   const box = tags.getBoundingClientRect()
+//   target.style.top = box.top + window.pageYOffset + 'px'
+//   target.style.left = box.left + window.pageXOffset + 'px'
+  
+// }
+// if (FARBA.WW < 960) {
+//   window.addEventListener('resize',setArchieveOffset)
+// }
 
 
 //анимируем fullscreen menu
@@ -471,15 +561,18 @@ function animateFSMenu(action) {
   const ww = document.documentElement.clientWidth
   const hw = document.documentElement.clientHeight
   const diagonal = Math.sqrt(Math.pow(ww, 2) + Math.pow(hw, 2))
-  const scale = (diagonal / 44) * 2
+  const scale = (diagonal / 44) * 2 * 1.25
 
   const coords = toggler.getBoundingClientRect()
   bg.style.left = coords.x + 'px'
   bg.style.top = coords.y + 'px'
 
   if (action === "open") {
+    D.body.classList.add('fs-opened');
     header.classList.add("fs-opened");
     menu.classList.add("opened");
+    bg.classList.add('opened');
+    FARBA.removeScroll()
     const tlStart = gsap.timeline({ autoRemoveChildren: true });
     tlStart
       .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
@@ -504,6 +597,8 @@ function animateFSMenu(action) {
         { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
       );
   } else {
+    
+    D.body.classList.remove('fs-opened');
     const tlEnd = gsap.timeline({ autoRemoveChildren: true });
     tlEnd
       .to(".fs-menu-contacts-2", { y: 50, opacity: 0, duration: 0.3 })
@@ -524,8 +619,10 @@ function animateFSMenu(action) {
         scale: 1,
         duration: 0.25,
         onComplete: () => {
+          FARBA.addScroll()
           menu.classList.remove("opened");
           header.classList.remove("fs-opened");
+          bg.classList.remove('opened')
         },
       });
   }
@@ -569,26 +666,30 @@ function animateFSsearch(action) {
   const ww = document.documentElement.clientWidth
   const hw = document.documentElement.clientHeight
   const diagonal = Math.sqrt(Math.pow(ww, 2) + Math.pow(hw, 2))
-  const scale = (diagonal / 44) * 2
+  const scale = (diagonal / 44) * 2 * 1.25
 
   const coords = toggler.getBoundingClientRect()
   bg.style.left = coords.x + 'px'
   bg.style.top = coords.y + 'px'
 
   if (action === "open") {
+    bg.classList.add('opened');
     header.classList.add("fs-opened","fs-search-opened");
     menu.classList.add("opened");
+    FARBA.removeScroll()
     const tlStart = gsap.timeline({ autoRemoveChildren: true });
     tlStart
       .to(bg, { scale: scale, duration: 0.45 })
       .fromTo('.fs-search-content', {opacity: 0, y: 50},{opacity: 1, y: 0, duration: 0.5})
       
   } else {
+    FARBA.addScroll()
     const tlEnd = gsap.timeline({ autoRemoveChildren: true });
     tlEnd
       .to('.fs-search-content', {opacity: 0, y: 50, duration: 0.5})
       .to(bg, { scale: 1, duration: 0.45, onComplete: () => {
         menu.classList.remove("opened");
+        bg.classList.remove('opened');
         header.classList.remove("fs-opened","fs-search-opened");
         if (document.querySelector('.fs-search-results')) {
           document.querySelector('.fs-search-results').classList.remove('opened')
@@ -747,11 +848,16 @@ const prdHeadAnimate = () => {
   const head = D.querySelector('.productions-head')
   if (!head) return;
 
+  let btn = head.querySelector('.productions-head-btn')
+  if ('.productions-head-tovideo') {
+    btn = head.querySelector('.productions-head-tovideo')
+  }
+
   const tl = gsap.timeline();
   tl
     .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
     .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.6")
-    .fromTo('.productions-head-arrow',{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
+    .fromTo(btn,{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
     .fromTo('.productions-head-img',{ yPercent: 20, scale: 0.9, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power1.inOut"}, '>-1.5')
     .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-0.4")
     .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4},1);
@@ -761,7 +867,7 @@ const prdHeadAnimate = () => {
   tl.eventCallback(
     "onComplete",
     FARBA.clearStyles,
-    ['.productions-head-img','.productions-head-title','.productions-head-descr','.productions-head-arrow','.productions-head-btn','#header']
+    ['.productions-head-img','.productions-head-title','.productions-head-descr','.productions-head-arrow','.productions-head-btn','.productions-head-tovideo','#header']
   )
 }
 
@@ -855,15 +961,17 @@ rewards.forEach((el,index) => {
     slidesPerView: 1,
     spaceBetween: 0,
     speed: 500,
-    shortSwipes: false,
+    shortSwipes: true,
     navigation: {
       nextEl: nextArrow,
       prevEl: prevArrow,
     },
     breakpoints: {
       960: {
+        autoHeight: false,
         slidesPerView: 2,
-        spaceBetween: 30
+        spaceBetween: 30,
+        shortSwipes: false,
       }
     }
   })
@@ -896,6 +1004,9 @@ document.querySelectorAll('.ux-chart').forEach((el) => {
 
     const bar = D.createElement('div')
     bar.className = 'ui-chart-bar'
+    if (data.length - i > 10) {
+      bar.classList.add('ui-chart-bar-desctop')
+    }
 
     const progress = D.createElement('div')
     progress.className = `ui-chart-bar-progress ui-bg-${color}`
@@ -917,6 +1028,7 @@ document.querySelectorAll('.ux-chart').forEach((el) => {
     el.appendChild(bar)
 
     el.addEventListener('mousemove',(e) => {
+      if (FARBA.WW < 960) return
       const bar = e.target.closest('.ui-chart-bar');
       if (!bar) return
       el.querySelectorAll('.ui-chart-bar').forEach(item => {
@@ -971,7 +1083,8 @@ const mainScreen = () => {
       },
       line: null,
       timeout: 5,
-      isMobile: true
+      isMobile: true,
+      wiper: null
     },
 
     watch: {
@@ -1051,21 +1164,31 @@ const mainScreen = () => {
         const size = ww < 600 ? 92 : (ww < 960) ? 106 : (ww < 1440) ? 130 : 170 
         const diagonal = Math.sqrt(Math.pow(ww, 2) + Math.pow(hw, 2))
         const scale = (diagonal / size) * 2
-        const news = this.$refs.popupBody.querySelectorAll('.news-item')
+        const news = this.$refs.popupBody.querySelectorAll('.news-grid')
+
+        FARBA.removeScroll()
+        
+        if (this.wiper) {
+          this.wiper.autoplay.stop();
+        }
 
         const tl = gsap.timeline()
         tl
           .to(this.$refs.popupBg,{scale: scale, duration: 0.45})
-          .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3})
-          news.forEach((item,index) => {
-            tl.fromTo(item,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3}, '-=0.15')
-          })
-          tl.to({},{onComlete: done},0);
+          .fromTo(this.$refs.popupBody,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3, onComplete: () => {
+            done()
+            setTimeout(()=>{this.$refs.popupBody.style = ''},1)
+          }})
+          // news.forEach((item,index) => {
+          //   tl.fromTo(item,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3, onComplete: () => {
+          //     setTimeout(()=>{item.style = ''},1)
+          //   }}, '-=0.15')
+          // })
+          // tl.to({},{onComlete: done},0);
 
-          tl.eventCallback("onComplete", () => {
-            this.$refs.popupBody.style = ''
-            gsap.to(this.$refs.popupBtn,{opacity: 1, y: 0, duration: 0.3});
-          });
+        tl.eventCallback("onComplete", () => {
+          gsap.to(this.$refs.popupBtn,{opacity: 1, y: 0, duration: 0.3});
+        });
       },
 
       popupLeave(el,done) {
@@ -1073,6 +1196,11 @@ const mainScreen = () => {
         tl
           .to(this.$refs.popupBody, {opacity: 0, y: 50, duration: 0.4})
           .to(this.$refs.popupBg,{scale: 1, duration: 0.3, delay: -0.15, onComplete: done})
+
+        FARBA.addScroll()
+        if (this.wiper) {
+          this.wiper.autoplay.start();
+        }
       },
 
       togglePopup() {
@@ -1125,21 +1253,27 @@ const mainScreen = () => {
       },
 
       initCarousel() {
+        const total = D.querySelectorAll('.mobile-slides .swiper-slide:not(.swiper-slide-duplicate)').length
+
+        const pgn = (total,current) => {
+          const pgn = D.querySelector('.mobile-slides-pgn')
+          pgn.textContent = current+1 + ' из ' + total
+        }
        
-        const wiper = new Swiper('.mobile-slides-swiper',{
+        this.wiper = new Swiper('.mobile-slides-swiper',{
           slidesPerView: 1,
           loop: true,
           speed: 500,
           effect: "fade",
           autoplay: {
             delay: 5000,
+            disableOnInteraction: false
           },
+          watchSlidesProgress: true,
           pagination: {
-            el: ".mobile-slides-pgn",
-            type: "custom",
-            renderCustom: function (swiper, current, total) {
-              return current + " из " + total;
-            },
+            el: ".mobile-slides-bar",
+            bulletClass: "mobile-slides-bullet",
+            bulletActiveClass: "active"
           },
           navigation: {
             nextEl: '.mobile-slides-next',
@@ -1147,7 +1281,22 @@ const mainScreen = () => {
           },
         })
 
-        wiper.on('realIndexChange',(swiper)=> {
+        pgn(total,0)
+
+        this.wiper.on('realIndexChange',(swiper)=> {
+          const slideIndex = swiper.realIndex
+          const bullets = D.querySelectorAll('.mobile-slides-bullet')
+
+          pgn(total,slideIndex);
+
+          bullets.forEach((el,index) => {
+            if (index < slideIndex) {
+              el.classList.add('filled')
+            } else {
+              el.classList.remove('filled')
+            }
+          })
+
           const clearImg = (img) => {
             setTimeout(()=>{
               img.removeAttribute('style')
@@ -1159,10 +1308,44 @@ const mainScreen = () => {
             const img = slide.querySelector('.mobile-slides-img img')
             const body = slide.querySelector('.mobile-slides-body')
 
-            gsap.fromTo(img,{scale: 0.9},{scale: 1, duration: 4.5, ease: "imgs",onComplete: clearImg, onCompleteParams: [img]})
-            gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: 1})
+            gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: .6})
+            gsap.fromTo(img,{opacity: 0, x: 25}, {opacity: 1, x: 0, delay: 0.15, duration: .6})
+            gsap.fromTo(img,{scale: 0.9},{scale: 1, delay: 0.15, duration: 4.5, ease: "imgs",onComplete: clearImg, onCompleteParams: [img]})
           },1)
         });
+
+        const observer = new IntersectionObserver((entries, observer)=>{
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // console.log('ин')
+              this.wiper.autoplay.start()
+            } else {
+              // console.log('оут')
+              this.wiper.autoplay.stop()
+            }
+          })
+        }, {
+          threshold: 0,
+          rootMargin: '-62px 0px 0px 0px'
+        })
+
+        observer.observe(document.querySelector('.mobile-slides'))
+      },
+
+      imgsPositioning () {
+        const slides = D.querySelectorAll('.mobile-slides-slide')
+      
+        slides.forEach(el => {
+          const wrp = el.querySelector('.mobile-slides-img')
+          const img = wrp.querySelector('img')
+      
+          if (img.clientHeight >= wrp.clientHeight) {
+            img.classList.add('align-top')
+          } else {
+            img.classList.remove('align-top')
+          }
+        })
+        
       },
 
       mediaHandler() {
@@ -1175,16 +1358,24 @@ const mainScreen = () => {
             setTimeout(() => {
               this.initCarousel()
               this.appearAnimationMobile()
+              this.imgsPositioning()
+
+              window.addEventListener('load', this.imgsPositioning, false)
+              window.addEventListener('resize', this.imgsPositioning, false)
             },2)
             
           } else {
             this.isMobile = false
+            this.wiper = null
             
             setTimeout(() => {
               this.initTimer()
               this.initProgress()
               this.animateShadow(0)
               this.appearAnimation()
+
+              window.removeEventListener('load', this.imgsPositioning, false)
+              window.removeEventListener('resize', this.imgsPositioning, false)
             },2)
           }
         }
@@ -1195,13 +1386,6 @@ const mainScreen = () => {
     },
 
     created() {
-      // window.addEventListener('load',()=>{
-      //   this.initTimer()
-      //   this.initProgress()
-      //   this.animateShadow(0)
-      //   this.appearAnimation()
-      // })
-
       window.addEventListener('load',()=>{
         this.mediaHandler()
       })
@@ -1696,6 +1880,7 @@ if (D.querySelector('.productions-block .node-slider')) {
 
 //анимируем лендинги продукции
 function animateProductionsNoTk() {
+  if (FARBA.isTouch) return;
   if (!D.querySelector('.productions-block-mk')) return
 
   // const tl = gsap.timeline({
@@ -1729,8 +1914,12 @@ function wheelProductionsTK() {
 
 
   const videoScreens = D.querySelectorAll('.productions-screen');
+  
+  const btn = videoScreens[videoScreens.length - 1].querySelector('.ui-btn-circle')
+  if (btn) { btn.classList.add('bigger') }
+
   if (D.documentElement.clientWidth > 960 && videoScreens.length) {
-    videoScreens.forEach(el => {
+    videoScreens.forEach((el,index) => {
       const video = el.querySelector('video')
       if (video) {
         const src = video.currentSrc
@@ -1761,20 +1950,28 @@ function wheelProductionsTK() {
       activeScreen: 0,
       translate: 0,
       isAll: false,
-      isMobile: false
+      isMobile: false,
+      isParalaxing: false,
+      scrollPos: 0
     },
 
     methods: {
       headEnter(el, done) {
+        let arrow = '.productions-head-arrow';
+        if (document.documentElement.classList.contains('ui-touchscreen')) {
+          arrow = '.productions-head-tovideo'
+        }
+
         const tl = gsap.timeline();
         tl
         .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
         .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.6")
-        .fromTo('.productions-head-arrow',{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
+        .fromTo(arrow,{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
         .fromTo('.productions-head-img',{ yPercent: 20, scale: 0.9, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power1.inOut"}, '>-1.5')
         .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-0.4")
         .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4,onComplete: () => {
           this.index = -1;
+          done
           setTimeout(()=>{
             this.isAnimating = false;
           },100)
@@ -1816,9 +2013,11 @@ function wheelProductionsTK() {
 
       slideEnter(el,done) {
         const img = el.querySelector('.productions-screen-img')
-        const title = el.querySelector('.productions-screen-title') || el.querySelector('h2')
+        const title = el.querySelector('.productions-screen-titles') || el.querySelector('h2')
+        const navs = el.querySelector('.productions-screen-touchnav')
         const details = el.querySelector('.productions-screen-details')
-        const btn = el.querySelector('.ui-btn-circle')
+        // const btn = el.querySelector('.ui-btn-circle')
+        const btn = el.querySelector('.productions-screen-btns')
         const video = el.querySelector('video')
         let delay = 3
 
@@ -1831,9 +2030,9 @@ function wheelProductionsTK() {
             this.isAnimating = false
           },delay * 1000)
         })
-        video.addEventListener('ended',()=>{
-          gsap.to(el.querySelector('.productions-screen-img'),{opacity: 1, duration: 1})
-        })
+        // video.addEventListener('ended',()=>{
+        //   gsap.to(el.querySelector('.productions-screen-img'),{opacity: 1, duration: 1})
+        // })
         
         gsap.set(details,{opacity: 0})
         gsap.set(btn,{opacity: 0})
@@ -1848,6 +2047,7 @@ function wheelProductionsTK() {
         const createTimeline = () => {
           
           gsap.fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1})
+          gsap.fromTo(navs,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1})
           gsap.fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1, onComplete: () => {
             if (this.index >= videoScreens.length - 1) {
               this.isAll = true
@@ -1917,38 +2117,57 @@ function wheelProductionsTK() {
         }
       },
 
+      toSlide(index) {
+        this.activeScreen = index
+      },
+
+      screenHeights() {
+        const screens = D.querySelectorAll('.productions-screen')
+        if (!screens.length) return
+
+        screens.forEach(el => {
+          const bg = el.querySelector('.productions-screen-bg')
+          bg.style.height = el.clientHeight+'px'
+        })
+      },
+
       parralax(event) {
         const screens = D.querySelectorAll('.productions-screen')
         if (!screens.length) return
-        const sy = window.scrollY
-
-        // screens.forEach(screen => {
-        //   const img = screen.querySelector('.productions-screen-img')
-        //   const ofs = screen.offsetTop
-        //   const box = screen.getBoundingClientRect()
-          
-        //   if (sy > box.top + window.pageYOffset && sy < box.bottom + window.pageYOffset) {
-        //     const y = sy - (box.top + window.pageYOffset)
-        //     gsap.set(img, {y: y})
-        //   } else {
-        //     gsap.set(img, {y: 0})
-        //   }
-        // })
+        const margin = FARBA.WW < 600 ? 48 : 62
+        const sy = window.pageYOffset
 
         gsap.utils.toArray(screens).forEach(screen => {
-          const img = screen.querySelector('.productions-screen-img')
-          const ofs = screen.offsetTop
+          const img = screen.querySelector('.productions-screen-bg')
           const box = screen.getBoundingClientRect()
           
-          if (sy > box.top + window.pageYOffset && sy < box.bottom + window.pageYOffset) {
-            const y = sy - (box.top + window.pageYOffset)
-            gsap.to(img, {y: y, ease: "none"}, 0)
+          // if (sy > box.top + sy - margin && sy < box.bottom + sy  - FARBA.WH) {
+          if (sy > box.top + sy - margin && sy < box.bottom + sy  - margin) {
+            screen.classList.add('active')
           } else {
-            gsap.to(img, {y: 0, ease: "none"}, 0)
-            // gsap.set(img, {y: 0})
+            screen.classList.remove('active')
           }
-          // gsap.to(img, {y: y, ease: "none"}, 0)
         });
+
+        // const hm = FARBA.WH - margin
+        // const obs = new IntersectionObserver((entries)=>{
+        //   entries.forEach((entry) => {
+        //     const {intersectionRatio, target, isIntersecting} = entry
+        //     if (isIntersecting) {
+        //       console.log('in', target)
+        //       target.classList.add('active');
+        //     } else {
+        //       console.log('out')
+        //       target.classList.remove('active');
+        //     }
+        //   })
+        // },{
+        //   rootMargin: `0px 0px -${hm}px 0px`,
+        //   threshold: 0,
+        // })
+
+        // screens.forEach(el => obs.observe(el))
+        // this.scrollPos = sy
       },
 
       mediaHandler() {
@@ -1957,25 +2176,31 @@ function wheelProductionsTK() {
         const changes = (sc959) => {
           if (sc959.matches) {
             this.isMobile = true
-            D.querySelector('.wheel-screens').removeEventListener('wheel',this.wheel)
-            window.addEventListener('scroll',this.parralax)
 
             setTimeout(()=>{
-              ScrollTrigger.create({
-                trigger: ".productions-screens",
-                start: 'top 100%',
-                end: "+=100%",
-                scrub: true,
-                onUpdate: self => {
-                  const pg = self.progress.toFixed(3)
-                  gsap.set('.productions-head',{yPercent: pg / 2 * 100}) 
-                }
-              });
-            },200)
+              D.querySelector('.wheel-screens').removeEventListener('wheel',this.wheel)
+              window.addEventListener('scroll',this.parralax)
+              // window.addEventListener('load',this.parralax)
+              
+
+              window.addEventListener('resize',this.screenHeights,false)
+              this.screenHeights()
+            },1)
+
           } else {
             this.isMobile = false
-            D.querySelector('.wheel-screens').addEventListener('wheel',this.wheel)
-            window.removeEventListener('scroll',this.parralax)
+
+            setTimeout(()=>{
+              let Alltrigger = ScrollTrigger.getAll()
+              for (let i = 0; i < Alltrigger.length; i++) {
+                Alltrigger[i].kill(true)
+              }
+
+              D.querySelector('.wheel-screens').addEventListener('wheel',this.wheel)
+              window.removeEventListener('scroll',this.parralax)
+              window.removeEventListener('resize',this.screenHeights,false)
+            },1)
+            
           }
         }
 
@@ -2083,6 +2308,11 @@ window.addEventListener('load',()=>{
     const ds = `ui-swiper-${index}`;
     slider.classList.add(ds);
 
+    slider.querySelectorAll('.ui-swiper-slide-img').forEach(el => {
+      el.removeAttribute('loading')
+      el.classList.add('swiper-lazy')
+    })
+
     prevArrow.classList.add(`swiper-button-prev-${index}`);
     nextArrow.classList.add(`swiper-button-next-${index}`);
 
@@ -2091,11 +2321,15 @@ window.addEventListener('load',()=>{
     descr.textContent = el.querySelector('.ui-swiper-slide-subtitle').textContent
     el.appendChild(descr)
 
+    const pgn = el.querySelector('.swiper-pagination')
+    el.appendChild(pgn)
+
     const swiper = new Swiper(`.${ds}`, {
       autoHeight: true,
       loop: true,
       speed: 1000,
-      shortSwipes: false,
+      shortSwipes: true,
+      lazy: true,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -2111,22 +2345,17 @@ window.addEventListener('load',()=>{
       creativeEffect: {
         perspective: true,
         prev: {
-          // translate: ["-25%", 0, -1],
           translate: ["-100%", 0, 1],
         },
         next: {
-          // translate: ["100%", 0, 0],
           translate: ["75%", 0, -1],
         },
       },
-      // breakpoints: {
-      //   0: {
-      //     allowTouchMove: true,
-      //   },
-      //   1024: {
-      //     allowTouchMove: false,
-      //   }
-      // },
+      breakpoints: {
+        960: {
+          shortSwipes: false,
+        }
+      },
       on: {
         slideChangeTransitionEnd: function () {
           if (!el.querySelector('.swiper-slide-active .ui-swiper-slide-subtitle')) return
@@ -2212,11 +2441,16 @@ const entSwiper = new Swiper(".enterprises-swipper", {
   loop: true,
   slidesPerView: 2,
   autoHeight: true,
-  shortSwipes: false,
+  shortSwipes: true,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  breakpoints: {
+    960: {
+      shortSwipes: false,
+    }
+  }
 });
 
 
@@ -2250,8 +2484,10 @@ function funOpen(e) {
   },831)
 }
 if (document.querySelector('.contacts-tab-toggle')) {
-  let event = new Event("click")
-  document.querySelector('.contacts-tab-toggle').dispatchEvent(event)
+  // let event = new Event("click")
+  // document.querySelector('.contacts-tab-toggle').dispatchEvent(event)
+  D.querySelector('.contacts-tab-contant').classList.add('contacts-tab-contant-active')
+  D.querySelector('.contacts-tab-toggle').classList.add('contacts-tab-toggle-active')
 }
 
 if (document.querySelector('.contacts') && document.querySelector('.page-buttons')) {
@@ -2439,14 +2675,14 @@ if (document.querySelector(".page-error")) {
 })();
 
 
-const toFlyAnim = `
+let toFlyAnim = `
   .ui-side-title,
   .ui-subtitle,
-  .col-layout-thin:not(:empty),
-  .col-layout-wide,
+  .col-layout-thin:not(:empty, .col-layout-thin-footer),
+  .col-layout-wide:not(.col-layout-wide-footer),
   .gallery-title,
   .gallery-img,
-  .news-item,
+  .news-grid,
   .to-all-news,
   .analytics-item,
   .ui-chart-block,
@@ -2462,7 +2698,18 @@ const toFlyAnim = `
   .productions-mk-for,
   .museum-review,
   .page-buttons-contacts,
-  .enterprises-sort-adaptive-link`;
+  .enterprises-sort-adaptive-link,
+  footer .container .row,
+  .mobile-activities-flip,
+  .mobile-activities-data,
+  .mobile-activities-txt`;
+if (FARBA.WW < 960) {
+  toFlyAnim += `,
+  .main-entrs-in-title,
+  .main-entrs-in-links,
+  .main-entrs-descr,
+  .main-entrs-vntgs`;
+}
 const toFlyAnimDelay = `
   .node-body .container,
   .page > .row
@@ -2473,21 +2720,29 @@ const toFlyAnimDelayLength = D.querySelectorAll(toFlyAnimDelay).length
 
 function flyAnimations(selectors = '.anim-fly', offset = 0.9) {
   let toBottom = 0.95
+  let targetOffset = FARBA.WH * offset
+  const pageOffset = window.pageYOffset
+    
   if (D.documentElement.clientWidth < 960) {
-    offset = 0.96
+    targetOffset = FARBA.WH + 10
     toBottom = 0.99
   }
   D.querySelectorAll(selectors).forEach(el => {
-    if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * offset < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * toBottom) {
+    const boxTop = parseInt(el.getBoundingClientRect().top,10);
+    
+    if (boxTop + pageOffset - targetOffset < pageOffset || pageOffset >= (document.documentElement.scrollHeight - FARBA.WH) * toBottom) {
       el.classList.add('visible')
+      if (el.classList.contains('anim-once')) {
+        setTimeout(() => {el.classList.remove('anim-fly')},801);
+      }
     } else {
       el.classList.remove('visible')
     }
-  })  
+  })
 }
 
 window.addEventListener('load',() => {
-  FARBA.WH = document.documentElement.clientHeight
+  FARBA.WH = window.innerHeight
   FARBA.WW = document.documentElement.clientWidth
   
   setTimeout(()=>{
@@ -2498,16 +2753,17 @@ window.addEventListener('load',() => {
       D.querySelectorAll(toFlyAnimDelay).forEach(el => {
         if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * 0.9 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
           setTimeout(()=>{el.classList.add('visible')},300)
-        } else {
-          el.classList.remove('visible')
-        }
+        } 
+        // else {
+        //   el.classList.remove('visible')
+        // }
       })
     }
   },530)
 })
 
 window.addEventListener('resize',() => {
-  FARBA.WH = document.documentElement.clientHeight
+  FARBA.WH = window.innerHeight
   FARBA.WW = document.documentElement.clientWidth
 })
 
@@ -2602,34 +2858,50 @@ D.querySelectorAll('[class*=ui-bg-] .node-slider-btns').forEach((el)=>{
   const links = D.querySelectorAll('.fs-menu-title-toggler')
   if (!links.length) return
 
+  let isAnim = false
+
   function handler(e) {
     e = e || window.event
     e.preventDefault()
-    const ww = D.documentElement.clientWidth
-    if (ww >= 960) return
+    // let isAnim = false
+    // const ww = D.documentElement.clientWidth
+    if (FARBA.WW >= 960) return
 
     for (let i = 0; i < links.length; i++) {
       const body = links[i].nextElementSibling
+      
+      if (isAnim) {break}
 
       if (links[i] == e.currentTarget) {
         if (!links[i].classList.contains('opened')) {
           links[i].classList.add('opened');
           body.classList.add("opened");
-          gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4})
+          gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4,
+          onStart: () => {isAnim = true},
+          onComlete: () => {isAnim = false}
+        })
 
         } else {
 
           links[i].classList.remove("opened");
-          gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
-            body.classList.remove("opened")
-          }})
+          gsap.to(body,{height: 0,duration: 0.4,
+            onStart: () => {isAnim = true},
+            onComplete: ()=> {
+              body.classList.remove("opened")
+              isAnim = false
+            }
+          })
         }
 
       } else {
         links[i].classList.remove("opened");
-        gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
-          body.classList.remove("opened")
-        }})
+        gsap.to(body,{height: 0,duration: 0.4,
+          onStart: () => {isAnim = true},
+          onComplete: ()=> {
+            body.classList.remove("opened")
+            isAnim = false
+          }
+        })
       }
     }
   }
@@ -2653,7 +2925,9 @@ D.querySelectorAll('[class*=ui-bg-] .node-slider-btns').forEach((el)=>{
     if (sc959.matches) {
       D.querySelector('.fs-menu-links .fs-menu-col').after(productions)
     } else {
-      D.querySelector('.fs-menu .container').prepend(D.querySelector('.fs-menu-links .fs-menu-productions'))
+      if (D.querySelector('.fs-menu-links .fs-menu-productions')) {
+        D.querySelector('.fs-menu .container').prepend(D.querySelector('.fs-menu-links .fs-menu-productions'))
+      }
     }
   }
 })();
@@ -2675,39 +2949,73 @@ window.onload = fixProductionPosition;
 window.onresize = fixProductionPosition;
 
 
-
 ;(function(){
   const links = D.querySelectorAll('.tk-subtype-title')
   if (!links.length) return
 
+  let isAnim = false
+
+  function fixParentHeight(el) {
+    const parent = el.closest('.ux-tabs-content-parent')
+    if (!parent) {
+      isAnim = false
+      return
+    }
+    const child = parent.querySelector('.selected')
+    if (!child) {
+      isAnim = false
+      return
+    }
+    const h = child.scrollHeight
+    gsap.to(parent,{height: h, duration: 0.2})
+    isAnim = false
+  }
+
   function handler(e) {
     e = e || window.event
     e.preventDefault()
-    const ww = D.documentElement.clientWidth
-    if (ww >= 960) return
+    if (FARBA.WW >= 960) return
+    // let isAnim = false
 
+    // isAnim = true
     for (let i = 0; i < links.length; i++) {
       const body = links[i].nextElementSibling
+      if (isAnim) {break}
 
       if (links[i] == e.currentTarget) {
         if (!links[i].classList.contains('opened')) {
-          links[i].classList.add('opened');
-          body.classList.add("opened");
-          gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4})
+            links[i].classList.add('opened');
+            body.classList.add("opened");
+            gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4,
+            onStart: () => {isAnim = true},
+            onComplete: () => {
+              fixParentHeight(links[i])
+            }})
+          
 
         } else {
-
-          links[i].classList.remove("opened");
-          gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
-            body.classList.remove("opened")
-          }})
+         
+            links[i].classList.remove("opened");
+            gsap.to(body,{height: 0,duration: 0.4,
+            onStart: () => {isAnim = true},
+            onComplete: ()=> {
+              body.classList.remove("opened")
+              fixParentHeight(links[i])
+            }})
+         
         }
 
       } else {
-        links[i].classList.remove("opened");
-        gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
-          body.classList.remove("opened")
-        }})
+        
+          links[i].classList.remove("opened");
+          gsap.to(body,{height: 0,duration: 0.4,
+          onStart: () => {isAnim = true},
+          onComplete: ()=> {
+            body.classList.remove("opened")
+            fixParentHeight(links[i])
+          }})
+        
+        
       }
     }
   }
@@ -2717,15 +3025,173 @@ window.onresize = fixProductionPosition;
 
 //vh fix
 function vhFix() {
-  let vh = window.innerHeight * 0.01;
+  let ornt = window.innerWidth > window.innerHeight ? 'land' : 'port'
+  let prev = window.innerHeight;
+  let vh = prev * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 
   window.addEventListener('load', () => {
     setTimeout(()=>{
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
-    },150)
-    
+    },1)
+  });
+
+  window.addEventListener('resize', () => {
+    let current = window.innerWidth > window.innerHeight ? 'land' : 'port'
+    if (ornt !== current) {
+      console.log('rotate');
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      ornt = current
+    }
+    // let h = window.innerHeight;
+    // if (h > prev + (prev / 100 * 16) || h < prev - (prev / 100 * 16)) {
+    //   console.log('resize');
+    //   let vh = h * 0.01;
+    //   document.documentElement.style.setProperty('--vh', `${vh}px`);
+    //   prev = h
+    // }
   });
 }
 vhFix();
+
+if (FARBA.isTouch) {
+  D.documentElement.classList.add('ui-touchscreen')
+}
+
+
+;(function(){
+  const tabLinks = D.querySelectorAll('.enterprises-contact-tab');
+  if (!tabLinks.length) return
+
+  let prev = 'auto'
+
+  // let parent = D.createElement('div');
+  // parent.className = 'enterprises-contact-parent'
+  let contentDivs = new Array();
+
+  tabLinks.forEach((element) => {
+    let id = getHash(element.getAttribute("href"));
+
+    contentDivs.push(document.getElementById(id));
+
+    element.addEventListener('click', showTab.bind(null,id,element))
+  });
+
+  tabLinks[0].classList.add("selected");
+  contentDivs[0].classList.add("selected");
+  
+  // contentDivs[0].insertAdjacentElement('beforebegin',parent)
+  // parent.append(...D.querySelectorAll('.enterprises-contact-body'))
+
+  //functions
+  function showTab(id,element,event) {
+    if (event) {
+      event = event || window.event;
+      event.preventDefault()
+    }
+    
+    for (let i = 0; i < contentDivs.length; i++) {
+      let divID = contentDivs[i].getAttribute("id")
+      if (divID === id) {
+
+        tabLinks[i].classList.add("selected");
+        contentDivs[i].classList.remove("leave");
+        setTimeout(()=>{
+          contentDivs[i].classList.add("selected","enter");
+          correctHeight(contentDivs[i])
+        },151)
+        setTimeout(()=>{
+          contentDivs[i].classList.remove("enter");
+        },300)
+
+      } else {
+
+        tabLinks[i].classList.remove("selected");
+        contentDivs[i].classList.add("leave");
+        contentDivs[i].classList.remove("enter");
+        setTimeout(()=>{
+          contentDivs[i].classList.remove("selected");
+        },151)
+      }
+    }
+  }
+
+  function getHash(url) {
+    var hashPos = url.lastIndexOf("#");
+    return url.substring(hashPos + 1);
+  }
+
+  function correctHeight(currentTab) {
+    const nearParent = currentTab.closest('.row')
+    const allParent = currentTab.closest('.ux-tabs-content-parent')
+    if (!nearParent) return
+
+    const height = currentTab.scrollHeight
+    gsap.fromTo(nearParent,
+      {height: prev},
+      {height: height, duration: 1, overwrite: true, onComplete: () => {
+      setTimeout(()=> {
+        nearParent.style.minHeight = height + 'px'
+        nearParent.style.height = ''
+        prev = height
+        if (allParent) {
+          allParent.style.height = ''
+        }
+      },1)
+    }, onStart: () => {
+      nearParent.style.minHeight = ''
+    }})
+
+  }
+})();
+
+
+(function(){
+  const tags = D.querySelector('.ui-tags-news')
+  const toggler = D.querySelector('.ui-tags-news-topopup')
+  if (!tags || !toggler) return
+
+  const copy = tags.cloneNode(true);
+  copy.classList.add('popup-tags')
+  copy.classList.remove('ui-tags-news')
+
+  copy.querySelector('.ui-tags-more').remove()
+  copy.querySelector('.ui-tags-news-topopup').remove()
+  copy.querySelector('.ui-tags-list').classList.add('popup-tags-list')
+  copy.querySelector('.ui-tags-list').classList.remove('ui-tags-list')
+  copy.querySelectorAll('li').forEach(el => {
+    el.classList.remove('hide-item')
+    el.removeAttribute('style')
+  })
+
+  const popupCloser = D.createElement('div')
+  popupCloser.className = 'popup-tags-close'
+  copy.appendChild(popupCloser)
+
+  D.body.appendChild(copy)
+
+  const handler = (action,event) => {
+    event = event || window.event
+    event.preventDefault()
+
+    if (action === 'open') {
+      copy.classList.add('opened');
+      FARBA.removeScroll()
+    } else {
+      copy.classList.remove('opened');
+      FARBA.addScroll()
+    }
+  }
+
+  toggler.addEventListener('click',handler.bind(null,'open'))
+  popupCloser.addEventListener('click',handler.bind(null,'close'))
+  copy.querySelectorAll('a.ui-tags-link').forEach(el => {
+    el.addEventListener('click',handler.bind(null,'close'))
+  });
+  
+})(); 
+
+
+FARBA.rebuildPager();

@@ -77,6 +77,11 @@
       padding-right: 4px;
       flex: 0 0 33.33%;
       max-width: 33.33%;
+
+      &[class*="col-"] {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
     }
     &-img {
       margin-bottom: 8px;
@@ -106,11 +111,15 @@
       line-height: 0;
     }
 
-    &:hover {
-      img {
-        transform: scale(1.03);
+    @media (min-width: 960px) {
+
+      &:hover {
+        img {
+          transform: scale(1.03);
+        }
       }
     }
+
 
     @media (min-width: 1024px) {
       &:hover {

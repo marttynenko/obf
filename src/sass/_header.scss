@@ -246,12 +246,15 @@ a.logo {
 	a:not(.main-menu-btn) {
 		color: #FFF;
 
-		&:hover {
-			color: $primary;
+		@media (min-width: 960px) {
 
-			&.childs-in {
-				&:after {
-					background: url(../images/svg/childs-toggler-orange.svg) center no-repeat;
+			&:hover {
+				color: $primary;
+	
+				&.childs-in {
+					&:after {
+						background: url(../images/svg/childs-toggler-orange.svg) center no-repeat;
+					}
 				}
 			}
 		}
@@ -332,13 +335,16 @@ a.logo {
 		margin: auto;
 	}
 
-	&:hover {
-		border-color: $primary;
-
-		svg {
-			stroke: $primary;
+	@media (min-width: 960px) {
+		&:hover {
+			border-color: $primary;
+	
+			svg {
+				stroke: $primary;
+			}
 		}
 	}
+	
 
 	&-search {
 		&.opened {
@@ -364,14 +370,17 @@ a.logo {
 				transform: rotate(-45deg);
 			}
 			
-			&:hover {
-				border-color: $primary;
-
-				&:before,
-				&:after {
-					background-color: $primary;
+			@media (min-width: 960px) {
+				&:hover {
+					border-color: $primary;
+	
+					&:before,
+					&:after {
+						background-color: $primary;
+					}
 				}
 			}
+			
 		}
 	}
 
@@ -384,6 +393,31 @@ a.logo {
 		height: 38px;
 		line-height: 36px;
 		@include fz(14);
+		position: relative;
+
+		&-icon {
+			position: absolute;
+			width: 18px;
+			height: 18px;
+			max-width: 18px;
+			max-height: 18px;
+			left: 50%;
+			top: 50%;
+			margin-top: -9px;
+			margin-left: -9px;
+		}
+	}
+
+	@media (max-width: 599px) {
+		width: 32px;
+		height: 32px;
+		padding: 7px;
+		line-height: 30px;
+		@include fz(12);
+
+		&-user {
+			padding-top: 5px;
+		}
 	}
 }
 
@@ -429,13 +463,19 @@ a.logo {
 .header-colored:not(.fs-opened) {
 	.main-menu {
 		a {
-			&:hover {
-				color: rgba(#FFF,.65);
+			@media (min-width: 960px) {
+
+				&:hover {
+					color: rgba(#FFF,.65);
+				}
 			}
 			&.childs-in {
-				&:hover:after {
-					background: url(../images/svg/childs-toggler.svg) center no-repeat;
-					opacity: 0.65;
+				@media (min-width: 960px) {
+
+					&:hover:after {
+						background: url(../images/svg/childs-toggler.svg) center no-repeat;
+						opacity: 0.65;
+					}
 				}
 			}
 		}
@@ -448,26 +488,33 @@ a.logo {
 	}
 	.circle-link {
 		transition: border .3s, background-color .3s;
-		&:hover {
-			border-color: rgba(#FFF,.65);
-			color: #FFF;
-			background-color: rgba(#FFF,.05);
 
-			svg {
-				stroke: #FFF;
+		@media (min-width: 960px) {
+
+			&:hover {
+				border-color: rgba(#FFF,.65);
+				color: #FFF;
+				background-color: rgba(#FFF,.05);
+	
+				svg {
+					stroke: #FFF;
+				}
 			}
 		}
 	}
 
 	.menu-toggler {
-		&:hover {
-			color: rgba(#FFF,.65);
+		@media (min-width: 960px) {
 
-			.menu-toggler-icon {
-				border-color: rgba(#FFF,.65);
-			}
-			.menu-toggler-line {
-				background-color: rgba(#FFF,.65);
+			&:hover {
+				color: rgba(#FFF,.65);
+	
+				.menu-toggler-icon {
+					border-color: rgba(#FFF,.65);
+				}
+				.menu-toggler-line {
+					background-color: rgba(#FFF,.65);
+				}
 			}
 		}
 	}

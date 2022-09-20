@@ -1,5 +1,17 @@
 const FARBA = {
-  WH: 0,
+  WH: window.innerHeight,
+
+  WW: document.documentElement.clientWidth,
+
+  isTouch: 'ontouchstart' in window || navigator.msMaxTouchPoints,
+
+  removeScroll() {
+    D.documentElement.classList.add('ui-no-scroll')
+  },
+
+  addScroll() {
+    D.documentElement.classList.remove('ui-no-scroll')
+  },
 
   //lazy load для сторонних либ
   lazyLibraryLoad(scriptSrc, linkHref, callback) {
@@ -187,7 +199,7 @@ const FARBA = {
           },151)
           setTimeout(()=>{
             contentDivs[i].classList.remove("enter");
-            easeHeight(contentDivs[i])
+            easeHeights(contentDivs[i])
           },200)
 
           
@@ -206,14 +218,21 @@ const FARBA = {
       }
     }
 
-    function easeHeight(currentTab) {
+    function easeHeights(currentTab) {
       const height = currentTab.clientHeight
-      gsap.to(parent,{minHeight: height, duration: 1, overwrite: true})
+      gsap.to(parent,{height: height, duration: 1, overwrite: true})
+
+      const imgs = currentTab.querySelectorAll('img')
+      imgs.forEach(element => element.addEventListener('load',() => {
+        parent.style.height = parent.querySelector('.ui-tabs-content.selected').clientHeight + 'px'
+      }))
     }
 
     window.addEventListener('resize',()=>{
       parent.style.height = parent.querySelector('.ui-tabs-content.selected').clientHeight + 'px'
     });
+
+    
 
     async function fetchTabData(el,id) {
       try {
@@ -318,6 +337,20 @@ gsap.defaults({
 const D = document;
 
 svg4everybody();
+
+
+const bdy = document.body;
+let timer;
+window.addEventListener('scroll', function() {
+  clearTimeout(timer);
+  if(!bdy.classList.contains('disable-hover')) {
+    bdy.classList.add('disable-hover')
+  }
+  
+  timer = setTimeout(function(){
+    bdy.classList.remove('disable-hover')
+  },350);
+}, false);
 
 
 const Headers = {
@@ -460,20 +493,25 @@ function animateFSMenu(action) {
   const bg = D.querySelector(".fs-menu-bg");
 
   const ww = document.documentElement.clientWidth
-  const scale = (ww / 44) * 2.25
+  const hw = document.documentElement.clientHeight
+  const diagonal = Math.sqrt(Math.pow(ww, 2) + Math.pow(hw, 2))
+  const scale = (diagonal / 44) * 2 * 1.25
 
   const coords = toggler.getBoundingClientRect()
   bg.style.left = coords.x + 'px'
   bg.style.top = coords.y + 'px'
 
   if (action === "open") {
+    D.body.classList.add('fs-opened');
     header.classList.add("fs-opened");
     menu.classList.add("opened");
+    bg.classList.add('opened');
+    FARBA.removeScroll()
     const tlStart = gsap.timeline({ autoRemoveChildren: true });
     tlStart
       .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
       .fromTo(
-        ".fs-menu-productions",
+        ".fs-menu .fs-menu-productions",
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.35 }
       )
@@ -493,6 +531,8 @@ function animateFSMenu(action) {
         { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
       );
   } else {
+    
+    D.body.classList.remove('fs-opened');
     const tlEnd = gsap.timeline({ autoRemoveChildren: true });
     tlEnd
       .to(".fs-menu-contacts-2", { y: 50, opacity: 0, duration: 0.3 })
@@ -503,7 +543,7 @@ function animateFSMenu(action) {
         delay: -0.2,
       })
       .to(".fs-menu-links", { y: 50, opacity: 0, duration: 0.3, delay: -0.2 })
-      .to(".fs-menu-productions", {
+      .to(".fs-menu .fs-menu-productions", {
         y: 5,
         opacity: 0,
         duration: 0.3,
@@ -513,8 +553,10 @@ function animateFSMenu(action) {
         scale: 1,
         duration: 0.25,
         onComplete: () => {
+          FARBA.addScroll()
           menu.classList.remove("opened");
           header.classList.remove("fs-opened");
+          bg.classList.remove('opened')
         },
       });
   }
@@ -556,26 +598,32 @@ function animateFSsearch(action) {
   const bg = D.querySelector(".fs-search-bg");
 
   const ww = document.documentElement.clientWidth
-  const scale = (ww / 44) * 2.25
+  const hw = document.documentElement.clientHeight
+  const diagonal = Math.sqrt(Math.pow(ww, 2) + Math.pow(hw, 2))
+  const scale = (diagonal / 44) * 2 * 1.25
 
   const coords = toggler.getBoundingClientRect()
   bg.style.left = coords.x + 'px'
   bg.style.top = coords.y + 'px'
 
   if (action === "open") {
+    bg.classList.add('opened');
     header.classList.add("fs-opened","fs-search-opened");
     menu.classList.add("opened");
+    FARBA.removeScroll()
     const tlStart = gsap.timeline({ autoRemoveChildren: true });
     tlStart
       .to(bg, { scale: scale, duration: 0.45 })
       .fromTo('.fs-search-content', {opacity: 0, y: 50},{opacity: 1, y: 0, duration: 0.5})
       
   } else {
+    FARBA.addScroll()
     const tlEnd = gsap.timeline({ autoRemoveChildren: true });
     tlEnd
       .to('.fs-search-content', {opacity: 0, y: 50, duration: 0.5})
       .to(bg, { scale: 1, duration: 0.45, onComplete: () => {
         menu.classList.remove("opened");
+        bg.classList.remove('opened');
         header.classList.remove("fs-opened","fs-search-opened");
         if (document.querySelector('.fs-search-results')) {
           document.querySelector('.fs-search-results').classList.remove('opened')
@@ -734,11 +782,16 @@ const prdHeadAnimate = () => {
   const head = D.querySelector('.productions-head')
   if (!head) return;
 
+  let btn = head.querySelector('.productions-head-btn')
+  if ('.productions-head-tovideo') {
+    btn = head.querySelector('.productions-head-tovideo')
+  }
+
   const tl = gsap.timeline();
   tl
     .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
     .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.6")
-    .fromTo('.productions-head-arrow',{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
+    .fromTo(btn,{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
     .fromTo('.productions-head-img',{ yPercent: 20, scale: 0.9, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power1.inOut"}, '>-1.5')
     .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-0.4")
     .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4},1);
@@ -748,7 +801,7 @@ const prdHeadAnimate = () => {
   tl.eventCallback(
     "onComplete",
     FARBA.clearStyles,
-    ['.productions-head-img','.productions-head-title','.productions-head-descr','.productions-head-arrow','.productions-head-btn','#header']
+    ['.productions-head-img','.productions-head-title','.productions-head-descr','.productions-head-arrow','.productions-head-btn','.productions-head-tovideo','#header']
   )
 }
 
@@ -839,13 +892,20 @@ rewards.forEach((el,index) => {
     autoHeight: true,
     loop: true,
     grabCursor: true,
-    slidesPerView: 2,
-    spaceBetween: 30,
+    slidesPerView: 1,
+    spaceBetween: 0,
     speed: 500,
-    shortSwipes: false,
+    shortSwipes: true,
     navigation: {
       nextEl: nextArrow,
       prevEl: prevArrow,
+    },
+    breakpoints: {
+      960: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        shortSwipes: false,
+      }
     }
   })
 
@@ -877,10 +937,14 @@ document.querySelectorAll('.ux-chart').forEach((el) => {
 
     const bar = D.createElement('div')
     bar.className = 'ui-chart-bar'
+    if (data.length - i > 10) {
+      bar.classList.add('ui-chart-bar-desctop')
+    }
 
     const progress = D.createElement('div')
     progress.className = `ui-chart-bar-progress ui-bg-${color}`
     progress.style.height = (value / max * 100) + '%'
+    progress.style.width = (value / max * 100) + '%'
 
     const labelEl = D.createElement('div')
     labelEl.className = `ui-chart-bar-label  ui-color-${color}`
@@ -897,6 +961,7 @@ document.querySelectorAll('.ux-chart').forEach((el) => {
     el.appendChild(bar)
 
     el.addEventListener('mousemove',(e) => {
+      if (FARBA.WW < 960) return
       const bar = e.target.closest('.ui-chart-bar');
       if (!bar) return
       el.querySelectorAll('.ui-chart-bar').forEach(item => {
@@ -924,17 +989,19 @@ const mainScreen = () => {
   if (!D.querySelector('#main-screen')) return;
   const slides = D.querySelectorAll('.main-slide').length
 
-  D.querySelectorAll('.main-slide').forEach(item => {
-    const img = item.querySelector('img.main-slide-img')
-    if (img) {
-      const src = img.getAttribute('src')
-      const pic = new Image()
-      pic.src = src
-      pic.className = 'main-screen-cache'
-      D.querySelector('#main-screen').appendChild(pic)
-    }
-    
-  })
+  if (D.documentElement.clientWidth > 959) {
+    D.querySelectorAll('.main-slide').forEach(item => {
+      const img = item.querySelector('img.main-slide-img')
+      if (img) {
+        const src = img.getAttribute('src')
+        const pic = new Image()
+        pic.src = src
+        pic.className = 'main-screen-cache'
+        D.querySelector('#main-screen').appendChild(pic)
+      }
+    })
+  }
+  
 
   return new Vue({
     el: '#main-screen',
@@ -948,7 +1015,8 @@ const mainScreen = () => {
         y: 0
       },
       line: null,
-      timeout: 5
+      timeout: 5,
+      isMobile: true
     },
 
     watch: {
@@ -1024,8 +1092,11 @@ const mainScreen = () => {
 
       popupEnter(el,done) {
         const ww = document.documentElement.clientWidth
-        const scale = (ww / 170) * 2.25
-        const news = this.$refs.popupBody.querySelectorAll('.news-item')
+        const hw = document.documentElement.clientHeight
+        const size = ww < 600 ? 92 : (ww < 960) ? 106 : (ww < 1440) ? 130 : 170 
+        const diagonal = Math.sqrt(Math.pow(ww, 2) + Math.pow(hw, 2))
+        const scale = (diagonal / size) * 2
+        const news = this.$refs.popupBody.querySelectorAll('.news-grid')
 
         const tl = gsap.timeline()
         tl
@@ -1035,6 +1106,13 @@ const mainScreen = () => {
             tl.fromTo(item,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3}, '-=0.15')
           })
           tl.to({},{onComlete: done},0);
+
+          tl.eventCallback("onComplete", () => {
+            this.$refs.popupBody.style = ''
+            gsap.to(this.$refs.popupBtn,{opacity: 1, y: 0, duration: 0.3});
+          });
+
+        FARBA.removeScroll()
       },
 
       popupLeave(el,done) {
@@ -1042,6 +1120,8 @@ const mainScreen = () => {
         tl
           .to(this.$refs.popupBody, {opacity: 0, y: 50, duration: 0.4})
           .to(this.$refs.popupBg,{scale: 1, duration: 0.3, delay: -0.15, onComplete: done})
+
+        FARBA.addScroll()
       },
 
       togglePopup() {
@@ -1075,21 +1155,140 @@ const mainScreen = () => {
           .from(actualLink, {x: 100, opacity: 0, duration: 0.35}, '-=4.5')
           .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4, onComplete: clearHeader}, '-=4.5')
           .fromTo('.main-slides-nav',{opacity: 0, yPercent: 100},{opacity: 1, yPercent: 0, duration: 0.4}, '-=4.1')
+      },
+
+      appearAnimationMobile() {
+        const clearImg = (img) => {
+          setTimeout(()=>{
+            img.removeAttribute('style')
+          },1)
+        }
+        
+        const slide = D.querySelector('.mobile-slides-swiper .swiper-slide-active')
+        const img = slide.querySelector('.mobile-slides-img img')
+        const body = slide.querySelector('.mobile-slides-body')
+
+        gsap.fromTo(img,{scale: 0.9},{scale: 1, duration: 4.5, ease: "imgs",onComplete: clearImg, onCompleteParams: [img]})
+        gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: 1})
+        
+      },
+
+      initCarousel() {
+        const total = D.querySelectorAll('.mobile-slides .swiper-slide:not(.swiper-slide-duplicate)').length
+
+        const pgn = (total,current) => {
+          const pgn = D.querySelector('.mobile-slides-pgn')
+          pgn.textContent = current+1 + ' из ' + total
+        }
+       
+        const wiper = new Swiper('.mobile-slides-swiper',{
+          slidesPerView: 1,
+          loop: true,
+          speed: 500,
+          effect: "fade",
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+          },
+          watchSlidesProgress: true,
+          pagination: {
+            el: ".mobile-slides-bar",
+            bulletClass: "mobile-slides-bullet",
+            bulletActiveClass: "active"
+          },
+          // pagination: {
+          //   el: ".mobile-slides-pgn",
+          //   type: "custom",
+          //   renderCustom: function (swiper, current, total) {
+          //     return current + " из " + total;
+          //   },
+          // },
+          navigation: {
+            nextEl: '.mobile-slides-next',
+            prevEl: '.mobile-slides-prev',
+          },
+        })
+
+        pgn(total,0)
+
+        wiper.on('realIndexChange',(swiper)=> {
+          const slideIndex = swiper.realIndex
+          const bullets = D.querySelectorAll('.mobile-slides-bullet')
+
+          pgn(total,slideIndex);
+
+          bullets.forEach((el,index) => {
+            if (index < slideIndex) {
+              el.classList.add('filled')
+            } else {
+              el.classList.remove('filled')
+            }
+          })
+
+          const clearImg = (img) => {
+            setTimeout(()=>{
+              img.removeAttribute('style')
+            },1)
+          }
+          
+          setTimeout(()=>{
+            const slide = D.querySelector('.mobile-slides-swiper .swiper-slide-active')
+            const img = slide.querySelector('.mobile-slides-img img')
+            const body = slide.querySelector('.mobile-slides-body')
+            
+
+            gsap.fromTo(img,{scale: 0.9},{scale: 1, duration: 4.5, ease: "imgs",onComplete: clearImg, onCompleteParams: [img]})
+            gsap.fromTo(body,{opacity: 0, x: 25}, {opacity: 1, x: 0, duration: 1})
+          },1)
+        });
+      },
+
+      mediaHandler() {
+        const sc959 = window.matchMedia("(max-width:959px)");
+      
+        const changes = (sc959) => {
+          if (sc959.matches) {
+            this.isMobile = true
+            
+            setTimeout(() => {
+              this.initCarousel()
+              this.appearAnimationMobile()
+            },2)
+            
+          } else {
+            this.isMobile = false
+            
+            setTimeout(() => {
+              this.initTimer()
+              this.initProgress()
+              this.animateShadow(0)
+              this.appearAnimation()
+            },2)
+          }
+        }
+
+        sc959.addListener(changes);
+        changes(sc959);
       }
     },
 
     created() {
-      window.addEventListener('load',()=>{
-        this.initTimer()
-        this.initProgress()
-        this.animateShadow(0)
+      // window.addEventListener('load',()=>{
+      //   this.initTimer()
+      //   this.initProgress()
+      //   this.animateShadow(0)
+      //   this.appearAnimation()
+      // })
 
-        this.appearAnimation()
+      window.addEventListener('load',()=>{
+        this.mediaHandler()
       })
+      
     },
 
     mounted() {
       window.addEventListener('resize', ()=>{
+        if (this.isMobile) return
         this.animateShadow(this.index)
       }, false)
 
@@ -1104,18 +1303,22 @@ const mainScreenEx = mainScreen()
 const mainActivities = () => {
   if (!D.querySelector('#main-activities')) return;
 
-  D.querySelectorAll('.main-activities-img img').forEach(item => {
-    const img = new Image();
-    img.src = item.getAttribute('src')
-    img.className = 'main-activities-cache'
-    D.querySelector('#main-activities').appendChild(img)
-  })
+  if (FARBA.WW > 959) {
+    D.querySelectorAll('.main-activities-img img').forEach(item => {
+      const img = new Image();
+      img.src = item.getAttribute('src')
+      img.className = 'main-activities-cache'
+      D.querySelector('#main-activities').appendChild(img)
+    })
+  }
+  
 
   return new Vue({
     el: '#main-activities',
     data: {
       index: 0,
-      appearHeight: 0
+      appearHeight: 0,
+      isMobile: true
     },
 
     methods: {
@@ -1137,7 +1340,6 @@ const mainActivities = () => {
           this.appearHeight = h+paddings
         }})
       },
-
 
       descrEnter(el,done) {
         gsap.fromTo(el,{opacity: 0, y: 25},{opacity: 1, y: 0, duration: 0.49, delay: 0.2, onComplete: done})
@@ -1188,17 +1390,111 @@ const mainActivities = () => {
         const paddings = this.getPaddings()
         this.appearHeight = h + paddings
         D.querySelector('#main-activities').style.height = this.appearHeight + 'px'
-      }
+      },
+
+      desctopStartup() {
+        this.setHeight()
+
+        this.scrollAnim()
+
+        // window.addEventListener('resize', this.setHeight, false)
+
+        // window.addEventListener('load', this.setHeight, false)
+      },
+
+      initCarousel() {
+        const wiper = new Swiper('.mobile-activities-swiper',{
+          slidesPerView: 1,
+          autoHeight: true,
+          loop: true,
+          speed: 500,
+          effect: "fade",
+          navigation: {
+            nextEl: '.mobile-activities-next',
+            prevEl: '.mobile-activities-prev',
+          },
+        })
+
+        wiper.on('init',()=>{
+          setTimeout(()=>{
+            const slide = D.querySelector('.mobile-activities-swiper .swiper-slide-active')
+            if (!slide) return
+            const name = slide.dataset.name || ''
+            this.$refs.flipTitle.textContent = name
+          },1)
+        })
+
+        wiper.on('realIndexChange',(swiper)=> {
+          setTimeout(()=>{
+            const slide = D.querySelector('.mobile-activities-swiper .swiper-slide-active')
+            if (!slide) return
+            const name = slide.dataset.name || ''
+            this.$refs.flipTitle.textContent = name
+
+            const img = slide.querySelector('.mobile-activities-img img')
+            const txt = slide.querySelector('.mobile-activities-txt')
+            const data = slide.querySelector('.mobile-activities-data')
+
+            const tl = gsap.timeline()
+            tl
+              .fromTo(img,{x: 50, opacity: 0},{x: 0, opacity: 1, duration: .5})
+              .fromTo(data,{y: 15, opacity: 0},{y: 0, opacity: 1, duration: .5},'<0.2')
+              .fromTo(txt,{y: 15, opacity: 0},{y: 0, opacity: 1, duration: .5},'<0.2')
+          },1)
+  
+        });
+      },
+
+      flipNav(event) {
+        const panel = this.$refs.flipPanel
+        const links = this.$refs.flip
+        const block = D.querySelector('.main-activities')
+        if (!links || !block) return
+        const sy = window.scrollY
+        const linksBox = panel.getBoundingClientRect()
+        const blockBox = block.getBoundingClientRect()
+        const margin = FARBA.WW < 600 ? 48 : 62
+
+        if (sy > linksBox.top + window.pageYOffset - margin && sy < blockBox.bottom + window.pageYOffset - margin*2) {
+          links.classList.add('flipped')
+        } else {
+          links.classList.remove('flipped')
+        }
+      },
+
+      mediaHandler() {
+        const sc959 = window.matchMedia("(max-width:959px)");
+      
+        const changes = (sc959) => {
+          if (sc959.matches) {
+            this.isMobile = true
+            
+            setTimeout(() => {
+              this.initCarousel()
+              window.addEventListener('scroll',this.flipNav, false)
+              window.removeEventListener('resize', this.setHeight, false)
+              window.removeEventListener('load', this.setHeight, false)
+            },2)
+            
+          } else {
+            this.isMobile = false
+            
+            setTimeout(() => {
+              this.desctopStartup()
+              window.removeEventListener('scroll',this.flipNav, false)
+              window.addEventListener('resize', this.setHeight, false)
+              window.addEventListener('load', this.setHeight, false)
+            },2)
+          }
+        }
+
+        sc959.addListener(changes);
+        changes(sc959);
+      },
     },
 
     mounted() {
-      this.setHeight()
-
-      this.scrollAnim()
-
-      window.addEventListener('resize', this.setHeight, false)
-
-      window.addEventListener('load', this.setHeight, false)
+      this.mediaHandler()
     }
   })
 }
@@ -1220,7 +1516,10 @@ const mainEntrs = () => {
     el: '#main-entrs',
     data: {
       index: 0,
-      appearHeight: 0
+      appearHeight: 0,
+      isMobile: true,
+      isPopup: false,
+      popupIndex: -1
     },
 
     watch: {
@@ -1268,7 +1567,7 @@ const mainEntrs = () => {
         gsap.fromTo(el,{opacity: 0, x: -50},{opacity: 1, x: 0, duration: 0.3, delay: -0.05, onComplete: done})
       },
 
-      titleLeave(el, done) {
+      titleLeave(el,done) {
         gsap.to(el,{opacity: 0, x: 50, duration: 0.3, onComplete: done})
       },
 
@@ -1319,31 +1618,110 @@ const mainEntrs = () => {
           const delay = ((index + 1) % 2 === 0) ? 0.3 : 0
           tl.from(el,{opacity: 0, y: 30, duration: 0.3}, `-=${delay}`)
         })
+      },
+
+      desktopStart() {
+        this.scrollAnim()
+        this.animateShadow(0)
+
+        //Устанавливаем начальную высоту
+        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+
+        window.addEventListener('resize', ()=>{
+          this.animateShadow(this.index)
+          
+          this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+          D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+        }, false)
+
+
+        window.addEventListener('load', ()=>{
+          this.animateShadow(this.index)
+          
+          this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
+          D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
+        }, false)
+      },
+
+      openPopup(index) {
+        this.popupIndex = index
+        this.isPopup = true
+        D.documentElement.classList.add('ui-no-scroll')
+      },
+
+      closePopup() {
+        this.isPopup = false
+        this.popupIndex = -1
+        D.documentElement.classList.remove('ui-no-scroll')
+      },
+
+      popupEnter(el,done) {
+        const tl = gsap.timeline()
+        tl
+          .from(el,{y:50, opacity: 0, duration: 1})
+          .from(el.querySelector('.main-entrs-title'),{y: 30, opacity: 0, duration: 0.5},"<0.35")
+          .from(el.querySelector('.main-entrs-imgs'),{y: 30, opacity: 0, duration: 0.5},"<0.2")
+          .from(el.querySelector('.main-entrs-descr'),{y: 30, opacity: 0, duration: 0.5},"<0.2")
+          .from(el.querySelector('.main-entrs-vntgs'),{y: 30, opacity: 0, duration: 0.5, onComplete: done},"<0.2")
+      },
+
+      popupLeave(el,done) {
+        const tl = gsap.timeline()
+        tl
+          .to(el,{y: 50, opacity: 0, duration: .8, onComplete: done})
+      },
+
+      flipNav(event) {
+        const panel = D.querySelector('.main-entrs-in-panel')
+        const links = D.querySelector('.main-entrs-in-links')
+        const block = D.querySelector('.main-entrs')
+        if (!links || !block) return
+        const sy = window.scrollY
+        const linksBox = panel.getBoundingClientRect()
+        const blockBox = block.getBoundingClientRect()
+        const margin = FARBA.WW < 600 ? 48 : 62
+
+        if (sy > linksBox.top + window.pageYOffset - margin && sy < blockBox.bottom + window.pageYOffset - margin*2) {
+          links.classList.add('flipped')
+        } else {
+          links.classList.remove('flipped')
+          // links.classList.add('invisible')
+          // setTimeout(()=>{
+          //   links.classList.remove('invisible')
+          //   links.classList.remove('flipped')
+          // },150)
+        }
+      },
+
+      mediaHandler() {
+        const sc959 = window.matchMedia("(max-width:959px)");
+      
+        const changes = (sc959) => {
+          if (sc959.matches) {
+            this.isMobile = true
+            
+            setTimeout(() => {
+              window.addEventListener('scroll',this.flipNav)
+            },2)
+            
+          } else {
+            this.isMobile = false
+            
+            setTimeout(() => {
+              this.desktopStart()
+              window.removeEventListener('scroll',this.flipNav)
+            },2)
+          }
+        }
+
+        sc959.addListener(changes);
+        changes(sc959);
       }
     },
 
     mounted() {
-      this.scrollAnim()
-      this.animateShadow(0)
-
-      //Устанавливаем начальную высоту
-      this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
-      D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
-
-      window.addEventListener('resize', ()=>{
-        this.animateShadow(this.index)
-        
-        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
-        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
-      }, false)
-
-
-      window.addEventListener('load', ()=>{
-        this.animateShadow(this.index)
-        
-        this.appearHeight = D.querySelector('.main-entrs-slide').clientHeight + this.getPaddings()
-        D.querySelector('#main-entrs').style.height = this.appearHeight + 'px'
-      }, false)
+      this.mediaHandler()
     }
   })
 }
@@ -1401,18 +1779,30 @@ if (D.querySelector('.productions-block .node-slider')) {
 
 //анимируем лендинги продукции
 function animateProductionsNoTk() {
+  if (FARBA.WW < 960) return;
   if (!D.querySelector('.productions-block-mk')) return
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.productions-block-mk',
-      start: 'top 100%',
-      end: "+=100%",
-      scrub: true
+  // const tl = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.productions-block-mk',
+  //     start: 'top 100%',
+  //     end: "+=100%",
+  //     scrub: true
+  //   }
+  // })
+  // tl
+  //   .to('.productions-head',{yPercent: 50, ease: 'none'}, 0)
+
+  ScrollTrigger.create({
+    trigger: ".productions-block-mk",
+    start: 'top 100%',
+    end: "+=100%",
+    scrub: true,
+    onUpdate: self => {
+      const pg = self.progress.toFixed(3)
+      gsap.set('.productions-head',{yPercent: pg / 2 * 100}) 
     }
-  })
-  tl
-    .to('.productions-head',{yPercent: 50, ease: 'none'}, 0)
+  });
 }
 animateProductionsNoTk()
 
@@ -1423,18 +1813,31 @@ function wheelProductionsTK() {
 
 
   const videoScreens = D.querySelectorAll('.productions-screen');
-  videoScreens.forEach(el => {
-    const video = el.querySelector('video')
-    if (video) {
-      const src = video.currentSrc
-      const cache = D.createElement('video');
-      const source = D.createElement('source');
-      source.setAttribute('src', src);
-      source.setAttribute('type', 'video/mp4');
-      source.setAttribute('preload', 'metadata');
-      cache.appendChild(source);
-    }
-  })
+  
+  const btn = videoScreens[videoScreens.length - 1].querySelector('.ui-btn-circle')
+  if (btn) { btn.classList.add('bigger') }
+
+  if (D.documentElement.clientWidth > 960 && videoScreens.length) {
+    videoScreens.forEach((el,index) => {
+      const video = el.querySelector('video')
+      if (video) {
+        const src = video.currentSrc
+        const link = D.createElement('link');
+        link.href = src
+        link.rel = 'prefetch';
+        // link.as = 'video';
+        document.head.appendChild(link);
+  
+        const cache = D.createElement('video');
+        const source = D.createElement('source');
+        source.setAttribute('src', src);
+        source.setAttribute('type', 'video/mp4');
+        cache.setAttribute('preload', 'auto');
+        cache.appendChild(source);
+        // cache.className = 'ui-hidden'
+      }
+    })
+  }
 
   const tk = new Vue({
     el: '.wheel-screens',
@@ -1445,20 +1848,28 @@ function wheelProductionsTK() {
       isAnimating: false,
       activeScreen: 0,
       translate: 0,
-      isAll: false
+      isAll: false,
+      isMobile: false,
+      isParalaxing: false,
     },
 
     methods: {
       headEnter(el, done) {
+        let arrow = '.productions-head-arrow';
+        if (document.documentElement.classList.contains('ui-touchscreen')) {
+          arrow = '.productions-head-tovideo'
+        }
+
         const tl = gsap.timeline();
         tl
         .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1})
         .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1}, ">-0.6")
-        .fromTo('.productions-head-arrow',{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
+        .fromTo(arrow,{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5}, ">-0.55")
         .fromTo('.productions-head-img',{ yPercent: 20, scale: 0.9, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power1.inOut"}, '>-1.5')
         .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-0.4")
         .fromTo('#header',{opacity: 0, yPercent: -100},{opacity: 1, yPercent: 0, duration: 0.4,onComplete: () => {
           this.index = -1;
+          done
           setTimeout(()=>{
             this.isAnimating = false;
           },100)
@@ -1478,15 +1889,20 @@ function wheelProductionsTK() {
       },
 
       productionsEnter(el,done) {
-        gsap.from(el,{yPercent: 35, opacity: 0, duration: 1.5,onStart: () => {
-          this.index = this.index < 1 ? 0 : videoScreens.length - 1;
-        }, onComplete: () => {
-          done()
-          
-          setTimeout(()=>{
-            this.isAnimating = false;
-          },1551)
-        }})
+        if (!this.isMobile) {
+          gsap.from(el,{yPercent: 35, opacity: 0, duration: 1.5,onStart: () => {
+            this.index = this.index < 1 ? 0 : videoScreens.length - 1;
+          }, onComplete: () => {
+            done()
+            
+            setTimeout(()=>{
+              this.isAnimating = false;
+            },1551)
+          }})
+        } else {
+          gsap.to(el,{opacity: 1, duration: .1, onComlete: done})
+        }
+        
       },
 
       productionsLeave(el,done) {
@@ -1495,9 +1911,11 @@ function wheelProductionsTK() {
 
       slideEnter(el,done) {
         const img = el.querySelector('.productions-screen-img')
-        const title = el.querySelector('.productions-screen-title') || el.querySelector('h2')
+        const title = el.querySelector('.productions-screen-titles') || el.querySelector('h2')
+        const navs = el.querySelector('.productions-screen-touchnav')
         const details = el.querySelector('.productions-screen-details')
-        const btn = el.querySelector('.ui-btn-circle')
+        // const btn = el.querySelector('.ui-btn-circle')
+        const btn = el.querySelector('.productions-screen-btns')
         const video = el.querySelector('video')
         let delay = 3
 
@@ -1510,6 +1928,10 @@ function wheelProductionsTK() {
             this.isAnimating = false
           },delay * 1000)
         })
+        // video.addEventListener('ended',()=>{
+        //   gsap.to(el.querySelector('.productions-screen-img'),{opacity: 1, duration: 1})
+        // })
+        
         gsap.set(details,{opacity: 0})
         gsap.set(btn,{opacity: 0})
 
@@ -1523,6 +1945,7 @@ function wheelProductionsTK() {
         const createTimeline = () => {
           
           gsap.fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1})
+          gsap.fromTo(navs,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1})
           gsap.fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1, onComplete: () => {
             if (this.index >= videoScreens.length - 1) {
               this.isAll = true
@@ -1543,6 +1966,8 @@ function wheelProductionsTK() {
             this.isAll = false
           }
         }, onComplete: done}, '>-0.7');
+
+        gsap.to(el.querySelector('.productions-screen-img'),{opacity: 0, duration: 0.5})
       },
 
       wheel(event) {
@@ -1588,6 +2013,95 @@ function wheelProductionsTK() {
           }
           
         }
+      },
+
+      toSlide(index) {
+        this.activeScreen = index
+      },
+
+      screenHeights() {
+        const screens = D.querySelectorAll('.productions-screen')
+        if (!screens.length) return
+
+        screens.forEach(el => {
+          const bg = el.querySelector('.productions-screen-bg')
+          bg.style.height = el.clientHeight+'px'
+          // console.log(el.clientHeight)
+        })
+      },
+
+      parralax(event) {
+        const screens = D.querySelectorAll('.productions-screen')
+        if (!screens.length) return
+        const sy = window.scrollY
+        const margin = FARBA.WW < 600 ? 48 : 62
+
+        gsap.utils.toArray(screens).forEach(screen => {
+          const img = screen.querySelector('.productions-screen-bg')
+          const box = screen.getBoundingClientRect()
+          
+          if (sy > box.top + window.pageYOffset - margin && sy < box.bottom + window.pageYOffset - margin) {
+            screen.classList.add('active')
+            img.classList.add('fixed')
+          } else {
+            screen.classList.remove('active')
+            img.classList.remove('fixed')
+          }
+        });
+      },
+
+      mediaHandler() {
+        const sc959 = window.matchMedia("(max-width:959px)");
+      
+        const changes = (sc959) => {
+          if (sc959.matches) {
+            this.isMobile = true
+
+            setTimeout(()=>{
+              D.querySelector('.wheel-screens').removeEventListener('wheel',this.wheel)
+              window.addEventListener('scroll',this.parralax)
+
+              window.addEventListener('resize',this.screenHeights,false)
+              this.screenHeights()
+
+              // window.scrollTo(0,0);
+            },1)
+            
+
+            // setTimeout(()=>{
+            //   ScrollTrigger.create({
+            //     trigger: ".productions-screens",
+            //     start: 'top 100%',
+            //     end: "+=100%",
+            //     scrub: true,
+            //     onUpdate: self => {
+            //       const pg = self.progress.toFixed(3)
+            //       gsap.set('.productions-head',{yPercent: pg / 2 * 100}) 
+            //     }
+            //   });
+
+            //   window.scrollTo(0,0);
+            // },200)
+
+          } else {
+            this.isMobile = false
+
+            setTimeout(()=>{
+              let Alltrigger = ScrollTrigger.getAll()
+              for (let i = 0; i < Alltrigger.length; i++) {
+                Alltrigger[i].kill(true)
+              }
+
+              D.querySelector('.wheel-screens').addEventListener('wheel',this.wheel)
+              window.removeEventListener('scroll',this.parralax)
+              window.removeEventListener('resize',this.screenHeights,false)
+            },1)
+            
+          }
+        }
+
+        sc959.addListener(changes);
+        changes(sc959);
       }
     },
 
@@ -1601,7 +2115,7 @@ function wheelProductionsTK() {
     },
 
     mounted() {
-      D.querySelector('.wheel-screens').addEventListener('wheel',this.wheel)
+      this.mediaHandler()
     }
   })
 }
@@ -1702,7 +2216,7 @@ window.addEventListener('load',()=>{
       autoHeight: true,
       loop: true,
       speed: 1000,
-      shortSwipes: false,
+      shortSwipes: true,
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -1718,20 +2232,15 @@ window.addEventListener('load',()=>{
       creativeEffect: {
         perspective: true,
         prev: {
-          // translate: ["-25%", 0, -1],
           translate: ["-100%", 0, 1],
         },
         next: {
-          // translate: ["100%", 0, 0],
           translate: ["75%", 0, -1],
         },
       },
       breakpoints: {
-        0: {
-          allowTouchMove: true,
-        },
-        1024: {
-          allowTouchMove: false,
+        960: {
+          shortSwipes: false,
         }
       },
       on: {
@@ -1792,9 +2301,14 @@ window.addEventListener('load',()=>{
       el.appendChild(caption)
     }
   })
+})();
 
-  const listParents = ['.swiper', '.ui-video', '.ui-share', 'figure', '.ui-tags']
+
+(function () {
   const lists = D.querySelectorAll('.node-inner ul, .node ul, .node-inner ol, .node ol')
+  if (!lists.length) return;
+  const listParents = ['.swiper', '.ui-video', '.ui-share', 'figure', '.ui-tags']
+  
   lists.forEach(el => {
     let isParent = false;
     for (let parent of listParents) {
@@ -1814,11 +2328,16 @@ const entSwiper = new Swiper(".enterprises-swipper", {
   loop: true,
   slidesPerView: 2,
   autoHeight: true,
-  shortSwipes: false,
+  shortSwipes: true,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  breakpoints: {
+    960: {
+      shortSwipes: false,
+    }
+  }
 });
 
 
@@ -1852,8 +2371,10 @@ function funOpen(e) {
   },831)
 }
 if (document.querySelector('.contacts-tab-toggle')) {
-  let event = new Event("click")
-  document.querySelector('.contacts-tab-toggle').dispatchEvent(event)
+  // let event = new Event("click")
+  // document.querySelector('.contacts-tab-toggle').dispatchEvent(event)
+  D.querySelector('.contacts-tab-contant').classList.add('contacts-tab-contant-active')
+  D.querySelector('.contacts-tab-toggle').classList.add('contacts-tab-toggle-active')
 }
 
 if (document.querySelector('.contacts') && document.querySelector('.page-buttons')) {
@@ -1960,7 +2481,7 @@ function initYandexMap() {
 
     setTimeout(()=>{
       const height = D.querySelector('.contacts-tab.selected').clientHeight
-      console.log(height)
+      // console.log(height)
       gsap.to('.ux-tabs-content-parent',{minHeight: height, duration: 1, overwrite: true})
     },500)
     
@@ -1995,6 +2516,7 @@ function prloader() {
   },150)
   setTimeout(()=>{
     preloader.remove()
+    // preloader.style.display = 'none'
   },651)
 }
 
@@ -2040,14 +2562,14 @@ if (document.querySelector(".page-error")) {
 })();
 
 
-const toFlyAnim = `
+let toFlyAnim = `
   .ui-side-title,
   .ui-subtitle,
-  .col-layout-thin:not(:empty),
-  .col-layout-wide,
+  .col-layout-thin:not(:empty, .col-layout-thin-footer),
+  .col-layout-wide:not(.col-layout-wide-footer),
   .gallery-title,
   .gallery-img,
-  .news-item,
+  .news-grid,
   .to-all-news,
   .analytics-item,
   .ui-chart-block,
@@ -2062,7 +2584,18 @@ const toFlyAnim = `
   .productions-mk-descr,
   .productions-mk-for,
   .museum-review,
-  .page-buttons-contacts`;
+  .page-buttons-contacts,
+  .enterprises-sort-adaptive-link,
+  footer .container .row,
+  .mobile-activities-flip,
+  .mobile-activities-data,
+  .mobile-activities-txt`;
+if (FARBA.WW < 960) {
+  toFlyAnim += `,
+  .main-entrs-in-links,
+  .main-entrs-descr,
+  .main-entrs-vntgs`;
+}
 const toFlyAnimDelay = `
   .node-body .container,
   .page > .row
@@ -2072,17 +2605,28 @@ D.querySelectorAll(toFlyAnim).forEach(el => {if (!(el).classList.contains('not-a
 const toFlyAnimDelayLength = D.querySelectorAll(toFlyAnimDelay).length
 
 function flyAnimations(selectors = '.anim-fly', offset = 0.9) {
+  let toBottom = 0.95
+  let targetOffset = FARBA.WH * offset
+  const pageOffset = window.pageYOffset
+    
+  if (D.documentElement.clientWidth < 960) {
+    targetOffset = FARBA.WH + 10
+    toBottom = 0.99
+  }
   D.querySelectorAll(selectors).forEach(el => {
-    if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * offset < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
+    const boxTop = parseInt(el.getBoundingClientRect().top,10);
+    
+    if (boxTop + pageOffset - targetOffset < pageOffset || pageOffset >= (document.documentElement.scrollHeight - FARBA.WH) * toBottom) {
       el.classList.add('visible')
     } else {
       el.classList.remove('visible')
     }
-  })  
+  })
 }
 
 window.addEventListener('load',() => {
-  FARBA.WH = document.documentElement.clientHeight
+  FARBA.WH = window.innerHeight
+  FARBA.WW = document.documentElement.clientWidth
   
   setTimeout(()=>{
     flyAnimations('.anim-fly')
@@ -2092,20 +2636,416 @@ window.addEventListener('load',() => {
       D.querySelectorAll(toFlyAnimDelay).forEach(el => {
         if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * 0.9 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
           setTimeout(()=>{el.classList.add('visible')},300)
-        } else {
-          el.classList.remove('visible')
-        }
+        } 
+        // else {
+        //   el.classList.remove('visible')
+        // }
       })
     }
   },530)
 })
 
 window.addEventListener('resize',() => {
-  FARBA.WH = document.documentElement.clientHeight
+  FARBA.WH = window.innerHeight
+  FARBA.WW = document.documentElement.clientWidth
+
+  const textarea = document.getElementById('alerts');
+  textarea.value += FARBA.WH + ', ' + window.innerHeight +  '\n'
+  textarea.scrollTop = textarea.scrollHeight;
 })
 
 
 window.addEventListener('scroll',() => {
   flyAnimations('.anim-fly')
   flyAnimations('.anim-fly-upper',0.7)
+
+  if (toFlyAnimDelayLength) {
+    D.querySelectorAll(toFlyAnimDelay).forEach(el => {
+      if (el.getBoundingClientRect().top + window.pageYOffset - (FARBA.WH * 0.9) < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
+        setTimeout(()=>{el.classList.add('visible')},300)
+      } else {
+        el.classList.remove('visible')
+      }
+    })
+  }
 },supportsPassive ? { passive: true } : false)
+
+
+D.querySelectorAll('[class*=ui-bg-] .node-slider-btns').forEach((el)=>{
+  el.classList.remove('museum-slider-btns');
+})
+
+
+//responsive hacks
+;(function(){
+  const tbls = D.querySelectorAll('.ui-table, .node-inner table');
+  if (!tbls.length) return;
+  tbls.forEach(el => {
+    const wrp = D.createElement('div')
+    wrp.className = 'ui-table-overflow'
+    el.insertAdjacentElement('afterend',wrp)
+    wrp.appendChild(el)
+  })
+
+})();
+
+;(function() {
+  const tomap = D.querySelectorAll('.contacts-tomobile-link');
+  const zoom = D.querySelector('.map-subtract')
+  if (!tomap.length || !zoom) return
+
+  let evt = new Event('click', {cancelable: true})
+
+  tomap.forEach(el => {
+    el.addEventListener('click',(e) => {
+      e = event || window.event;
+      e.preventDefault();
+      
+      zoom.dispatchEvent(evt)
+    })
+  })
+})();
+
+
+;(function(){
+  const links = D.querySelectorAll('.contacts-tab-toggle')
+  if (!links.length) return
+
+  const tabs = D.createElement('div')
+  tabs.className = 'contacts-horizontal-tabs'
+  links[0].closest('.ui-tabs-content').querySelector('.contacts-tab-title').insertAdjacentElement('afterend',tabs)
+
+  let evt = new Event('click', {cancelable: true})
+
+  links.forEach((el,index) => {
+    const link = D.createElement('a')
+    link.classList.add('contacts-horizontal-tab')
+    if (index === 0) {
+      link.classList.add('active')
+    }
+    link.textContent = el.textContent
+    const span = D.createElement('span')
+    span.className = 'contacts-horizontal-tab-span'
+    span.appendChild(link)
+    tabs.appendChild(span)
+
+    link.addEventListener('click',(e) => {
+      e = event || window.event;
+      e.preventDefault();
+
+      D.querySelectorAll('.contacts-horizontal-tab').forEach(item => item.classList.remove('active'))
+      link.classList.add('active')
+      el.dispatchEvent(evt)
+    })
+  })
+})();
+
+
+(function(){
+  const links = D.querySelectorAll('.fs-menu-title-toggler')
+  if (!links.length) return
+
+  function handler(e) {
+    e = e || window.event
+    e.preventDefault()
+    // let isAnim = false
+    // const ww = D.documentElement.clientWidth
+    if (FARBA.WW >= 960) return
+
+    for (let i = 0; i < links.length; i++) {
+      const body = links[i].nextElementSibling
+  
+
+      if (links[i] == e.currentTarget) {
+        if (!links[i].classList.contains('opened')) {
+          links[i].classList.add('opened');
+          body.classList.add("opened");
+          gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4})
+
+        } else {
+
+          links[i].classList.remove("opened");
+          gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
+            body.classList.remove("opened")
+          }})
+        }
+
+      } else {
+        links[i].classList.remove("opened");
+        gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
+          body.classList.remove("opened")
+        }})
+      }
+    }
+  }
+
+  links.forEach(el => el.addEventListener('click',handler));
+})();
+
+
+
+(function(){
+  const productions = D.querySelector('.fs-menu .fs-menu-productions')
+  if (!productions) return
+
+  if (matchMedia) {
+    var sc959 = window.matchMedia("(max-width:959px)");
+    sc959.addListener(changes);
+    changes(sc959);
+  }
+  
+  function changes(sc959) {
+    if (sc959.matches) {
+      D.querySelector('.fs-menu-links .fs-menu-col').after(productions)
+    } else {
+      if (D.querySelector('.fs-menu-links .fs-menu-productions')) {
+        D.querySelector('.fs-menu .container').prepend(D.querySelector('.fs-menu-links .fs-menu-productions'))
+      }
+    }
+  }
+})();
+
+
+function fixProductionPosition () {
+  const img = D.querySelector('.productions-head-img')
+  if (!img) return
+
+  const wrp = img.closest('.productions-head-img-wrp')
+  if (img.clientHeight > wrp.clientHeight) {
+    img.classList.add('align-top')
+  } else {
+    img.classList.remove('align-top')
+  }
+}
+fixProductionPosition();
+window.onload = fixProductionPosition;
+window.onresize = fixProductionPosition;
+
+
+
+;(function(){
+  const links = D.querySelectorAll('.tk-subtype-title')
+  if (!links.length) return
+
+  function fixParentHeight(el) {
+    // setTimeout(()=>{})
+    const parent = el.closest('.ux-tabs-content-parent')
+    const child = parent.querySelector('.selected')
+    if (!parent || !child) return
+    const h = child.scrollHeight
+    // parent.style.height = h+'px'
+    gsap.to(parent,{height: h, duration: 0.2})
+  }
+  let isAnim = false
+
+  function handler(e) {
+    e = e || window.event
+    e.preventDefault()
+    if (FARBA.WW >= 960) return
+    // let isAnim = false
+
+    for (let i = 0; i < links.length; i++) {
+      const body = links[i].nextElementSibling
+
+      if (links[i] == e.currentTarget) {
+        if (!links[i].classList.contains('opened')) {
+            links[i].classList.add('opened');
+            body.classList.add("opened");
+            gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4,
+            // onStart: () => {isAnim = true},
+            onComplete: () => {
+              fixParentHeight(links[i])
+            }})
+          
+
+        } else {
+         
+            links[i].classList.remove("opened");
+            gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
+              body.classList.remove("opened")
+              fixParentHeight(links[i])
+            }})
+         
+        }
+
+      } else {
+        
+          links[i].classList.remove("opened");
+          gsap.to(body,{height: 0,duration: 0.4,onComplete: ()=> {
+            body.classList.remove("opened")
+            fixParentHeight(links[i])
+          }})
+        
+        
+      }
+    }
+  }
+
+  links.forEach(el => el.addEventListener('click',handler));
+})();
+
+//vh fix
+function vhFix() {
+  let ornt = window.innerWidth > window.innerHeight ? 'land' : 'port'
+  let prev = window.innerHeight;
+  let vh = prev * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+  window.addEventListener('load', () => {
+    setTimeout(()=>{
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    },1)
+  });
+
+  window.addEventListener('resize', () => {
+    let current = window.innerWidth > window.innerHeight ? 'land' : 'port'
+    if (ornt !== current) {
+      console.log('rotate');
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      ornt = current
+    }
+    // let h = window.innerHeight;
+    // if (h > prev + (prev / 100 * 16) || h < prev - (prev / 100 * 16)) {
+    //   console.log('resize');
+    //   let vh = h * 0.01;
+    //   document.documentElement.style.setProperty('--vh', `${vh}px`);
+    //   prev = h
+    // }
+  });
+}
+vhFix();
+
+if (FARBA.isTouch) {
+  D.documentElement.classList.add('ui-touchscreen')
+}
+
+
+;(function(){
+  const tabLinks = D.querySelectorAll('.enterprises-contact-tab');
+  if (!tabLinks.length) return
+
+  let prev = 'auto'
+
+  // let parent = D.createElement('div');
+  // parent.className = 'enterprises-contact-parent'
+  let contentDivs = new Array();
+
+  tabLinks.forEach((element) => {
+    let id = getHash(element.getAttribute("href"));
+
+    contentDivs.push(document.getElementById(id));
+
+    element.addEventListener('click', showTab.bind(null,id,element))
+  });
+
+  tabLinks[0].classList.add("selected");
+  contentDivs[0].classList.add("selected");
+  
+  // contentDivs[0].insertAdjacentElement('beforebegin',parent)
+  // parent.append(...D.querySelectorAll('.enterprises-contact-body'))
+
+  //functions
+  function showTab(id,element,event) {
+    if (event) {
+      event = event || window.event;
+      event.preventDefault()
+    }
+    
+    for (let i = 0; i < contentDivs.length; i++) {
+      let divID = contentDivs[i].getAttribute("id")
+      if (divID === id) {
+
+        tabLinks[i].classList.add("selected");
+        contentDivs[i].classList.remove("leave");
+        setTimeout(()=>{
+          contentDivs[i].classList.add("selected","enter");
+          correctHeight(contentDivs[i])
+        },151)
+        setTimeout(()=>{
+          contentDivs[i].classList.remove("enter");
+        },300)
+
+      } else {
+
+        tabLinks[i].classList.remove("selected");
+        contentDivs[i].classList.add("leave");
+        contentDivs[i].classList.remove("enter");
+        setTimeout(()=>{
+          contentDivs[i].classList.remove("selected");
+        },151)
+      }
+    }
+  }
+
+  function getHash(url) {
+    var hashPos = url.lastIndexOf("#");
+    return url.substring(hashPos + 1);
+  }
+
+  function correctHeight(currentTab) {
+    const nearParent = currentTab.closest('.row')
+    const allParent = currentTab.closest('.ux-tabs-content-parent')
+    if (!nearParent) return
+
+    const height = currentTab.scrollHeight
+    gsap.fromTo(nearParent,
+      {height: prev},
+      {height: height, duration: 1, overwrite: true, onComplete: () => {
+      setTimeout(()=> {
+        nearParent.style.minHeight = height + 'px'
+        nearParent.style.height = ''
+        prev = height
+        if (allParent) {
+          allParent.style.height = ''
+        }
+      },1)
+    }, onStart: () => {
+      nearParent.style.minHeight = ''
+    }})
+
+  }
+})();
+
+
+(function(){
+  const tags = D.querySelector('.ui-tags-news')
+  const toggler = D.querySelector('.ui-tags-news-topopup')
+  if (!tags || !toggler) return
+
+  const copy = tags.cloneNode(true);
+  copy.classList.add('popup-tags')
+  copy.classList.remove('ui-tags-news')
+
+  copy.querySelector('.ui-tags-more').remove()
+  copy.querySelector('.ui-tags-news-topopup').remove()
+  copy.querySelector('.ui-tags-list').classList.add('popup-tags-list')
+  copy.querySelector('.ui-tags-list').classList.remove('ui-tags-list')
+
+  const popupCloser = D.createElement('div')
+  popupCloser.className = 'popup-tags-close'
+  copy.appendChild(popupCloser)
+
+  D.body.appendChild(copy)
+
+  const handler = (action,event) => {
+    event = event || window.event
+    event.preventDefault()
+
+    if (action === 'open') {
+      copy.classList.add('opened');
+      FARBA.removeScroll()
+    } else {
+      copy.classList.remove('opened');
+      FARBA.addScroll()
+    }
+  }
+
+  toggler.addEventListener('click',handler.bind(null,'open'))
+  popupCloser.addEventListener('click',handler.bind(null,'close'))
+  copy.querySelectorAll('a.ui-tags-link').forEach(el => {
+    el.addEventListener('click',handler.bind(null,'close'))
+  });
+  
+})(); 

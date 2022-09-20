@@ -1,8 +1,6 @@
 <!--#include file="inc-header.html"-->
 </div><!--.container-->
 
-<div id="dmo"></div>
-
 <div class="productions">
   <div class="productions-animation ui-bg-primary wheel-screens" data-headerbg="ui-bg-primary">
 
@@ -18,7 +16,11 @@
             <div class="productions-head-content">
               <h1 class="productions-head-title">Тарный картон</h1>
               <div class="productions-head-descr">Широкий ассортимент<br> для любых целей</div>
-              <div class="productions-head-arrow" @click.prevent="activeScreen = 1">
+              <div class="productions-head-tovideo ui-touch-only">
+                <a href="#" class="ui-btn ui-btn-rounded" @click.prevent="toSlide(1)">Смотреть видео <svg class="sprite ui-btn-play"><use xlink:href="svg/svg/symbols.svg#play"/></svg></a>
+              </div>
+
+              <div class="productions-head-arrow" @click.prevent="toSlide(1)">
                 <svg class="sprite productions-head-svg">
                   <use xlink:href="svg/svg/symbols.svg#arrow-down-no-fill"></use>
                 </svg>
@@ -34,7 +36,7 @@
               </div>
             </div>
 
-            <div class="productions-head-btn">
+            <!-- <div class="productions-head-btn">
               <a href="#" class="ui-btn-circle ui-btn-circle-fixsize ui-btn-circle-darkblue" download>
                 <div class="ui-btn-circle-circle">
                   <div class="ui-btn-circle-txt">Скачать прайс лист</div>
@@ -43,7 +45,7 @@
                   </svg>
                 </div>
               </a>
-            </div>
+            </div> -->
 
             
           </div>
@@ -74,16 +76,24 @@
               <div class="productions-screen-cols flex align-justify">
 
                 <div class="productions-screen-col productions-screen-titles">
-                  <h2>Крупнейшее<br> производство<br> тарного картона<br> в стране</h2>
-
-                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                    <div class="ui-btn-circle-circle">
-                      <div class="ui-btn-circle-txt">Статья о макулатурном картоне</div>
-                      <svg class="sprite ui-btn-circle-arrow">
-                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                      </svg>
+                  <div class="productions-screen-titles-top">
+                    <h2>Крупнейшее<br> производство<br> тарного картона<br> в стране</h2>
+                    <div class="productions-screen-touchnav ui-touch-only">
+                      <a href="#" class="ui-btn ui-btn-rounded productions-screen-back" @click.prevent="activeScreen = 0"><svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
+                      <a href="#" class="ui-btn ui-btn-rounded" @click.prevent="index = 1">Следующее видео <svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
                     </div>
-                  </a>
+                  </div>
+
+                  <div class="productions-screen-btns">
+                    <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                      <div class="ui-btn-circle-circle">
+                        <div class="ui-btn-circle-txt">Статья о макулатурном картоне</div>
+                        <svg class="sprite ui-btn-circle-arrow">
+                          <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
                 </div>
 
                 <div class="productions-screen-col productions-screen-details">
@@ -100,10 +110,12 @@
                   </div>
                 </div>
 
-                <picture>
-                  <source srcset="./images/bgs/productions-tk-1-mobile.png" media="(max-width:600px)">
-                  <img src="./images/bgs/productions-tk-1.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
-                </picture>
+                <div class="productions-screen-bg">
+                  <picture>
+                    <source srcset="./images/bgs/productions-tk-1-mobile.png" media="(max-width:600px)">
+                    <img src="./images/bgs/productions-tk-1.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                  </picture>
+                </div>
                 
 
               </div>
@@ -127,16 +139,25 @@
               <div class="productions-screen-cols flex align-justify">
 
                 <div class="productions-screen-col productions-screen-titles">
-                  <div class="productions-screen-title">Наука<br> в основе всех<br> процессов</div>
-
-                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                    <div class="ui-btn-circle-circle">
-                      <div class="ui-btn-circle-txt">Научная деятельность</div>
-                      <svg class="sprite ui-btn-circle-arrow">
-                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                      </svg>
+                  <div class="productions-screen-titles-top">
+                    <div class="productions-screen-title">Наука<br> в основе всех<br> процессов</div>
+                    <div class="productions-screen-touchnav ui-touch-only">
+                      <a href="#" class="ui-btn ui-btn-rounded productions-screen-back" @click.prevent="index = 0"><svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
+                      <a href="#" class="ui-btn ui-btn-rounded" @click.prevent="index = 2">Следующее видео <svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
                     </div>
-                  </a>
+                  </div>
+
+                  <div class="productions-screen-btns">
+                    <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                      <div class="ui-btn-circle-circle">
+                        <div class="ui-btn-circle-txt">Научная деятельность</div>
+                        <svg class="sprite ui-btn-circle-arrow">
+                          <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                  
                 </div>
 
                 <div class="productions-screen-col productions-screen-details">
@@ -153,11 +174,12 @@
                   </div>
                 </div><!--.details-->
 
-                <!-- <img src="./images/bgs/productions-tk-2.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy"> -->
-                <picture>
-                  <source srcset="./images/bgs/productions-tk-2-mobile.png" media="(max-width:600px)">
-                  <img src="./images/bgs/productions-tk-2.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
-                </picture>
+                <div class="productions-screen-bg">
+                  <picture>
+                    <source srcset="./images/bgs/productions-tk-2-mobile.png" media="(max-width:600px)">
+                    <img src="./images/bgs/productions-tk-2.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                  </picture>
+                </div>
 
               </div>
 
@@ -180,16 +202,26 @@
               <div class="productions-screen-cols flex align-justify">
 
                 <div class="productions-screen-col productions-screen-titles">
-                  <h2>Многократно<br> перерабатываемый<br> материал</h2>
-
-                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                    <div class="ui-btn-circle-circle">
-                      <div class="ui-btn-circle-txt">Статья о макулатуре</div>
-                      <svg class="sprite ui-btn-circle-arrow">
-                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                      </svg>
+                  <div class="productions-screen-titles-top">
+                    <h2>Многократно<br> перерабатываемый<br> материал</h2>
+                    <div class="productions-screen-touchnav ui-touch-only">
+                      <a href="#" class="ui-btn ui-btn-rounded productions-screen-back" @click.prevent="index = 1"><svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
+                      <a href="#" class="ui-btn ui-btn-rounded" @click.prevent="index = 3">Следующее видео <svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
                     </div>
-                  </a>
+                  </div>
+
+                  <div class="productions-screen-btns">
+                    <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                      <div class="ui-btn-circle-circle">
+                        <div class="ui-btn-circle-txt">Статья о макулатуре</div>
+                        <svg class="sprite ui-btn-circle-arrow">
+                          <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                        </svg>
+                      </div>
+                    </a>
+
+                  </div>
+                  
                 </div>
 
                 <div class="productions-screen-col productions-screen-details">
@@ -203,11 +235,12 @@
                   </div>
                 </div><!--.details-->
 
-                <!-- <img src="./images/bgs/productions-tk-3.jpeg" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy"> -->
-                <picture>
-                  <source srcset="./images/bgs/productions-tk-3-mobile.png" media="(max-width:600px)">
-                  <img src="./images/bgs/productions-tk-3.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
-                </picture>
+                <div class="productions-screen-bg">
+                  <picture>
+                    <source srcset="./images/bgs/productions-tk-3-mobile.png" media="(max-width:600px)">
+                    <img src="./images/bgs/productions-tk-3.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                  </picture>
+                </div>
 
               </div>
 
@@ -230,16 +263,28 @@
               <div class="productions-screen-cols flex align-justify">
 
                 <div class="productions-screen-col productions-screen-titles">
-                  <div class="productions-screen-title">Постоянно<br> улучшающиеся<br> технологии</div>
-
-                  <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
-                    <div class="ui-btn-circle-circle">
-                      <div class="ui-btn-circle-txt">Статья о макулатуре</div>
-                      <svg class="sprite ui-btn-circle-arrow">
-                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
-                      </svg>
+                  <div class="oriductions-screen-titles-top">
+                    <div class="productions-screen-title">Постоянно<br> улучшающиеся<br> технологии</div>
+                    <div class="productions-screen-touchnav ui-touch-only">
+                      <a href="#" class="ui-btn ui-btn-rounded productions-screen-back" @click.prevent="index = 2"><svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
+                      <a href="#" class="ui-btn ui-btn-rounded" @click.prevent="index = 4">Следующее видео <svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
                     </div>
-                  </a>
+
+                  </div>
+
+                  
+                  <div class="productions-screen-btns">
+                    <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
+                      <div class="ui-btn-circle-circle">
+                        <div class="ui-btn-circle-txt">Статья о макулатуре</div>
+                        <svg class="sprite ui-btn-circle-arrow">
+                          <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+  
+                    
                 </div>
 
                 <div class="productions-screen-col productions-screen-details">
@@ -255,11 +300,12 @@
                   </div>
                 </div><!--.details-->
 
-                <!-- <img src="./images/bgs/productions-tk-4.jpeg" alt="Многократно перерабатываемый материал" class="productions-screen-img" loading="lazy"> -->
-                <picture>
-                  <source srcset="./images/bgs/productions-tk-4-mobile.png" media="(max-width:600px)">
-                  <img src="./images/bgs/productions-tk-4.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
-                </picture>
+                <div class="productions-screen-bg">
+                  <picture>
+                    <source srcset="./images/bgs/productions-tk-4-mobile.png" media="(max-width:600px)">
+                    <img src="./images/bgs/productions-tk-4.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                  </picture>
+                </div>
 
               </div>
 
@@ -282,7 +328,13 @@
               <div class="productions-screen-cols flex align-justify">
 
                 <div class="productions-screen-col productions-screen-titles">
-                  <div class="productions-screen-title">Качество,<br> приносящее<br> выгоду</div>
+                  <div class="productions-screen-titles-top">
+                    <div class="productions-screen-title">Качество,<br> приносящее<br> выгоду</div>
+                    <div class="productions-screen-touchnav ui-touch-only">
+                      <a href="#" class="ui-btn ui-btn-rounded productions-screen-back" @click.prevent="index = 3"><svg class="sprite ui-btn-next"><use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"/></svg></a>
+                    </div>
+                  </div>
+                  
 
                   <a href="#" class="ui-btn-circle ui-btn-circle-midi ui-btn-circle-darkblue">
                     <div class="ui-btn-circle-circle">
@@ -307,10 +359,12 @@
                 </div><!--.details-->
 
                 <!-- <img src="./images/bgs/productions-tk-5.jpeg" alt="Качество, приносящее выгоду" class="productions-screen-img" loading="lazy"> -->
-                <picture>
-                  <source srcset="./images/bgs/productions-tk-5-mobile.png" media="(max-width:600px)">
-                  <img src="./images/bgs/productions-tk-5.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
-                </picture>
+                <div class="productions-screen-bg">
+                  <picture>
+                    <source srcset="./images/bgs/productions-tk-5-mobile.png" media="(max-width:600px)">
+                    <img src="./images/bgs/productions-tk-5.jpeg" alt="Крупнейшее производство тарного картона" class="productions-screen-img" loading="lazy">
+                  </picture>
+                </div>
 
               </div>
 
@@ -380,12 +434,25 @@
             </div>
           </div><!--.tk-list-->
           
-          <div class="tk-custom">
-            <div class="tk-custom-title">
-              <div class="tk-custom-title-icon"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#tk-nostandart"/></svg></div>
-              Нестандартный заказ
+          <div class="tk-custom-wrp">
+            <div class="tk-custom">
+              <div class="tk-custom-title">
+                <div class="tk-custom-title-icon"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#tk-nostandart"/></svg></div>
+                Нестандартный заказ
+              </div>
+              Кроме стандартных видов картона оборудование предприятия позволяет по желанию заказчика изготавливать продукцию любого формата и толщины.
             </div>
-            Кроме стандартных видов картона оборудование предприятия позволяет по желанию заказчика изготавливать продукцию любого формата и толщины.
+
+            <div class="tk-custom-btn">
+              <a href="#" class="ui-btn-circle ui-btn-circle-midi" download>
+                <div class="ui-btn-circle-circle">
+                  <div class="ui-btn-circle-txt">Скачать прайс лист</div>
+                  <svg class="sprite ui-btn-circle-arrow">
+                    <use xlink:href="svg/svg/symbols.svg#circle-btn-download"></use>
+                  </svg>
+                </div>
+              </a>
+            </div>
           </div>
         </div><!--.ui-tabs-content-->
         <div id="fluting" class="ui-tabs-content">
@@ -502,6 +569,7 @@
 
           <div class="news-list">
             <a href="#" class="news-grid">
+          
               <div class="news-grid-title">
                 <span>На БКФ улучшили производительность труда
                   <svg class="sprite news-grid-title-arrow">
@@ -509,11 +577,16 @@
                   </svg>
                 </span>
               </div>
-              <div class="news-grid-txt">
-                Ъ FM рассказывает, как власти намерены сократить объем захоронения
-                отходов. Новый сервис позволит.
+              <div class="news-grid-txts">
+                <div class="news-grid-txt">
+                  Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                  отходов. Новый сервис позволит. Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                  отходов. Новый сервис позволит. Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                  отходов. Новый сервис позволит.
+                </div>
+                <div class="news-grid-date">14 сентября</div>
               </div>
-              <div class="news-grid-date">14 сентября</div>
+              
     
               <div class="news-grid-img">
                 <img
@@ -533,26 +606,31 @@
                   </svg>
                 </span>
               </div>
-              <div class="news-grid-txt">
-                Ъ FM рассказывает, как власти намерены сократить объем захоронения
-                отходов. Новый сервис позволит.
+              <div class="news-grid-txts">
+                <div class="news-grid-txt">
+                  Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                  отходов. Новый сервис позволит. Ъ FM рассказывает, как власти намерены сократить объем захоронения отходов. Новый сервис позволит.
+                </div>
+                <div class="news-grid-date">14 сентября</div>
               </div>
-              <div class="news-grid-date">14 сентября</div>
             </a>
     
             <a href="#" class="news-grid">
               <div class="news-grid-title">
-                <span>На БКФ улучшили производительность труда
+                <span>На БКФ улучшили производительность труда На БКФ улучшили производительность труда На БКФ улучшили производительность труда На БКФ улучшили производительность труда
                   <svg class="sprite news-grid-title-arrow">
                     <use xlink:href="svg/svg/symbols.svg#arrow-circle-next" />
                   </svg>
                 </span>
               </div>
-              <div class="news-grid-txt">
-                Ъ FM рассказывает, как власти намерены сократить объем захоронения
-                отходов. Новый сервис позволит.
+              <div class="news-grid-txts">
+                <div class="news-grid-txt">
+                  Ъ FM рассказывает, как власти намерены сократить объем захоронения
+                  отходов. Новый сервис позволит.
+                </div>
+                <div class="news-grid-date">14 сентября</div>
               </div>
-              <div class="news-grid-date">14 сентября</div>
+              
             </a>
 
             <div class="to-all-news">

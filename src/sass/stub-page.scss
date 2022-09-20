@@ -216,14 +216,18 @@
 	}
 
 	#acceptCookie {
-		&:hover {
-			background-color: #fff;
-			color: #F08322;
 
-			.circle-link-icon.cookie {
-				stroke: #F08322;
-			}
-		}
+    @media (min-width: 960px) {
+
+      &:hover {
+        background-color: #fff;
+        color: #F08322;
+  
+        .circle-link-icon.cookie {
+          stroke: #F08322;
+        }
+      }
+    }
 
 		.sprite, .circle-link-icon.cookie {
 			transition: none;

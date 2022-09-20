@@ -1,9 +1,8 @@
 <div class="main-block main-activities ui-bg-grayblue" id="main-activities">
   <div class="container">
-    <div class="main-block-title h1">С уважением<br> к отрасли
-    </div>
+    <div class="main-block-title h1">С уважением<br> к отрасли</div>
 
-    <div class="main-activities-cols flex">
+    <div class="main-activities-cols flex" v-if="!isMobile">
       <div class="main-activities-left">
         <div class="main-activities-nav">
           <ul class="ui-tags-list">
@@ -145,5 +144,142 @@
         </div>
       </div>
     </div>
+
+    <div class="mobile-activities" v-else>
+      <div class="mobile-activities-panel" ref="flipPanel">
+        <div class="mobile-activities-flip flex valign-center align-justify" ref="flip">
+          <div class="mobile-activities-flip-title" ref="flipTitle">Научная деятельность</div>
+
+          <div class="mobile-activities-nav">
+            <div class="mobile-activities-prev mobile-activities-arrow"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></div>
+            <div class="mobile-activities-next mobile-activities-arrow"><svg class="sprite"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper mobile-activities-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" data-name="Научная деятельность">
+            <div class="mobile-activities-slide">
+              <div class="mobile-activities-cols flex">
+                <div class="mobile-activities-data">
+                  <div class="mobile-activities-tezises">
+                    <h6>1000+</h6>
+                    <p>сотрудников с ученой степенью</p>
+                    <h6>>15 лет</h6>
+                    <p>собственных разработок</p>
+                  </div>
+
+                  <a href="#" class="ui-btn-circle">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Подробнее</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="mobile-activities-img">
+                  <img src="./images/bgs/mobile-act-1.png" alt="alt" loading="lazy">
+                </div>
+
+              </div>
+
+              <div class="mobile-activities-txt">Наше производство основано на применении инновационных технологий и собственных научных разработок. Мы сотрудничаем с крупнейшими отраслевыми исследовательскими центрами, сотрудники компании успешно защищают диссертации, публикуются в ведущих научных изданиях в России и за рубежом.</div>
+            </div><!--.slide-->
+
+
+          </div>
+
+          <div class="swiper-slide" data-name="Музей бумаги">
+            <div class="mobile-activities-slide">
+              <div class="mobile-activities-cols flex">
+                <div class="mobile-activities-data">
+                  <div class="mobile-activities-tezises">
+                    <h6>1000+</h6>
+                    <p>экспонатов</p>
+                    <h6>25 тыс.</h6>
+                    <p>посетителей в год</p>
+                  </div>
+
+                  <a href="#" class="ui-btn-circle">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Подробнее</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="mobile-activities-img">
+                  <img src="./images/bgs/mobile-act-2.png" alt="alt" loading="lazy">
+                </div>
+
+              </div>
+
+              <div class="mobile-activities-txt">Первый в России интерактивный музей бумаги и целлюлозно-бумажной промышленности «Бузеон» расположен в посёлке Полотняный Завод Калужской области. Вас ждут уникальная экспозиция и интересные мастер-классы для всей семьи.</div>
+            </div><!--.slide-->
+
+
+          </div>
+
+          <div class="swiper-slide" data-name="Социальные проекты">
+            <div class="mobile-activities-slide mobile-activities-bird">
+              <div class="mobile-activities-cols flex">
+                <div class="mobile-activities-data">
+                  <a href="#" class="ui-btn-circle">
+                    <div class="ui-btn-circle-circle">
+                      <div class="ui-btn-circle-txt">Подробнее</div>
+                      <svg class="sprite ui-btn-circle-arrow">
+                        <use xlink:href="svg/svg/symbols.svg#circle-btn-arrow"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="mobile-activities-img">
+                  <img src="./images/bgs/mobile-act-3.png" alt="alt" loading="lazy">
+                </div>
+
+              </div>
+
+              <div class="mobile-activities-txt">В своей деятельности компания придерживается принципов ESG. Предприятия ОБФ работают с местными сообществами, НКО, реализуют социальные и благотворительные программы, просветительские проекты.</div>
+            </div><!--.slide-->
+
+
+          </div>
+
+          <div class="swiper-slide" data-name="Корпоративный университет">
+            <div class="mobile-activities-slide">
+              <div class="mobile-activities-cols flex">
+                <div class="mobile-activities-data">
+                  <div class="mobile-activities-tezises">
+                    <h6>170</h6>
+                    <p>rehcjd</p>
+                    <h6>1050</h6>
+                    <p>прошедших 
+                      обучение 
+                      в 2021 году</p>
+                  </div>
+                </div>
+
+                <div class="mobile-activities-img">
+                  <img src="./images/bgs/mobile-act-4.png" alt="alt" loading="lazy">
+                </div>
+
+              </div>
+
+              <div class="mobile-activities-txt">В компании действует многоуровневая система обучения и развития персонала, направленная на формирование у сотрудников всех уровней необходимых навыков и компетенций. Создан собственный банк знаний.</div>
+            </div><!--.slide-->
+
+
+          </div>
+        </div>
+      </div><!--.swiper-->
+
+
+    </div><!--.mobile-activities-->
   </div>
 </div>

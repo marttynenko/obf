@@ -98,6 +98,8 @@
     &-firstname {
       color: $primary;
       @include fz(28);
+      line-height: 1.1;
+
       @media (max-width: 1259px) {
         @include fz(24);
       }
@@ -106,10 +108,11 @@
       margin-bottom: 6px;
     }
     &-pos {
-      line-height: 1.5;
+      // line-height: 1.4;
+
       @media (max-width: 1259px) {
         @include fz(14);
-        line-height: 1.7;
+        // line-height: 1.7;
       }
     }
   }
@@ -150,10 +153,14 @@
       max-width: 100%;
     }
 
-    &-list-col {
-      flex: 0 0 100%;
-      max-width: 100%;
-      padding-right: 0;
+    &-list {
+      margin-right: -20px;
+
+      &-col {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 20px;
+      }
     }
 
     &-card {
@@ -164,7 +171,7 @@
       }
       &-lastname,
       &-firstname {
-        @include fz(32);
+        @include fz(24);
       }
       &-firstname {
         margin-bottom: 8px;
@@ -202,5 +209,17 @@
       }
     }
     
+  }
+
+  @media (max-width: 480px) {
+    &-list {
+      // margin-right: -20px;
+
+      &-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        // padding-right: 20px;
+      }
+    }
   }
 }

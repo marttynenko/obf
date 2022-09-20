@@ -393,6 +393,7 @@
       @media (max-width: 599px) {
         &-item {
           @include fz(24);
+          padding-bottom: 24px;
         }
         &-subtitle {
           @include fz(16);
@@ -461,6 +462,10 @@
       margin-bottom: 40px;
     }
   }
+
+  @media (max-width: 599px) {
+    &-item {margin-bottom: 32px;}
+  }
 }
 
 .company-acs {
@@ -485,9 +490,13 @@
         @include fz(20);
       }
     }
-    a#{&}-item:hover {
-      color: $primary;
+
+    @media (min-width: 960px) {
+      a#{&}-item:hover {
+        color: $primary;
+      }
     }
+    
     &-img {
       margin-right: 12px;
       flex: 0 0 100px;
@@ -600,7 +609,7 @@
         padding-right: 0;
       }
       &-btn {
-        @include fz(14);
+        @include fz(12);
       }
     }
     .production-btn-circle-wrap {

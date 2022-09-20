@@ -184,6 +184,7 @@
     &-data {
       display: flex;
       justify-content: space-between;
+      align-items: baseline;
       margin-bottom: 20px;
     }
 
@@ -383,8 +384,11 @@
   a {
     color: #FFF;
 
-    &:hover {
-      color: $primary;
+    @media (min-width: 960px) {
+
+      &:hover {
+        color: $primary;
+      }
     }
   }
 }
@@ -395,9 +399,12 @@
   transition: stroke .3s;
   margin-left: 12px;
 }
-.to-all-news a:hover svg.news-item-title-arrow {
-  stroke: $primary;
+@media (min-width: 960px) {
+  .to-all-news a:hover svg.news-item-title-arrow {
+    stroke: $primary;
+  }
 }
+
 .node-content-links {
   margin-top: 45px;
 
@@ -434,17 +441,14 @@
   }
 
   .ui-swiper {
-    padding-bottom: 70px;
+    padding-bottom: 0px;
+    margin-bottom: 8px;
 
     &-slide {
       &-subtitle {
+        max-width: 100%;
         padding-right: 0;
-        left: 0;
-        top: auto;
-        bottom: 40px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        position: static;
         margin-top: 0;
         @include fz(16);
       }
@@ -453,20 +457,27 @@
 
   .node-slider {
     margin-bottom: 32px;
+    padding-bottom: 42px;
 
     &-btns {
       bottom: 0;
+      left: -5px;
     }
     .ui-swiper-pagination {
       bottom: 8px;
       @include fz(16);
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      margin-left: 5px;
+      margin-right: 5px;
     }
   }
 }
 
 @media (max-width: 599px) {
   .ui-swiper {
-    padding-bottom: 70px;
+    // padding-bottom: 70px;
 
     &-slide {
       &-subtitle {        

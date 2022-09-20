@@ -185,10 +185,16 @@
     text-overflow: ellipsis;
     transition: color .3s, border .3s;
 
-    &:hover,
     &.active {
       color: #000;
       border: 1px solid #000;
+    }
+
+    @media (min-width: 960px) {
+      &:hover {
+        color: #000;
+        border: 1px solid #000;
+      }
     }
   }
 
@@ -217,8 +223,10 @@
     margin-left: -15px;
     padding-left: 15px;
     padding-right: 15px;
+    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
+      display: none;
       width: 0;
       height: 0;
       -webkit-appearance: none;
@@ -537,14 +545,17 @@
     transition: .4s background-color, .4s color;
     cursor: pointer;
 
-    &:hover {
-			color: $primary;
-			background-color: #fff;
+    @media (min-width: 960px) {
 
-			.svg-cookie {
-				stroke: $primary;
-			}
-		}
+      &:hover {
+        color: $primary;
+        background-color: #fff;
+  
+        .svg-cookie {
+          stroke: $primary;
+        }
+      }
+    }
 
 		.svg-cookie {
 			width: 24px;
