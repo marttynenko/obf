@@ -121,6 +121,30 @@
   .map-subtract.map-fullscreen {
     top: 15px;
     right: 15px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $primary;
+
+    img {
+      opacity: 0;
+    }
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      left: 8px;
+      top: 50%;
+      height: 2px;
+      margin-top: -1px;
+      background: $primary;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
   }
   .map-zoom-in.map-fullscreen,
   .map-zoom-up.map-fullscreen  {

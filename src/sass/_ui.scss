@@ -921,6 +921,18 @@ span.invalid {
 			}
 		}
 	}
+
+	&-bordered {
+		&:after {
+			border-color: #FFF;
+			opacity: 1;
+		}
+		.ui-btn-circle {
+			&-circle {
+				background-color: transparent;
+			}
+		}
+	}
 	
 
 	&-darkblue {
@@ -1905,6 +1917,9 @@ a.ui-color {
 		}
 	}
 }
+.ux-tabs-content-parent {
+	overflow: hidden;
+}
 .color-primary {
 	color: $primary;
 }
@@ -2779,4 +2794,9 @@ a.ui-color {
 			color: $primary;
 		}
 	}
+}
+
+ymaps {
+	max-width: 100vw !important;
+	max-height: calc((var(--vh, 1vh) * 100)) !important;
 }

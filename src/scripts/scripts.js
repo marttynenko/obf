@@ -326,11 +326,8 @@ const FARBA = {
       prevCounter++
     }
 
-    console.log(prevCounter)
-
     if (prevCounter < 3) {
       let next = current.nextElementSibling
-      console.log(next)
 
       while (next && next.classList.contains('ui-pgn-link') && prevCounter < 3) {
         next.classList.add('mobile-visible')
@@ -574,6 +571,28 @@ function animateFSMenu(action) {
     bg.classList.add('opened');
     FARBA.removeScroll()
     const tlStart = gsap.timeline({ autoRemoveChildren: true });
+    // tlStart
+    //   .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
+    //   .fromTo(
+    //     ".fs-menu .fs-menu-productions",
+    //     { y: 50, opacity: 0 },
+    //     { y: 0, opacity: 1, duration: 0.35 }
+    //   )
+    //   .fromTo(
+    //     ".fs-menu-links",
+    //     { y: 50, opacity: 0 },
+    //     { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
+    //   )
+    //   .fromTo(
+    //     ".fs-menu-contacts-1",
+    //     { y: 50, opacity: 0 },
+    //     { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
+    //   )
+    //   .fromTo(
+    //     ".fs-menu-contacts-2",
+    //     { y: 50, opacity: 0 },
+    //     { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
+    //   );
     tlStart
       .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
       .fromTo(
@@ -585,7 +604,10 @@ function animateFSMenu(action) {
         ".fs-menu-links",
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
-      )
+      );
+
+    if (FARBA.WW > 959) {
+      tlStart
       .fromTo(
         ".fs-menu-contacts-1",
         { y: 50, opacity: 0 },
@@ -596,11 +618,22 @@ function animateFSMenu(action) {
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
       );
+    } else {
+      tlStart
+        .fromTo(
+          ".fs-menu-contacts",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
+        )
+    }
+      
   } else {
     
     D.body.classList.remove('fs-opened');
     const tlEnd = gsap.timeline({ autoRemoveChildren: true });
-    tlEnd
+
+    if (FARBA.WW > 959) {
+      tlEnd
       .to(".fs-menu-contacts-2", { y: 50, opacity: 0, duration: 0.3 })
       .to(".fs-menu-contacts-1", {
         y: 50,
@@ -608,6 +641,21 @@ function animateFSMenu(action) {
         duration: 0.3,
         delay: -0.2,
       })
+    } else {
+      tlEnd
+      .to(
+        ".fs-menu-contacts",
+        {y: 50, opacity: 0, duration: 0.3,},
+      )
+    }
+    tlEnd
+      // .to(".fs-menu-contacts-2", { y: 50, opacity: 0, duration: 0.3 })
+      // .to(".fs-menu-contacts-1", {
+      //   y: 50,
+      //   opacity: 0,
+      //   duration: 0.3,
+      //   delay: -0.2,
+      // })
       .to(".fs-menu-links", { y: 50, opacity: 0, duration: 0.3, delay: -0.2 })
       .to(".fs-menu .fs-menu-productions", {
         y: 5,
@@ -1883,17 +1931,6 @@ function animateProductionsNoTk() {
   if (FARBA.isTouch) return;
   if (!D.querySelector('.productions-block-mk')) return
 
-  // const tl = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: '.productions-block-mk',
-  //     start: 'top 100%',
-  //     end: "+=100%",
-  //     scrub: true
-  //   }
-  // })
-  // tl
-  //   .to('.productions-head',{yPercent: 50, ease: 'none'}, 0)
-
   ScrollTrigger.create({
     trigger: ".productions-block-mk",
     start: 'top 100%',
@@ -2225,6 +2262,17 @@ function wheelProductionsTK() {
 }
 wheelProductionsTK()
 
+// window.addEventListener('scroll',()=>{
+//   const py = window.pageYOffset;
+//   const box = D.querySelector('.snaps-wrap').getBoundingClientRect()
+//   // console.log(py, box.top)
+//   if (py > box.top + py ||) {
+//     D.body.classList.add('snaps-inview')
+//   } else {
+//     D.body.classList.remove('snaps-inview')
+//   }
+// });
+
 
 function animateCompany() {
   if (!D.querySelector('.company-pos')) return
@@ -2479,8 +2527,8 @@ function funOpen(e) {
 
   //анимируем высоту родителя
   setTimeout(()=>{
-    const height = D.querySelector('.contacts-tab.selected').clientHeight
-    gsap.to('.ux-tabs-content-parent',{minHeight: height, duration: 1, overwrite: true})
+    // const height = D.querySelector('.contacts-tab.selected').clientHeight
+    // gsap.to('.ux-tabs-content-parent',{minHeight: height, duration: 1, overwrite: true})
   },831)
 }
 if (document.querySelector('.contacts-tab-toggle')) {
@@ -2595,7 +2643,7 @@ function initYandexMap() {
     setTimeout(()=>{
       const height = D.querySelector('.contacts-tab.selected').clientHeight
       // console.log(height)
-      gsap.to('.ux-tabs-content-parent',{minHeight: height, duration: 1, overwrite: true})
+      // gsap.to('.ux-tabs-content-parent',{minHeight: height, duration: 1, overwrite: true})
     },500)
     
   }
@@ -2702,7 +2750,8 @@ let toFlyAnim = `
   footer .container .row,
   .mobile-activities-flip,
   .mobile-activities-data,
-  .mobile-activities-txt`;
+  .mobile-activities-txt,
+  .productions-mk-bg`;
 if (FARBA.WW < 960) {
   toFlyAnim += `,
   .main-entrs-in-title,
@@ -2753,10 +2802,7 @@ window.addEventListener('load',() => {
       D.querySelectorAll(toFlyAnimDelay).forEach(el => {
         if (el.getBoundingClientRect().top + window.pageYOffset - FARBA.WH * 0.9 < window.scrollY || window.scrollY >= (document.documentElement.scrollHeight - FARBA.WH) * 0.95) {
           setTimeout(()=>{el.classList.add('visible')},300)
-        } 
-        // else {
-        //   el.classList.remove('visible')
-        // }
+        }
       })
     }
   },530)
@@ -2781,6 +2827,11 @@ window.addEventListener('scroll',() => {
       }
     })
   }
+},supportsPassive ? { passive: true } : false)
+
+
+D.querySelector('.fs-search').addEventListener('scroll',()=>{
+  flyAnimations('.anim-fly')
 },supportsPassive ? { passive: true } : false)
 
 
@@ -2957,6 +3008,8 @@ window.onresize = fixProductionPosition;
 
   function fixParentHeight(el) {
     const parent = el.closest('.ux-tabs-content-parent')
+    // const elHeight = el.scrollHeight
+
     if (!parent) {
       isAnim = false
       return
@@ -2966,8 +3019,11 @@ window.onresize = fixProductionPosition;
       isAnim = false
       return
     }
+
     const h = child.scrollHeight
-    gsap.to(parent,{height: h, duration: 0.2})
+    // const h = child.scrollHeight
+    // console.log(h, elHeight)
+    gsap.to(parent,{height: h, duration: 0.2, ease: 'linear'})
     isAnim = false
   }
 
@@ -2986,8 +3042,11 @@ window.onresize = fixProductionPosition;
         if (!links[i].classList.contains('opened')) {
             links[i].classList.add('opened');
             body.classList.add("opened");
-            gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4,
-            onStart: () => {isAnim = true},
+            gsap.fromTo(body,{height: 0},{height: 'auto',duration: 0.4, ease: 'linear',
+            onStart: () => {
+              isAnim = true
+              // fixParentHeight(links[i])
+            },
             onComplete: () => {
               fixParentHeight(links[i])
             }})
@@ -2996,8 +3055,11 @@ window.onresize = fixProductionPosition;
         } else {
          
             links[i].classList.remove("opened");
-            gsap.to(body,{height: 0,duration: 0.4,
-            onStart: () => {isAnim = true},
+            gsap.to(body,{height: 0,duration: 0.4, ease: 'linear',
+            onStart: () => {
+              isAnim = true
+              // fixParentHeight(links[i])
+            },
             onComplete: ()=> {
               body.classList.remove("opened")
               fixParentHeight(links[i])
@@ -3009,7 +3071,10 @@ window.onresize = fixProductionPosition;
         
           links[i].classList.remove("opened");
           gsap.to(body,{height: 0,duration: 0.4,
-          onStart: () => {isAnim = true},
+          onStart: () => {
+            isAnim = true
+            // fixParentHeight(links[i])
+          },
           onComplete: ()=> {
             body.classList.remove("opened")
             fixParentHeight(links[i])
@@ -3040,18 +3105,10 @@ function vhFix() {
   window.addEventListener('resize', () => {
     let current = window.innerWidth > window.innerHeight ? 'land' : 'port'
     if (ornt !== current) {
-      console.log('rotate');
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
       ornt = current
     }
-    // let h = window.innerHeight;
-    // if (h > prev + (prev / 100 * 16) || h < prev - (prev / 100 * 16)) {
-    //   console.log('resize');
-    //   let vh = h * 0.01;
-    //   document.documentElement.style.setProperty('--vh', `${vh}px`);
-    //   prev = h
-    // }
   });
 }
 vhFix();
@@ -3067,8 +3124,6 @@ if (FARBA.isTouch) {
 
   let prev = 'auto'
 
-  // let parent = D.createElement('div');
-  // parent.className = 'enterprises-contact-parent'
   let contentDivs = new Array();
 
   tabLinks.forEach((element) => {
@@ -3081,6 +3136,7 @@ if (FARBA.isTouch) {
 
   tabLinks[0].classList.add("selected");
   contentDivs[0].classList.add("selected");
+  prev = contentDivs[0].scrollHeight
   
   // contentDivs[0].insertAdjacentElement('beforebegin',parent)
   // parent.append(...D.querySelectorAll('.enterprises-contact-body'))
@@ -3195,3 +3251,366 @@ if (FARBA.isTouch) {
 
 
 FARBA.rebuildPager();
+
+
+const fpAnimations = {
+  fp: null,
+
+  parents: [],
+
+  init() {
+    this.fp = new fullpage('#fullpage',{
+      licenseKey: '1234C fsgdf dssaD DASFA',
+      dragAndMove: true,
+      scrollingSpeed: 1000,
+      scrollOverflow: true,
+      scrollOverflowReset: true,
+      // touchSensitivity: 15,
+      bigSectionsDestination: 'top',
+      fixedElements: '#header', 
+      onLeave: (origin, destination, direction, trigger) => {
+        this.animateChooser(origin,destination)
+      },
+      onScrollOverflow: ( section, slide, position, direction) => {
+        if (!section.isLast) return
+        this.fly('.anim-fly', position)
+      }
+    });
+  },
+
+  updateScroller() {
+    setTimeout(()=>{
+      const h = D.querySelector('.fullpage-tk-blocks').scrollHeight
+      const wh = fp_scrolloverflow.iscrollHandler.iScrollInstances[0].wrapperHeight
+      fp_scrolloverflow.iscrollHandler.iScrollInstances[0].maxScrollY = -h+wh
+      fp_scrolloverflow.iscrollHandler.iScrollInstances[0].scrollerHeight = h
+    },1200)
+  },
+
+  animateChooser(origin,dest) {
+    if (dest.index > 0 && dest.index < 6) {
+      this.slideEnter(dest.item)
+    }
+  
+    if (origin.index > 0 && origin.index < 6) {
+      this.slideLeave(origin.item)
+    }
+  
+    if (dest.index === 0) {
+      this.headEnter(origin.item, dest.item)
+    }
+  
+    if (origin.index === 0) {
+      this.headLeave(origin.item, dest.item, dest.index)
+    }
+  
+    if (dest.index >= 6) {
+      this.bottomEnter(origin.item, dest.item)
+      D.querySelector('#header').classList.remove('header-transparent')
+    } else {
+      D.querySelector('#header').classList.add('header-transparent')
+    }
+  
+    if (origin.index >= 6) {
+      this.bottomLeave(origin.item, dest.item)
+    }
+  }, 
+
+  slideEnter(el) {
+    el.classList.add('visible')
+    this.fp.setAllowScrolling(false);
+
+    const img = el.querySelector('.productions-screen-img')
+    const title = el.querySelector('.productions-screen-titles') || el.querySelector('h2')
+    // const navs = el.querySelector('.productions-screen-touchnav')
+    const details = el.querySelector('.productions-screen-details')
+    const btn = el.querySelector('.ui-btn-circle-darkblue')
+    const toRange = el.querySelector('.to-tk-range')
+    // const btn = el.querySelector('.productions-screen-btns')
+    const video = el.querySelector('video')
+    let delay = 3
+
+    if (video) { 
+      video.play()
+
+      delay = video.duration
+      createTimeline()
+      setTimeout(()=> {
+        this.fp.setAllowScrolling(true);
+      },delay * 1000)
+    }
+    
+    gsap.set(details,{opacity: 0})
+    gsap.set(btn,{opacity: 0})
+
+    const tl = gsap.timeline()
+    tl
+      .to({},{onStart: () => {}},0.5)
+      .fromTo(title,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, onComplete: () => {
+        setTimeout(()=>{
+          gsap.set(title, {clearProps: true})
+        },1)
+      }})
+      .fromTo(toRange,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, clearProps: true}, "<");
+
+    function createTimeline() {
+      gsap.fromTo(details,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1, clearProps: true})
+      gsap.fromTo(btn,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, delay: delay-1, onComplete: () => {
+        setTimeout(()=>{
+          gsap.set(btn, {clearProps: true})
+        },1)
+      }})
+    }
+  },
+
+  slideLeave(el) {
+    const titles = el.querySelector('.productions-screen-titles')
+    const details = el.querySelector('.productions-screen-details')
+    const btns = el.querySelector('.productions-screen-btns')
+    const tl = gsap.timeline()
+    tl.to(btns,{opacity: 0, y: -50, duration: 1, clearProps: true})
+      .to(details,{opacity: 0, y: -50, duration: 1, delay: -0.9, clearProps: true})
+      .to(titles,{opacity: 0, y: -50, duration: 1, clearProps: true, onComplete: () => {
+        el.classList.remove('visible')
+      }}, '>-0.7');
+  },
+
+  headEnter(origin,dest) {
+    const el = dest
+
+    el.classList.add('visible')
+    gsap.set(el,{y: 0, opacity: 1})
+
+    let arrow = '.productions-head-arrow';
+    if (document.documentElement.classList.contains('ui-touchscreen')) {
+      arrow = '.productions-head-tovideo'
+    }
+
+    const tl = gsap.timeline();
+    tl
+    .fromTo('.productions-head-title',{opacity: 0, y: 70}, {opacity: 1, y: 0, duration: 1, clearProps: true})
+    .fromTo('.productions-head-descr',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1, clearProps: true}, ">-0.6")
+    .fromTo(arrow,{opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5, clearProps: true}, ">-0.55")
+    .fromTo('.productions-head-img',{ yPercent: 20, scale: 0.9, opacity: 0}, {yPercent: 0, scale: 1, opacity: 1, duration: 1.5, ease: "power1.inOut", clearProps: true}, '>-1.5');
+    // .fromTo('.productions-head-btn',{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 1},">-0.4")
+
+    gsap.to(origin, {yPercent: 25, opacity: 0, duration: 1, onComplete: () => {
+      setTimeout(()=> {gsap.set(origin, {clearProps: true})},100)
+    }})
+  },
+
+  headLeave(origin, dest, destIndex) {
+    // console.log(origin)
+    if (destIndex !== 6) {
+
+      gsap.to(origin, {y: -70, opacity: 0, duration: 1, clearProps: true, onComplete: () => origin.classList.remove('visible')})
+
+      gsap.from(dest, {yPercent: 25, opacity: 0, duration: 1, onComplete: () => {
+        setTimeout(()=> {gsap.set(dest, {clearProps: true})},100)
+      }})
+
+    } else {
+
+      gsap.to(origin, {yPercent: -100, duration: 1, onComplete: () => {
+        origin.classList.remove('visible')
+        setTimeout(()=> {gsap.set(origin, {clearProps: true})},100)
+      }})
+
+      gsap.from(dest, {yPercent: 100, duration: 0.6, onComplete: () => {
+        setTimeout(()=> {gsap.set(dest, {clearProps: true})},100)
+      }})
+    }
+
+    // gsap.from(dest, {yPercent: 25, opacity: 0, duration: 1, onComplete: () => {
+    //   setTimeout(()=> {gsap.set(dest, {clearProps: true})},100)
+    // }})
+  },
+
+  bottomEnter(origin, dest) {
+    // this.fp.setAllowScrolling(false);
+    const el = dest
+    el.classList.add('visible')
+    const ct = el.querySelector('.fp-overflow')
+    
+    gsap.from(ct, {opacity: 0, y: 70, duration: 0.5, delay: 0.2, onStart: () => {
+      ct.scrollTo(0,1)
+    }, onComplete: () => {
+      setTimeout(()=> {
+        gsap.set(ct, {clearProps: true})
+      },100)
+      setTimeout(()=>{
+        // this.fp.setAllowScrolling(true)
+      },500)
+    }})
+
+    gsap.to(origin, {y: -70, opacity: 0, duration: 1, onComplete: () => {
+      setTimeout(()=> {gsap.set(origin, {clearProps: true})},100)
+    }})
+  },
+
+  bottomLeave(origin, dest) {
+    gsap.to(origin, {y: -70, opacity: 0, duration: 0.25, onComplete: () => {
+      origin.classList.remove('visible')
+      setTimeout(()=> {gsap.set(origin, {clearProps: true})},10)
+    }})
+  },
+
+  toSlide(slide) {
+    this.fp.moveTo(slide);
+  },
+
+  fly(selectors, position) {
+    const ofs = FARBA.WH + 10
+
+    D.querySelectorAll(selectors).forEach(el => {
+      const boxTop = parseInt(el.getBoundingClientRect().top,10)
+      
+      if (boxTop + position - ofs < position) {
+        el.classList.add('visible')
+      } else {
+        el.classList.remove('visible')
+      }
+    })
+  },
+
+  rebuildFP(action) {
+    const isIn = D.querySelector('.no-fp-productions')
+
+    if (action === 'destroy') {
+      if (!isIn.querySelector('.fullpage-tk-content')) {
+        D.querySelectorAll('.fullpage-slide .fullpage-tk-content').forEach(el => {
+          // const content = el.querySelector('.fullpage-tk-content')
+          isIn.appendChild(el)
+        })
+      }
+
+      const doc = document.documentElement
+      const body = document.body
+      const wrapper = D.querySelector('#wrapper')
+      const middle = D.querySelector('#middle')
+
+      doc.classList.remove('fp-enabled')
+      doc.style.overflow = ''
+
+      body.classList.remove('fp-scroll-mac','fp-scrollable','fp-enabled')
+      body.style.overflow = ''
+      body.style.height = ''
+      body.style.position = ''
+
+      wrapper.style.height = ''
+      wrapper.style.position = ''
+
+      middle.style.height = ''
+      middle.style.position = ''
+
+    } else {
+
+      if (!D.querySelector('#fullpage .fullpage-tk-content')) {
+        D.querySelectorAll('.fullpage-tk-content').forEach((el,index) => {
+          this.parents[index].appendChild(el)
+        })
+      }
+    }
+  },
+
+  mobileBgHeights() {
+    const screens = D.querySelectorAll('.productions-screen')
+    if (!screens.length) return
+
+    screens.forEach(el => {
+      const bg = el.querySelector('.productions-screen-bg')
+      if (!bg) return;
+      bg.style.height = el.clientHeight+'px'
+    })
+  },
+
+  mobileParallax(event) {
+    const screens = D.querySelectorAll('.no-fp-productions .productions-screen')
+    if (!screens.length) return
+    const margin = FARBA.WW < 600 ? 48 : 62
+    const sy = window.pageYOffset
+
+    screens.forEach(screen => {
+      const img = screen.querySelector('.productions-screen-bg')
+      const box = screen.getBoundingClientRect()
+      
+      if (sy > box.top + sy - margin && sy < box.bottom + sy  - margin) {
+        screen.classList.add('active')
+      } else {
+        screen.classList.remove('active')
+      }
+    });
+  },
+
+  setParents() {
+    D.querySelectorAll('.fullpage-tk-content').forEach(el => {
+      const parent = el.parentElement
+      this.parents.push(parent)
+    })
+  },
+
+  mediaHandler() {
+    if (!D.querySelector('#fullpage')) return;
+    this.setParents();
+
+    const bp = window.matchMedia("(max-width:959px)");
+      
+    const changes = (bp) => {
+      if (bp.matches) {
+
+        setTimeout(()=>{
+          this.rebuildFP('destroy')
+
+          let Alltrigger = ScrollTrigger.getAll()
+          for (let i = 0; i < Alltrigger.length; i++) {
+            Alltrigger[i].kill(true)
+          }
+
+          window.addEventListener('scroll',this.mobileParallax)
+          window.addEventListener('resize',this.mobileBgHeights,false)
+          this.mobileBgHeights()
+        },1)
+
+      } else {
+        // this.isMobile = false
+
+        setTimeout(()=>{
+          this.rebuildFP('reinit')
+
+          let Alltrigger = ScrollTrigger.getAll()
+          for (let i = 0; i < Alltrigger.length; i++) {
+            Alltrigger[i].kill(true)
+          }
+
+          this.init()
+
+          window.removeEventListener('scroll',this.mobileParallax)
+          window.removeEventListener('resize',this.mobileBgHeights,false)
+        },1)
+        
+      }
+    }
+
+    bp.addListener(changes);
+    changes(bp);
+  }
+};
+
+fpAnimations.mediaHandler();
+
+
+if (D.querySelector('.to-tk-range')) {
+  D.querySelectorAll('.to-tk-range').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault()
+      fpAnimations.toSlide(7)
+    })
+  })
+}
+
+// if (D.querySelector('.fullpage-tk .productions-tabs-link')) {
+//   D.querySelectorAll('.fullpage-tk .productions-tabs-link')
+//     .forEach(el => {
+//       el.addEventListener('click',fpAnimations.updateScroller)
+//     })
+// }

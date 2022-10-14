@@ -1183,6 +1183,10 @@
       padding-right: 0;
       font-size: 0;
       margin-right: -24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     &-title {
       @include fz(32);
@@ -1241,6 +1245,11 @@
   }
 }
 
+@media (max-width: 959px) {
+  .enterprises:last-child {
+    margin-bottom: -10px;
+  }
+}
 @media (max-width: 599px) {
   .enterprises-circle {
     margin-right: 4px;

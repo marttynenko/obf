@@ -71,7 +71,7 @@
     @media (max-width: 959px) {
       width: 24px;
       height: 24px;
-      top: 0;
+      top: -0.1em;
 
       img {
         width: 55%;
@@ -988,6 +988,7 @@
     }
     @media (max-width: 959px) {
       @include fz(18);
+      line-height: 1.25;
     }
     @media (max-width: 599px) {
       @include fz(16);
@@ -1027,11 +1028,22 @@
   }
 
   @media (max-width: 599px) {
+    &-txt {
+      @include fz(16);
+      width: 100%;
+    }
     &-sights {
 
       .col-4 {
         flex: 0 0 100%;
         max-width: 100%;
+
+        &:first-child {
+          max-width: 40%;
+        }
+        &:nth-of-type(2) {
+          max-width: 60%;
+        }
       }
     }
   }
@@ -1426,15 +1438,21 @@
   }
 
   @media (max-width: 959px) {
+    position: static;
+    padding-bottom: 0;
+    display: block;
+
     .ui-btn-circle {
-      top: -135px;
+      position: relative;
+      top: auto;
+      // top: -135px;
     }
   }
 
   @media (max-width: 599px) {
-    .ui-btn-circle {
-      top: -115px;
-    }
+    // .ui-btn-circle {
+    //   top: -115px;
+    // }
   }
 }
 .scentific-pbls-section {
@@ -1447,6 +1465,26 @@
     @media (max-width: 599px) {
       max-width: 180px;
       margin-bottom: 24px;
+    }
+  }
+
+  @media (max-width: 959px) {
+    position: relative;
+
+    .col-layout-thin {
+      position: absolute;
+      right: 16px;
+      top: 32px;
+      width: 116px;
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 599px) {
+
+    .col-layout-thin {
+      top: 48px;
+      width: 92px;
     }
   }
 }
@@ -1484,4 +1522,8 @@
     }
     
   }
+}
+
+.contacts-tab {
+  padding-bottom: 10px;
 }

@@ -1051,13 +1051,14 @@ footer.footer {
     &-title {
       @include fz(24);
       margin-bottom: 4px;
+      padding-right: 15px;
 
       &-arrow {
         width: 24px;
         height: 24px;
-        margin-right: 0;
+        margin-right: -24px;
         stroke-width: 1;
-        margin-left: 7px;
+        margin-left: 2px;
         top: 0;
       }
     }

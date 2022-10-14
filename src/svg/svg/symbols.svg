@@ -128,6 +128,10 @@
 			<path d="M1 1l4 3 4-3" stroke="#F08322"></path>
 		</symbol>
 	
+		<symbol id="circle-arrow-down" viewBox="0 0 32 32">
+			<path d="M16.19 1.91v27.825M26.666 19.2L15.999 29.865 5.333 19.199" stroke="#fff" stroke-width="2" stroke-miterlimit="10"></path>
+		</symbol>
+	
 		<symbol id="circle-btn-arrow" viewBox="0 0 32 32">
 			<path d="M1.91 15.81h27.825M19.2 5.334l10.666 10.667-10.667 10.666"></path>
 		</symbol>

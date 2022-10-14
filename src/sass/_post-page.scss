@@ -114,6 +114,10 @@
 
     figure {
       margin: $paragraph_margin;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     &-link {
@@ -122,6 +126,12 @@
       @include fz(24);
       margin-bottom: 26px;
       margin-right: 16px;
+    }
+
+    ul, ol, p {
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 

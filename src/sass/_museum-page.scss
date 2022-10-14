@@ -919,19 +919,18 @@
 
   .museum-reviews {
     margin-bottom: 40px;
+    position: relative;
   
     .ui-subtitle {
       max-width: 165px !important;
       margin-bottom: 34px;
     }
     .col-layout-center {
-      position: relative;
-    }
-
-    &-circle {
       position: absolute;
-      right: 15px;
-      top: -128px;
+      top: -8px;
+      right: 0px;
+      width: 116px;
+      padding: 0;
     }
   }
 
@@ -984,9 +983,14 @@
   .museum-reviews {
     margin-bottom: 10px;
 
-    &-circle {
-      top: -103px;
+    .col-layout-center {
+      top: -6px;
+      width: 92px;
     }
+
+    // &-circle {
+    //   top: -103px;
+    // }
   }
 }
 
@@ -997,9 +1001,18 @@
 
     &-img {
       & > img {
-        // margin-right: 65px;
         max-width: 118%;
         transform: translate(5%, 0);
+      }
+    }
+  }
+}
+@media (max-width: 380px) {
+  .museum-history {
+
+    &-img {
+      & > img {
+        margin-left: 15px;
       }
     }
   }
