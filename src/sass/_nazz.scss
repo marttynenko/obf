@@ -947,10 +947,14 @@
 
     .row {
       align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: nowrap;
     }
 
     .col-4 {
-      flex: 0 0 auto;
+      flex: unset;
+      width: auto;
+      max-width: 40%;
     }
 
     @media (min-width: 1440px) {
@@ -1034,6 +1038,9 @@
     }
     &-sights {
 
+      .row {
+        flex-wrap: wrap;
+      }
       .col-4 {
         flex: 0 0 100%;
         max-width: 100%;

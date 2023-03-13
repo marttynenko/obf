@@ -847,7 +847,7 @@ document.addEventListener('keydown',(e)=>{
           download: false,
           selector: selector,
           backdropDuration: 500,
-          speed: 1000
+          speed: 1000,
         });
         
 
@@ -1460,7 +1460,9 @@ const mainActivities = () => {
   if (FARBA.WW > 959) {
     D.querySelectorAll('.main-activities-img img').forEach(item => {
       const img = new Image();
-      img.src = item.getAttribute('src')
+      // img.src = item.getAttribute('src')
+      img.src = item.currentSrc
+      // img.src = item.querySelector('source').getAttribute('srcset')
       img.className = 'main-activities-cache'
       D.querySelector('#main-activities').appendChild(img)
     })
@@ -2377,7 +2379,9 @@ window.addEventListener('load',()=>{
       loop: true,
       speed: 1000,
       shortSwipes: true,
-      lazy: true,
+      lazy: {
+        loadPrevNext: true
+      },
       pagination: {
         el: ".swiper-pagination",
         type: "custom",
@@ -3433,7 +3437,7 @@ const fpAnimations = {
     const ct = el.querySelector('.fp-overflow')
     
     gsap.from(ct, {opacity: 0, y: 70, duration: 0.5, delay: 0.2, onStart: () => {
-      ct.scrollTo(0,1)
+      // ct.scrollTo(0,1)
     }, onComplete: () => {
       setTimeout(()=> {
         gsap.set(ct, {clearProps: true})
@@ -3443,9 +3447,9 @@ const fpAnimations = {
       },500)
     }})
 
-    gsap.to(origin, {y: -70, opacity: 0, duration: 1, onComplete: () => {
-      setTimeout(()=> {gsap.set(origin, {clearProps: true})},100)
-    }})
+    // gsap.to(origin, {y: -70, opacity: 0, duration: 1, onComplete: () => {
+    //   setTimeout(()=> {gsap.set(origin, {clearProps: true})},100)
+    // }})
   },
 
   bottomLeave(origin, dest) {
@@ -3614,3 +3618,45 @@ if (D.querySelector('.to-tk-range')) {
 //       el.addEventListener('click',fpAnimations.updateScroller)
 //     })
 // }
+
+
+
+
+
+//main-menu
+(function () {
+  if (!D.querySelector('.langs-toggler')) return
+
+  D.querySelector('.langs-toggler').addEventListener("click", function (e) {
+    e = event || window.event;
+    e.preventDefault();
+
+    this.classList.toggle("opened");
+    D.querySelector('.langs-toggler-drop').classList.toggle('opened');
+    D.querySelector('.langs-toggler-mobile').classList.toggle('opened');
+  });
+
+
+  //скрываем меню по клику вне
+  D.addEventListener("click", (e) => {
+    const opened = D.querySelector(".langs-toggler.opened");
+    if (!opened) return;
+    const withinBoundaries = e.composedPath().includes(opened);
+
+    if (!withinBoundaries && !e.target.classList.contains("langs-toggler-drop")) {
+      opened.classList.remove("opened");
+      D.querySelector('.langs-toggler-drop').classList.remove('opened');
+      // D.querySelector('.langs-toggler-mobile').classList.remove('opened');
+    }
+  });
+
+
+  if (!D.querySelector('.langs-toggler-mobile-shadow')) return
+  D.querySelector('.langs-toggler-mobile-shadow').addEventListener('click', (e) => {
+    e = event || window.event;
+    e.preventDefault();
+
+    D.querySelector('.langs-toggler-mobile').classList.remove("opened");
+    D.querySelector('.langs-toggler').classList.remove("opened");
+  })
+})();

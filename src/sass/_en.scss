@@ -1,0 +1,238 @@
+.langs-toggler {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  max-width: 90px;
+  height: 44px;
+  line-height: 42px;
+  // text-align: center;
+  border: 1px solid #FFF;
+  background-color: $bgc;
+  border-radius: 22px;
+  padding: 0px 26px 0px 12px;
+  @include fz(18);
+  color: #FFF;
+  transition: border .3s, color .3s;
+  cursor: pointer;
+
+  &-mobile {
+    display: none;
+    visibility: hidden;
+  }
+
+  &-circle {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+  }
+
+  &-txt {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    margin-top: -4px;
+    width: 10px;
+    height: 8px;
+    background: url(../images/svg/childs-toggler.svg) center no-repeat;
+    background-size: contain;
+    transition: transform .3s;
+  }
+
+  &-drop {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    top: 100%;
+    margin-top: 30px;
+    min-width: 185px;
+    background: $bg_dark;
+    padding: 40px 40px 24px;
+    white-space: nowrap;
+    line-height: 1.1;
+    @include fz(18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0px, -10px);
+    transition: visibility .3s, opacity .3s, transform .3s;
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 17px;
+      bottom: 100%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 10px;
+      border-color: transparent transparent #1D2735 transparent;
+    }
+
+    &.opened {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(0px, 0px);
+    }
+  }
+  &-lang {
+    display: block;
+    margin-bottom: 16px;
+    color: #FFF;
+
+    &:hover,
+    &.active {
+      color: $primary;
+    }
+  }
+
+  &.opened {
+    .langs-toggler-arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+.fs-opened .langs-toggler {
+  background: transparent;
+}
+
+
+@media (max-width: 1259px) {
+  .langs-toggler-circle {
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 959px) {
+  .langs-toggler {
+    height: 38px;
+    min-width: 38px;
+    line-height: 36px;
+    @include fz(16);
+    padding-left: 10px;
+    padding-right: 24px;
+    background: transparent;
+
+    &-arrow {
+      right: 10px;
+    }
+
+    &-lang {
+      margin-bottom: 24px;
+    }
+
+    &-drop {
+      display: none;
+    }
+  }
+
+  .langs-toggler-mobile {
+    display: block;
+    visibility: visible;
+
+    &-shadow {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba($bg_dark, .8);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity .15s;
+    }
+    &-drop {
+      background-color: $bg_dark;
+      padding: 24px 16px 0;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      @include fz(16);
+      visibility: hidden;
+      opacity: 0;
+      transform: translate(0px, 10px);
+      transition: visibility .15s, opacity .15s, transform .15s;
+    }
+
+    &.opened {
+      .langs-toggler-mobile-shadow {
+        visibility: visible;
+        opacity: 1;
+        z-index: 1100;
+      }
+      .langs-toggler-mobile-drop {
+        z-index: 1101;
+        visibility: visible;
+        opacity: 1;
+        transform: translate(0px, 0px);
+      }
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .langs-toggler {
+    height: 32px;
+    min-width: 32px;
+    line-height: 30px;
+    @include fz(12);
+    padding-left: 8px;
+    padding-right: 22px;
+
+    &-arrow {
+      right: 8px;
+    }
+  }
+}
+
+
+.footer-en {
+  line-height: 1.55;
+  // @include fz(18);
+
+  @media (min-width: 1024px) {
+    @include fz(18);
+  }
+
+  a {
+    color: $primary;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 13px;
+
+    &:hover {
+      color: #FFF;
+    }
+  }
+}
+
+@media (max-width: 959px) {
+  .footer-en {
+    margin-bottom: 24px;
+
+    a {
+      display: block;
+      margin-bottom: 10px;
+      margin-right: 0;
+    }
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .menu-toggler-en {
+    display: none;
+    visibility: hidden;
+  }
+}
+.fs-menu-title {
+  a {
+    color: #FFF;
+  }
+}
