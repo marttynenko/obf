@@ -7,7 +7,7 @@
   line-height: 42px;
   // text-align: center;
   border: 1px solid #FFF;
-  background-color: $bgc;
+  // background-color: $bgc;
   border-radius: 22px;
   padding: 0px 26px 0px 12px;
   @include fz(18);
@@ -40,9 +40,10 @@
     margin-top: -4px;
     width: 10px;
     height: 8px;
+    background: url(../images/svg/childs-toggler-orange.svg) center no-repeat;
     background: url(../images/svg/childs-toggler.svg) center no-repeat;
     background-size: contain;
-    transition: transform .3s;
+    transition: transform .3s, background .3s;
   }
 
   &-drop {
@@ -94,6 +95,16 @@
   &.opened {
     .langs-toggler-arrow {
       transform: rotate(180deg);
+    }
+  }
+  @media (min-width: 960px) {
+    &:hover {
+      border-color: $primary;
+      color: $primary;
+
+      .langs-toggler-arrow {
+        background: url(../images/svg/childs-toggler-orange.svg) center no-repeat;
+      }
     }
   }
 }
@@ -153,7 +164,9 @@
       left: 0;
       right: 0;
       bottom: 0;
-      @include fz(16);
+      // @include fz(16);
+      font-size: 19px;
+      font-size: 1.2rem;
       visibility: hidden;
       opacity: 0;
       transform: translate(0px, 10px);
@@ -234,5 +247,34 @@
 .fs-menu-title {
   a {
     color: #FFF;
+  }
+}
+
+.enterprises-activity-en-block {
+  padding-right: 0;
+
+  .enterprises-activity {
+    &-title {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (min-width: 960px) {
+    margin-right: -80px;
+    flex: 1 0 calc(100% + 80px) !important;
+    max-width: calc(100% + 80px) !important;
+    width: calc(100% + 80px);
+    font-size: 0;
+
+    .enterprises-activity {
+      &-items {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 80px;
+        width: calc(33.33% - 80px);
+        max-width: calc(33.33% - 80px);
+      }
+    }
   }
 }

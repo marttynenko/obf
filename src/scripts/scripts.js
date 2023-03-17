@@ -3623,7 +3623,7 @@ if (D.querySelector('.to-tk-range')) {
 
 
 
-//main-menu
+//langs-toggler
 (function () {
   if (!D.querySelector('.langs-toggler')) return
 
@@ -3646,7 +3646,6 @@ if (D.querySelector('.to-tk-range')) {
     if (!withinBoundaries && !e.target.classList.contains("langs-toggler-drop")) {
       opened.classList.remove("opened");
       D.querySelector('.langs-toggler-drop').classList.remove('opened');
-      // D.querySelector('.langs-toggler-mobile').classList.remove('opened');
     }
   });
 
