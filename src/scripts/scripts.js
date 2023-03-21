@@ -5,12 +5,21 @@ const FARBA = {
 
   isTouch: 'ontouchstart' in window || navigator.msMaxTouchPoints,
 
+  lastFpSection: null,
+
   removeScroll() {
     D.documentElement.classList.add('ui-no-scroll')
+    if (fpAnimations && fpAnimations.fp) {
+      this.lastFpSection = fpAnimations.fp.getActiveSection().index() + 1
+    }
   },
 
   addScroll() {
     D.documentElement.classList.remove('ui-no-scroll')
+    if (fpAnimations.fp && this.lastFpSection !== null) {
+      fpAnimations.toSlide(this.lastFpSection)
+      fpAnimations.fp.reBuild()
+    }
   },
 
   //lazy load для сторонних либ
