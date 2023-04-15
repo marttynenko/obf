@@ -1,5 +1,5 @@
 const { src, dest, watch, series } = require('gulp')
-const sass = require('gulp-sass')(require('node-sass'))
+const sass = require('gulp-sass')(require('sass'))
 const svgSprite = require('gulp-svg-sprites')
 const image = require('gulp-image')
 const del = require('del')
@@ -11,7 +11,7 @@ const sourcemaps = require('gulp-sourcemaps')
 function styles(cb) {
     return src('src/sass/style.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass({ outputStyle: 'compact' }).on('error', sass.logError))
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer(
             ['last 4 versions']
         ))

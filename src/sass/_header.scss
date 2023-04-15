@@ -522,9 +522,9 @@ a.logo {
 
 .main-menu-sub {
 	&-pr {
-		width: 976px;
-		max-width: 976px;
-		padding-bottom: 0;
+		width: 792px;
+		max-width: 792px;
+		padding-bottom: 10px;
 		left: -148px;
 		white-space: normal;
 
@@ -532,18 +532,11 @@ a.logo {
 			left: 184px;
 		}
 
-		@media (max-width: 1439px) {
-			left: -266px;
-
-			&:before {
-				left: 300px;
-			}
-		}
-
 		@media (max-width: 1259px) {
-			max-width: 848px;
-			width: 848px;
+			max-width: 680px;
+			width: 680px;
 			left: -237px;
+			padding-bottom: 0;
 
 			&:before {
 				left: 264px;
@@ -564,15 +557,16 @@ a.logo {
     transform: translate3d(0px, 0px, 0px);
 		transition-delay: .15s;
 
-		// @for $i from 1 through 6 {
-		// 	&:nth-of-type(#{$i}) {
-		// 		transition-delay: (.1s * ($i));
-		// 	}
-		// }
 		&:nth-of-type(4),
 		&:nth-of-type(5),
 		&:nth-of-type(6) {
 			transition-delay: .25s;
+		}
+
+		&:nth-of-type(7),
+		&:nth-of-type(8),
+		&:nth-of-type(9) {
+			transition-delay: .5s;
 		}
   }
 }

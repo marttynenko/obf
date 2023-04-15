@@ -734,24 +734,30 @@ footer.footer {
 .main-menu-btn {
 	display: flex;
 	align-items: center;
+  @include fz(16);
+  margin-bottom: 32px;
+  max-width: 172px;
   
 	.production-btn {
 		&-circle-wrap {
-			flex: 0 0 90px;
-			max-width: 90px;
-			margin-right: 24px;
+			flex: 0 0 72px;
+			max-width: 72px;
+			margin-right: 16px;
 			margin-bottom: 0;
 		}
 
     @media (max-width: 1259px) {
-      @include fz(14);
-      
       &-circle-wrap {
-        flex: 0 0 74px;
-        max-width: 74px;
+        flex: 0 0 56px;
+        max-width: 56px;
       }
     }
 	}
+
+  @media (max-width: 1259px) {
+    @include fz(14);
+    margin-bottom: 40px;
+  }
 }
 
 .fs-search {

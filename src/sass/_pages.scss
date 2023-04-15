@@ -2308,6 +2308,18 @@ PRODUCTIONS -------------- */
     padding-bottom: 100px;
   }
 
+  @media (min-width: 960px) {
+    .fs-menu {
+      &-row {
+        flex-wrap: wrap;
+        margin-right: -80px;
+      }
+    }
+    .fs-types-col {
+      padding-right: 80px;
+    }
+  }
+
   @media (max-width: 1439px) {
     padding-top: 70px;
     padding-bottom: 80px;
@@ -5500,4 +5512,179 @@ PRODUCTIONS -------------- */
 #bx-panel-back {
   display: none !important;
   height: 0 !important;
+}
+
+
+/* --- from 14.04.23 --- */
+.fabrics-list.row {
+  margin-left: -40px;
+  margin-right: -40px;
+
+  [class*="col-"] {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 1259px) {
+    margin-left: -24px;
+    margin-right: -24px;
+
+    [class*="col-"] {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  @media (max-width: 959px) {
+    margin-left: -10px;
+    margin-right: -10px;
+
+    [class*="col-"] {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.fabrics-item {
+  margin-bottom: 80px;
+
+  &-mark {
+    line-height: 1.05;
+    margin-bottom: 24px;
+    position: relative;
+    padding-left: 48px;
+    font-size: 42px;
+
+    &-svg {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0,-50%);
+      width: 32px;
+      height: 32px;
+      max-height: 32px;
+    }
+  }
+
+  &-img {
+    margin-bottom: 24px;
+
+    a {
+      aspect-ratio: 16 / 9;
+      display: block;
+      overflow: hidden;
+    }
+
+    img {
+      // display: block;
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-title {
+    @include fz(32);
+    line-height: 1.25;
+    margin-bottom: 16px;
+
+    a {
+      color: #FFF;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  &-txt {
+    @include fz(22);
+    line-height: 1.45;
+  }
+
+  @media (max-width: 1259px) {
+    margin-bottom: 64px;
+
+    &-mark {
+      margin-bottom: 16px;
+      padding-left: 28px;
+      font-size: 32px;
+
+      &-svg {
+        width: 24px;
+        height: 24px;
+        max-height: 24px;
+      }
+    }
+
+    &-img {
+      margin-bottom: 16px;
+    }
+
+    &-title {
+      @include fz(28);
+      margin-bottom: 8px;
+    }
+
+    &-txt {
+      @include fz(18);
+      line-height: 1.56;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    margin-bottom: 40px;
+
+    &-mark {
+      padding-left: 28px;
+      font-size: 24px;
+
+      &-svg {
+        width: 20px;
+        height: 20px;
+        max-height: 20px;
+      }
+    }
+
+    &-title {
+      @include fz(24);
+    }
+
+    &-txt {
+      @include fz(20);
+      line-height: 1.45;
+    }
+  }
+
+
+  @media (max-width: 599px) {
+    margin-bottom: 32px;
+
+    &-mark {
+      padding-left: 24px;
+      font-size: 20px;
+      margin-bottom: 12px;
+
+      &-svg {
+        width: 16px;
+        height: 16px;
+        max-height: 16px;
+      }
+    }
+
+    &-img {
+      margin-bottom: 12px;
+    }
+
+    &-title {
+      @include fz(20);
+      margin-bottom: 8px;
+    }
+
+    &-txt {
+      @include fz(16);
+    }
+  }
 }

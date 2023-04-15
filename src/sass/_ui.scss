@@ -1145,6 +1145,10 @@ span.invalid {
 	&-makulatura {
 		color: rgb(200, 12, 224) !important;
 	}
+	&-vtorma,
+	&-greengrass {
+		color: $greengrass !important;
+	}
 }
 a.ui-color {
 	&-primary,
@@ -1194,6 +1198,57 @@ a.ui-color {
 		&:hover {
 			color: lighten(rgb(200, 12, 224),10%) !important;
 		}
+	}
+	&-vtorma,
+	&-greengrass {
+		&:hover {
+			color: lighten($greengrass,10%) !important;
+		}
+	}
+}
+.ui-fill {
+	&-black {
+		fill: #000 !important;
+	}
+	&-darkblue {
+		fill: $bgc !important;
+	}
+	&-white {
+		fill: #FFF !important;
+	}
+	&-primary,
+	&-orange {
+		fill: $primary !important;
+	}
+	&-secondary,
+	&-green {
+		fill: $secondary !important;
+	}
+	&-tertiary,
+	&-lime {
+		fill: $tertiary !important;
+	}
+	&-blue {
+		fill: $blue !important;
+	}
+	&-brown {
+		fill: $brown !important;
+	}
+	&-darkbrown {
+		fill: $darkbrown !important;
+	}
+	&-lightorange {
+		fill: $lightorange !important;
+	}
+	&-darkyellow {
+		fill: $darkyellow !important;
+	}
+	&-makulatura {
+		fill: rgb(200, 12, 224) !important;
+	}
+	&-vtorma,
+	&-greengrass {
+		fill: $greengrass !important;
 	}
 }
 

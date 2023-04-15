@@ -1705,7 +1705,7 @@ const mainEntrs = () => {
         const ww = D.documentElement.clientWidth
         const cw = D.querySelector('.container').clientWidth
         const rw = (ww - cw) / 2
-
+        // console.log(index, activeLink, activeLink.getBoundingClientRect(), coords, cw)
         gsap.to(shadow,{width: coords.width, height: coords.height, x: coords.x - rw - 30})
       },
 
