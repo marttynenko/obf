@@ -187,16 +187,17 @@
       &-link {
         display: none;
 
-        @media (max-width: 1259px) {
-          display: flex;
-          align-items: center;
-        }
+        // @media (max-width: 1259px) {
+        //   display: flex;
+        //   align-items: center;
+        // }
       }
-      @media (max-width: 1259px) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+      
+      // @media (max-width: 1259px) {
+      //   display: flex;
+      //   justify-content: space-between;
+      //   align-items: center;
+      // }
     }
 
     @media (max-width: 959px) {
@@ -531,9 +532,14 @@
   @include fz(28);
   margin-bottom: 40px;
 
+  @media (max-width: 1439px) {
+    margin-bottom: 32px;
+  }
+
 
   @media (max-width: 1259px) {
     @include fz(24);
+    margin-bottom: 24px;
   }
 
   @media (max-width: 959px) {

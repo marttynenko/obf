@@ -1,0 +1,490 @@
+/* --- from 14.04.23 --- */
+.fabrics-list.row {
+  margin-left: -40px;
+  margin-right: -40px;
+
+  [class*="col-"] {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 1259px) {
+    margin-left: -24px;
+    margin-right: -24px;
+
+    [class*="col-"] {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  @media (max-width: 959px) {
+    margin-left: -10px;
+    margin-right: -10px;
+
+    [class*="col-"] {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.fabrics-item {
+  margin-bottom: 80px;
+
+  &-mark {
+    line-height: 1.05;
+    margin-bottom: 24px;
+    position: relative;
+    padding-left: 48px;
+    font-size: 42px;
+
+    &-svg {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0,-50%);
+      width: 32px;
+      height: 32px;
+      max-height: 32px;
+    }
+  }
+
+  &-img {
+    margin-bottom: 24px;
+
+    a {
+      aspect-ratio: 16 / 9;
+      display: block;
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-title {
+    @include fz(32);
+    line-height: 1.25;
+    margin-bottom: 16px;
+
+    a {
+      color: #FFF;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  &-txt {
+    @include fz(22);
+    line-height: 1.45;
+  }
+
+  @media (max-width: 1259px) {
+    margin-bottom: 64px;
+
+    &-mark {
+      margin-bottom: 16px;
+      padding-left: 28px;
+      font-size: 32px;
+
+      &-svg {
+        width: 24px;
+        height: 24px;
+        max-height: 24px;
+      }
+    }
+
+    &-img {
+      margin-bottom: 16px;
+    }
+
+    &-title {
+      @include fz(28);
+      margin-bottom: 8px;
+    }
+
+    &-txt {
+      @include fz(18);
+      line-height: 1.56;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    margin-bottom: 40px;
+
+    &-mark {
+      padding-left: 28px;
+      font-size: 24px;
+
+      &-svg {
+        width: 20px;
+        height: 20px;
+        max-height: 20px;
+      }
+    }
+
+    &-title {
+      @include fz(24);
+    }
+
+    &-txt {
+      @include fz(20);
+      line-height: 1.45;
+    }
+  }
+
+
+  @media (max-width: 599px) {
+    margin-bottom: 32px;
+
+    &-mark {
+      padding-left: 24px;
+      font-size: 20px;
+      margin-bottom: 12px;
+
+      &-svg {
+        width: 16px;
+        height: 16px;
+        max-height: 16px;
+      }
+    }
+
+    &-img {
+      margin-bottom: 12px;
+    }
+
+    &-title {
+      @include fz(20);
+      margin-bottom: 8px;
+    }
+
+    &-txt {
+      @include fz(16);
+    }
+  }
+}
+
+.page-buttons-wrap {
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+.page-buttons-wrap .page-buttons {
+  margin-bottom: 0;
+}
+
+@media (min-width: 960px) {
+  .page-buttons-back,
+  .page-buttons-wrap .page-buttons {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .page-buttons-wrap .page-buttons {
+    max-width: calc(100% - 280px);
+    white-space: normal;
+    // overflow-x: auto;
+    // white-space: nowrap;
+    // margin-right: -15px;
+    // margin-left: -15px;
+    // padding-left: 15px;
+    // padding-right: 15px;
+    // // max-width: calc(100% + 30px);
+    // -webkit-overflow-scrolling: touch;
+  }
+}
+
+.page-btn-back {
+  border: 1px solid transparent;
+  @include fz(24);
+  padding-left: 20px;
+  padding-right: 0;
+
+  &:after {
+    content: none;
+  }
+
+  &-sprite {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 10px;
+    height: 26px;
+    fill: none;
+    stroke: #FFF;
+  }
+
+  @media (min-width: 960px) {
+    &:hover {
+      color: $primary;
+      border-color: transparent;
+  
+      .page-btn-back-sprite {
+        stroke: $primary;
+      }
+    }
+  }
+
+  @media (max-width: 1439px) {
+    @include fz(20);
+  }
+
+  @media (max-width: 1269px) {
+    @include fz(14);
+  }
+
+  @media (max-width: 959px) {
+    padding-left: 16px;
+    margin-bottom: 4px;
+
+    &-sprite {
+      left: 0px;
+      height: 16px;
+      width: 6px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    @include fz(12);
+  }
+}
+
+
+@media (min-width: 960px) {
+  .main-entrs-content {
+    z-index: 1;
+    position: relative;
+  }
+  .main-entrs-nav {
+    margin-right: -40vw;
+  }
+}
+.main-entrs-nav-link-all {
+  padding-left: 20px;
+  padding-right: 48px;
+  background-color: rgba(33, 46, 63, 0.75);
+  border: 1px solid rgba(33, 46, 63, 0.75);
+  transition: border .3s, background-color .3s, color .3s;
+  @include fz(24);
+
+
+  &-sprite {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0,-50%);
+    width: 10px;
+    height: 26px;
+    fill: none;
+    stroke: #FFF;
+  }
+
+  @media (min-width: 960px) {
+    &:hover {
+      background-color: $primary;
+      color: #FFF;
+      border-color: $primary;
+    }
+  }
+
+  @media (max-width: 1439px) {
+    @include fz(20);
+    padding-right: 40px;
+
+    &-sprite {
+      width: 6px;
+      height: 16px;
+    }
+  }
+
+  @media (max-width: 1259px) {
+    @include fz(14);
+  }
+}
+
+.main-entrs-in-to {
+  @include fz(14);
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+
+  &-link {
+    color: #FFF;
+  }
+
+  &-sprite {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    margin-left: 5px;
+    height: 16px;
+    width: 6px;
+    fill: none;
+    stroke: #FFF;
+  }
+}
+
+.assortment-btns {
+  margin-bottom: 32px;
+
+  .btn-colored {
+    margin-bottom: 10px;
+    margin-right: 13px;
+  }
+
+  @media (max-width: 1439px) {
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 959px) {
+    display: none;
+    visibility: hidden;
+  }
+}
+.btn-colored {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0px 72px 0px 32px;
+  height: 64px;
+  line-height: 64px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: #FFF;
+  border-radius: 32px;
+  font-weight: 600;
+  @include fz(18);
+  background-color: $primary;
+
+  &:hover {
+    color: #FFF;
+  }
+
+  &-arrow {
+    position: absolute;
+    right: 32px;
+    width: 32px;
+    height: 32px;
+    top: 50%;
+    transform: translate(0, -50%);
+    fill: none;
+    stroke: #FFF;
+    stroke-width: 2;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    top: -5px;
+    transform: scale(0.85);
+    border: 1px solid $tertiary;
+    border-radius: 37px;
+    z-index: 1;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: opacity 0.5s, -webkit-transform 0.5s;
+    -o-transition: transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+  }
+
+  @media (min-width: 960px) {
+    &:hover {
+      &:after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  @media (max-width: 1439px) {
+    height: 56px;
+    line-height: 56px;
+    @include fz(14);
+    padding-right: 64px;
+
+    &-arrow {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+
+  &.ui-bg {
+    &-black {
+      &:after {
+        border-color: #000 !important;
+      }
+    }
+    &-darkblue {
+      &:after {
+        border-color: $bgc !important;
+      }
+    }
+    &-white {
+      &:after {
+        border-color: #FFF !important;
+      }
+    }
+    &-secondary,
+    &-green {
+      &:after {
+        border-color: $secondary !important;
+      }
+    }
+    &-tertiary,
+    &-lime {
+      &:after {
+        border-color: $tertiary !important;
+      }
+    }
+    &-blue {
+      &:after {
+        border-color: $blue !important;
+      }
+    }
+    &-brown {
+      &:after {
+        border-color: $brown !important;
+      }
+    }
+    &-darkbrown {
+      &:after {
+        border-color: $darkbrown !important;
+      }
+    }
+    &-lightorange {
+      &:after {
+        border-color: $blue !important;
+      }
+    }
+    &-darkyellow {
+      background-color: $darkyellow !important;
+
+      &:after {
+        border-color: $darkyellow !important;
+      }
+    }
+    &-makulatura,
+    &-vtorma,
+    &-greengrass {
+      &:after {
+        border-color: $greengrass !important;
+      }
+    }
+  }
+}

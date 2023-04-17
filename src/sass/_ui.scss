@@ -1251,6 +1251,51 @@ a.ui-color {
 		fill: $greengrass !important;
 	}
 }
+.ui-bg {
+	&-black {
+		background-color: #000 !important;
+	}
+	&-darkblue {
+		background-color: $bgc !important;
+	}
+	&-white {
+		background-color: #FFF !important;
+	}
+	&-primary,
+	&-orange {
+		background-color: $primary !important;
+	}
+	&-secondary,
+	&-green {
+		background-color: $secondary !important;
+	}
+	&-tertiary,
+	&-lime {
+		background-color: $tertiary !important;
+	}
+	&-blue {
+		background-color: $blue !important;
+	}
+	&-brown {
+		background-color: $brown !important;
+	}
+	&-darkbrown {
+		background-color: $darkbrown !important;
+	}
+	&-lightorange {
+		background-color: $lightorange !important;
+	}
+	&-darkyellow {
+		background-color: $darkyellow !important;
+	}
+	&-makulatura {
+		background-color: $greengrass !important;
+	}
+	&-vtorma,
+	&-greengrass {
+		background-color: $greengrass !important;
+	}
+}
 
 
 

@@ -1705,7 +1705,8 @@ const mainEntrs = () => {
         const ww = D.documentElement.clientWidth
         const cw = D.querySelector('.container').clientWidth
         const rw = (ww - cw) / 2
-        // console.log(index, activeLink, activeLink.getBoundingClientRect(), coords, cw)
+        console.log(index, activeLink, activeLink.getBoundingClientRect(), coords, cw)
+
         gsap.to(shadow,{width: coords.width, height: coords.height, x: coords.x - rw - 30})
       },
 
@@ -2764,13 +2765,15 @@ let toFlyAnim = `
   .mobile-activities-flip,
   .mobile-activities-data,
   .mobile-activities-txt,
-  .productions-mk-bg`;
+  .productions-mk-bg,
+  .fabrics-item`;
 if (FARBA.WW < 960) {
   toFlyAnim += `,
   .main-entrs-in-title,
   .main-entrs-in-links,
   .main-entrs-descr,
-  .main-entrs-vntgs`;
+  .main-entrs-vntgs,
+  .main-entrs-in-to`;
 }
 const toFlyAnimDelay = `
   .node-body .container,
@@ -3667,4 +3670,14 @@ if (D.querySelector('.to-tk-range')) {
     D.querySelector('.langs-toggler-mobile').classList.remove("opened");
     D.querySelector('.langs-toggler').classList.remove("opened");
   })
+})();
+
+
+;(function () {
+  if (!D.querySelector('.page-buttons') || !D.querySelector('.page-btn.selected')) return;
+
+  const selected = D.querySelector('.page-btn.selected')
+  const box = selected.getBoundingClientRect();
+  const offset = box.x + window.pageXOffset - 16
+  D.querySelector('.page-buttons').scrollTo(offset,0)
 })();

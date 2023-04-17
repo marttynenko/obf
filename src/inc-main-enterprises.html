@@ -13,7 +13,7 @@
         картонная фабрика</div>
     </transition>
 
-    <div class="main-entrs-in">
+    <div class="main-entrs-in" v-if="isMobile">
       <div class="main-entrs-in-title">В ОБФ входят:</div>
       <div class="main-entrs-in-panel">
         <ul class="main-entrs-in-links">
@@ -39,6 +39,15 @@
             БКФ
           </a></li>
         </ul>
+
+        <div class="main-entrs-in-to">
+          <a href="#" class="main-entrs-in-to-link">
+            Все предприятия
+            <svg class="sprite main-entrs-in-to-sprite">
+              <use xlink:href="svg/svg/symbols.svg#btn-arrow-to" />
+           </svg>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -75,6 +84,14 @@
               </svg> 
               БКФ
             </a></li>
+            <li>
+              <a href="#" class="main-entrs-nav-link main-entrs-nav-link-all">
+                Все предприятия
+                <svg class="sprite main-entrs-nav-link-all-sprite">
+                  <use xlink:href="svg/svg/symbols.svg#btn-arrow-to" />
+               </svg>
+              </a>
+            </li>
           </ul>
         </div>
 

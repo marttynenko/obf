@@ -96,6 +96,14 @@
 			<path d="M1 1l12 8 12-8"></path>
 		</symbol>
 	
+		<symbol id="btn-arrow-back" viewBox="0 0 10 26">
+			<path d="M9 1L1 13l8 12"></path>
+		</symbol>
+	
+		<symbol id="btn-arrow-to" viewBox="0 0 10 26">
+			<path d="M1 25l8-12L1 1" stroke="#fff"></path>
+		</symbol>
+	
 		<symbol id="btn-tab-blue" viewBox="0 0 24 24">
 			<path d="M23.602 15.386H24V9.943h-.174A9.773 9.773 0 0 1 14.052.174V0h-5.42c0 .134-.01.268-.01.405a14.988 14.988 0 0 0 14.98 14.98z"></path><path d="M23.826 8.158H24V0h-8.154v.174a7.992 7.992 0 0 0 7.98 7.984zM16.081 15.395A16.777 16.777 0 0 1 6.831.407c0-.136 0-.27.012-.405H0v15.393h16.081zM23.913 17.168v.016H0V24h24v-6.836l-.087.004z"></path>
 		</symbol>
