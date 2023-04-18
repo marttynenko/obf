@@ -2809,7 +2809,7 @@ a.ui-color {
 .ui-scroller {
 	-moz-scrollbar-width: thin;
 	scrollbar-width: thin;
-	scrollbar-color: rgba(#FFF,.2) gba(#FFF,.5);
+	scrollbar-color: rgba(#FFF,.2) rgba(#FFF,.5);
 }
 .ui-scroller::-webkit-scrollbar {
 	width: 2px;
