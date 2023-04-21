@@ -143,7 +143,8 @@ footer.footer {
   right: 0;
   top: 80px;
   bottom: 0;
-  z-index: 199;
+  z-index: -9;
+  // z-index: 199;
   padding-top: 65px;  
   padding-bottom: 65px;
   overflow-y: auto;
@@ -153,6 +154,7 @@ footer.footer {
   visibility: hidden;
 
   &.opened {
+    z-index: 199;
     opacity: 1;
     visibility: visible;
   }

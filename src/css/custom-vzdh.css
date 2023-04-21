@@ -103,9 +103,8 @@
 
 /* makulatura colors  */
 
-.ui-color-makulatura { color: #517FBD !important; }/*элементы главного слайдера */
-a.ui-color-makulatura:hover { color: #517FBD !important; }/*элементы главного слайдера ховеры */
-.ui-bg-makulatura { background: #517FBD !important; } /*фон 1 слайда, хедера */
+/* a.ui-color-makulatura:hover { color: #517FBD !important; }
+.ui-bg-makulatura { background: #517FBD !important; } */
 
 .ui-color-lightmakulatura { color: #000000 !important; }
 a.ui-color-lightmakulatura:hover { color: #000000 !important; }

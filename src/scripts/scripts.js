@@ -580,68 +580,75 @@ function animateFSMenu(action) {
     bg.classList.add('opened');
     FARBA.removeScroll()
     const tlStart = gsap.timeline({ autoRemoveChildren: true });
-    // tlStart
-    //   .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
-    //   .fromTo(
-    //     ".fs-menu .fs-menu-productions",
-    //     { y: 50, opacity: 0 },
-    //     { y: 0, opacity: 1, duration: 0.35 }
-    //   )
-    //   .fromTo(
-    //     ".fs-menu-links",
-    //     { y: 50, opacity: 0 },
-    //     { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
-    //   )
-    //   .fromTo(
-    //     ".fs-menu-contacts-1",
-    //     { y: 50, opacity: 0 },
-    //     { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
-    //   )
-    //   .fromTo(
-    //     ".fs-menu-contacts-2",
-    //     { y: 50, opacity: 0 },
-    //     { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
-    //   );
-    tlStart
-      .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
-      .fromTo(
-        ".fs-menu .fs-menu-productions",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.35 }
-      )
-      .fromTo(
-        ".fs-menu-links",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
-      );
 
     if (FARBA.WW > 959) {
       tlStart
-      .fromTo(
-        ".fs-menu-contacts-1",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
-      )
-      .fromTo(
-        ".fs-menu-contacts-2",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
-      );
+        .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
+        .fromTo(
+          ".fsm-products",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35 }
+        )
+        .fromTo(
+          ".fsm-links",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, delay: -0.2 }
+        )
+        .fromTo(
+          ".fsm-contacts",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, delay: -0.2 }
+        );
     } else {
       tlStart
+      .to(".fs-menu-bg", { scale: scale, duration: 0.35 })
         .fromTo(
-          ".fs-menu-contacts",
+          ".fs-menu .fs-menu-productions",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35 }
+        )
+        .fromTo(
+          ".fs-menu-links",
           { y: 50, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
         )
+        .fromTo(
+          ".fs-menu-contacts-1",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
+        )
+        .fromTo(
+          ".fs-menu-contacts-2",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, delay: -0.25 }
+        );
     }
-      
   } else {
     
     D.body.classList.remove('fs-opened');
     const tlEnd = gsap.timeline({ autoRemoveChildren: true });
 
     if (FARBA.WW > 959) {
+      tlEnd
+      .to(".fsm-contacts", { y: 50, opacity: 0, duration: 0.3 })
+      .to(".fsm-links", { y: 50, opacity: 0, duration: 0.3, delay: -0.2 })
+      .to(".fsm-products", {
+        y: 50,
+        opacity: 0,
+        duration: 0.3,
+        delay: -0.15,
+      })
+      .to(".fs-menu-bg", {
+        scale: 1,
+        duration: 0.25,
+        onComplete: () => {
+          FARBA.addScroll()
+          menu.classList.remove("opened");
+          header.classList.remove("fs-opened");
+          bg.classList.remove('opened')
+        },
+      });
+    } else {
       tlEnd
       .to(".fs-menu-contacts-2", { y: 50, opacity: 0, duration: 0.3 })
       .to(".fs-menu-contacts-1", {
@@ -650,24 +657,9 @@ function animateFSMenu(action) {
         duration: 0.3,
         delay: -0.2,
       })
-    } else {
-      tlEnd
-      .to(
-        ".fs-menu-contacts",
-        {y: 50, opacity: 0, duration: 0.3,},
-      )
-    }
-    tlEnd
-      // .to(".fs-menu-contacts-2", { y: 50, opacity: 0, duration: 0.3 })
-      // .to(".fs-menu-contacts-1", {
-      //   y: 50,
-      //   opacity: 0,
-      //   duration: 0.3,
-      //   delay: -0.2,
-      // })
       .to(".fs-menu-links", { y: 50, opacity: 0, duration: 0.3, delay: -0.2 })
       .to(".fs-menu .fs-menu-productions", {
-        y: 5,
+        y: 50,
         opacity: 0,
         duration: 0.3,
         delay: -0.2,
@@ -682,6 +674,7 @@ function animateFSMenu(action) {
           bg.classList.remove('opened')
         },
       });
+    }
   }
 }
 
@@ -1113,18 +1106,18 @@ const mainScreen = () => {
   if (!D.querySelector('#main-screen')) return;
   const slides = D.querySelectorAll('.main-slide').length
 
-  if (D.documentElement.clientWidth > 959) {
-    D.querySelectorAll('.main-slide').forEach(item => {
-      const img = item.querySelector('img.main-slide-img')
-      if (img) {
-        const src = img.getAttribute('src')
-        const pic = new Image()
-        pic.src = src
-        pic.className = 'main-screen-cache'
-        D.querySelector('#main-screen').appendChild(pic)
-      }
-    })
-  }
+  // if (D.documentElement.clientWidth > 959) {
+  //   D.querySelectorAll('.main-slide').forEach(item => {
+  //     const img = item.querySelector('img.main-slide-img')
+  //     if (img) {
+  //       const src = img.getAttribute('src')
+  //       const pic = new Image()
+  //       pic.src = src
+  //       pic.className = 'main-screen-cache'
+  //       D.querySelector('#main-screen').appendChild(pic)
+  //     }
+  //   })
+  // }
   
 
   return new Vue({
@@ -1141,7 +1134,8 @@ const mainScreen = () => {
       line: null,
       timeout: 5,
       isMobile: true,
-      wiper: null
+      wiper: null,
+      splideDesk: null
     },
 
     watch: {
@@ -1162,42 +1156,41 @@ const mainScreen = () => {
       },
 
       animateShadow(index) {
-        const shadow = D.querySelector('.main-slides-nav-border')
-        const activeLink = D.querySelectorAll('.main-slides-nav-link')[index]
-        const coords = activeLink.getBoundingClientRect()
+        // const shadow = D.querySelector('.main-slides-nav-border')
+        // const activeLink = D.querySelectorAll('.main-slides-nav-link')[index]
+        // const coords = activeLink.getBoundingClientRect()
 
-        gsap.to(shadow,{width: coords.width, x: coords.x})
+        // gsap.to(shadow,{width: coords.width, x: coords.x})
       },
 
       initTimer() {
-        this.timer = setInterval(() => {
-          if (this.index === this.slides - 1) {
-            this.index = 0
-            //перезапускаем анимацию прогрессбара
-            this.line.restart()
-          } else {
-            this.index++
-          }
-        },this.timeout*1000)
+        // this.timer = setInterval(() => {
+        //   if (this.index === this.slides - 1) {
+        //     this.index = 0
+        //     //перезапускаем анимацию прогрессбара
+        //     this.line.restart()
+        //   } else {
+        //     this.index++
+        //   }
+        // },this.timeout*1000)
       },
 
       initProgress() {
-        this.line = gsap.timeline()
-        const duration = this.timeout * this.slides
+        // const duration = this.timeout * this.slides
         
-        this.line = gsap.timeline()
-        for (let i = 0; i < this.slides; i++) {
-          this.line.to(this.$refs.progress,
-            {
-              width: () => {
-                const w = (i+1) * (100 / this.slides)
-                return w + '%'
-              },
-              duration: this.timeout,
-              ease: "easeout"
-            }
-          )
-        }
+        // this.line = gsap.timeline()
+        // for (let i = 0; i < this.slides; i++) {
+        //   this.line.to(this.$refs.progress,
+        //     {
+        //       width: () => {
+        //         const w = (i+1) * (100 / this.slides)
+        //         return w + '%'
+        //       },
+        //       duration: this.timeout,
+        //       ease: "easeout"
+        //     }
+        //   )
+        // }
       },
 
       slideEnter(el,done) {
@@ -1236,12 +1229,6 @@ const mainScreen = () => {
             done()
             setTimeout(()=>{this.$refs.popupBody.style = ''},1)
           }})
-          // news.forEach((item,index) => {
-          //   tl.fromTo(item,{opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.3, onComplete: () => {
-          //     setTimeout(()=>{item.style = ''},1)
-          //   }}, '-=0.15')
-          // })
-          // tl.to({},{onComlete: done},0);
 
         tl.eventCallback("onComplete", () => {
           gsap.to(this.$refs.popupBtn,{opacity: 1, y: 0, duration: 0.3});
@@ -1405,6 +1392,87 @@ const mainScreen = () => {
         
       },
 
+      initDesktopCarousel() {
+        this.splideDesk = new Splide('.main-slides-splide', {
+          drag: 'free',
+          arrows: false,
+          pagination: false,
+          autoWidth: true,
+          autoplay: true,
+          interval: 5000,
+          gap: 12,
+          rewind: true,
+          resetProgress: false,
+          breakpoints: {
+            1440: {
+              gap: 8,
+            },
+          }
+        })
+
+        this.splideDesk.on('move', (index) => {
+          // console.log('move')
+
+          this.index = index
+        })
+
+        this.splideDesk.on('dragged', () => {
+          // console.log('move')
+          const { Autoplay } = this.splideDesk.Components;
+
+          setTimeout(() => {
+            this.index = this.splideDesk.index
+            Autoplay.play()
+          }, 1000)
+        })
+
+        this.splideDesk.on('mounted move dragged', () => {
+          this.splideProgressInit(this.slides, this.splideDesk.index)
+          // setTimeout(() => {
+          //   this.splideProgressInit(this.slides, this.splideDesk.index)
+          // }, 1000)
+        })
+
+        this.splideDesk.on('autoplay:playing', (progress) => {
+          this.splideProgressProgress(progress)
+        })
+
+        // this.splideDesk.on('mounted move dragged', () => {
+        //   const { Controller } = this.splideDesk.Components;
+        //   const end  = Controller.getEnd() + 1;
+
+        //   setTimeout(() => {
+        //     const rate = Math.min( ( this.splideDesk.index + 1 ) / end, 1 );
+        //     this.$refs.progress.style.width = String( 100 * rate ) + '%';
+        //   },1000)
+        // })
+
+        this.splideDesk.mount()
+        
+      },
+
+      splideProgressInit(slides,activeIndex) {
+        const part = 100 / slides
+        const width = part * (activeIndex)
+        this.$refs.progress.style.width = width + '%'
+        this.$refs.pcurrent.style.width = part + 'vw'
+      },
+
+      splideProgressProgress(progress) {
+        this.$refs.pcurrent.style.transform = `scaleX(${progress})`;
+      },
+
+      toSplideSlide(index) {
+        if (!this.splideDesk) return
+        this.splideDesk.go(index)
+
+        const { Autoplay } = this.splideDesk.Components;
+
+        setTimeout(()=> {
+          Autoplay.play()
+        },1000)
+      },
+
       mediaHandler() {
         const sc959 = window.matchMedia("(max-width:959px)");
       
@@ -1426,6 +1494,7 @@ const mainScreen = () => {
             this.wiper = null
             
             setTimeout(() => {
+              this.initDesktopCarousel()
               this.initTimer()
               this.initProgress()
               this.animateShadow(0)
@@ -1705,7 +1774,6 @@ const mainEntrs = () => {
         const ww = D.documentElement.clientWidth
         const cw = D.querySelector('.container').clientWidth
         const rw = (ww - cw) / 2
-        console.log(index, activeLink, activeLink.getBoundingClientRect(), coords, cw)
 
         gsap.to(shadow,{width: coords.width, height: coords.height, x: coords.x - rw - 30})
       },

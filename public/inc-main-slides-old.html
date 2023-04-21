@@ -6,7 +6,7 @@
       v-on:leave="slideLeave"
       v-bind:css="false"
     >
-      <div class="main-slide" v-show="index === 0" key="0">
+      <div class="main-slide" v-if="index === 0" key="0">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title">ОБФ —</div>
@@ -21,14 +21,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-show="index === 1" key="1">
+      <div class="main-slide" v-if="index === 1" key="1">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-secondary">ОБФ —</div>
@@ -40,14 +34,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-show="index === 2" key="2">
+      <div class="main-slide" v-if="index === 2" key="2">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-brown">ОБФ —</div>
@@ -59,14 +47,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-show="index === 3" key="3">
+      <div class="main-slide" v-if="index === 3" key="3">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-tertiary">ОБФ —</div>
@@ -78,14 +60,8 @@
           </div>
         </div>
       </div>
-    </transition>
 
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-show="index === 4" key="4">
+      <div class="main-slide" v-if="index === 4" key="4">
         <div class="container">      
           <div class="main-slide-content">
             <div class="main-slide-title ui-color-blue">ОБФ —</div>
@@ -97,91 +73,26 @@
           </div>
         </div>
       </div>
-    </transition>
-
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-show="index === 5" key="5">
-        <div class="container">      
-          <div class="main-slide-content">
-            <div class="main-slide-title ui-color-makulatura">ОБФ —</div>
-            <div class="main-slide-descr">50 млн пакетов в год</div>
-            <a href="#" class="main-slide-link ui-color-makulatura">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
-          </div>
-          <div class="main-slide-img-wrp">
-            <img src="./images/bgs/main-slide-5.png" alt="400 тонн гофропродукции в месяц" class="main-slide-img">
-          </div>
-        </div>
-      </div>
-    </transition>
-
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-show="index === 6" key="6">
-        <div class="container">      
-          <div class="main-slide-content">
-            <div class="main-slide-title">ОБФ —</div>
-            <div class="main-slide-descr">Слайд 6</div>
-            <a href="#" class="main-slide-link">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
-          </div>
-          <div class="main-slide-img-wrp">
-            <img src="./images/bgs/main-slide-5.png" alt="400 тонн гофропродукции в месяц" class="main-slide-img">
-          </div>
-        </div>
-      </div>
-    </transition>
-
-    <transition 
-      v-on:enter="slideEnter"
-      v-on:leave="slideLeave"
-      v-bind:css="false"
-    >
-      <div class="main-slide" v-show="index === 7" key="7">
-        <div class="container">      
-          <div class="main-slide-content">
-            <div class="main-slide-title">ОБФ —</div>
-            <div class="main-slide-descr">Слайд 7</div>
-            <a href="#" class="main-slide-link">Подробнее <svg class="sprite main-slide-link-arrow"><use xlink:href="svg/svg/symbols.svg#arrow-circle-next"/></svg></a>
-          </div>
-          <div class="main-slide-img-wrp">
-            <img src="./images/bgs/main-slide-5.png" alt="400 тонн гофропродукции в месяц" class="main-slide-img">
-          </div>
-        </div>
-      </div>
+    
+    
     </transition>
     
 
     <div class="main-slides-nav">
       <div class="container">
-        <div class="main-slides-wrap">
-          <div class="splide main-slides-splide">
-            <div class="splide__track">
-              <div class="splide__list">
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(0)">Тарный картон</a></div>
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(1)">Бумажно-беловые изделия</a></div>
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(2)">ДВП</a></div>
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(3)">Многослойный картон</a></div>
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(4)">Гофропродукция</a></div>
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(5)">Макулатура и экопакеты</a></div>
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(6)">Слайд 6 и еще какое-то слово</a></div>
-                <div class="splide__slide"><a href="#" class="main-slides-nav-link" @click.prevent="toSplideSlide(7)">Слайд 7 и еще какое-то слово</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ul>
+          <span class="main-slides-nav-border"></span>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(0)" :class="{active: index === 0}">Тарный картон</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(1)" :class="{active: index === 1}">Бумажно-беловые изделия</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(2)" :class="{active: index === 2}">ДВП</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(3)" :class="{active: index === 3}">Многослойный картон</a></li>
+          <li><a href="#" class="main-slides-nav-link" @click.prevent="changeSlide(4)" :class="{active: index === 4}">Гофропродукция</a></li>
+        </ul>
       </div>
     </div>
 
     <div class="main-slides-bar">
-      <div class="main-slides-bar-progress" ref="progress">
-        <div class="main-slides-bar-current" ref="pcurrent"></div>
-      </div>
+      <div class="main-slides-bar-progress" ref="progress"></div>
     </div>
   </div>
 

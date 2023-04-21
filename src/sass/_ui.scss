@@ -1142,9 +1142,7 @@ span.invalid {
 	&-darkyellow {
 		color: $darkyellow !important;
 	}
-	&-makulatura {
-		color: rgb(200, 12, 224) !important;
-	}
+	&-makulatura,
 	&-vtorma,
 	&-greengrass {
 		color: $greengrass !important;
@@ -1194,11 +1192,7 @@ a.ui-color {
 			color: lighten($darkyellow,10%) !important;
 		}
 	}
-	&-makulatura {
-		&:hover {
-			color: lighten(rgb(200, 12, 224),10%) !important;
-		}
-	}
+	&-makulatura,
 	&-vtorma,
 	&-greengrass {
 		&:hover {
@@ -1243,9 +1237,7 @@ a.ui-color {
 	&-darkyellow {
 		fill: $darkyellow !important;
 	}
-	&-makulatura {
-		fill: rgb(200, 12, 224) !important;
-	}
+	&-makulatura,
 	&-vtorma,
 	&-greengrass {
 		fill: $greengrass !important;
@@ -1288,9 +1280,7 @@ a.ui-color {
 	&-darkyellow {
 		background-color: $darkyellow !important;
 	}
-	&-makulatura {
-		background-color: $greengrass !important;
-	}
+	&-makulatura,
 	&-vtorma,
 	&-greengrass {
 		background-color: $greengrass !important;
