@@ -87,6 +87,7 @@ const copyAll = async () => {
 
 
 exports.styles = styles;
+exports.buildStyles = buildStyles;
 exports.svg = svg;
 exports.default = function () {
     watch('src/sass/**/*.scss', styles);

@@ -1105,19 +1105,6 @@ FARBA.tabs(".ux-tabs a");
 const mainScreen = () => {
   if (!D.querySelector('#main-screen')) return;
   const slides = D.querySelectorAll('.main-slide').length
-
-  // if (D.documentElement.clientWidth > 959) {
-  //   D.querySelectorAll('.main-slide').forEach(item => {
-  //     const img = item.querySelector('img.main-slide-img')
-  //     if (img) {
-  //       const src = img.getAttribute('src')
-  //       const pic = new Image()
-  //       pic.src = src
-  //       pic.className = 'main-screen-cache'
-  //       D.querySelector('#main-screen').appendChild(pic)
-  //     }
-  //   })
-  // }
   
 
   return new Vue({
@@ -1135,7 +1122,8 @@ const mainScreen = () => {
       timeout: 5,
       isMobile: true,
       wiper: null,
-      splideDesk: null
+      splideDesk: null,
+      splideSlideProgress: 0
     },
 
     watch: {
@@ -1399,10 +1387,11 @@ const mainScreen = () => {
           pagination: false,
           autoWidth: true,
           autoplay: true,
-          interval: 5000,
+          interval: this.timeout * 1000,
           gap: 12,
           rewind: true,
           resetProgress: false,
+          easing: 'cubic-bezier(0,0,.58,1)',
           breakpoints: {
             1440: {
               gap: 8,
@@ -1416,36 +1405,50 @@ const mainScreen = () => {
           this.index = index
         })
 
-        this.splideDesk.on('dragged', () => {
-          // console.log('move')
-          const { Autoplay } = this.splideDesk.Components;
-
-          setTimeout(() => {
-            this.index = this.splideDesk.index
-            Autoplay.play()
-          }, 1000)
+        this.splideDesk.on('drag', () => {
+          this.splideSlideProgress = this.$refs.pcurrent.dataset.progress
         })
 
-        this.splideDesk.on('mounted move dragged', () => {
+        this.splideDesk.on('dragged', () => {
+          // console.log('dragged')
+
+          const { Autoplay } = this.splideDesk.Components;
+          Autoplay.pause();
+
+          // console.log(this.splideSlideProgress)
+          if ( this.splideSlideProgress > 0.95 || this.splideSlideProgress < 0.1) return
+          setTimeout(() => {
+            gsap.fromTo(this.$refs.pcurrent,{
+              scaleX: this.splideSlideProgress,
+            },{
+              scaleX: 1,
+              ease: 'linear',
+              duration: 0.2,
+              // duration: this.timeout - this.splideSlideProgress * this.timeout,
+              onComplete: () => {
+                //update progressbar
+                this.splideProgressInit(this.slides, this.index+1)
+                this.splideProgressProgress(0)
+              }
+            })
+          }, 2)
+
+          setTimeout(()=> {
+            this.toSplideSlide(
+              this.index + 1 !== this.slides
+                ? this.index+1
+                : 0
+            )
+          },5000)
+        })
+
+        this.splideDesk.on('mounted move', () => {
           this.splideProgressInit(this.slides, this.splideDesk.index)
-          // setTimeout(() => {
-          //   this.splideProgressInit(this.slides, this.splideDesk.index)
-          // }, 1000)
         })
 
         this.splideDesk.on('autoplay:playing', (progress) => {
           this.splideProgressProgress(progress)
         })
-
-        // this.splideDesk.on('mounted move dragged', () => {
-        //   const { Controller } = this.splideDesk.Components;
-        //   const end  = Controller.getEnd() + 1;
-
-        //   setTimeout(() => {
-        //     const rate = Math.min( ( this.splideDesk.index + 1 ) / end, 1 );
-        //     this.$refs.progress.style.width = String( 100 * rate ) + '%';
-        //   },1000)
-        // })
 
         this.splideDesk.mount()
         
@@ -1460,12 +1463,18 @@ const mainScreen = () => {
 
       splideProgressProgress(progress) {
         this.$refs.pcurrent.style.transform = `scaleX(${progress})`;
+        this.$refs.pcurrent.dataset.progress = progress
       },
 
       toSplideSlide(index) {
+        // console.log(index)
         if (!this.splideDesk) return
+        
+        if ((index === 0 && this.splideDesk.index === 0) || (index === this.slides - 1 || this.splideDesk.index === this.slides - 1)) {
+          this.splideDesk.go(1)
+        }
         this.splideDesk.go(index)
-
+        
         const { Autoplay } = this.splideDesk.Components;
 
         setTimeout(()=> {
@@ -1495,9 +1504,9 @@ const mainScreen = () => {
             
             setTimeout(() => {
               this.initDesktopCarousel()
-              this.initTimer()
-              this.initProgress()
-              this.animateShadow(0)
+              // this.initTimer()
+              // this.initProgress()
+              // this.animateShadow(0)
               this.appearAnimation()
 
               window.removeEventListener('load', this.imgsPositioning, false)
@@ -1518,13 +1527,12 @@ const mainScreen = () => {
       
     },
 
-    mounted() {
-      window.addEventListener('resize', ()=>{
-        if (this.isMobile) return
-        this.animateShadow(this.index)
-      }, false)
-
-    }
+    // mounted() {
+    //   window.addEventListener('resize', ()=>{
+    //     if (this.isMobile) return
+    //     this.animateShadow(this.index)
+    //   }, false)
+    // }
   })
 }
 const mainScreenEx = mainScreen()

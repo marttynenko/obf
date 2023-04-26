@@ -101,7 +101,7 @@
 		</symbol>
 	
 		<symbol id="btn-arrow-to" viewBox="0 0 10 26">
-			<path d="M1 25l8-12L1 1" stroke="#fff"></path>
+			<path d="M1 25l8-12L1 1"></path>
 		</symbol>
 	
 		<symbol id="btn-tab-blue" viewBox="0 0 24 24">
