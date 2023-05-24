@@ -1263,7 +1263,7 @@ span.invalid {
 .ui-color-tertiary, .ui-color-lime {
   color: #97B446 !important;
 }
-.ui-color-blue {
+.ui-color-blue, .ui-color-tbf {
   color: #4590BA !important;
 }
 .ui-color-brown {
@@ -1291,7 +1291,7 @@ a.ui-color-secondary:hover, a.ui-color-green:hover {
 a.ui-color-tertiary:hover, a.ui-color-lime:hover {
   color: #acc469 !important;
 }
-a.ui-color-blue:hover {
+a.ui-color-tbf:hover, a.ui-color-blue:hover {
   color: #6aa6c8 !important;
 }
 a.ui-color-brown:hover {
@@ -1328,7 +1328,7 @@ a.ui-color-makulatura:hover, a.ui-color-vtorma:hover, a.ui-color-greengrass:hove
 .ui-fill-tertiary, .ui-fill-lime {
   fill: #97B446 !important;
 }
-.ui-fill-blue {
+.ui-fill-blue, .ui-fill-tbf {
   fill: #4590BA !important;
 }
 .ui-fill-brown {
@@ -2075,6 +2075,14 @@ a.ui-color-makulatura:hover, a.ui-color-vtorma:hover, a.ui-color-greengrass:hove
   -o-transition: 0.15s opacity, 0.15s transform;
   transition: 0.15s opacity, 0.15s transform;
   transition: 0.15s opacity, 0.15s transform, 0.15s -webkit-transform;
+  padding-bottom: 1px;
+}
+.ui-tabs-content:before, .ui-tabs-content:after {
+  content: "";
+  display: table;
+}
+.ui-tabs-content:after {
+  clear: both;
 }
 .ui-tabs-content.selected, .ui-tabs-content.active {
   display: block;
@@ -15448,9 +15456,6 @@ PRODUCTIONS -------------- */
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-right: -30px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 .company-fs .fs-menu-col {
   -webkit-box-flex: 0;

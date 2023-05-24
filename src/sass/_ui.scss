@@ -1127,7 +1127,8 @@ span.invalid {
 	&-lime {
 		color: $tertiary !important;
 	}
-	&-blue {
+	&-blue,
+	&-tbf {
 		color: $blue !important;
 	}
 	&-brown {
@@ -1167,6 +1168,7 @@ a.ui-color {
 			color: lighten($tertiary,10%) !important;
 		}
 	}
+	&-tbf,
 	&-blue {
 		&:hover {
 			color: lighten($blue,10%) !important;
@@ -1222,7 +1224,8 @@ a.ui-color {
 	&-lime {
 		fill: $tertiary !important;
 	}
-	&-blue {
+	&-blue,
+	&-tbf {
 		fill: $blue !important;
 	}
 	&-brown {
@@ -1993,6 +1996,16 @@ a.ui-color {
 	&-content {
 		display: none;
 		transition: .15s opacity, .15s transform;
+		padding-bottom: 1px;
+		// overflow: hidden;
+		&:before,
+		&:after {
+			content: "";
+			display: table;
+		}
+		&:after {
+			clear: both;
+		}
 	
 		&.selected, &.active {
 			display: block;
